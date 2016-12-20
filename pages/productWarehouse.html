@@ -53,8 +53,8 @@
                      style="height: 4px;width: 100%;">
 
                 </div>
-                <div style="width: 3000px;z-index: 30;" ng-mouseleave="hideProductWareMenu()">
-                    <div id="produceHouseNav" ng-hide="!productWaresFlag" style="float: left;line-height: 22px; width: 100px;height:200px; background: rgb(10, 33, 70)">
+                <div style="width: 300px;z-index: 30;" ng-mouseleave="hideProductWareMenu()">
+                    <div id="produceHouseNav" ng-hide="productWaresFlag" style="float: left;line-height: 22px; width: 100px;height:200px; background: rgb(10, 33, 70)">
                         <div style="padding: 20px 10px">
                             <span style="font-size: 18px" ng-mouseover="showSonMenu()">产品下载</span>
                         </div>
@@ -65,7 +65,7 @@
                             <span style="font-size: 18px" ng-mouseover="showSonMenu()">规格查询</span>
                         </div>
                     </div>
-                    <div id="produceHouseNavOfSon" ng-hide="!productWaresSonFlag" style="color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
+                    <div id="produceHouseNavOfSon" ng-hide="productWaresSonFlag" style="color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
                         <div style="padding: 20px 10px">
                             <a
                                     ng-click="hideMenu(11,'IDB')"
@@ -301,7 +301,7 @@
                         <div class="productStrategyText"><span style="font-size: 18px;color: #000000">月产品列表</span></div>
                     </div>
                 </div>
-                <div style="height: 40px;padding: 0px 0px 0px 170px">
+                <div style="height: 40px;padding: 0px 0px 0px 0px">
                     <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
                         <div style="float: left;width:320px">
                             <div style="padding: 10px 0px 0px 30px;text-align: left">

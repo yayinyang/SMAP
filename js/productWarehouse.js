@@ -50,8 +50,8 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
     $scope.description = '';
 
     //菜单
-    $scope.productWaresFlag = false;
-    $scope.productWaresSonFlag = false;
+    $scope.productWaresFlag = true;
+    $scope.productWaresSonFlag = true;
     //初始化表格数据
     $scope.dayProduceData = [];
     $scope.monthProduceData = [];
