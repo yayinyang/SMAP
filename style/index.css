@@ -3,7 +3,6 @@ html,body{
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
     background-color: rgb(246, 247, 250);
     font-family:'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
@@ -412,7 +411,6 @@ span{
     background: url('../img/productWarehouse/productStrategyIcon.png') no-repeat;
     height: 26px;
     width: 18px;
-    padding-left: 10px;
     float: left;
 }
 .productStrategyText{
@@ -426,7 +424,6 @@ input[type="radio"] {
     background: url('../img/produceList/produceListIcon.png') no-repeat;
     height: 24px;
     width: 24px;
-    padding-left: 10px;
     float: left;
 }
 #productDayList ul,#productMonthList ul,
