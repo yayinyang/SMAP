@@ -1,0 +1,50 @@
+var dayData = [
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  },
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  },
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  },
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  },
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  },
+  {
+    id:'20161001091005',
+    editor: '略',
+    publishType: 'MIF',
+    publishTime: '2016-12-10',
+    remark: 'XXXXXXXXXXXXXXX',
+    handle: '下载'
+  }
+]

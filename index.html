@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="lib/switch/pageSwitch.min.css">
+    <link rel="stylesheet" href="style/index.css">
+    <title>SMap</title>
+</head>
+<body style="min-width: 1366px">
+<div id="headContainer">
+    <div style="z-index: 10; position: absolute;width: 100%">
+        <div style="width:100%;padding: 0px 210px;">
+            <div style="display: inline-block;float: right;padding-top: 4px">
+                <div id="homePage" class="topTittle">
+                    <div  style="height: 36px;padding: 10px">
+                        <span>
+                           首页
+                        </span>
+                     </div>
+                     <div id="homePageBottom"
+                         style="height: 4px;width: 100%;">
+
+                     </div>
+                </div>
+
+                <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                    <div id="solution" style="height: 36px; padding: 10px;">
+                        <span>
+                           解决方案
+                        </span>
+                    </div>
+                    <div id="solutionBottom"
+                         style="height: 4px;width: 100%;">
+
+                    </div>
+                </div>
+                <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                    <div id="service" style="height: 36px; padding: 10px;">
+                        <span>
+                            产品服务
+                        </span>
+                    </div>
+                    <div id="serviceBottom"
+                         style="height: 4px;width: 100%;">
+
+                    </div>
+                </div>
+                <div  class="topTittle" style="padding: 0px 0px 0px 50px;width: 150px;" >
+                    <div id="produce" style="height: 36px; padding: 10px;">
+                        <span onmouseover="showMenu()">
+                            产品仓库
+                        </span>
+                    </div>
+                    <div id="produceBottom"
+                         style="height: 4px;width: 100%;">
+
+                    </div>
+                    <div style="width: 3000px;" onmouseleave="hideMenu()">
+                        <div id="produceHouseNav" style="display: none;float: left;line-height: 22px; width: 100px;height:200px; background: rgb(10, 33, 70)">
+                            <div style="padding: 20px 10px">
+                                <span style="font-size: 18px" onmouseover="showSonMenu()">产品下载</span>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <span style="font-size: 18px" onmouseover="showSonMenu()">在线体验</span>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
+                            </div>
+                        </div>
+                        <div id="produceHouseNavOfSon" style="display:none; color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=11&&specName=IDB"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    IDB
+                                </a>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=12&&specName=NIMIF-G"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    NIMIF-G</a>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=13&&specName=NNAVEX"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    NAVEX</a>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=14&&specName=AIF"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    AIF</a>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=15&&specName=NIDGF-G"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    NIDGF-G</a>
+                            </div>
+                            <div style="padding: 20px 10px">
+                                <a
+                                        onclick="hideMenu()"
+                                        href="pages/productWarehouse.html?specid=16&&specName=MIFK"
+                                        style="font-size: 18px; text-decoration: none;">
+                                    MIFK</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
+                    <div id="support" style="height: 36px; padding: 10px;">
+                        <span>
+                            技术支持
+                        </span>
+                    </div>
+                    <div id="supportBottom"
+                         style="height: 4px;width: 100%;">
+
+                    </div>
+                </div>
+                <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
+                    <div id="login" style="height: 36px; padding: 10px;">
+                        <span>
+                            登录
+                        </span>
+                    </div>
+                    <div id="loginBottom"
+                         style="height: 4px;width: 100%;">
+
+                    </div>
+                </div>
+            </div>
+            <div id="logo"></div>
+        </div>
+    </div>
+    <div class="sections">
+        <div class="section" id="section0"></div>
+        <div class="section" id="section1"></div>
+        <div class="section" id="section2"></div>
+        <div class="section" id="section3"></div>
+    </div>
+</div>
+<div id="typesContainer">
+    <div style="height: 120px;width: 100%; padding: 40px 0px 40px 176px; display: inline-block">
+        <div id="typeIcon"></div>
+        <div id="typeText" >
+            <span style="font-size: 24px; color: #74666c">产品类型</span>
+        </div>
+    </div>
+    <div id="firstImg" style="height: 160px; padding: 0px 183px">
+         <div style="width: 1000px; display: inline-block">
+             <div style="float: left; padding: 0px 13px 0px 0px">
+                 <div id="basicMap">
+                     <h2 style="font-size: 30px;color: #ffffff;">
+                         基础地图
+                     </h2>
+                     <p style="left: 30%;">实地采集，高现势性<br>高精度，精细化<br>全覆盖，多规格</p>
+                 </div>
+             </div>
+             <div style="float: left; padding: 0px 13px 0px 0px">
+                 <div id="adas">
+                     <h2 style="font-size: 30px;color: #ffffff;">
+                         ADAS
+                     </h2>
+                     <p>高级驾驶辅助系统中所<br>依赖的高精度数字地图</p>
+                 </div>
+             </div>
+             <div style="float: left; padding: 0px 13px 0px 0px">
+                 <div id="charge">
+                     <h2 style="font-size: 30px;color: #ffffff;">
+                         充电桩
+                     </h2>
+                     <p style="left: 10%">丰富准确的充电站、充电桩信息</p>
+                 </div>
+             </div>
+             <div style="float: left;">
+                 <div id="sound">
+                     <h2 style="font-size: 30px;color: #ffffff;">
+                         卡车地图
+                     </h2>
+                     <p>基于卡车行驶的路网地图</p>
+                 </div>
+             </div>
+         </div>
+    </div>
+    <div style="height: 60px"></div>
+    <div id="secondImg" style="height: 160px; padding: 0px 183px">
+        <div style="width: 1000px; display: inline-block">
+            <div style="float: left; padding: 0px 13px 0px 0px">
+                <div id="threeData">
+                    <h2 style="font-size: 30px;color: #ffffff;">
+                        三维数据
+                    </h2>
+                    <p style="left: 10%">增强地图显示在不熟悉或复杂的<br>环境中轻松辨认位置</p>
+                </div>
+            </div>
+            <div style="float: left; padding: 0px 13px 0px 0px">
+                <div id="pedestrian">
+                    <h2 style="font-size: 30px;color: #ffffff;">
+                        行人导航
+                    </h2>
+                    <p style="left: 15%">首款对步行及公共交通提供<br>定位与导航的地图数据</p>
+                </div>
+            </div>
+            <div style="float: left; padding: 0px 13px 0px 0px">
+                <div id="parking">
+                    <h2 style="font-size: 30px;color: #ffffff;">
+                        停车场
+                    </h2>
+                    <p style="left: 15%">车场内部路网、设施、出入口<br>楼层、分区、停车位等信息</p>
+                </div>
+            </div>
+            <div style="float: left;">
+                <div id="depthPOI">
+                    <h2 style="font-size: 30px;color: #ffffff;">
+                        深度POI
+                    </h2>
+                    <p style="left: 10%">宾馆、旅游景点、加油站<br>充电站等重要POI均制作深度信息</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="produceContainer">
+   <div style="height: 100%; width: 899px; display: inline-block;">
+       <div id="dayProduce">
+           <div style="padding: 0px 100px;">
+               <div id="dayProduceIcon"></div>
+           </div>
+           <div style="padding: 30px  120px 0px 120px;">
+               <span style="font-size: 18px">日出品</span>
+           </div>
+           <div style="padding: 90px 40px;line-height: 30px">
+               <div style="width:100%; height: 50px; padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>以日为单位，快速采集</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>一体化采编，快速出品</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>日更新POI约5万个</span>
+                   </div>
+               </div>
+           </div>
+
+       </div>
+       <div id="monthProduce">
+           <div style="padding: 0px 100px;">
+               <div id="monthProduceIcon"></div>
+           </div>
+           <div style="padding: 30px  120px 0px 120px;">
+               <span style="font-size: 18px">月出品</span>
+           </div>
+           <div style="padding: 90px 40px; line-height: 30px">
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>全国全量数据</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>更新重点区域的高速、</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  31px">
+                   <div class="textDiv">
+                       <span>国道、省道开通及改建</span>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div id="seasonProduce">
+           <div style="padding: 0px 100px;">
+               <div id="seasonProduceIcon"></div>
+           </div>
+           <div style="padding: 30px  120px 0px 120px;">
+               <span style="font-size: 18px">季出品</span>
+           </div>
+           <div style="padding: 90px 10px 90px 40px;line-height: 30px">
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>全国全量数据</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  10px ">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>重点城市每季度全面更新一次</span>
+                   </div>
+               </div>
+               <div style="width:100%; height: 50px;padding: 0px  10px">
+                   <div class="dotDiv"></div>
+                   <div class="textDiv">
+                       <span>次重点地区半年更新一次</span>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+    <div style="z-index: 2;width: 55%; position:absolute;bottom: 0px;">
+        <div id="onlineExp" ></div>
+    </div>
+</div>
+<div id="developContainer">
+    <div style="height: 120px;width: 100%; padding: 40px 0px 40px 170px; display: inline-block">
+        <div id="developIcon"></div>
+        <div id="developText" >
+            <span style="font-size: 24px; color: #74666c">开发API</span>
+        </div>
+    </div>
+    <div style="height: 240px;padding-left: 220px;display: inline-block;">
+        <div id="basicInterface"></div>
+        <div id="basicContent">
+            <div class="topSplitLine"></div>
+            <div style="padding-top: 38px;font-size: 18px;color:#74666c">
+                数据型服务:
+            </div>
+            <div style="padding-top: 34px;font-size: 14px;color:#74666c">
+                日、周、月、季，多重更新频率
+            </div>
+            <div style="padding-top: 9px;font-size: 14px;color:#74666c">
+                全量基线数据+不同频率增量包，定制您的专属数据包
+
+            </div>
+            <div style="padding-top: 7px;font-size: 14px;color:#74666c">
+                可按需供图，只返回您关心的那部分数据
+            </div>
+            <div style="padding-top: 34px;">
+                <div id="basicInterfaceMore"></div>
+            </div>
+
+        </div>
+    </div>
+    <div style="height: 240px;padding-right: 220px; width:100%;display: inline-block">
+        <div id="extendedInterface"></div>
+        <div id="extendedInterfaceContent">
+            <div class="rightSplitLine"></div>
+            <div  style="padding-top: 38px;font-size: 18px;color:#74666c; text-align: right">
+                算法型服务:
+            </div>
+            <div style="padding-top: 34px;font-size: 14px;color:#74666c; text-align: right">
+
+            </div>
+            <div style="padding-top: 9px;font-size: 14px;color:#74666c;text-align: right">
+                用最专业的知识、最深度的数据、最高效的算法
+            </div>
+            <div style="padding-top: 7px;font-size: 14px;color:#74666c;text-align: right">
+                提供最优的答案
+            </div>
+            <div style="padding-top: 34px;">
+                <div id="extendedInterfaceMore"></div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 40px;width: 100%"></div>
+</div>
+<div id="solutionContainer">
+    <div style="height: 120px;width: 100%; padding: 40px 0px 40px 176px; display: inline-block">
+        <div id="solutionIcon"></div>
+        <div id="solutionText" >
+            <span style="font-size: 24px; color: #74666c">解决方案</span>
+        </div>
+    </div>
+</div>
+<div id="bottomContainer">
+  <div style="width: 100%;height: 50px;line-height: 50px; text-align: center;">
+      <a href="#" style="color: #ffffff">招贤纳士</a>
+      <span>|</span>
+      <a href="#" style="color: #ffffff">隐私与服务</a>
+      <span>|</span>
+      <a href="#" style="color: #ffffff">法律声明</a>
+      <span>|</span>
+      <a href="#" style="color: #ffffff">网站声明</a>
+      <span>|</span>
+      <a href="#" style="color: #ffffff">联系我们</a>
+      <span>|</span>
+      <a href="#" style="color: #ffffff">邮箱</a>
+  </div>
+</div>
+</body>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<script src="lib/switch/pageSwitch.min.js"></script>
+<script src="js/index.js"></script>
+</html>
