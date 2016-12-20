@@ -325,4 +325,8 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         }
         $scope.hideProductWareMenu();
     }
+    //防止冒泡
+    $scope.stopPre = function(event){
+        event.stopPropagation();
+    }
 }]);
