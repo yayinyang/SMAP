@@ -41,7 +41,7 @@ html,body{
 #logo{
     float: left;
     background: url('../img/banner/logo.png') no-repeat;
-    height: 100px;
+    height: 44px;
     width: 100px;
 }
 #homePage:hover{
@@ -83,6 +83,7 @@ html,body{
 .topTittle{
     float:left;
     height: 40px;
+    cursor: pointer;
 }
 span{
     font-size: 14px;
