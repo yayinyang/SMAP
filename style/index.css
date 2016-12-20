@@ -380,7 +380,7 @@ span{
     padding: 0px 0px 0px 16px;
 }
 #bottomContainer{
-    height: 300px;
+    height: 150px;
     background: url('../img/copyRight/copyright.png') no-repeat;
     background-size: cover;
 }
@@ -432,15 +432,15 @@ input[type="radio"] {
 #productSeasonList ul {
     -webkit-padding-start: 0px;
 }
-#productDayList li:nth-child(odd),
-#productMonthList li:nth-child(odd),
-#productSeasonList li:nth-child(odd) {
-    background-color:#eee;
-}
+/*#productDayList li:nth-child(odd),*/
+/*#productMonthList li:nth-child(odd),*/
+/*#productSeasonList li:nth-child(odd) {*/
+    /*background-color:#eee;*/
+/*}*/
 #productDayList li:hover,
 #produceMonthList li:hover,
 #produceSeasonList li:hover{
-    background: #286090;
+    background: #eee;
 }
 .liBgColor{
     background-color: #286090;
