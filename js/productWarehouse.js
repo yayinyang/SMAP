@@ -18,12 +18,13 @@ product.filter('showName', function() {
     };
 });
 product.controller("productController", ['$scope', 'dsEdit','$location', function ($scope, dsEdit,$location) {
-   $scope.getQueryString = function (name) {
+    $scope.getQueryString = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]);
         return null;
-    }
+    };
+    $scope.ak = App.Temp.accessToken;
     $scope.specid = $scope.getQueryString('specid');
     $scope.specName = $scope.getQueryString('specName');
     $scope.flagId = "";
@@ -51,7 +52,10 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
     //菜单
     $scope.productWaresFlag = false;
     $scope.productWaresSonFlag = false;
-
+    //初始化表格数据
+    $scope.dayProduceData = [];
+    $scope.monthProduceData = [];
+    $scope.seasonProduceData = [];
     $scope.options = {
         chart: {
             type: 'pieChart',
@@ -140,6 +144,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
     };
     $scope.modifyModeId = function (type) {
         $scope.modeid = type;
+        $scope.param.modeid = type;
         $scope.initialiseData();
         switch (type) {
             case 10:
@@ -198,6 +203,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
 
     $scope.changVersionSeason = function (type) {
         $scope.versionseason = type;
+        $scope.param.versionseason = type;
         $scope.initialiseData();
         switch ($scope.modeid) {
             case 10:
@@ -256,6 +262,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.dayPage = 0;
         $scope.monthPage = 0;
         $scope.seasonPage = 0;
+
+        //表格数据
+        $scope.dayProduceData.length = 0;
+        $scope.monthProduceData.length = 0;
+        $scope.seasonProduceData.length = 0;
     }
     //菜单相关
     $scope.showWaresMenu = function () {

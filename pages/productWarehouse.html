@@ -197,13 +197,13 @@
                                 <label for="winter" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16WIN')" name="season" id="winter" checked>2016年冬</label>
                             </div>
                             <div style="padding: 6px 0px 10px 12px">
-                                <label for="fall" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16AUT')" name="season" id="fall">2016年秋</label>
+                                <label for="fall" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16AUT')" name="season" id="fall" disabled>2016年秋</label>
                             </div>
                             <div style="padding: 6px 0px 10px 12px">
-                                <label for="summer" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16SUM')" name="season" id="summer">2016年夏</label>
+                                <label for="summer" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16SUM')" name="season" id="summer" disabled>2016年夏</label>
                             </div>
                             <div style="padding: 6px 0px 10px 12px">
-                                <label for="spring" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16PR')" name="season" id="spring">2016年春</label>
+                                <label for="spring" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16PR')" name="season" id="spring" disabled>2016年春</label>
                             </div>
 
                         </div>
@@ -273,7 +273,7 @@
                             </span>
                             </div>
                             <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="../data/smap.zip">
+                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
                                     <div class="downloadNormal"></div>
                                 </a>
                             </div>
@@ -284,7 +284,7 @@
             <div >
                 <div style="text-align: center;padding-left: 178px">
                     <h5 ng-show="dayProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <button ng-show="dayProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</button>
+                    <div ng-show="dayProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
                 </div>
             </div>
 
@@ -351,7 +351,7 @@
                             </span>
                             </div>
                             <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="../data/smap.zip">
+                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
                                     <div class="downloadNormal"></div>
                                 </a>
                             </div>
@@ -362,7 +362,7 @@
             <div >
                 <div style="text-align: center;padding-left: 178px;">
                     <h5 ng-show="monthProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <button ng-show="monthProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</button>
+                    <div ng-show="monthProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
                 </div>
             </div>
 
@@ -429,7 +429,7 @@
                             </span>
                             </div>
                             <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="../data/smap.zip">
+                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
                                     <div class="downloadNormal"></div>
                                 </a>
                             </div>
@@ -440,7 +440,7 @@
             <div >
                 <div style="text-align: center;padding: 0px 0px 0px 178px">
                     <h5 ng-show="seasonProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <button ng-show="seasonProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</button>
+                    <div ng-show="seasonProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
                 </div>
             </div>
 
