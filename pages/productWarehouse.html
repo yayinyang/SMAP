@@ -6,15 +6,15 @@
     <link rel="stylesheet" href="../lib/angular-nvd3/nv.d3.css">
     <link rel="stylesheet" href="../style/index.css">
 </head>
-<body ng-controller="productController" style="min-width: 1200px">
+<body ng-controller="productController" style="min-width: 1200px;text-align: center;background-color: #fff">
 <div style="width: 100%;position: fixed;z-index: 10; top: 0px;">
     <div style="padding: 0px 210px;background: #25396e; height: 44px">
         <div style="display: inline-block;float: right;padding-top: 4px">
             <div id="homePage" class="topTittle">
                 <div style="height: 16px;padding: 10px">
-                        <a  href="../index.html" style="font-size: 14px;color: white;text-decoration: none">
-                           首页
-                        </a>
+                    <a  href="../index.html" style="font-size: 14px;color: white;text-decoration: none">
+                        首页
+                    </a>
                 </div>
                 <div id="homePageBottom"
                      style="height: 4px;width: 100%;">
@@ -138,10 +138,10 @@
         <div id="logo"></div>
     </div>
 </div>
-<div style="display: inline-block; width: 100%;margin-top: 40px;background: white;">
-    <div style="float: left; width: 910px">
-        <div style="width: 910px;background: white; border-bottom: 1px solid #bdc3d3">
-            <div style="display: inline-block;height: 56px;padding: 0px 0px 0px 170px;">
+<div  style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
+    <div style="float:left;width: 740px;background: white; text-align: left">
+        <div style="width: 740px;border-bottom: 1px solid #bdc3d3;">
+            <div style="display: inline-block;height: 56px;">
                 <div style="float: left; padding: 20px 0px">
                     <span style="font-size: 18px; color: #000000;opacity: 0.3">您现在的位置:</span>
                 </div>
@@ -156,389 +156,396 @@
                 </div>
             </div>
         </div>
-        <div style="height: 280px;width: 910px;background: white">
-            <div style="height:100%; display: inline-block;width: 100%">
-                <div style="float: left; height:100%; width: 50%;">
-                    <div style="padding: 30px 50px 0px 170px">
-                        <div style="border-bottom: 1px solid #bdc3d3; height: 30px; width: 100%;display: inline-block;">
-                            <div class="productStrategyIcon"></div>
-                            <div class="productStrategyText"><span style="font-size: 18px;color: #000000">产品组合策略</span></div>
-                        </div>
-                        <div style="height: 220px">
-                            <div style="padding: 20px 0px 10px 12px">
-                                <label for="dayPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayPOI" checked ng-click="modifyModeId(10)">日产品(POI)+季产品</label>
+        <div style="float: left; width: 740px">
+            <div style="height: 280px;width: 740px;background: white">
+                <div style="height:100%; display: inline-block;width: 100%">
+                    <div style="float: left; height:100%; width: 400px;text-align: left">
+                        <div style="padding: 30px 0px 0px 0px">
+                            <div style="padding-right: 160px;">
+                                <div style="border-bottom: 1px solid #bdc3d3;height: 30px; width: 100%;display: inline-block;padding-left: 10px;">
+                                    <div class="productStrategyIcon"></div>
+                                    <div class="productStrategyText"><span style="font-size: 18px;color: #000000">产品组合策略</span></div>
+                                </div>
                             </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="dayAndSeasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayAndSeasonPOI" ng-click="modifyModeId(20)">日产品(POI+ROAD)+季产品</label>
-                            </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="monthPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="monthPOI" ng-click="modifyModeId(30)">月产品+季产品</label>
-                            </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="seasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="seasonPOI" ng-click="modifyModeId(40)">季产品</label>
-                            </div>
+                            <div style="height: 220px">
+                                <div style="padding: 20px 0px 10px 12px">
+                                    <label for="dayPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayPOI" checked ng-click="modifyModeId(10)">日产品（POI）+季产品</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="dayAndSeasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayAndSeasonPOI" ng-click="modifyModeId(20)">日产品（POI+ROAD）+季产品</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="monthPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="monthPOI" ng-click="modifyModeId(30)">月产品+季产品</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="seasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="seasonPOI" ng-click="modifyModeId(40)">季产品</label>
+                                </div>
 
+                            </div>
                         </div>
+
                     </div>
+                    <div style="float: left; height:100%; width:240px;text-align: left">
+                        <div style="padding: 30px 0px 0px 0px">
+                            <div style="border-bottom: 1px solid #bdc3d3; height: 30px; width: 100%;display: inline-block;padding-left: 10px">
+                                <div class="productStrategyIcon"></div>
+                                <div class="productStrategyText"><span style="font-size: 18px; color: #000000">日期</span></div>
+                                <div style="float: right" class="pageDownIcon">
+                                </div>
+                                <div style="float: right;padding-right: 10px" class="pageUpIcon">
+                                </div>
+                            </div>
+                            <div style="height: 220px">
+                                <div style="padding: 20px 0px 10px 12px">
+                                    <label for="winter" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16WIN')" name="season" id="winter" checked>2016年冬</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="fall" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16AUT')" name="season" id="fall" disabled>2016年秋</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="summer" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16SUM')" name="season" id="summer" disabled>2016年夏</label>
+                                </div>
+                                <div style="padding: 6px 0px 10px 12px">
+                                    <label for="spring" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16PR')" name="season" id="spring" disabled>2016年春</label>
+                                </div>
 
-                </div>
-                <div style="float: left; height:100%; width: 50%;">
-                    <div style="padding: 30px 150px 0px 80px">
-                        <div style="border-bottom: 1px solid #bdc3d3; height: 30px; width: 100%;display: inline-block;">
-                            <div class="productStrategyIcon"></div>
-                            <div class="productStrategyText"><span style="font-size: 18px; color: #000000">日期</span></div>
-                            <div style="float: right" class="pageDownIcon">
                             </div>
-                            <div style="float: right;padding-right: 10px" class="pageUpIcon">
-                            </div>
-                        </div>
-                        <div style="height: 220px">
-                            <div style="padding: 20px 0px 10px 12px">
-                                <label for="winter" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16WIN')" name="season" id="winter" checked>2016年冬</label>
-                            </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="fall" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16AUT')" name="season" id="fall" disabled>2016年秋</label>
-                            </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="summer" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16SUM')" name="season" id="summer" disabled>2016年夏</label>
-                            </div>
-                            <div style="padding: 6px 0px 10px 12px">
-                                <label for="spring" style="font-size: 14px; color: #000000"><input type="radio" ng-click="changVersionSeason('16PR')" name="season" id="spring" disabled>2016年春</label>
-                            </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div ng-hide="!dayFlag" style="width: 910px;">
-            <div style="padding: 0px 0px 16px 178px;">
-                <div style="height: 30px; width: 100%;display: inline-block;">
-                    <div class="produceListIcon"></div>
-                    <div class="productStrategyText"><span style="font-size: 18px;color: #000000">日产品列表</span></div>
-                </div>
-            </div>
-            <div style="height: 40px;padding: 0px 0px 0px 170px">
-                <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                    <div style="float: left;width:320px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>ID</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:100px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>版本</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:80px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>发布类型</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:140px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>发布日期</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:90px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>操作</span>
-                        </div>
+            <div ng-hide="!dayFlag" style="width: 740px;">
+                <div style="padding: 0px 0px 16px 0px;">
+                    <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
+                        <div class="produceListIcon"></div>
+                        <div class="productStrategyText"><span style="font-size: 18px;color: #000000">日产品列表</span></div>
                     </div>
                 </div>
-            </div>
-            <div id="productDayList" style="padding: 0px 0px 0px 170px">
-                <ul style=" list-style-type: none;">
-                    <li ng-repeat="item in dayProduceData" style="height: 64px"  ng-click="showStaticInfo(item)">
-                        <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
-                            <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
+                <div style="height: 40px;padding: 0px 0px 0px 0px">
+                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
+                        <div style="float: left;width:320px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>ID</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:100px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>版本</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:80px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>发布类型</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:140px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>发布日期</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:90px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>操作</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="productDayList" style="padding: 0px 0px 0px 0px;text-align: left">
+                    <ul style=" list-style-type: none;">
+                        <li ng-repeat="item in dayProduceData" style="height: 64px"  ng-click="showStaticInfo(item)">
+                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
+                                <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
                             <span style="color:black">
                               {{item.product_id}}
                             </span>
 
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
                             <span style="color:black">
                                 {{item.version_season}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
                             <span style="color:black">
                                {{item.file_type|showName}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
                             <span style="color:black">
                                 {{item.create_time}}
                             </span>
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
+                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
+                                        <div class="downloadNormal"></div>
+                                    </a>
+                                </div>
                             </div>
-                            <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
-                                    <div class="downloadNormal"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div >
-                <div style="text-align: center;padding-left: 178px">
-                    <h5 ng-show="dayProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <div ng-show="dayProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+                <div >
+                    <div style="text-align: center;">
+                        <h5 ng-show="dayProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="dayProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                    </div>
+                </div>
 
-        </div>
-        <div ng-hide="!monthFlag" style="width: 910px;">
-            <div style="padding: 0px 0px 16px 178px;">
-                <div style="height: 30px; width: 100%;display: inline-block;">
-                    <div class="produceListIcon"></div>
-                    <div class="productStrategyText"><span style="font-size: 18px;color: #000000">月产品列表</span></div>
-                </div>
             </div>
-            <div style="height: 40px;padding: 0px 0px 0px 170px">
-                <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                    <div style="float: left;width:320px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>ID</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:100px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>版本</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:80px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>发布类型</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:140px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>发布日期</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:90px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>操作</span>
-                        </div>
+            <div ng-hide="!monthFlag" style="width: 740px;">
+                <div style="padding: 0px 0px 16px 178px;">
+                    <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
+                        <div class="produceListIcon"></div>
+                        <div class="productStrategyText"><span style="font-size: 18px;color: #000000">月产品列表</span></div>
                     </div>
                 </div>
-            </div>
-            <div id="productMonthList" style="padding: 0px 0px 0px 170px">
-                <ul style=" list-style-type: none;">
-                    <li ng-repeat="item in monthProduceData" style="height: 64px" ng-click="showStaticInfo(item.product_id)">
-                        <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
-                            <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
+                <div style="height: 40px;padding: 0px 0px 0px 170px">
+                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
+                        <div style="float: left;width:320px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>ID</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:100px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>版本</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:80px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>发布类型</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:140px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>发布日期</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:90px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>操作</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="productMonthList" style="padding: 0px 0px 0px 0px;text-align: left">
+                    <ul style=" list-style-type: none;">
+                        <li ng-repeat="item in monthProduceData" style="height: 64px" ng-click="showStaticInfo(item.product_id)">
+                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
+                                <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
                             <span style="color:black">
                               {{item.product_id}}
                             </span>
 
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
                             <span style="color:black">
                                 {{item.version_season}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
                             <span style="color:black">
                                {{item.file_type|showName}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
                             <span style="color:black">
                                 {{item.create_time}}
                             </span>
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
+                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
+                                        <div class="downloadNormal"></div>
+                                    </a>
+                                </div>
                             </div>
-                            <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
-                                    <div class="downloadNormal"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div >
-                <div style="text-align: center;padding-left: 178px;">
-                    <h5 ng-show="monthProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <div ng-show="monthProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+                <div >
+                    <div style="text-align: center;">
+                        <h5 ng-show="monthProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="monthProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                    </div>
+                </div>
 
-        </div>
-        <div ng-hide="!seasonFlag" style="width: 910px;">
-            <div style="padding: 0px 0px 16px 178px;">
-                <div style="height: 30px; width: 100%;display: inline-block;">
-                    <div class="produceListIcon"></div>
-                    <div class="productStrategyText"><span style="font-size: 18px;color: #000000">季产品列表</span></div>
-                </div>
             </div>
-            <div style="height: 40px;padding: 0px 0px 0px 170px">
-                <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                    <div style="float: left;width:320px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>ID</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:100px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>版本</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:80px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>发布类型</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:140px">
-                        <div style="padding: 10px 0px 0px 30px;text-align: left">
-                            <span>发布日期</span>
-                        </div>
-                    </div>
-                    <div style="float: left;width:90px">
-                        <div style="padding: 10px 0px 0px 0px;text-align: left">
-                            <span>操作</span>
-                        </div>
+            <div ng-hide="!seasonFlag" style="width: 740px;">
+                <div style="padding: 0px 0px 16px 0px;">
+                    <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
+                        <div class="produceListIcon"></div>
+                        <div class="productStrategyText"><span style="font-size: 18px;color: #000000">季产品列表</span></div>
                     </div>
                 </div>
-            </div>
-            <div id="productSeasonList" style="padding: 0px 0px 0px 170px">
-                <ul style=" list-style-type: none;">
-                    <li ng-repeat="item in seasonProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
-                        <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
-                            <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
+                <div style="height: 40px;padding: 0px 0px 0px 0px">
+                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
+                        <div style="float: left;width:320px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>ID</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:100px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>版本</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:80px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>发布类型</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:140px">
+                            <div style="padding: 10px 0px 0px 30px;text-align: left">
+                                <span>发布日期</span>
+                            </div>
+                        </div>
+                        <div style="float: left;width:90px">
+                            <div style="padding: 10px 0px 0px 0px;text-align: left">
+                                <span>操作</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="productSeasonList" style="padding: 0px 0px 0px 0px;text-align: left">
+                    <ul style=" list-style-type: none;">
+                        <li ng-repeat="item in seasonProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
+                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
+                                <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
                             <span style="color:black">
                               {{item.product_id}}
                             </span>
 
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 80px;padding: 20px 5px">
                             <span style="color:black">
                                 {{item.version_season}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 60px;padding: 20px 20px">
                             <span style="color:black">
                                {{item.file_type|showName}}
                             </span>
-                            </div>
-                            <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px">
                             <span style="color:black">
                                 {{item.create_time}}
                             </span>
+                                </div>
+                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
+                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
+                                        <div class="downloadNormal"></div>
+                                    </a>
+                                </div>
                             </div>
-                            <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}">
-                                    <div class="downloadNormal"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div >
-                <div style="text-align: center;padding: 0px 0px 0px 178px">
-                    <h5 ng-show="seasonProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                    <div ng-show="seasonProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+                <div >
+                    <div style="text-align: center;">
+                        <h5 ng-show="seasonProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="seasonProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                    </div>
+                </div>
 
+            </div>
         </div>
     </div>
-    <div style="float:left; padding: 56px 100px 0px 30px;">
-        <div style="
-        position: fixed;
+    <div style="float: left; width: 330px;background: white;">
+        <div style="float:left; padding: 60px 0px 0px 30px;width: 300px;height: 500px">
+            <div style="
+            position: fixed;
         width: 300px;
         height: 470px;
         border: 1px solid #bdc3d3;
         overflow: auto;
         border-radius: 3px;
         padding: 14px 20px 0px 20px">
-           <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
-               <div style="float: left" class="darkBlueIcon"></div>
-               <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">省份信息</span></div>
-           </div>
-           <div style="width: 100%;height: 114px; padding-top: 8px; display: inline-block">
-               <div ng-repeat="province in provinces" style="float: left; height:24px;padding-right: 6px;padding-bottom: 16px">
-                   <div class="provinceSpan">
-                       <span>{{province}}</span>
-                   </div>
-               </div>
-            </div>
-            <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
-                <div style="float: left" class="darkBlueIcon"></div>
-                <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">要素说明</span></div>
-            </div>
-            <div style="width: 100%; height: 300px">
-                <div style="padding: 16px 0px 0px  20px">
-                    <span style="font-size: 14px; color: #25396e">{{description}}</span>
+                <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left" class="darkBlueIcon"></div>
+                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">省份信息</span></div>
                 </div>
-            </div>
-           <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
-                <div style="float: left" class="darkBlueIcon"></div>
-                <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">各要素比例</span></div>
-            </div>
-           <div style="width: 100%; height: 300px">
-                <div style="padding: 16px 0px 0px  20px">
-                    <nvd3 options='options' data='chartData'></nvd3>
-                </div>
-            </div>
-           <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
-               <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">POI</span></div>
-               <div style="float: left;width: 50%"><span style="font-size: 14px; color: #25396e">道路</span></div>
-           </div>
-           <div style="width: 100%; height: 200px; display: inline-block">
-                <div style="float: left; width: 50%">
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">新增:{{poiData[0]}}个</span>
-                    </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">删除:{{poiData[1]}}个</span>
-                    </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">修改:{{poiData[2]}}个</span>
+                <div style="width: 100%;height: 114px; padding-top: 8px; display: inline-block">
+                    <div ng-repeat="province in provinces" style="float: left; height:24px;padding-right: 6px;padding-bottom: 16px">
+                        <div class="provinceSpan">
+                            <span>{{province}}</span>
+                        </div>
                     </div>
                 </div>
-                <div style="float: left; width: 50%">
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">新增:{{roadData[0]}}公里</span>
+                <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left" class="darkBlueIcon"></div>
+                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">要素说明</span></div>
+                </div>
+                <div style="width: 100%; height: 300px">
+                    <div style="padding: 16px 0px 0px  20px">
+                        <span style="font-size: 14px; color: #25396e">{{description}}</span>
                     </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">删除:{{roadData[1]}}公里</span>
+                </div>
+                <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left" class="darkBlueIcon"></div>
+                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">各要素比例</span></div>
+                </div>
+                <div style="width: 100%; height: 300px">
+                    <div style="padding: 16px 0px 0px  20px">
+                        <nvd3 options='options' data='chartData'></nvd3>
                     </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">修改:{{roadData[1]}}公里</span>
+                </div>
+                <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">POI</span></div>
+                    <div style="float: left;width: 50%"><span style="font-size: 14px; color: #25396e">道路</span></div>
+                </div>
+                <div style="width: 100%; height: 200px; display: inline-block">
+                    <div style="float: left; width: 50%">
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">新增:{{poiData[0]}}个</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">删除:{{poiData[1]}}个</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">修改:{{poiData[2]}}个</span>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 50%">
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">新增:{{roadData[0]}}公里</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">删除:{{roadData[1]}}公里</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">修改:{{roadData[1]}}公里</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">道路(按等级统计)</span></div>
+                </div>
+                <div style="width: 100%; height: 200px; display: inline-block">
+                    <div style="float: left; width: 50%">
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">高速:{{highSpeed}}公里</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">城高:{{interHighSpeed}}公里</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">国道:{{nationalRoad}}公里</span>
+                        </div>
+                    </div>
+                    <div style="float: left; width: 50%">
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">省道:{{provincialRoad}}公里</span>
+                        </div>
+                        <div style="padding: 10px">
+                            <span style="font-size: 14px; color: #25396e">其他:{{otherRoad}}公里</span>
+                        </div>
                     </div>
                 </div>
             </div>
-           <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
-                <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">道路(按等级统计)</span></div>
-           </div>
-           <div style="width: 100%; height: 200px; display: inline-block">
-                <div style="float: left; width: 50%">
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">高速:{{highSpeed}}公里</span>
-                    </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">城高:{{interHighSpeed}}公里</span>
-                    </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">国道:{{nationalRoad}}公里</span>
-                    </div>
-                </div>
-                <div style="float: left; width: 50%">
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">省道:{{provincialRoad}}公里</span>
-                    </div>
-                    <div style="padding: 10px">
-                        <span style="font-size: 14px; color: #25396e">其他:{{otherRoad}}公里</span>
-                    </div>
-                </div>
-            </div>
-           </div>
         </div>
     </div>
+</div>
+
 
 </body>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
