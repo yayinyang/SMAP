@@ -5,6 +5,12 @@
     <title>SMap</title>
     <link rel="stylesheet" href="../lib/angular-nvd3/nv.d3.css">
     <link rel="stylesheet" href="../style/index.css">
+    <style>
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none;
+        }
+    </style>
+
 </head>
 <body ng-controller="productController" style="min-width: 1200px;text-align: center;background-color: #fff">
 <div style="width: 100%;position: fixed;z-index: 10; top: 0px;">
@@ -44,7 +50,7 @@
                 </div>
             </div>
             <div class="topTittle" style="padding: 0px 0px 0px 50px;width: 100px">
-                <div id="produce" style="height: 16px; padding: 10px;" ng-mouseover="showWaresMenu()">
+                <div id="produce" style="height: 16px; padding: 10px;" ng-mouseleave="hideProductWareMenu()" ng-mouseover="showWaresMenu(0)">
                         <span>
                             产品仓库
                         </span>
@@ -53,19 +59,20 @@
                      style="height: 4px;width: 100%;">
 
                 </div>
-                <div style="width: 300px;z-index: 30;" ng-mouseleave="hideProductWareMenu()">
-                    <div id="produceHouseNav" ng-hide="productWaresFlag" style="float: left;line-height: 22px; width: 100px;height:200px; background: rgb(10, 33, 70)">
+                <div style="width: 300px;z-index: 30;margin-top: -4px"  ng-mouseenter="showWaresMenu(1)" ng-mouseleave="hideProductWareMenu()">
+                    <div id="produceHouseNav" ng-hide="productWaresFlag"  ng-cloak style="float: left;line-height: 22px; width: 100px;height:60px; background: rgb(10, 33, 70)">
+                        <div style="height: 4px;" ng-class="{true:'enterBg', false: 'leaveBg'}[bottomFlag]"></div>
                         <div style="padding: 20px 10px">
                             <span style="font-size: 18px" ng-mouseover="showSonMenu()">产品下载</span>
                         </div>
-                        <div style="padding: 20px 10px">
-                            <span style="font-size: 18px" ng-mouseover="showSonMenu()">在线体验</span>
-                        </div>
-                        <div style="padding: 20px 10px">
-                            <span style="font-size: 18px" ng-mouseover="showSonMenu()">规格查询</span>
-                        </div>
+                        <!--<div style="padding: 20px 10px">-->
+                            <!--<span style="font-size: 18px" ng-mouseover="showSonMenu()">在线体验</span>-->
+                        <!--</div>-->
+                        <!--<div style="padding: 20px 10px">-->
+                            <!--<span style="font-size: 18px" ng-mouseover="showSonMenu()">规格查询</span>-->
+                        <!--</div>-->
                     </div>
-                    <div id="produceHouseNavOfSon" ng-hide="productWaresSonFlag" style="color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
+                    <div id="produceHouseNavOfSon" ng-hide="productWaresSonFlag"  ng-cloak style="color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
                         <div style="padding: 20px 10px">
                             <a
                                     ng-click="hideMenu(11,'IDB')"
@@ -97,17 +104,17 @@
                         </div>
                         <div style="padding: 20px 10px">
                             <a
-                                    ng-click="hideMenu(15, 'NIDGF-G')"
+                                    ng-click="hideMenu(15, 'NIGDF-G')"
                                     href="#"
                                     style="font-size: 18px; text-decoration: none;">
-                                NIDGF-G</a>
+                                NIGDF-G</a>
                         </div>
                         <div style="padding: 20px 10px">
                             <a
-                                    ng-click="hideMenu(16, 'MIFK')"
+                                    ng-click="hideMenu(16, 'NIMIF-K')"
                                     href="#"
                                     style="font-size: 18px; text-decoration: none;">
-                                MIFK</a>
+                                NIMIF-K</a>
                         </div>
                     </div>
                 </div>
@@ -169,10 +176,10 @@
                             </div>
                             <div style="height: 220px">
                                 <div style="padding: 20px 0px 10px 12px">
-                                    <label for="dayPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayPOI" checked ng-click="modifyModeId(10)">日产品（POI）+季产品</label>
+                                    <label for="dayPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayPOI"  ng-click="modifyModeId(20)">日产品（POI）+季产品</label>
                                 </div>
                                 <div style="padding: 6px 0px 10px 12px">
-                                    <label for="dayAndSeasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayAndSeasonPOI" ng-click="modifyModeId(20)">日产品（POI+ROAD）+季产品</label>
+                                    <label for="dayAndSeasonPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="dayAndSeasonPOI" ng-click="modifyModeId(10)" checked>日产品（POI+ROAD）+季产品</label>
                                 </div>
                                 <div style="padding: 6px 0px 10px 12px">
                                     <label for="monthPOI" style="font-size: 14px; color: #000000"><input type="radio" name="POI" id="monthPOI" ng-click="modifyModeId(30)">月产品+季产品</label>
@@ -190,10 +197,10 @@
                             <div style="border-bottom: 1px solid #bdc3d3; height: 30px; width: 100%;display: inline-block;padding-left: 10px">
                                 <div class="productStrategyIcon"></div>
                                 <div class="productStrategyText"><span style="font-size: 18px; color: #000000">日期</span></div>
-                                <div style="float: right" class="pageDownIcon">
-                                </div>
-                                <div style="float: right;padding-right: 10px" class="pageUpIcon">
-                                </div>
+                                <!--<div style="float: right" class="pageDownIcon">-->
+                                <!--</div>-->
+                                <!--<div style="float: right;padding-right: 10px" class="pageUpIcon">-->
+                                <!--</div>-->
                             </div>
                             <div style="height: 220px">
                                 <div style="padding: 20px 0px 10px 12px">
@@ -251,7 +258,7 @@
                     </div>
                 </div>
                 <div id="productDayList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;">
+                    <ul style=" list-style-type: none;padding-left: 0px">
                         <li ng-repeat="item in dayProduceData" style="height: 64px"  ng-click="showStaticInfo(item)">
                             <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
                                 <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
@@ -276,7 +283,7 @@
                             </span>
                                 </div>
                                 <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}"
+                                    <a href="#"
                                        ng-click="stopPre($event)"
                                     >
                                         <div class="downloadNormal"></div>
@@ -288,14 +295,17 @@
                 </div>
                 <div >
                     <div style="text-align: center;">
-                        <h5 ng-show="dayProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                        <div ng-show="dayProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        <h5 ng-show="dayPage > (dayTotal/10)+1" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="dayPage <= (dayTotal/10)+1"
+                             ng-click="addDayProduct()"
+                             style="color: #000000"
+                             >加载更多...</div>
                     </div>
                 </div>
 
             </div>
             <div ng-hide="!monthFlag" style="width: 740px;">
-                <div style="padding: 0px 0px 16px 178px;">
+                <div style="padding: 0px 0px 16px 0px;">
                     <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
                         <div class="produceListIcon"></div>
                         <div class="productStrategyText"><span style="font-size: 18px;color: #000000">月产品列表</span></div>
@@ -331,8 +341,8 @@
                     </div>
                 </div>
                 <div id="productMonthList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;">
-                        <li ng-repeat="item in monthProduceData" style="height: 64px" ng-click="showStaticInfo(item.product_id)">
+                    <ul style=" list-style-type: none;padding-left: 0px">
+                        <li ng-repeat="item in monthProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
                             <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
                                 <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
                             <span style="color:black">
@@ -356,7 +366,7 @@
                             </span>
                                 </div>
                                 <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}"
+                                    <a href="#"
                                        ng-click="stopPre($event)"
                                     >
                                         <div class="downloadNormal"></div>
@@ -368,8 +378,11 @@
                 </div>
                 <div >
                     <div style="text-align: center;">
-                        <h5 ng-show="monthProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                        <div ng-show="monthProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        <h5 ng-show="monthPage > (monthTotal/10)+1" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="monthPage <= (monthTotal/10)+1"
+                             ng-click="addMonthProduct()"
+                             style="color: #000000"
+                        >加载更多...</div>
                     </div>
                 </div>
 
@@ -411,7 +424,7 @@
                     </div>
                 </div>
                 <div id="productSeasonList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;">
+                    <ul style=" list-style-type: none;padding-left: 0px;">
                         <li ng-repeat="item in seasonProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
                             <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px">
                                 <div style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 20px 10px">
@@ -436,7 +449,7 @@
                             </span>
                                 </div>
                                 <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px">
-                                    <a href="http://fs.navinfo.com/smapapi/base/download.json?ak={{ak}}&specid={{specid}}&modeid={{modeid}}&versionseason={{versionseason}}&productID={{item.product_id}}"
+                                    <a href="#"
                                     ng-click="stopPre($event)"
                                     >
                                         <div class="downloadNormal"></div>
@@ -448,8 +461,11 @@
                 </div>
                 <div >
                     <div style="text-align: center;">
-                        <h5 ng-show="seasonProduceData.length === 0" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
-                        <div ng-show="seasonProduceData.length > 0"  ng-click="addDayProduct()" style="color: #000000">加载更多...</div>
+                        <h5 ng-show="seasonPage > (seasonTotal/10)+1" style="color: rgb(95,95,95); font-weight: normal">没有更多数据</h5>
+                        <div ng-show="seasonPage <= (seasonTotal/10)+1"
+                             ng-click="addSeasonProduct()"
+                             style="color: #000000"
+                        >加载更多...</div>
                     </div>
                 </div>
 
@@ -468,21 +484,10 @@
         padding: 14px 20px 0px 20px">
                 <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
                     <div style="float: left" class="darkBlueIcon"></div>
-                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">省份信息</span></div>
+                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">产品描述</span></div>
                 </div>
-                <div style="width: 100%;height: 114px; padding-top: 8px; display: inline-block">
-                    <div ng-repeat="province in provinces" style="float: left; height:24px;padding-right: 6px;padding-bottom: 16px">
-                        <div class="provinceSpan">
-                            <span>{{province}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
-                    <div style="float: left" class="darkBlueIcon"></div>
-                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">要素说明</span></div>
-                </div>
-                <div style="width: 100%; height: 300px">
-                    <div style="padding: 16px 0px 0px  20px">
+                <div style="width: 100%; height: 100px">
+                    <div style="padding: 16px 0px 0px  0px;">
                         <span style="font-size: 14px; color: #25396e">{{description}}</span>
                     </div>
                 </div>
@@ -544,6 +549,17 @@
                         </div>
                         <div style="padding: 10px">
                             <span style="font-size: 14px; color: #25396e">其他:{{otherRoad}}公里</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 40px; border-bottom: 1px solid #bdc3d3;display: inline-block">
+                    <div style="float: left" class="darkBlueIcon"></div>
+                    <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">省份信息</span></div>
+                </div>
+                <div style="width: 100%;height: 800px; padding-top: 8px; display: inline-block">
+                    <div ng-repeat="province in provinces" style="float: left; height:24px;padding-right: 6px;padding-bottom: 16px">
+                        <div class="provinceSpan">
+                            <span>{{province}}</span>
                         </div>
                     </div>
                 </div>

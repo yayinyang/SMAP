@@ -2,17 +2,13 @@
  * Created by liwanchong on 2016/12/12.
  */
 $(function () {
-    // $("#headContainer").PageSwitch({
-    //     direction:'horizontal',
-    //     easing:'ease-in',
-    //     duration:10000,
-    //     autoPlay:true,
-    //     loop:'false'
-    // });
-    var screenWidth = window.screen.width;
-    var paddingLeft = (screenWidth - 1000) / 2;
-    $('#firstImg').css('padding', '0px ' + paddingLeft + 'px')
-    $('#secondImg').css('padding', '0px ' + paddingLeft + 'px')
+    $("#headContainer").PageSwitch({
+        direction:'horizontal',
+        easing:'ease-in',
+        duration:2000,
+        autoPlay:true,
+        loop:'false'
+    });
 });
 function showMenu() {
     $('#produceHouseNav').css('display', 'block');

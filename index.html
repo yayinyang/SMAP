@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="lib/switch/pageSwitch.min.css">
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="style/ie9.css">
+    <![endif]-->
     <link rel="stylesheet" href="style/index.css">
     <title>SMap</title>
 </head>
@@ -100,16 +103,16 @@
                         <div style="padding: 20px 10px">
                             <a
                                     onclick="hideMenu()"
-                                    href="pages/productWarehouse.html?specid=15&&specName=NIDGF-G"
+                                    href="pages/productWarehouse.html?specid=15&&specName=NIGDF-G"
                                     style="font-size: 18px; text-decoration: none;">
-                                NIDGF-G</a>
+                                NIGDF-G</a>
                         </div>
                         <div style="padding: 20px 10px">
                             <a
                                     onclick="hideMenu()"
-                                    href="pages/productWarehouse.html?specid=16&&specName=MIFK"
+                                    href="pages/productWarehouse.html?specid=16&&specName=NIMIF-K"
                                     style="font-size: 18px; text-decoration: none;">
-                                MIFK</a>
+                                NIMIF-K</a>
                         </div>
                     </div>
                 </div>
@@ -144,90 +147,94 @@
     <div class="sections">
         <div class="section" id="section0"></div>
         <div class="section" id="section1"></div>
-        <div class="section" id="section2"></div>
-        <div class="section" id="section3"></div>
+        <div class="section" id="section2">66666666666</div>
     </div>
 </div>
 <div id="typesContainer">
-    <div style="height: 120px;width: 100%; padding: 40px 0px 40px 176px; display: inline-block">
+    <div style="height: 120px;width: 100%; padding: 40px 0px 40px 176px;">
         <div id="typeIcon"></div>
         <div id="typeText" >
             <span style="font-size: 24px; color: #74666c">产品类型</span>
         </div>
     </div>
-    <div id="firstImg" style="height: 160px; padding: 0px 183px">
-         <div style="width: 1000px; display: inline-block">
-             <div style="float: left; padding: 0px 13px 0px 0px">
-                 <div id="basicMap">
-                     <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                         基础地图
-                     </h2>
-                     <p style="left: 30%;">实地采集，高现势性<br>高精度，精细化<br>全覆盖，多规格</p>
-                 </div>
-             </div>
-             <div style="float: left; padding: 0px 13px 0px 0px">
-                 <div id="adas">
-                     <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                         ADAS
-                     </h2>
-                     <p>高级驾驶辅助系统中所<br>依赖的高精度数字地图</p>
-                 </div>
-             </div>
-             <div style="float: left; padding: 0px 13px 0px 0px">
-                 <div id="charge">
-                     <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                         充电桩
-                     </h2>
-                     <p style="left: 10%">丰富准确的充电站、充电桩信息</p>
-                 </div>
-             </div>
-             <div style="float: left;">
-                 <div id="sound">
-                     <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                         卡车地图
-                     </h2>
-                     <p>应用于卡车行驶的路网地图</p>
-                 </div>
-             </div>
-         </div>
-    </div>
-    <div style="height: 60px"></div>
-    <div id="secondImg" style="height: 160px; padding: 0px 183px">
-        <div style="width: 1000px; display: inline-block">
-            <div style="float: left; padding: 0px 13px 0px 0px">
-                <div id="threeData">
-                    <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                        三维数据
-                    </h2>
-                    <p style="left: 10%">增强地图显示,在不熟悉或复杂的<br>环境中轻松辨认位置</p>
+    <div style="width: 100%; text-align: center">
+        <div style="width: 1000px;display: inline-block;">
+            <div id="firstImg" style="height: 160px; padding: 0px">
+                <div style="width: 1000px; display: inline-block">
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="basicMap">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                基础地图
+                            </h2>
+                            <p >实地采集，高现势性<br>高精度，精细化<br>全覆盖，多规格</p>
+                        </div>
+                    </div>
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="adas">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                ADAS
+                            </h2>
+                            <p>高级驾驶辅助系统中所<br>依赖的高精度数字地图</p>
+                        </div>
+                    </div>
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="charge">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                充电桩
+                            </h2>
+                            <p >丰富准确的充电站、充电桩信息</p>
+                        </div>
+                    </div>
+                    <div style="float: left;">
+                        <div id="sound">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                卡车地图
+                            </h2>
+                            <p>应用于卡车行驶的路网地图</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div style="float: left; padding: 0px 13px 0px 0px">
-                <div id="pedestrian">
-                    <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                        行人导航
-                    </h2>
-                    <p style="left: 15%">首款对步行及公共交通提供<br>定位与导航的地图数据</p>
-                </div>
-            </div>
-            <div style="float: left; padding: 0px 13px 0px 0px">
-                <div id="parking">
-                    <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                        停车场
-                    </h2>
-                    <p style="left: 15%">停车场内部路网、设施、出入口<br>楼层、分区、停车位等信息</p>
-                </div>
-            </div>
-            <div style="float: left;">
-                <div id="depthPOI">
-                    <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
-                        深度POI
-                    </h2>
-                    <p style="left: 10%">宾馆、旅游景点、加油站<br>等重要POI均制作深度信息</p>
+            <div style="height: 60px"></div>
+            <div id="secondImg" style="height: 160px;padding: 0px 0px">
+                <div style="width: 1000px; display: inline-block">
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="threeData">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                三维数据
+                            </h2>
+                            <p>增强地图显示,在不熟悉或复杂的<br>环境中轻松辨认位置</p>
+                        </div>
+                    </div>
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="pedestrian">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                行人导航
+                            </h2>
+                            <p >首款对步行及公共交通提供<br>定位与导航的地图数据</p>
+                        </div>
+                    </div>
+                    <div style="float: left; padding: 0px 13px 0px 0px">
+                        <div id="parking">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                停车场
+                            </h2>
+                            <p >停车场内部路网、设施、出入口<br>楼层、分区、停车位等信息</p>
+                        </div>
+                    </div>
+                    <div style="float: left;">
+                        <div id="depthPOI">
+                            <h2 style="font-size: 30px;color: #ffffff;text-align: center;left: 0px">
+                                深度POI
+                            </h2>
+                            <p >宾馆、旅游景点、加油站<br>等重要POI均制作深度信息</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 <div id="produceContainer">
    <div style="height: 100%; width: 899px; display: inline-block;">

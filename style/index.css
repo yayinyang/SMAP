@@ -27,15 +27,23 @@ html,body{
 }
 #section0 {
     background-image: url('../img/banner/banner1.png');
+    height: 800px;
+    background-size: cover;
 }
 #section1 {
-    background-image: url('../img/banner/banner1.png');
+    background-image: url('../img/banner/banner2.png');
+    height: 800px;
+    background-size: cover;
 }
 #section2 {
-    background-image: url('../img/banner/banner1.png');
+    background-image: url('../img/banner/banner3.png');
+    height: 800px;
+    background-size: 100% 100%;
 }
 #section3 {
     background-image: url('../img/banner/banner1.png');
+    height: 800px;
+    background-size: cover;
 }
 #logo{
     float: left;
@@ -117,11 +125,11 @@ span{
 #threeData p,#pedestrian p,#parking p,#depthPOI p{
     position: absolute;
     bottom: 0;
-    left: 20%;
     width: 100%;
     opacity: 0;
     color: #ffffff;
     -webkit-transform: translate3d(0,10px,0);
+    -ms-transform: translate3d(0,10px,0);
     transform: translate3d(0,10px,0);
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
     transition: opacity 0.35s, transform 0.35s;
@@ -131,11 +139,11 @@ span{
 {
     position: absolute;
     top: 40%;
-    left: 25%;
     width: 100%;
     -webkit-transition: -webkit-transform 0.35s, color 0.35s;
     transition: transform 0.35s, color 0.35s;
     -webkit-transform: translate3d(0,-50%,0);
+    -ms-transform: translate3d(0,-50%,0);
     transform: translate3d(0,-50%,0);
 }
 #basicMap:hover h2,#adas:hover h2, #charge:hover h2,
@@ -144,6 +152,7 @@ span{
 {
     color: #fff;
     -webkit-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    -ms-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
     transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
 }
 #basicMap:hover p,#adas:hover p, #charge:hover p,
@@ -441,7 +450,7 @@ input[type="radio"] {
     background: #eee;
 }
 .liBgColor{
-    background-color: #286090;
+    background-color: #eee;
 }
 .downloadNormal{
     background: url('../img/productWarehouse/downloadNormal.png') no-repeat;
@@ -487,9 +496,46 @@ a>div:hover{
     width: 20px;
     height: 20px;
 }
+.enterBg {
+    background-color: #60c5ff;
+}
+.leaveBg{
+    background-color: rgb(10, 33, 70);
+}
 /********************************dataService*******************************/
 #dataServiceList>div:hover,
 #algorithmServiceList>div:hover{
     color:#25396e;
     cursor: pointer;
+}
+.tabTd{
+    background-color: #e6e4e4;
+    font-size: 14px;
+    color:#74666c;
+}
+tr>th>div{
+    background-color: #e6e4e4;
+    font-weight: normal;
+    font-size: 14px;
+    color:#74666c;
+}
+tr>td {
+    color: rgba(0, 0, 0, 0.8);
+    font-size: 14px;
+    font-weight: normal;
+    border-bottom: 1px solid #dddddd;
+}
+.api_Input {
+    border-radius: 4px;
+    color: #000000;
+    font-size: 14px;
+    width: 470px;
+    height: 30px;
+    display: inline-block;
+    box-shadow: none;
+    border: 1px solid #ccc;
+}
+.api_Input:focus {
+    border-color: #5693ff;
+    box-shadow: none;
 }

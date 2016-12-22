@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
     <link rel="stylesheet" href="../style/index.css">
     <title>SMAP</title>
 </head>
 <body style="min-width: 1200px;text-align: center;background-color: #fff">
-<div style="width: 100%;position: fixed; top: 0px;">
+<div style="width: 100%;position: fixed;z-index: 100; top: 0px;">
     <div style="padding: 0px 210px;background: #25396e; height: 44px">
         <div style="display: inline-block;float: right;padding-top: 4px">
             <div id="homePage" class="topTittle">
@@ -99,28 +100,28 @@
                 </div>
                 <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
                     <div id="dataServiceList" style="padding: 0px 50px 0px 80px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px">
-                        <div>
+                        <div onclick="changeDataApiPage('tile')">
                             获取瓦片信息
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('mesh')">
                             获取图幅属性
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('poi')">
                             POI查询
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('region')">
                             行政区划查询
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('roadName')">
                             道路名查询
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('link')">
                             link信息查询
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('layer')">
                             layer信息查询
                         </div>
-                        <div>
+                        <div onclick="changeDataApiPage('layerStructure')">
                             获取layer结构
                         </div>
                     </div>
@@ -135,10 +136,10 @@
                 </div>
                 <div style="width: 100%;background-color: rgb(233,235,240);border-bottom: 1px solid rgb(199,204,218)">
                     <div id="algorithmServiceList" style="padding: 0px 50px 0px 80px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px">
-                        <div>
+                        <div onclick="changeArithmeticApiPage('ak')">
                             高程值
                         </div>
-                        <div>
+                        <div onclick="changeArithmeticApiPage('tollcost')">
                             路径收费
                         </div>
                     </div>
@@ -159,114 +160,25 @@
                         <li>></li>
                         <li><a href="#">服务接口</a></li>
                         <li>></li>
-                        <li><a href="#">数据服务型</a></li>
+                        <li><a href="#" id="apiType">数据服务型</a></li>
                         <li>></li>
-                        <li><a href="#">获取瓦片信息</a></li>
+                        <li><a href="#" id="showApiName">获取瓦片信息</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div style="float: left; width: 740px;text-align: left">
-            <div style="height: 130px;">
-                <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-                    <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
-                        瓦片信息
-                    </div>
-                </div>
-                <div style="height: 90px;width: 690px;">
-                    <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;">
-                        最后更新时间:2016年12月07日
-                    </div>
-                </div>
-            </div>
-            <div style="height: 160px;">
-                <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-                    <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
-                        API介绍
-                    </div>
-                </div>
-                <div style="height: 120px;width: 690px;">
-                    <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;line-height: 44px">
-                        获取瓦片信息API是一类以HTTP形似提供的服务接口,使用墨卡托投影的地图瓦片概念,输入经纬度坐标,
-                        返回JSON格式的查询数据,用于获取瓦片信息的开发功能。如需开发使用API,请先申请SMap平台账号。
-                    </div>
-                </div>
-            </div>
-            <div style="height: 130px;">
-                <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-                    <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
-                        使用场景
-                    </div>
-                </div>
-                <div style="height: 90px;width: 690px;">
-                    <div style="padding: 20px 0px 0px 20px; font-size: 18px; color: #74666c;">
-                        待补充
-                    </div>
-                </div>
-            </div>
-            <div style="height: 220px;">
-                <div style="background: #cec9c9">
-                    <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
-                        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
-                            使用说明
-                        </div>
-                    </div>
-                    <div style="height: 180px;width: 690px;">
-                        <div style="padding-left: 20px; font-size: 14px; color: #74666c;line-height: 44px">
-                            <div style=" color:#000000">
-                                第一步: 申请SM安排平台账号;
-                            </div>
-                            <div style=" color:#000000">
-                                第二步: 拼接HTTP请求URL,请求方式为POST;
-                            </div>
-                            <div style="color:#000000">
-                                第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
-                            </div>
-                            <div style="color:#000000">
-                                如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div style="float: left; width: 740px;text-align: left" id="apiPage" >
 
-            </div>
-            <div style="height: 1350px;padding-top: 20px">
-                <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
-                    <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
-                        获取瓦片ID
-                    </div>
-                </div>
-                <div style="height: 30px;width: 690px;">
-                    <div style="padding: 16px 0px 0px 20px; font-size: 14px; color: #74666c;">
-                        单个经纬度获取瓦片ID API服务地址
-                    </div>
-                </div>
-                <div style="height: 76px;width: 690px;">
-                    <div style="padding: 26px 0px 0px 20px; font-size: 18px; color: #74666c;">
-                        <div style="border: 1px solid #74666c; border-radius: 4px;height: 30px; padding: 5px 0px 5px 10px">
-                            http://fs.navinfo.com/smap/base/coordinate/tile.json
-                        </div>
-                    </div>
-                </div>
-                <div style="width: 690px">
-                    <div style="display: inline-block; padding: 20px 0px">
-                        <div class="dotGrayDiv"></div>
-                        <div class="textDiv" style="padding-left: 0px">
-                            <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
-                        </div>
-                    </div>
-                    <div>
-
-                    </div>
-                </div>
-            </div>
         </div>
+
     </div>
 </div>
 </body>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../js/service/dataService.js"></script>
 <script src="../js/service/dataService-sMap.js"></script>
+<script src="../js/productService.js"></script>
 </html>
