@@ -31,14 +31,50 @@ html,body{
     background-size: cover;
 }
 #section1 {
+    position: relative;
     background-image: url('../img/banner/banner2.png');
     height: 800px;
     background-size: cover;
 }
+#topSection1 {
+    background: url('../img/banner/topBanner2.png') no-repeat;
+    height: 630px;
+    width: 1016px;
+    position: relative;
+}
+#section1Button{
+    top: 70%;
+    left:45%;
+    height: 50px;
+    width: 160px;
+    background: url('../img/banner/immediatelyBtn.png');
+    position: relative
+}
+#section1Button:hover{
+    background: url('../img/banner/immediatelyHoverBtn.png');
+}
 #section2 {
+    position: relative;
     background-image: url('../img/banner/banner3.png');
     height: 800px;
-    background-size: 100% 100%;
+    background-size: cover;
+}
+#topSection2 {
+    background: url('../img/banner/topBanner3.png') no-repeat;
+    height: 630px;
+    width: 520px;
+    position: relative;
+}
+#section2Button{
+    top: 80%;
+    left:50%;
+    height: 50px;
+    width: 160px;
+    background: url('../img/banner/detailHoverBtn.png');
+    position: relative
+}
+#section2Button:hover{
+    background: url('../img/banner/detailBtn.png');
 }
 #section3 {
     background-image: url('../img/banner/banner1.png');
@@ -99,6 +135,22 @@ span{
 }
 #companyIcon{
     background: url('../img/banner');
+}
+.menu {
+    display: none;
+    float: left;
+    height: 40px;
+    line-height: 22px;
+    width: 76px;
+    background: rgb(10, 33, 70);
+}
+.menuDataServiceGrid,
+.menuWaresGrid
+{
+    height: 4px;
+    width: 76px;
+    display: none;
+    background-color: #60c5ff;
 }
 /**********************888******************************************/
 #typesContainer{
@@ -408,7 +460,7 @@ span{
 #navigation a {
     text-decoration: none;
     font-size: 14px;
-    color: #000000;
+    color:rgba(0,0,0,0.7);
     /*opacity: 0.3*/
 }
 .rightIcon{
@@ -447,6 +499,7 @@ input[type="radio"] {
 #productDayList li:hover,
 #productMonthList li:hover,
 #productSeasonList li:hover{
+    color: rgb(0,0,0);
     background: #eee;
 }
 .liBgColor{
@@ -475,15 +528,19 @@ a>div:hover{
     background: #66ccff;
     border-radius: 10px;
 }
+#serviceInterfaceNav>div:hover {
+    background-color:#1478ff;
+    cursor: pointer;
+}
 #produceHouseNav>div>span:hover{
-    color:#286090;
+    color:#1478ff;
     cursor: pointer;
 }
 #produceHouseNavOfSon>div>a{
     color:#fff;
 }
-#produceHouseNavOfSon>div>a:hover{
-    color:#286090;
+#produceHouseNavOfSon>div:hover{
+    background-color:#1478ff;
     cursor: pointer;
 }
 .pageUpIcon{
@@ -538,4 +595,9 @@ tr>td {
 .api_Input:focus {
     border-color: #5693ff;
     box-shadow: none;
+}
+/******************undevelopPage********************************/
+.undevelopPage{
+    background: url('../img/undevelopPage.png') no-repeat;
+    background-size: cover;
 }

@@ -16,21 +16,20 @@
         <div style="float: right;">
             <div id="homePage" class="topTittle">
                 <div  style="height: 36px;padding: 10px">
-                        <span>
+                        <a style="font-size: 14px;color: white;text-decoration: none">
                            首页
-                        </span>
+                        </a>
                 </div>
                 <div id="homePageBottom"
                      style="height: 4px;width: 100%;">
 
                 </div>
             </div>
-
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
                 <div id="solution" style="height: 36px; padding: 10px;">
-                        <span>
+                        <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                            解决方案
-                        </span>
+                        </a>
                 </div>
                 <div id="solutionBottom"
                      style="height: 4px;width: 100%;">
@@ -38,30 +37,44 @@
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                <div id="service" style="height: 36px; padding: 10px;">
+                <div id="service" style="height: 36px; padding: 10px;text-shadow: 0 1px 10px #000"
+                     onmouseleave="hideMenu('produceService')" onmouseover="showMenu('produceService', 0)">
                         <span>
                             产品服务
                         </span>
                 </div>
                 <div id="serviceBottom"
                      style="height: 4px;width: 100%;">
-
+                </div>
+                <div style="width: 300px;position: absolute;margin-top: -4px"
+                     onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
+                    <div class="menuDataServiceGrid" ></div>
+                    <div id="serviceInterfaceNav" class="menu">
+                        <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000">
+                            <a href="pages/productService.html"
+                               style="text-decoration: none;color:white;"
+                               onclick="hideMenu('produceService')">
+                                服务接口
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px;" >
-                <div id="produce" style="height: 36px; padding: 10px;">
-                        <span onmouseover="showMenu()">
+                <div id="produce" style="height: 36px; padding: 10px;"  onmouseleave="hideMenu('produceWares')" onmouseover="showMenu('produceWares', 0)">
+                        <span >
                             产品仓库
                         </span>
                 </div>
                 <div id="produceBottom"
                      style="height: 4px;width: 100%;">
-
                 </div>
-                <div style="width: 300px;position: absolute;" onmouseleave="hideMenu()">
-                    <div id="produceHouseNav" style="display: none;float: left;line-height: 22px; width: 100px;background: rgb(10, 33, 70)">
-                        <div style="padding: 20px 10px">
-                            <span style="font-size: 18px" onmouseover="showSonMenu()">产品下载</span>
+                <div style="width: 300px;position: absolute;margin-top: -4px"
+                     onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
+                    <div class="menuWaresGrid" ></div>
+                    <div id="produceHouseNav"  class="menu">
+                        <div style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000">
+                            <span  onmouseover="showSonMenu()">产品下载</span>
                         </div>
                         <!--<div style="padding: 20px 10px">
                             <span style="font-size: 18px" onmouseover="showSonMenu()">在线体验</span>
@@ -70,48 +83,49 @@
                             <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
                         </div>-->
                     </div>
-                    <div id="produceHouseNavOfSon" style="display:none; color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
-                        <div style="padding: 20px 10px">
+                    <div id="produceHouseNavOfSon"
+                         style="display:none; color: #fff;float: left;width: 100px;height:240px; z-index: 4;background: rgb(10, 33, 70)">
+                        <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=11&&specName=IDB"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 IDB
                             </a>
                         </div>
-                        <div style="padding: 20px 10px">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=12&&specName=NIMIF-G"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 NIMIF-G</a>
                         </div>
-                        <div style="padding: 20px 10px">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=13&&specName=NNAVEX"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 NAVEX</a>
                         </div>
-                        <div style="padding: 20px 10px">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=14&&specName=AIF"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 AIF</a>
                         </div>
-                        <div style="padding: 20px 10px">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=15&&specName=NIGDF-G"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 NIGDF-G</a>
                         </div>
-                        <div style="padding: 20px 10px">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
-                                    onclick="hideMenu()"
+                                    onclick="hideMenu('produceWares')"
                                     href="pages/productWarehouse.html?specid=16&&specName=NIMIF-K"
-                                    style="font-size: 18px; text-decoration: none;">
+                                    style="font-size: 14px; text-decoration: none;">
                                 NIMIF-K</a>
                         </div>
                     </div>
@@ -119,9 +133,9 @@
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
                 <div id="support" style="height: 36px; padding: 10px;">
-                        <span>
+                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                             技术支持
-                        </span>
+                        </a>
                 </div>
                 <div id="supportBottom"
                      style="height: 4px;width: 100%;">
@@ -130,9 +144,9 @@
             </div>
             <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
                 <div id="login" style="height: 36px; padding: 10px;">
-                        <span>
+                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                             登录
-                        </span>
+                        </a>
                 </div>
                 <div id="loginBottom"
                      style="height: 4px;width: 100%;">
@@ -146,9 +160,26 @@
 <div id="headContainer">
     <div class="sections">
         <div class="section" id="section0"></div>
-        <div class="section" id="section1"></div>
-        <div class="section" id="section2">66666666666</div>
+        <div class="section" id="section1">
+            <div style="width: 100%;left: 50%; top: 10%;text-align: center;position: absolute">
+                <div id="topSection1">
+                    <div id="section1Button"  onclick="redirecting('api')">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section" id="section2">
+                <div style="width: 100%;left: 50%; top: 10%;text-align: center;position: absolute">
+                    <div id="topSection2">
+                        <div id="section2Button"  onclick="redirecting('load')">
+
+                        </div>
+                    </div>
+                </div>
+        </div>
     </div>
+
 </div>
 <div id="typesContainer">
     <div style="height: 120px;width: 100%; padding: 40px 0px 40px 176px;">
@@ -408,4 +439,5 @@
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script src="lib/switch/pageSwitch.min.js"></script>
 <script src="js/index.js"></script>
+<script src="js/menu.js"></script>
 </html>

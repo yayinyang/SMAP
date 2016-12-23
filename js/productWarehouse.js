@@ -52,9 +52,6 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
     $scope.seasonTotal = 1;
     $scope.description = '';
 
-    //菜单
-    $scope.productWaresFlag = true;
-    $scope.productWaresSonFlag = true;
     //初始化表格数据
     $scope.dayProduceData = [];
     $scope.monthProduceData = [];
@@ -240,26 +237,25 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.monthProduceData.length = 0;
         $scope.seasonProduceData.length = 0;
     }
-    //菜单相关
-    $scope.showWaresMenu = function (type) {
-        $scope.productWaresFlag = false;
-        $scope.bottomFlag = (type === 0);
-    };
-    $scope.showSonMenu = function () {
-        $scope.productWaresSonFlag = false;
-    };
-    $scope.hideProductWareMenu = function () {
-        $scope.productWaresFlag = true;
-        $scope.productWaresSonFlag = true;
-    };
-    $scope.hideMenu = function(id, info){
+    $scope.hideMenu = function (id, info) {
         $scope.specid = id;
         $scope.specName = info;
         $scope.param.specid = id;
         $scope.initialiseData();
         $scope.requestData($scope.modeid);
-        $scope.hideProductWareMenu();
-    }
+        $("#produceHouseNav").css('display', 'none');
+        $('#produceHouseNavOfSon').css('display', 'none');
+        $('.menuWaresGrid').css('display', 'none');
+        $('#produce').css('background-color', 'transparent');
+    };
+    //数据服务菜单
+    $scope.showDataServiceMenu = function (type) {
+        $scope.dataServiceFlag = false;
+        $scope.bottomFlag = (type === 0);
+    };
+    $scope.hideDataServiceMenu = function () {
+        $scope.dataServiceFlag = true;
+    };
     //防止冒泡
     $scope.stopPre = function(event){
         event.stopPropagation();

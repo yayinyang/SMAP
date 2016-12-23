@@ -4,19 +4,21 @@
 $(function () {
     $("#headContainer").PageSwitch({
         direction:'horizontal',
+        duration: 0,
         easing:'ease-in',
-        duration:2000,
+        interval: 3000,
         autoPlay:true,
-        loop:'false'
+        loop:false,
+        callback:function (data) {
+            console.log(data);
+        }
     });
 });
-function showMenu() {
-    $('#produceHouseNav').css('display', 'block');
-}
-function showSonMenu() {
-    $('#produceHouseNavOfSon').css('display', 'block');
-}
-function hideMenu() {
-    $("#produceHouseNav").css('display', 'none');
-    $('#produceHouseNavOfSon').css('display', 'none');
+function redirecting(type) {
+    if(type === 'load') {
+        window.location = 'pages/productWarehouse.html';
+    } else {
+        window.location = 'pages/productService.html';
+    }
+
 }

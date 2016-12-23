@@ -18,21 +18,33 @@ function changeDataApiPage(type) {
             $('#showApiName').text('获取图幅属性');
             break;
         case 'poi' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getPoisInfomation.html');
             $('#showApiName').text('POI查询');
             break;
         case 'region' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getRegionInfomation.html');
             $('#showApiName').text('行政区划查询');
             break;
         case 'roadName' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getRoadNameInfomation.html');
             $('#showApiName').text('道路名查询');
             break;
         case 'link' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getLinkInfomation.html');
             $('#showApiName').text('link信息查询');
             break;
         case 'layer' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getLayerInfomation.html');
             $('#showApiName').text('layer信息查询');
             break;
         case 'layerStructure' :
+            $('#apiPage').empty();
+            $('#apiPage').load('../pages/api/getLayerStructureInfomation.html');
             $('#showApiName').text('获取layer结构');
             break;
     }
