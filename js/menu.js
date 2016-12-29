@@ -39,3 +39,21 @@ function hideMenu(type) {
     }
 
 }
+function hideIndexMenu() {
+    $('#serviceInterfaceNav').css('display', 'none');
+    $('.menuDataServiceGrid').css('display', 'none');
+    $('#service').css('background-color', 'transparent');
+    window.location = 'pages/productService.html';
+}
+function hideWaresMenu() {
+    $('#serviceInterfaceNav').css('display', 'none');
+    $('.menuDataServiceGrid').css('display', 'none');
+    $('#service').css('background-color', 'transparent');
+    window.location = 'productService.html';
+}
+function hideServiceMenu() {
+    $('#serviceInterfaceNav').css('display', 'none');
+    $('.menuDataServiceGrid').css('display', 'none');
+    $('#service').css('background-color', 'transparent');
+    window.location = 'productService.html';
+}

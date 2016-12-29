@@ -1,7 +1,7 @@
 /**
  * Created by liwanchong on 2016/12/15.
  */
-var product = angular.module("product", ['dataService', 'nvd3']);
+var product = angular.module("product", ['dataService', 'nvd3', 'angular-popups']);
 product.filter('showName', function() {
     var showObj = {
         1: 'mif',
@@ -71,15 +71,20 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             showLabels: false,
             duration: 500,
             labelThreshold: 0.01,
+            valueFormat: function(d){
+                return d*100+'%';
+            },
             labelSunbeamLayout: true,
             legend: {
                 margin: {
                     top: 5,
-                    right: 30,
+                    right: 10,
                     bottom: 5,
-                    left: 0
-                }
-            }
+                    left: 3
+                },
+                rightAlign: true
+            },
+            color:['#66ccff', '#25396e', '#5b93ff']
         }
     };
     $scope.chartData = [];
@@ -126,9 +131,14 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             });
         }
     };
-    $scope.requestData = function (type) {
+    $scope.requestData = function (type, flag) {
         switch (type) {
             case 10:
+                if(flag) {
+                    $scope.dayFlag = true;
+                    $scope.monthFlag = false;
+                    $scope.seasonFlag = true;
+                }
                 dsEdit.getProduct('dayproductlist.json',  $scope.param).then(function (data) {
                     $scope.dayProduceData = data.dayProductList;
                     $scope.dayTotal = data.total;
@@ -141,6 +151,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                 });
                 break;
             case 20:
+                if(flag) {
+                    $scope.dayFlag = true;
+                    $scope.monthFlag = false;
+                    $scope.seasonFlag = true;
+                }
                 dsEdit.getProduct('dayproductlist.json',  $scope.param).then(function (data) {
                     $scope.dayProduceData = data.dayProductList;
                     $scope.dayTotal = data.total;
@@ -153,6 +168,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                 });
                 break;
             case 30:
+                if(flag) {
+                    $scope.dayFlag = false;
+                    $scope.monthFlag = true;
+                    $scope.seasonFlag = true;
+                }
                 dsEdit.getProduct('monthproductlist.json',  $scope.param).then(function (data) {
                     $scope.monthProduceData = data.monthProductList;
                     $scope.monthTotal = data.total;
@@ -165,6 +185,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                 });
                 break;
             case 40:
+                if(flag) {
+                    $scope.dayFlag = false;
+                    $scope.monthFlag = false;
+                    $scope.seasonFlag = true;
+                }
                 dsEdit.getProduct('seasonproductlist.json',  $scope.param).then(function (data) {
                     $scope.seasonProduceData = data.seasonProductList;
                     $scope.seasonTotal = data.total;
@@ -194,22 +219,34 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             $scope.chartData.length = 0;
             var chartKeys = Object.keys(data.scale);
             for (var i = 0, len =chartKeys.length; i < len; i++) {
-                $scope.chartData.push({ key: chartKeys[i], y: data.scale[chartKeys[i]] });
+                var color ;
+                if(chartKeys[i] === 'OTHER'){
+                    color = '#25396e';
+                }
+                if(chartKeys[i] === 'POI') {
+                    color = '#5b93ff'
+                }
+                if(chartKeys[i] === 'ROAD') {
+                    color = '#66ccff';
+                }
+                $scope.chartData.push({ key: chartKeys[i], y: data.scale[chartKeys[i]], color: color });
             }
+           $scope.chartData.reverse();
         })
     };
     $scope.modifyModeId = function (type) {
         $scope.modeid = type;
         $scope.param.modeid = type;
         $scope.initialiseData();
-        $scope.requestData(type);
+        $scope.requestData(type, true);
+
     };
 
     $scope.changVersionSeason = function (type) {
         $scope.versionseason = type;
         $scope.param.versionseason = type;
         $scope.initialiseData();
-        $scope.requestData($scope.modeid);
+        $scope.requestData($scope.modeid, false);
     }
     $scope.initialiseData = function () {
         $scope.param.page = 1;
@@ -242,7 +279,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.specName = info;
         $scope.param.specid = id;
         $scope.initialiseData();
-        $scope.requestData($scope.modeid);
+        $scope.requestData($scope.modeid, false);
         $("#produceHouseNav").css('display', 'none');
         $('#produceHouseNavOfSon').css('display', 'none');
         $('.menuWaresGrid').css('display', 'none');
@@ -257,7 +294,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.dataServiceFlag = true;
     };
     //防止冒泡
-    $scope.stopPre = function(event){
+    $scope.stopPre = function(event, item){
         event.stopPropagation();
+        if(!item.open) {
+            item.open = true;
+        }
+
     }
 }]);

@@ -1,0 +1,115 @@
+.apiContainer {
+    height: 1350px;
+    padding-top: 20px;
+}
+.apiNameContainer {
+    height: 40px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+}
+.apiName {
+    padding: 16px 0px 0px 20px;
+    font-size: 18px;
+    color: #74666c;
+}
+.apiDescriptionContainer {
+    height: 30px;
+    width: 690px;
+}
+.apiDescription {
+    padding: 16px 0px 0px 20px;
+    font-size: 14px;
+    color: #74666c;
+}
+.apiIPContainer {
+    height: 76px;
+    width: 690px;
+}
+.apiIP {
+    padding: 26px 0px 0px 20px;
+    font-size: 18px;
+    color: #74666c;
+}
+.apiIPName {
+    border: 1px solid #74666c;
+    border-radius: 4px;
+    height: 30px;
+    padding: 5px 0px 5px 10px;
+}
+.apiParamContainer{
+    width: 690px;
+}
+.apiRequireParamContainer {
+    padding: 20px 10px;
+}
+.apiReturnParamContainer{
+    padding: 40px 10px 20px 10px
+}
+.apiServiceExampleContainer {
+    padding: 40px 10px 20px 10px;
+}
+.apiServiceExampleIPContainer {
+    padding: 6px 0px 0px 15px;
+    font-size: 14px;
+    color: #000000;
+}
+.apiServiceExampleIP {
+    border: 1px solid #74666c;
+    border-radius: 4px;
+    height: 20px;
+    padding: 10px 0px 10px 10px;
+}
+.apiExampleRequireParam {
+    height: 34px;
+    padding: 0px 0px 16px 40px;
+    color: #74666c;
+    font-size: 14px;
+}
+.apiExampleRequireParamContainer {
+    width: 526px;
+    height: 30px;
+    padding-bottom: 20px;
+}
+.apiExampleParamList {
+    float: left;
+    width: 56px;
+    color: #74666c;
+    font-size: 14px;
+    padding: 8px 0px 8px 0px;
+}
+.apiResultContainer {
+    width: 688px;
+    height: 298px;
+    border: 1px solid #bdc3d3;
+}
+.apiResultButtonsContainer {
+    height: 24px;
+    width: 140px;
+    padding-left: 19px;
+}
+.apiButtonOfRun {
+    float: left;
+    background-color: #25396e;
+    height: 24px;
+    width: 60px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+.apiButtonOfReset {
+    background-color: #e66a98;
+    height: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+}
+.apiShowResultName {
+    height: 16px;
+    padding: 16px 0px 10px 19px;
+    color: rgba(109, 118, 150, 0.8);
+}
+.apiResultOfContainer {
+    height: 208px;
+    width: 648px;
+    border: 1px solid #bdc3d3;
+}

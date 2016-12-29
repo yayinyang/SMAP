@@ -7,80 +7,6 @@ html,body{
     font-family:'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
 }
 /***************************headerContainer************************/
-#headContainer {
-    width: 100%;
-    height: 800px;
-    overflow: hidden;
-}
-.sections,.section {
-    height:100%;
-}
-#headContainer,.sections {
-    position: relative;
-}
-.section {
-    background-color: #000;
-    background-size: cover;
-    background-position: 50% 50%;
-    text-align: center;
-    color: white;
-}
-#section0 {
-    background-image: url('../img/banner/banner1.png');
-    height: 800px;
-    background-size: cover;
-}
-#section1 {
-    position: relative;
-    background-image: url('../img/banner/banner2.png');
-    height: 800px;
-    background-size: cover;
-}
-#topSection1 {
-    background: url('../img/banner/topBanner2.png') no-repeat;
-    height: 630px;
-    width: 1016px;
-    position: relative;
-}
-#section1Button{
-    top: 70%;
-    left:45%;
-    height: 50px;
-    width: 160px;
-    background: url('../img/banner/immediatelyBtn.png');
-    position: relative
-}
-#section1Button:hover{
-    background: url('../img/banner/immediatelyHoverBtn.png');
-}
-#section2 {
-    position: relative;
-    background-image: url('../img/banner/banner3.png');
-    height: 800px;
-    background-size: cover;
-}
-#topSection2 {
-    background: url('../img/banner/topBanner3.png') no-repeat;
-    height: 630px;
-    width: 520px;
-    position: relative;
-}
-#section2Button{
-    top: 80%;
-    left:50%;
-    height: 50px;
-    width: 160px;
-    background: url('../img/banner/detailHoverBtn.png');
-    position: relative
-}
-#section2Button:hover{
-    background: url('../img/banner/detailBtn.png');
-}
-#section3 {
-    background-image: url('../img/banner/banner1.png');
-    height: 800px;
-    background-size: cover;
-}
 #logo{
     float: left;
     background: url('../img/banner/logo.png') no-repeat;
@@ -152,6 +78,11 @@ span{
     display: none;
     background-color: #60c5ff;
 }
+.box-shadow{
+    -webkit-box-shadow:0 0 10px #000;
+    -moz-box-shadow:0 0 10px #000;
+    box-shadow:0 0 10px #000;
+}
 /**********************888******************************************/
 #typesContainer{
     height: 600px;
@@ -203,9 +134,9 @@ span{
 #parking:hover h2, #depthPOI:hover h2
 {
     color: #fff;
-    -webkit-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
-    -ms-transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
-    transform: translate3d(0,-50%,0) translate3d(0,-40px,0);
+    -webkit-transform: translate3d(0,-50%,0) translate3d(0,-100px,0);
+    -ms-transform: translate3d(0,-50%,0) translate3d(0,-100px,0);
+    transform: translate3d(0,-50%,0) translate3d(0,-100px,0);
 }
 #basicMap:hover p,#adas:hover p, #charge:hover p,
 #sound:hover p, #threeData:hover p, #pedestrian:hover p,
@@ -335,13 +266,18 @@ span{
     float: left;
     background: url('../img/produceService/dotNormal.png') no-repeat  50% 50%;
     width: 30px;
-    height: 30px;
+    height: 45px;
     padding-right: 10px;
+}
+.dot{
+    background: url('../img/productWarehouse/grayIcon.png') no-repeat  50% 50%;
+    width: 12px;
+    height: 12px;
 }
 .dotGrayDiv{
     float: left;
     background: url('../img/productWarehouse/grayIcon.png') no-repeat  50% 50%;
-    width: 30px;
+    width: 10px;
     height: 25px;
     padding-right: 10px;
     padding-left: 10px;
@@ -386,6 +322,7 @@ span{
 #basicContent {
     float: left;
     padding-left: 40px;
+    height: 240px;
 }
 .topSplitLine{
     background: url('../img/develop/line.png') no-repeat;
@@ -414,6 +351,7 @@ span{
 #extendedInterfaceContent {
     float: right;
     padding-right: 40px;
+    height:240px;
 }
 #extendedInterfaceMore {
     background: url('../img/develop/moreNormal.png') no-repeat;
@@ -427,6 +365,11 @@ span{
 /*****************************地图***********************************/
 #solutionContainer{
     background: url('../img/solution/solution.png') no-repeat;
+    height: 600px;
+    background-size: cover;
+}
+#solutionMarksContainer{
+    background: url('../img/solution/solutionMarks.png') no-repeat;
     height: 600px;
     background-size: cover;
 }
@@ -472,6 +415,12 @@ span{
     background: url('../img/productWarehouse/productStrategyIcon.png') no-repeat;
     height: 26px;
     width: 18px;
+    float: left;
+}
+.productStrategyDateIcon{
+    background: url('../img/productWarehouse/dateIcon.png') no-repeat;
+    height: 26px;
+    width: 24px;
     float: left;
 }
 .productStrategyText{
@@ -528,8 +477,8 @@ a>div:hover{
     background: #66ccff;
     border-radius: 10px;
 }
-#serviceInterfaceNav>div:hover {
-    background-color:#1478ff;
+#serviceInterfaceNav>div>span:hover {
+    color:#1478ff;;
     cursor: pointer;
 }
 #produceHouseNav>div>span:hover{
@@ -559,11 +508,22 @@ a>div:hover{
 .leaveBg{
     background-color: rgb(10, 33, 70);
 }
+.ui-bubble {
+    /*padding: 10px;*/
+    /*border: 1px solid rgba(0, 0, 0, 9);*/
+    /*border-radius: 5px;*/
+    background: red;
+    color: red;
+}
 /********************************dataService*******************************/
 #dataServiceList>div:hover,
 #algorithmServiceList>div:hover{
     color:#25396e;
     cursor: pointer;
+}
+.selectedBg{
+    color: #25396e;
+    font-weight: bold;
 }
 .tabTd{
     background-color: #e6e4e4;
@@ -596,8 +556,34 @@ tr>td {
     border-color: #5693ff;
     box-shadow: none;
 }
+.arrowNormal{
+    background: url('../img/produceService/arrowActive.png') no-repeat;
+    width: 10px;
+    height: 9px;
+}
+.arrowActive{
+    background: url('../img/produceService/arrowNormal.png') no-repeat;
+    width: 10px;
+    height: 9px;
+}
 /******************undevelopPage********************************/
 .undevelopPage{
     background: url('../img/undevelopPage.png') no-repeat;
-    background-size: cover;
+    height: 595px;
+    width: 875px;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+}
+@media screen and (min-height: 780px)  {
+    .undevelopPage{
+        background: url('../img/undevelopPage.png') no-repeat;
+        height: 680px;
+        width: 1000px;
+        -moz-background-size:cover;
+        -webkit-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;
+    }
 }

@@ -1,0 +1,68 @@
+.apiDescriptionContent{
+    height: 130px;
+}
+.apiDescriptionDiv {
+    height: 39px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+}
+.apiSummary {
+    padding: 16px 0px 0px 20px;
+    font-size: 18px;
+    color: #74666c;
+}
+.apiUpdateContainer {
+    height: 90px;
+    width: 690px;
+}
+.apiUpdate {
+    padding: 20px 0px 0px 20px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+}
+.apiBriefContainer {
+    height: 200px;
+}
+.apiBriefDiv {
+    height: 39px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+}
+.apiBriefTitle {
+    padding: 16px 0px 0px 20px;
+    font-size: 18px;
+    color: #74666c;
+}
+.apiBriefContentContainer {
+    height: 120px;
+    width: 690px;
+}
+.apiBriefContent {
+    padding: 20px 0px 0px 20px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 30px;
+}
+.apiDocumentContainer {
+    height: 270px;
+}
+.apiDocumentDiv {
+    height: 39px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+}
+.apiDocument {
+    padding: 16px 0px 0px 20px;
+    font-size: 18px;
+    color: #74666c;
+}
+.apiDocumentTabContainer {
+    height: 90px;
+    width: 690px;
+}
+.apiDocumentContent {
+    padding: 20px 0px 0px 20px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 30px;
+}

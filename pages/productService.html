@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="productServiceApp">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
     <link rel="stylesheet" href="../style/index.css">
     <title>SMAP</title>
 </head>
-<body style="min-width: 1200px;text-align: center;background-color: #fff;overflow-y: hidden">
+<body style="min-width: 1200px;text-align: center;background-color: #fff;overflow-y: scroll">
 <div style="width: 100%;position: fixed;z-index: 100; top: 0px;">
     <div style="padding: 0px 210px;background: #25396e; height: 44px">
         <div style="display: inline-block;float: right;padding-top: 4px">
             <div id="homePage" class="topTittle">
                 <div  style="height: 16px;padding: 10px">
-                    <a style="font-size: 14px;color: white;text-decoration: none">
+                    <a  href="../index.html" style="font-size: 14px;color: white;text-decoration: none">
                         首页
                     </a>
                 </div>
@@ -42,14 +42,12 @@
                 <div id="serviceBottom"
                      style="height: 4px;width: 100%;">
                 </div>
-                <div style="width: 300px;position: absolute;margin-top: -4px"
+                <div style="width: 76px;position: absolute;margin-top: -4px" class="box-shadow"
                      onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
                     <div class="menuDataServiceGrid" ></div>
                     <div id="serviceInterfaceNav" class="menu">
-                        <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000">
-                            <a href="productService.html"
-                               style="text-decoration: none;color:white;"
-                               onclick="hideMenu('produceService')">服务接口</a>
+                        <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000" onclick="hideServiceMenu()">
+                            <span>服务接口</span>
                         </div>
                     </div>
                 </div>
@@ -66,7 +64,7 @@
                 <div style="width: 300px;position: absolute;margin-top: -4px"
                      onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
                     <div class="menuWaresGrid" ></div>
-                    <div id="produceHouseNav"  class="menu">
+                    <div id="produceHouseNav"  class="menu box-shadow">
                         <div style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000">
                             <span  onmouseover="showSonMenu()">产品下载</span>
                         </div>
@@ -78,8 +76,9 @@
                         </div>-->
                     </div>
                     <div id="produceHouseNavOfSon"
+                         class="box-shadow"
                          style="display:none; color: #fff;float: left;width: 100px;height:240px; z-index: 4;background: rgb(10, 33, 70)">
-                        <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                        <div style="padding: 10px;">
                             <a
                                     onclick="hideMenu('produceWares')"
                                     href="productWarehouse.html?specid=11&&specName=IDB"
@@ -136,7 +135,7 @@
 
                 </div>
             </div>
-            <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
+            <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
                 <div id="login" style="height: 16px; padding: 10px;">
                     <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                         登录
@@ -151,101 +150,99 @@
         <div id="logo"></div>
     </div>
 </div>
-<div style="height: 1000px;width: 100%;overflow-y: auto">
-    <div  style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
-
-        <div style="float: left; width: 330px;background: white;">
-            <div style="float:left; padding-top: 16px;width: 300px;height: 500px">
-                <div style="
+<div  style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
+    <div style="float: left; width: 330px;background: white;">
+        <div style="float:left; padding-top: 16px;width: 300px;height: 500px">
+            <div style="
             position: fixed;
         width: 300px;
         text-align: left;
-        height: 560px;">
-                    <div style="padding: 15px 0px 0px 20px;height: 40px; background-color: #25369e; font-size: 14px;color: #fff">API参考手册</div>
-                    <div style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                        <div style="display: inline-block; padding: 10px 0px">
-                            <div class="dotGrayDiv"></div>
-                            <div class="textDiv" style="padding-left: 0px">
-                                <span style="font-size: 14px; color:#13488f"> 数据服务型</span>
+        height: 600px;">
+                <div style="height: 40px">概述</div>
+                <div style="background-color: #25396e;height: 40px;width: 300px">
+                    <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px"></div>
+                    <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: bold">API参考手册</div>
+                    <div style="height: 40px;float: right;padding-right: 20px;">
+                        <div style="height: 10px;width:5px;padding:15px 0px">
+                            <div id="arrow" onclick="controlDataService()" class="arrowNormal"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="dataServicePanel" ng-controller="selectedController">
+                    <div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
+                        <div style="display: inline-block;">
+                            <!--<div class="dotGrayDiv"></div>-->
+                            <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
+                                <span style="font-size: 14px; color:#25396e; font-weight: bold"> 数据服务型</span>
                             </div>
                         </div>
                     </div>
                     <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                        <div id="dataServiceList" style="padding: 0px 50px 0px 80px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px">
-                            <div onclick="changeDataApiPage('tile')">
-                                获取瓦片信息
-                            </div>
-                            <div onclick="changeDataApiPage('mesh')">
-                                获取图幅属性
-                            </div>
-                            <div onclick="changeDataApiPage('poi')">
-                                POI查询
-                            </div>
-                            <div onclick="changeDataApiPage('region')">
-                                行政区划查询
-                            </div>
-                            <div onclick="changeDataApiPage('roadName')">
-                                道路名查询
-                            </div>
-                            <div onclick="changeDataApiPage('link')">
-                                link信息查询
-                            </div>
-                            <div onclick="changeDataApiPage('layer')">
-                                layer信息查询
-                            </div>
-                            <div onclick="changeDataApiPage('layerStructure')">
-                                获取layer结构
+                        <div id="dataServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
+                            <div ng-repeat="item in apiDataNames" ng-click="changeDataApiPage(item.type, item.name)" ng-class="{true:'selectedBg'}[item.type === dataServiceFlag]">
+                                {{item.name}}
                             </div>
                         </div>
                     </div>
-                    <div style="height: 40px;width: 100%;background-color: rgb(233,235,240); border-bottom: 1px solid rgb(199,204,218)">
-                        <div style="display: inline-block; padding: 10px 0px">
-                            <div class="dotGrayDiv"></div>
-                            <div class="textDiv" style="padding-left: 0px">
-                                <span style="font-size: 14px; color:#13488f"> 算法服务型</span>
+                    <div style="height: 40px;width: 100%;background-color: rgb(233,235,240); border-bottom: 1px solid #c2c7d6">
+                        <div style="display: inline-block;">
+                            <!--<div class="dotGrayDiv"></div>-->
+                            <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
+                                <div class="dot"></div>
+                            </div>
+                            <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
+                                <span style="font-size: 14px; color:#25396e; font-weight: bold"> 算法型服务</span>
                             </div>
                         </div>
                     </div>
                     <div style="width: 100%;background-color: rgb(233,235,240);border-bottom: 1px solid rgb(199,204,218)">
-                        <div id="algorithmServiceList" style="padding: 0px 50px 0px 80px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px">
-                            <div onclick="changeArithmeticApiPage('ak')">
-                                高程值
-                            </div>
-                            <div onclick="changeArithmeticApiPage('tollcost')">
-                                路径收费
+                        <div id="algorithmServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
+                            <div ng-repeat="item in algorithmServiceNames" ng-click="changeArithmeticApiPage(item.type, item.name)" ng-class="{true:'selectedBg'}[item.type === dataServiceFlag]">
+                                {{item.name}}
                             </div>
                         </div>
                     </div>
-                    <div style="padding: 15px 0px 0px 20px;height: 40px; background-color: #25369e;;color: white; font-size: 14px;">状态码说明</div>
                 </div>
-            </div>
-        </div>
-        <div style="float:left;width: 740px;background: white;">
-            <div style="width: 740px;border-bottom: 1px solid #bdc3d3;">
-                <div style="height: 56px;">
-                    <div style="float: left; padding: 20px 0px">
-                        <span style="font-size: 18px; color: #000000;opacity: 0.3">您现在的位置:</span>
-                    </div>
-                    <div style="float: left;  padding: 20px 0px " id="navigation">
-                        <ul style="list-style-type: none;">
-                            <li><a href="#">产品服务</a></li>
-                            <li>></li>
-                            <li><a href="#">服务接口</a></li>
-                            <li>></li>
-                            <li><a href="#" id="apiType">数据服务型</a></li>
-                            <li>></li>
-                            <li><a href="#" id="showApiName">获取瓦片信息</a></li>
-                        </ul>
+                <div style="background-color: #25396e;height: 40px;width: 300px">
+                    <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 5px;display: none"></div>
+                    <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: bold">状态码说明</div>
+                    <div style="height: 40px;float: right;padding-right: 20px;">
+                        <div style="height: 10px;width:5px;padding:15px 0px">
+                            <div  onclick="controlDataService()" class="arrowNormal"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style="float: left; width: 740px;text-align: left;" id="apiPage" >
-            </div>
-
         </div>
     </div>
-</div>
+    <div style="float:left;width: 740px;background: white;">
+        <div style="width: 740px;border-bottom: 1px solid #bdc3d3;">
+            <div style="height: 56px;">
+                <div style="float: left; padding: 20px 0px">
+                    <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
+                </div>
+                <div style="float: left;  padding: 20px 0px " id="navigation">
+                    <ul style="list-style-type: none;">
+                        <li><a href="#">产品服务</a></li>
+                        <li>></li>
+                        <li><a href="#">服务接口</a></li>
+                        <li>></li>
+                        <li><a href="#" id="apiType">数据服务型</a></li>
+                        <li>></li>
+                        <li><a href="#" id="showApiName">获取瓦片信息</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style="float: left; width: 740px;text-align: left" id="apiPage" >
 
+        </div>
+
+    </div>
+</div>
 </body>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/jquery/jquery.js"></script>

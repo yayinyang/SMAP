@@ -1,5 +1,171 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
+<link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<div>
-    getMapProperties
+<script src="../js/api/getTileInfomation.js"></script>
+
+<div style="height: 130px;">
+    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
+        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+            layer信息查询
+        </div>
+    </div>
+    <div style="height: 90px;width: 690px;">
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
+            最后更新时间:2016年12月07日
+        </div>
+    </div>
+</div>
+<div style="height: 160px;">
+    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
+        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+            API介绍
+        </div>
+    </div>
+    <div style="height: 120px;width: 690px;">
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px;color: rgba(0,0,0,0.8);line-height: 30px">
+            layer信息查询API是一类以HTTP形式提供的服务接口，输入layer，返回JSON格式的查询数据，用于获取layer信息的功能开发。如需使用API，请先申请SMap平台账号。
+        </div>
+    </div>
+</div>
+<div style="height: 130px;">
+    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
+        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+            适用场景
+        </div>
+    </div>
+    <div style="height: 90px;width: 690px;">
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px;">
+            在查询和使用layer之前，了解各layer（每层只包含单一的道路等级）的属性信息。
+        </div>
+    </div>
+</div>
+<div style="height: 160px;">
+    <div style="background: #cec9c9;width: 690px;">
+        <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
+            <div style="padding: 16px 0px 0px 20px;font-size: 14px; color:rgba(0,0,0,0.7);">
+                使用说明
+            </div>
+        </div>
+        <div style="height: 120px;width: 690px;">
+            <div style="padding-left: 20px; font-size: 14px; color: #74666c;line-height: 30px">
+                <div style=" color:rgba(0,0,0,0.7)">
+                    第一步: 申请SM安排平台账号;
+                </div>
+                <div style=" color:rgba(0,0,0,0.7)">
+                    第二步: 拼接HTTP请求URL,请求方式为POST;
+                </div>
+                <div style="color:rgba(0,0,0,0.7)">
+                    第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
+                </div>
+                <div style="color:rgba(0,0,0,0.7)">
+                    如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="apiContainer">
+    <div class="apiNameContainer">
+        <div class="apiName">
+            layer信息查询
+        </div>
+    </div>
+    <div class="apiDescriptionContainer">
+        <div class="apiDescription">
+            查询layer信息API服务地址：
+        </div>
+    </div>
+    <div class="apiIPContainer">
+        <div class="apiIP">
+            <div class="apiIPName">
+                http://fs.navinfo.com/smap/base/layer/description.json
+            </div>
+        </div>
+    </div>
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
+            </div>
+        </div>
+        <div style="padding-left: 20px">
+            <table id="LayerRequireParam"
+                   data-toggle="table"
+                   data-url="../data/LayerRequireParam.js"
+            >
+                <thead>
+                <tr >
+                    <th data-field="paramName">参数名</th>
+                    <th data-field="type" >类型</th>
+                    <th data-field="required" >是否填充</th>
+                    <th data-field="default" >缺省值</th>
+                    <th data-field="description">规则说明</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div style="width: 690px">
+        <div class="apiReturnParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
+            </div>
+        </div>
+        <div style="padding-left: 20px">
+            <table id="ReturnParam"
+                   data-toggle="table"
+                   data-url="../data/ReturnParam.js"
+            >
+                <thead>
+                <tr >
+                    <th data-field="paramName">参数名</th>
+                    <th data-field="type" >类型</th>
+                    <th data-field="description">规则说明</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div style="width: 690px">
+        <div class="apiServiceExampleContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
+            </div>
+        </div>
+        <div style="height: 66px;width: 690px;">
+            <div class="apiServiceExampleIPContainer">
+                <div class="apiServiceExampleIP">
+                    http://fs.navinfo.com/smap/base/layer/description.json
+                </div>
+            </div>
+        </div>
+        <div class="apiExampleRequireParam">请求参数</div>
+        <div style="width: 690px;padding: 0px 100px 0px 64px">
+            <div class="apiExampleRequireParamContainer">
+                <div class="apiExampleParamList">layer</div>
+                <div style="width: 470px;float: left">
+                    <input type="text"  class="api_Input" id="">
+                </div>
+            </div>
+        </div>
+        <!--<div style="padding: 20px 20px 20px 40px;">-->
+            <!--<div style="height: 24px;width: 60px ;text-align: center;color: #fff;font-size: 14px;background-color: #74666c">运行</div>-->
+        <!--</div>-->
+    </div>
+    <div class="apiResultContainer">
+        <div style="padding: 10px 20px 20px 20px">
+            <div class="apiResultButtonsContainer">
+                <div class="apiButtonOfRun">运行</div>
+                <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
+                    <div class="apiButtonOfReset">清空</div>
+                </div>
+            </div>
+            <div class="apiShowResultName">返回结果</div>
+            <div class="apiResultOfContainer"></div>
+        </div>
+    </div>
 </div>
