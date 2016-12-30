@@ -1,10 +1,11 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
+<link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getTileInfomation.js"></script>
 
 <div style="height: 130px;">
-    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+    <div class="titleContainer">
+        <div class="titleContent">
             道路名查询
         </div>
     </div>
@@ -15,8 +16,8 @@
     </div>
 </div>
 <div style="height: 160px;">
-    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+    <div class="titleContainer">
+        <div class="titleContent">
             API介绍
         </div>
     </div>
@@ -27,8 +28,8 @@
     </div>
 </div>
 <div style="height: 160px;">
-    <div style="height: 39px;width: 240px;border-bottom: 1px solid #74666c;">
-        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+    <div class="titleContainer">
+        <div class="titleContent">
             适用场景
         </div>
     </div>
@@ -40,8 +41,8 @@
 </div>
 <div style="height: 160px;">
     <div style="background: #cec9c9;width: 690px;">
-        <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
-            <div style="padding: 16px 0px 0px 20px;font-size: 14px; color:rgba(0,0,0,0.7);">
+        <div class="titleContainer">
+            <div class="titleContent">
                 使用说明
             </div>
         </div>
@@ -64,26 +65,26 @@
     </div>
 
 </div>
-<div style="height: 1350px;padding-top: 20px">
-    <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
-        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+<div class="apiContainer">
+    <div class="titleContainer">
+        <div class="titleContent">
             单个瓦片道路名查询
         </div>
     </div>
-    <div style="height: 30px;width: 690px;">
-        <div style="padding: 16px 0px 0px 20px; font-size: 14px; color: #74666c;">
+    <div class="apiDescriptionContainer">
+        <div class="apiDescription">
             获取单个瓦片内的所有道路名API服务地址：
         </div>
     </div>
-    <div style="height: 76px;width: 690px;">
-        <div style="padding: 26px 0px 0px 20px; font-size: 18px; color: #74666c;">
-            <div style="border: 1px solid #74666c; border-radius: 4px;height: 30px; padding: 5px 0px 5px 10px">
+    <div class="apiIPContainer">
+        <div class="apiIP">
+            <div class="apiIPName">
                 http://fs.navinfo.com/smap/base/tile/rdlinks.json
             </div>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 20px 10px">
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
@@ -106,8 +107,8 @@
             </table>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 40px 10px 20px 10px ">
+    <div class="apiParamContainer">
+        <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
@@ -128,78 +129,76 @@
             </table>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 40px 10px 20px 10px ">
+    <div class="apiParamContainer">
+        <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
         <div style="height: 66px;width: 690px;">
-            <div style="padding: 6px 0px 0px 15px; font-size: 14px; color: #000000;">
-                <div style="border: 1px solid #74666c; border-radius: 4px;height: 20px; padding: 10px 0px 10px 10px">
+            <div class="apiServiceExampleIPContainer">
+                <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smap/base/tile/rdlinks.json
                 </div>
             </div>
         </div>
-        <div style="height:34px;padding: 0px 0px 16px 40px;color:#74666c;font-size: 14px">请求参数</div>
+        <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
-            <div style="width: 526px;height: 30px;padding-bottom: 20px">
-                <div style="float: left;width: 56px;color:#74666c; font-size: 14px;padding: 8px 0px 8px 0px">level</div>
+            <div class="apiExampleRequireParamContainer">
+                <div  class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
                     <input type="text"  class="api_Input" id="">
                 </div>
             </div>
-            <div style="width: 526px;height: 30px;padding-bottom: 20px">
-                <div style="float: left;width: 56px;color:#74666c; font-size: 14px;padding: 8px 0px 8px 0px">tilex</div>
+            <div class="apiExampleRequireParamContainer">
+                <div  class="apiExampleParamList">tilex</div>
                 <div style="width: 470px;float: left">
                     <input type="text" class="api_Input ">
                 </div>
             </div>
-            <div style="width: 526px;height: 30px;padding-bottom: 20px">
-                <div style="float: left;width: 56px;color:#74666c; font-size: 14px;padding: 8px 0px 8px 0px">tiley</div>
+            <div class="apiExampleRequireParamContainer">
+                <div  class="apiExampleParamList">tiley</div>
                 <div style="width: 470px;float: left">
                     <input type="text" class="api_Input ">
                 </div>
             </div>
         </div>
-        <div style="padding: 20px 20px 20px 40px;">
-            <div style="height: 24px;width: 60px ;text-align: center;color: #fff;font-size: 14px;background-color: #74666c">运行</div>
-        </div>
+
     </div>
-    <div style="width: 688px;height: 298px; border: 1px solid #bdc3d3">
+    <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
-            <div style="height: 24px;width: 140px">
-                <div style="float: left;background-color:#25396e;height: 24px; width: 60px; text-align: center;font-size: 14px;color: #fff;">运行</div>
+            <div class="apiResultButtonsContainer">
+                <div class="apiButtonOfRun">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div style="background-color:#e66a98;height: 24px; text-align: center;font-size: 14px;color: #fff; ">清空</div>
+                    <div class="apiButtonOfReset">重置</div>
                 </div>
             </div>
-            <div style="height: 16px;padding: 16px 0px 10px 0px;color: rgba(109,118,150,0.8)">返回结果</div>
-            <div style="height: 208px;width: 648px; border: 1px solid #bdc3d3"></div>
+            <div class="apiShowResultName">返回结果</div>
+            <div class="apiResultOfContainer"></div>
         </div>
     </div>
 </div>
-<div style="height: 1350px;padding-top: 60px">
-    <div style="height: 40px;width: 240px;border-bottom: 1px solid #74666c;">
-        <div style="padding: 16px 0px 0px 20px;font-size: 18px; color: #74666c;">
+<div class="apiContainer">
+    <div class="titleContainer">
+        <div class="titleContent">
             多个瓦片道路名查询
         </div>
     </div>
-    <div style="height: 30px;width: 690px;">
-        <div style="padding: 16px 0px 0px 20px; font-size: 14px; color: #74666c;">
+    <div class="apiDescriptionContainer">
+        <div class="apiDescription">
             获取多个瓦片内的所有道路名API服务地址：
         </div>
     </div>
-    <div style="height: 76px;width: 690px;">
-        <div style="padding: 26px 0px 0px 20px; font-size: 18px; color: #74666c;">
-            <div style="border: 1px solid #74666c; border-radius: 4px;height: 30px; padding: 5px 0px 5px 10px">
+    <div class="apiIPContainer">
+        <div class="apiIP">
+            <div class="apiIPName">
                 http://fs.navinfo.com/smap/base/tiles/pois.json
             </div>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 20px 0px">
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
@@ -222,8 +221,8 @@
             </table>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 40px 0px 20px 0px ">
+    <div class="apiParamContainer">
+        <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
@@ -244,49 +243,47 @@
             </table>
         </div>
     </div>
-    <div style="width: 690px">
-        <div style="padding: 40px 0px 20px 0px ">
+    <div class="apiParamContainer">
+        <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
         <div style="height: 66px;width: 690px;">
-            <div style="padding: 6px 0px 0px 15px; font-size: 14px; color: #000000;">
-                <div style="border: 1px solid #74666c; border-radius: 4px;height: 20px; padding: 10px 0px 10px 10px">
+            <div class="apiServiceExampleIPContainer">
+                <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smap/base/tiles/pois.json
                 </div>
             </div>
         </div>
-        <div style="height:34px;padding: 0px 0px 16px 40px;color:#74666c;font-size: 14px">请求参数</div>
+        <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
-            <div style="width: 526px;height: 30px;padding-bottom: 20px">
-                <div style="float: left;width: 56px;color:#74666c; font-size: 14px;padding: 8px 0px 8px 0px">level</div>
+            <div class="apiExampleRequireParamContainer">
+                <div class="apiExampleParamList">layers</div>
                 <div style="width: 470px;float: left">
                     <input type="text" class="api_Input ">
                 </div>
             </div>
-            <div style="width: 526px;height: 30px;padding-bottom: 20px">
-                <div style="float: left;width: 56px;color:#74666c; font-size: 14px;padding: 8px 0px 8px 0px">tiles</div>
+            <div class="apiExampleRequireParamContainer">
+                <div  class="apiExampleParamList">tiles</div>
                 <div style="width: 470px;float: left">
                     <input type="text" class="api_Input ">
                 </div>
             </div>
         </div>
-        <div style="padding: 20px 20px 20px 40px;">
-            <div style="height: 24px;width: 60px ;text-align: center;color: #fff;font-size: 14px;background-color: #74666c">运行</div>
-        </div>
+
     </div>
-    <div style="width: 688px;height: 298px; border: 1px solid #bdc3d3">
+    <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
-            <div style="height: 24px;width: 140px">
-                <div style="float: left;background-color:#25396e;height: 24px; width: 60px; text-align: center;font-size: 14px;color: #fff;">运行</div>
+            <div class="apiResultButtonsContainer">
+                <div class="apiButtonOfRun">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div style="background-color:#e66a98;height: 24px; text-align: center;font-size: 14px;color: #fff; ">清空</div>
+                    <div class="apiButtonOfReset">重置</div>
                 </div>
             </div>
-            <div style="height: 16px;padding: 16px 0px 10px 19px;color: rgba(109,118,150,0.8)">返回结果</div>
-            <div style="height: 208px;width: 648px; border: 1px solid #bdc3d3"></div>
+            <div class="apiShowResultName">返回结果</div>
+            <div class="apiResultOfContainer"></div>
         </div>
     </div>
 </div>

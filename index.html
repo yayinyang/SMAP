@@ -49,7 +49,7 @@
                 <div style="width: 76px;position: absolute;margin-top: -4px;" class="box-shadow"
                      onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
                     <div class="menuDataServiceGrid" ></div>
-                    <div id="serviceInterfaceNav" class="menu">
+                    <div id="serviceInterfaceNav" class="menu" style="height: 40px">
                         <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000">
                             <span onclick="hideIndexMenu('produceService')">
                                 服务接口
@@ -71,13 +71,14 @@
                      onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
                     <div class="menuWaresGrid" ></div>
                     <div id="produceHouseNav"  class="menu box-shadow">
+                        <div style="padding: 10px 10px" onclick="directToDescription(0)">
+                            <span >产品介绍</span>
+                        </div>
                         <div style=" padding: 10px 10px;">
                             <span  onmouseover="showSonMenu()">产品下载</span>
                         </div>
-                        <!--<div style="padding: 20px 10px">
-                            <span style="font-size: 18px" onmouseover="showSonMenu()">在线体验</span>
-                        </div>
-                        <div style="padding: 20px 10px">
+
+                         <!--<div style="padding: 20px 10px">
                             <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
                         </div>-->
                     </div>

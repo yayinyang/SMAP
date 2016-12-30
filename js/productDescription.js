@@ -2,6 +2,11 @@
  * Created by liwanchong on 2016/12/28.
  */
 var productDescriptionApp = angular.module('productDescriptionApp', []);
+productDescriptionApp.run(function($rootScope, $templateCache) {
+    $rootScope.$on('$viewContentLoaded', function() {
+        $templateCache.removeAll();
+    });
+});
 productDescriptionApp.controller('productDescriptionController',function ($scope) {
     $scope.descriptions = [
         {
@@ -76,7 +81,11 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
             ]
         },
     ];
-    $scope.showArrowDirect = function (num) {
+    $scope.showArrowDirect = function (type, num) {
+         if(type === 'strategyProduct') {
+             $('#apiPage').load('../pages/descriptions/strategyProduct.html');
+         }
+
         $scope.descriptions.forEach(function (item, index) {
             if (index === num) {
                 item.flag = !item.flag;
@@ -86,9 +95,11 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
         });
         // $scope.descriptions[ ~~index].flag = !$scope.descriptions[ ~~index].flag;
     }
-    $scope.descriptionUrl = '../pages/descriptions/nimif-gDay.html';
+    $('#apiPage').load('../pages/descriptions/idbDay.html');
+    // $scope.descriptionUrl = '../pages/descriptions/idbDay.html';
     $scope.changeDescriptionPages = function (type) {
-        $scope.descriptionUrl = '../pages/descriptions/'+type+'.html';
+        $('#apiPage').load('../pages/descriptions/'+type+'.html');
+        // $scope.descriptionUrl = '../pages/descriptions/'+type+'.html';
     };
 })
 

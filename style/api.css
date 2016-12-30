@@ -13,12 +13,14 @@
     color: #74666c;
 }
 .apiDescriptionContainer {
-    height: 30px;
+    height: 40px;
     width: 690px;
+    padding-left: 20px;
 }
 .apiDescription {
-    padding: 16px 0px 0px 20px;
+    line-height: 40px;
     font-size: 14px;
+    height: 40px;
     color: #74666c;
 }
 .apiIPContainer {
@@ -94,6 +96,7 @@
     width: 60px;
     text-align: center;
     font-size: 14px;
+    line-height: 24px;
     color: #fff;
 }
 .apiButtonOfReset {
@@ -102,6 +105,7 @@
     text-align: center;
     font-size: 14px;
     color: #fff;
+    line-height: 24px;
 }
 .apiShowResultName {
     height: 16px;
@@ -112,4 +116,15 @@
     height: 208px;
     width: 648px;
     border: 1px solid #bdc3d3;
+}
+.titleContainer{
+    height: 18px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+    padding: 16px 0px 6px 20px;
+}
+.titleContent{
+    font-size: 18px;
+    color: #74666c;
+    line-height: 18px;
 }

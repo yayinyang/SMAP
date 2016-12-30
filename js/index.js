@@ -18,9 +18,9 @@ $(function () {
 });
 function redirecting(type) {
     if(type === 'load') {
-        window.location = 'pages/productWarehouse.html';
-    } else {
         window.location = 'pages/productService.html';
+    } else {
+        window.location = 'pages/productWarehouse.html?specid=11&&specName=IDB';
     }
 
 }

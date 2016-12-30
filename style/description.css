@@ -66,3 +66,14 @@
     color: rgba(0, 0, 0, 0.8);
     line-height: 30px;
 }
+.titleContainer{
+    height: 18px;
+    width: 240px;
+    border-bottom: 1px solid #74666c;
+    padding: 16px 0px 6px 20px;
+}
+.titleContent{
+    font-size: 18px;
+    color: #74666c;
+    line-height: 18px;
+}

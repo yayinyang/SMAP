@@ -45,7 +45,7 @@
                 <div style="width: 76px;position: absolute;margin-top: -4px" class="box-shadow"
                      onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
                     <div class="menuDataServiceGrid" ></div>
-                    <div id="serviceInterfaceNav" class="menu">
+                    <div id="serviceInterfaceNav" class="menu" style="height: 40px">
                         <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000" onclick="hideServiceMenu()">
                             <span>服务接口</span>
                         </div>
@@ -65,6 +65,9 @@
                      onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
                     <div class="menuWaresGrid" ></div>
                     <div id="produceHouseNav"  class="menu box-shadow">
+                        <div style="padding: 10px 10px" onclick="directToDescription(1)">
+                            <span >产品介绍</span>
+                        </div>
                         <div style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000">
                             <span  onmouseover="showSonMenu()">产品下载</span>
                         </div>
@@ -152,66 +155,40 @@
 </div>
 <div  style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
     <div style="float: left; width: 330px;background: white;">
-        <div style="float:left; padding-top: 16px;width: 300px;height: 500px">
+        <div style="float:left; padding-top: 16px;width: 300px;height: 500px" ng-controller="selectedController">
             <div style="
             position: fixed;
         width: 300px;
         text-align: left;
         height: 600px;">
-                <div style="height: 40px">概述</div>
-                <div style="background-color: #25396e;height: 40px;width: 300px">
-                    <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px"></div>
-                    <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: bold">API参考手册</div>
-                    <div style="height: 40px;float: right;padding-right: 20px;">
-                        <div style="height: 10px;width:5px;padding:15px 0px">
-                            <div id="arrow" onclick="controlDataService()" class="arrowNormal"></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="dataServicePanel" ng-controller="selectedController">
-                    <div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                        <div style="display: inline-block;">
-                            <!--<div class="dotGrayDiv"></div>-->
-                            <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
-                                <div class="dot"></div>
-                            </div>
-                            <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
-                                <span style="font-size: 14px; color:#25396e; font-weight: bold"> 数据服务型</span>
+                <div ng-repeat="service in services">
+                    <div style="background-color: #25396e;height: 39px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(service.type, $index)">
+                        <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px" ng-show="service.flag"></div>
+                        <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: 600" ng-bind="service.name"></div>
+                        <div style="height: 40px;float: right;padding-right: 20px;" ng-if="service.type === 'referenceManual'">
+                            <div style="height: 10px;width:5px;padding:15px 0px">
+                                <div ng-class="{true:'arrowNormal',false:'arrowActive'}[service.flag]"></div>
                             </div>
                         </div>
                     </div>
-                    <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                        <div id="dataServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
-                            <div ng-repeat="item in apiDataNames" ng-click="changeDataApiPage(item.type, item.name)" ng-class="{true:'selectedBg'}[item.type === dataServiceFlag]">
-                                {{item.name}}
+                    <div ng-repeat="item in service.children">
+                        <div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
+                            <div style="display: inline-block;">
+                                <!--<div class="dotGrayDiv"></div>-->
+                                <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
+                                    <div class="dot"></div>
+                                </div>
+                                <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
+                                    <span style="font-size: 14px; color:#25396e; font-weight: bold" ng-bind="item.name"></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div style="height: 40px;width: 100%;background-color: rgb(233,235,240); border-bottom: 1px solid #c2c7d6">
-                        <div style="display: inline-block;">
-                            <!--<div class="dotGrayDiv"></div>-->
-                            <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
-                                <div class="dot"></div>
+                        <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
+                            <div id="dataServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
+                                <div ng-repeat="obj in item.children" ng-click="changeDataApiPage(obj.type, obj.name)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
+                                    {{obj.name}}
+                                </div>
                             </div>
-                            <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
-                                <span style="font-size: 14px; color:#25396e; font-weight: bold"> 算法型服务</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="width: 100%;background-color: rgb(233,235,240);border-bottom: 1px solid rgb(199,204,218)">
-                        <div id="algorithmServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
-                            <div ng-repeat="item in algorithmServiceNames" ng-click="changeArithmeticApiPage(item.type, item.name)" ng-class="{true:'selectedBg'}[item.type === dataServiceFlag]">
-                                {{item.name}}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="background-color: #25396e;height: 40px;width: 300px">
-                    <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 5px;display: none"></div>
-                    <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: bold">状态码说明</div>
-                    <div style="height: 40px;float: right;padding-right: 20px;">
-                        <div style="height: 10px;width:5px;padding:15px 0px">
-                            <div  onclick="controlDataService()" class="arrowNormal"></div>
                         </div>
                     </div>
                 </div>

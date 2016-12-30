@@ -57,3 +57,11 @@ function hideServiceMenu() {
     $('#service').css('background-color', 'transparent');
     window.location = 'productService.html';
 }
+function directToDescription(type) {
+    $("#produceHouseNav").css('display', 'none');
+    if(type === 0) {
+        window.location = 'pages/productDescription.html';
+    } else {
+        window.location = 'productDescription.html';
+    }
+}
