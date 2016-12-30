@@ -18,8 +18,12 @@
 }
 
 .pages li.active {
-    /*background-color: orange;*/
-    /*box-shadow: 0 0 5px 2px orange*/
+    list-style-type: none;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    transform: translateY(10%)
 }
 
 .pages {

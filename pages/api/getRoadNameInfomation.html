@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<script src="../js/api/getTileInfomation.js"></script>
+<script src="../js/api/getRoadNameInfomation.js"></script>
 
 <div style="height: 130px;">
     <div class="titleContainer">
@@ -148,19 +148,19 @@
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text"  class="api_Input" id="">
+                    <input type="text"  class="api_Input" id="rdLinksLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">tilex</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="rdLinksTileX">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">tiley</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="rdLinksTileY">
                 </div>
             </div>
         </div>
@@ -169,13 +169,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="rdLinksResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(0)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="rdLinksContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -260,15 +262,15 @@
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">layers</div>
+                <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="poisLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">tiles</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="poisTiles">
                 </div>
             </div>
         </div>
@@ -277,13 +279,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="poisResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(1)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="poisContent"></textarea>
+            </div>
         </div>
     </div>
 </div>

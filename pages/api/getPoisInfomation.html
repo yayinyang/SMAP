@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<script src="../js/api/getTileInfomation.js"></script>
+<script src="../js/api/getPoisInfomation.js"></script>
 
 <div style="height: 130px;">
     <div class="titleContainer">
@@ -152,13 +152,13 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="lonLatLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">coordinate</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="lonLatCoordinate">
                 </div>
             </div>
         </div>
@@ -167,13 +167,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="lonLatResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(0)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="lonLatContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -260,19 +262,19 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tileLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">tilex</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tileX">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">tiley</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tileY">
                 </div>
             </div>
         </div>
@@ -281,13 +283,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="tileResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="tileContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -365,7 +369,7 @@
         <div style="height: 66px;width: 690px;">
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smap/base/coordinate/pois.json
+                    http://fs.navinfo.com/smap/base/tiles/pois.json
                 </div>
             </div>
         </div>
@@ -374,13 +378,13 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tilesLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">tiles</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tiles">
                 </div>
             </div>
         </div>
@@ -389,13 +393,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="tilesResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(2)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="tilesContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -482,7 +488,7 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">name</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="fuzzyName">
                 </div>
             </div>
         </div>
@@ -491,13 +497,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="fuzzyResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(3)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="fuzzyContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -584,7 +592,7 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">name</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="poisCoorsName">
                 </div>
             </div>
         </div>
@@ -593,13 +601,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="poisCoorsResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(4)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="poisCoorsContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -686,7 +696,7 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">coordinate</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="meshPoiCoordinate">
                 </div>
             </div>
         </div>
@@ -695,13 +705,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="meshPoiResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(5)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="meshPoiContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -788,7 +800,7 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">coordinate</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="meshPoiResCoordinate">
                 </div>
             </div>
         </div>
@@ -797,13 +809,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="meshPoiResResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(6)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="meshPoiResContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -890,19 +904,19 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="restaurantLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">tilex</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="restaurantTileX">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">tiley</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="restaurantTileY">
                 </div>
             </div>
         </div>
@@ -911,13 +925,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="restaurantResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(7)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="restaurantContent"></textarea>
+            </div>
         </div>
     </div>
 </div>

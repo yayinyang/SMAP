@@ -42,10 +42,10 @@
                 <div id="serviceBottom"
                      style="height: 4px;width: 100%;">
                 </div>
-                <div style="width: 76px;position: absolute;margin-top: -4px" class="box-shadow"
+                <div style="width: 76px;position: absolute;margin-top: -4px"
                      onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
                     <div class="menuDataServiceGrid" ></div>
-                    <div id="serviceInterfaceNav" class="menu" style="height: 40px">
+                    <div id="serviceInterfaceNav" class="menu box-shadow" style="height: 40px">
                         <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000" onclick="hideServiceMenu()">
                             <span>服务接口</span>
                         </div>
@@ -162,7 +162,7 @@
         text-align: left;
         height: 600px;">
                 <div ng-repeat="item  in descriptions">
-                    <div style="background-color: #25396e;height: 40px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(item.type, $index)">
+                    <div style="background-color: #25396e;height: 40px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(item, $index)">
                         <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px" ng-show="item.flag"></div>
                         <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: 600" ng-bind="item.name"></div>
                         <div style="height: 40px;float: right;padding-right: 20px;" ng-if="item.type !=='strategyProduct'">
@@ -173,7 +173,7 @@
                     </div>
                     <div  ng-repeat="obj in item.children" ng-show="item.flag">
                         <div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                            <div style="display: inline-block;" ng-click="changeDescriptionPages(obj.type)">
+                            <div style="display: inline-block;" ng-click="changeDescriptionPages(obj)">
                                 <!--<div class="dotGrayDiv"></div>-->
                                 <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
                                     <div class="dot"></div>
@@ -197,13 +197,13 @@
                 </div>
                 <div style="float: left;  padding: 20px 0px " id="navigation">
                     <ul style="list-style-type: none;">
-                        <li><a href="#">产品服务</a></li>
+                        <li><a href="#">产品仓库</a></li>
                         <li>></li>
-                        <li><a href="#">服务接口</a></li>
+                        <li><a href="#">产品介绍</a></li>
                         <li>></li>
-                        <li><a href="#" id="apiType">数据服务型</a></li>
-                        <li>></li>
-                        <li><a href="#" id="showApiName">获取瓦片信息</a></li>
+                        <li><a href="#" id="apiType">日产品</a></li>
+                        <li ng-show="arrowFlag">></li>
+                        <li><a href="#" id="showApiName">NIMIF-G</a></li>
                     </ul>
                 </div>
             </div>

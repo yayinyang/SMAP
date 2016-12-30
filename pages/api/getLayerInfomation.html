@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<script src="../js/api/getTileInfomation.js"></script>
+<script src="../js/api/getLayerInfomation.js"></script>
 
 <div style="height: 130px;">
     <div class="titleContainer">
@@ -148,24 +148,23 @@
             <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">layer</div>
                 <div style="width: 470px;float: left">
-                    <input type="text"  class="api_Input" id="">
+                    <input type="text"  class="api_Input" id="descriptionLayer">
                 </div>
             </div>
         </div>
-        <!--<div style="padding: 20px 20px 20px 40px;">-->
-            <!--<div style="height: 24px;width: 60px ;text-align: center;color: #fff;font-size: 14px;background-color: #74666c">运行</div>-->
-        <!--</div>-->
     </div>
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="descriptionResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">清空</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">清空</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="descriptionContent"></textarea>
+            </div>
         </div>
     </div>
 </div>

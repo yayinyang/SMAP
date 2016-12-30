@@ -13,30 +13,31 @@
     color: #74666c;
 }
 .apiDescriptionContainer {
-    height: 40px;
+    height: 14px;
     width: 690px;
-    padding-left: 20px;
+    padding: 20px 0px 16px 20px;
 }
 .apiDescription {
-    line-height: 40px;
+    line-height: 14px;
     font-size: 14px;
-    height: 40px;
+    height: 14px;
     color: #74666c;
 }
 .apiIPContainer {
-    height: 76px;
+    height: 50px;
     width: 690px;
 }
 .apiIP {
-    padding: 26px 0px 0px 20px;
-    font-size: 18px;
+    padding-left: 20px;
+    font-size: 14px;
     color: #74666c;
 }
 .apiIPName {
     border: 1px solid #74666c;
     border-radius: 4px;
-    height: 30px;
-    padding: 5px 0px 5px 10px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px
 }
 .apiParamContainer{
     width: 690px;
@@ -51,15 +52,16 @@
     padding: 40px 10px 20px 10px;
 }
 .apiServiceExampleIPContainer {
-    padding: 6px 0px 0px 15px;
+    padding: 6px 0px 0px 20px;
     font-size: 14px;
     color: #000000;
 }
 .apiServiceExampleIP {
     border: 1px solid #74666c;
     border-radius: 4px;
-    height: 20px;
-    padding: 10px 0px 10px 10px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 10px;
 }
 .apiExampleRequireParam {
     height: 34px;
@@ -127,4 +129,9 @@
     font-size: 18px;
     color: #74666c;
     line-height: 18px;
+}
+.textContent {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
 }

@@ -79,9 +79,9 @@ span{
     background-color: #60c5ff;
 }
 .box-shadow{
-    -webkit-box-shadow:0 0 10px #000;
-    -moz-box-shadow:0 0 10px #000;
-    box-shadow:0 0 10px #000;
+    -webkit-box-shadow:0 10px 10px #000;
+    -moz-box-shadow:0 10px 10px #000;
+    box-shadow:0 10px 10px #000;
 }
 /**********************888******************************************/
 #typesContainer{
@@ -455,6 +455,7 @@ input[type="radio"] {
 }
 .liBgColor{
     background-color: #eee;
+    width:100%;
 }
 .downloadNormal{
     background: url('../img/productWarehouse/downloadNormal.png') no-repeat;
@@ -518,8 +519,14 @@ a>div:hover{
     color: red;
 }
 /********************************dataService*******************************/
-#dataServiceList>div:hover,
-#algorithmServiceList>div:hover{
+.showTypeList {
+    padding: 0px 50px 0px 60px;
+    line-height: 40px;
+    color: rgba(37, 57, 110, 0.5);
+    font-size: 14px;
+    font-weight: bold;
+}
+.showTypeList>div:hover{
     color:#25396e;
     cursor: pointer;
 }

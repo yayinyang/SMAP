@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<script src="../js/api/getTileInfomation.js"></script>
+<script src="../js/api/getLayerStructureInfomation.js"></script>
 
 <div style="height: 130px;">
     <div class="titleContainer">
@@ -156,13 +156,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="layersResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="layersContent"></textarea>
+            </div>
         </div>
     </div>
 </div>

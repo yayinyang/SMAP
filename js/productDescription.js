@@ -8,6 +8,7 @@ productDescriptionApp.run(function($rootScope, $templateCache) {
     });
 });
 productDescriptionApp.controller('productDescriptionController',function ($scope) {
+    $scope.arrowFlag = true;
     $scope.descriptions = [
         {
             name:'产品策略',
@@ -81,8 +82,11 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
             ]
         },
     ];
-    $scope.showArrowDirect = function (type, num) {
-         if(type === 'strategyProduct') {
+    $scope.showArrowDirect = function (item, num) {
+        $scope.arrowFlag = false;
+        $('#apiType').text(item.name);
+        $('#showApiName').empty();
+         if(item.type === 'strategyProduct') {
              $('#apiPage').load('../pages/descriptions/strategyProduct.html');
          }
 
@@ -97,8 +101,10 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
     }
     $('#apiPage').load('../pages/descriptions/idbDay.html');
     // $scope.descriptionUrl = '../pages/descriptions/idbDay.html';
-    $scope.changeDescriptionPages = function (type) {
-        $('#apiPage').load('../pages/descriptions/'+type+'.html');
+    $scope.changeDescriptionPages = function (item) {
+        $scope.arrowFlag = true;
+        $('#showApiName').text(item.name);
+        $('#apiPage').load('../pages/descriptions/'+item.type+'.html');
         // $scope.descriptionUrl = '../pages/descriptions/'+type+'.html';
     };
 })

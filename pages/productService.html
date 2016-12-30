@@ -42,10 +42,10 @@
                 <div id="serviceBottom"
                      style="height: 4px;width: 100%;">
                 </div>
-                <div style="width: 76px;position: absolute;margin-top: -4px" class="box-shadow"
+                <div style="width: 76px;position: absolute;margin-top: -4px"
                      onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
                     <div class="menuDataServiceGrid" ></div>
-                    <div id="serviceInterfaceNav" class="menu" style="height: 40px">
+                    <div id="serviceInterfaceNav" class="menu box-shadow" style="height: 40px">
                         <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000" onclick="hideServiceMenu()">
                             <span>服务接口</span>
                         </div>
@@ -184,8 +184,8 @@
                             </div>
                         </div>
                         <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                            <div id="dataServiceList" style="padding: 0px 50px 0px 60px;line-height: 40px;color: rgba(37,57,110,0.5);font-size: 14px;font-weight: bold">
-                                <div ng-repeat="obj in item.children" ng-click="changeDataApiPage(obj.type, obj.name)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
+                            <div  class="showTypeList">
+                                <div ng-repeat="obj in item.children" ng-click="changeDataApiPage(item.name,obj.type, obj.name)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
                                     {{obj.name}}
                                 </div>
                             </div>

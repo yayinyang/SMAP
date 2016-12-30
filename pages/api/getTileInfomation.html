@@ -147,21 +147,21 @@
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">layers</div>
+                <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text"  class="api_Input" id="">
+                    <input type="text" class="api_Input" id="tileLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">levels</div>
+                <div class="apiExampleParamList">lon</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tileLon">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">tilexy</div>
+                <div class="apiExampleParamList">lat</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tileLat">
                 </div>
             </div>
         </div>
@@ -170,13 +170,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="tileResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(0)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="tileContent"></textarea>
+            </div>
         </div>
     </div>
 </div>
@@ -194,7 +196,7 @@
     <div class="apiIPContainer">
         <div class="apiIP">
             <div class="apiIPName">
-                http://fs.navinfo.com/smap/base/coordinate/tile.js
+                http://fs.navinfo.com/smap/base/coordinates/tiles.js
             </div>
         </div>
     </div>
@@ -254,34 +256,22 @@
         <div style="height: 66px;width: 690px;">
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smap/base/coordinate/tile.json
+                    http://fs.navinfo.com/smap/base/coordinates/tiles.json
                 </div>
             </div>
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">layers</div>
+                <div class="apiExampleParamList">level</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input" id="tilesLevel">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">levels</div>
+                <div class="apiExampleParamList">coordinates</div>
                 <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
-                </div>
-            </div>
-            <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">lon</div>
-                <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
-                </div>
-            </div>
-            <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">lat</div>
-                <div style="width: 470px;float: left">
-                    <input type="text" class="api_Input ">
+                    <input type="text" class="api_Input " id="tilesCoordinates">
                 </div>
             </div>
         </div>
@@ -290,13 +280,15 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfRun">运行</div>
+                <div class="apiButtonOfRun" onclick="tilesResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(1)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer"></div>
+            <div class="apiResultOfContainer" >
+                <textarea class="textContent" id="tilesContent"></textarea>
+            </div>
         </div>
     </div>
 </div>

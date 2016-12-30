@@ -64,7 +64,7 @@ productServiceApp.controller('selectedController',function ($scope) {
                         },
                         {
                             name: '路径收费',
-                            type: 'Ak'
+                            type: 'Tollcost'
                         }
                     ]
                 }
@@ -79,20 +79,12 @@ productServiceApp.controller('selectedController',function ($scope) {
         }
     ];
     $scope.dataServiceFlag = '';
-    $scope.changeDataApiPage = function (type, name) {
+    $scope.changeDataApiPage = function (parentName,type, name) {
         $scope.dataServiceFlag = type;
-        $('#apiType').text('数据服务型');
+        $('#apiType').text(parentName);
         $('#apiPage').empty();
         $('#showApiName').text(name);
         $('#apiPage').load('../pages/api/get' + type + 'Infomation.html');
-    };
-    $scope.changeArithmeticApiPage = function (type, name) {
-        $scope.dataServiceFlag = type;
-        $('#apiType').text('算法服务型');
-        $('#apiPage').empty();
-        $('#showApiName').text(name);
-        $('#apiPage').load('../pages/api/get' + type + 'Infomation.html');
-
     };
     $scope.showArrowDirect = function (type, num) {
 
