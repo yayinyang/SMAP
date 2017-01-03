@@ -1,138 +1,57 @@
-<div id="homePage" class="topTittle">
-    <div  style="height: 16px;padding: 10px">
-        <a style="font-size: 14px;color: white;text-decoration: none">
-            首页
-        </a>
-    </div>
-    <div id="homePageBottom"
-         style="height: 4px;width: 100%;">
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>回到顶部demo</title>
+    <style type="text/css">
+        .up{
+            position:fixed;
+            bottom:20px;
+            right:20px;
+            width:10px;
+            display:none;
+        }
+        .arrow{
+            border: 8px solid transparent;
+            border-bottom-color: #3DA0DB;
+            width: 0px;
+            height: 0px;
+            top:0px
+        }
+        .links{
+            background-color:  #3DA0DB;
 
-    </div>
+            width: 15px;
+            height: 9px;
+        }
+    </style>
+</head>
+<body>
+<div style="background:rgb(200,200,200);height:2000px;">我很长</div>
+<div id="up" class="up">
+    <div class="arrow"></div>
+    <div class="links"></div>
 </div>
-<div  class="topTittle" style="padding: 0px 0px 0px 50px">
-    <div id="solution" style="height: 16px; padding: 10px;">
-        <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-            解决方案
-        </a>
-    </div>
-    <div id="solutionBottom"
-         style="height: 4px;width: 100%;">
-
-    </div>
-</div>
-<div  class="topTittle" style="padding: 0px 0px 0px 50px">
-    <div id="service" style="height: 16px; padding: 10px;text-shadow: 0 1px 10px #000"
-         ng-mouseleave="hideDataServiceMenu()" ng-mouseover="showDataServiceMenu(0)">
-                        <span>
-                            产品服务
-                        </span>
-    </div>
-    <div id="serviceBottom"
-         style="height: 4px;width: 100%;">
-    </div>
-    <div style="width: 300px;position: absolute;margin-top: -4px"
-         ng-mouseenter="showDataServiceMenu(1)" ng-mouseleave="hideDataServiceMenu()">
-        <div style="height: 4px;" ng-class="{true:'enterBg', false: 'leaveBg'}[bottomFlag]"></div>
-        <div id="serviceInterfaceNav"  ng-hide="dataServiceFlag"  ng-cloak style="float: left;line-height: 22px; width: 100px;height:40px; background: rgb(10, 33, 70)">
-            <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000">
-                <a href="productService.html"
-                   style="text-decoration: none;color:white;"
-                   ng-click="hideDataServiceMenu()">服务接口</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div  class="topTittle" style="padding: 0px 0px 0px 50px;" >
-    <div id="produce" style="height: 16px; padding: 10px;"
-         ng-mouseleave="hideProductWareMenu()" ng-mouseover="showWaresMenu(0)">
-                        <span >
-                            产品仓库
-                        </span>
-    </div>
-    <div id="produceBottom"
-         style="height: 4px;width: 100%;">
-    </div>
-    <div style="width: 300px;z-index: 30;margin-top: -4px"
-         ng-mouseenter="showWaresMenu(1)" ng-mouseleave="hideProductWareMenu()">
-        <div id="produceHouseNav" ng-hide="productWaresFlag"  ng-cloak style="float: left;line-height: 22px; width: 100px;height:40px; background: rgb(10, 33, 70)">
-            <div style="height: 4px;" ng-class="{true:'enterBg', false: 'leaveBg'}[bottomFlag]"></div>
-            <div style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000">
-                <span  onmouseover="showSonMenu()">产品下载</span>
-            </div>
-            <!--<div style="padding: 20px 10px">
-                <span style="font-size: 18px" onmouseover="showSonMenu()">在线体验</span>
-            </div>
-            <div style="padding: 20px 10px">
-                <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
-            </div>-->
-        </div>
-        <div id="produceHouseNavOfSon" ng-hide="productWaresSonFlag"  ng-cloak style="color: #fff;float: left;width: 100px;height:400px; z-index: 4;background: rgb(10, 33, 70)">
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(11,'IDB')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    IDB
-                </a>
-            </div>
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(12, 'NIMIF-G')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    NIMIF-G</a>
-            </div>
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(13, 'NAVEX')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    NAVEX</a>
-            </div>
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(14, 'AIF')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    AIF</a>
-            </div>
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(15, 'NIGDF-G')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    NIGDF-G</a>
-            </div>
-            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                <a
-                        ng-click="hideMenu(16, 'NIMIF-K')"
-                        href="#"
-                        style="font-size: 18px; text-decoration: none;">
-                    NIMIF-K</a>
-            </div>
-        </div>
-
-    </div>
-</div>
-<div  class="topTittle" style="padding: 0px 0px 0px 50px;">
-    <div id="support" style="height: 16px; padding: 10px;">
-        <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-            技术支持
-        </a>
-    </div>
-    <div id="supportBottom"
-         style="height: 4px;width: 100%;">
-
-    </div>
-</div>
-<div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
-    <div id="login" style="height: 16px; padding: 10px;">
-        <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-            登录
-        </a>
-    </div>
-    <div id="loginBottom"
-         style="height: 4px;width: 100%;">
-
-    </div>
-</div>
+</body>
+<script src="../lib/jquery/jquery.js"></script>
+<script type="text/javascript">
+    //绑定页面滚动事件
+    $(window).bind('scroll',function(){
+        var len=$(this).scrollTop()
+        if(len>=100){
+            //显示回到顶部按钮
+            $('#up').show();
+        }else{
+            //影藏回到顶部按钮
+            $('#up').hide();
+        }
+    })
+    //绑定回到顶部按钮的点击事件
+    $('#up').click(function(){
+        //动画效果，平滑滚动回到顶部
+        $(document).animate({ scrollTop: 0 },1000);
+        //不需要动画则直接
+        $(document).scrollTop(0)
+    })
+</script>
+</html>
