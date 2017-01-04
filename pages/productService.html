@@ -153,14 +153,10 @@
         <div id="logo"></div>
     </div>
 </div>
-<div  style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
+<div  ng-controller="selectedController" style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
     <div style="float: left; width: 330px;background: white;">
-        <div style="float:left; padding-top: 16px;width: 300px;height: 500px" ng-controller="selectedController">
-            <div style="
-            position: fixed;
-        width: 300px;
-        text-align: left;
-        height: 600px;">
+        <div style="float:left; padding-top: 16px;width: 300px;height: 500px" >
+            <div style="position: fixed;width: 300px;text-align: left;height: 600px;">
                 <div ng-repeat="service in services">
                     <div style="background-color: #25396e;height: 39px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(service.type, $index)">
                         <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px" ng-show="service.flag"></div>
@@ -214,8 +210,26 @@
                 </div>
             </div>
         </div>
-        <div style="float: left; width: 740px;text-align: left" id="apiPage" >
+        <div style="float: left; width: 740px;text-align: left">
+            <div style="width: 100%;height: 1px">
+                <div style="width: 740px;height: 1px;padding-left: 640px">
+                    <div  class="jumpBackground" ng-style="jumpHeight">
+                        <div style="height: 30px;width: 100px;" ng-repeat="jump in jumps">
+                            <div style="float: left;padding: 5px 0px;height: 20px" ng-show="jump.id === jumpFlag">
+                                <div style="height:18px; border: 1px solid #1478ff"></div>
+                            </div>
+                            <div  ng-click="jumpToDiv(jump.id)"
+                                  ng-bind="jump.name"
+                                  ng-class="{true: 'jumpStyleActive', false: 'jumpStyle'}[jump.id === jumpFlag]"
+                            >
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 740px;" id="apiPage"></div>
         </div>
 
     </div>

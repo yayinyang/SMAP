@@ -1,6 +1,6 @@
 .apiContainer {
     height: 1350px;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
 .apiNameContainer {
     height: 40px;
@@ -115,9 +115,9 @@
     color: rgba(109, 118, 150, 0.8);
 }
 .apiResultOfContainer {
-    height: 208px;
-    width: 648px;
-    border: 1px solid #bdc3d3;
+    height: 210px;
+    width: 650px;
+    /*border: 1px solid #bdc3d3;*/
 }
 .titleContainer{
     height: 18px;

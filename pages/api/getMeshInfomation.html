@@ -3,7 +3,7 @@
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getMeshInfomation.js"></script>
 
-<div style="height: 130px;">
+<div style="height: 130px;" id="apiName">
     <div class="titleContainer">
         <div class="titleContent">
             获取图幅信息
@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<div style="height: 200px;">
+<div style="height: 200px;" id="apiExplain">
     <div class="titleContainer">
         <div class="titleContent">
             API介绍
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div style="height: 180px;">
+<div style="height: 180px;" id="useCase">
     <div class="titleContainer">
         <div class="titleContent">
             适用场景
@@ -42,7 +42,7 @@
         </div>
     </div>
 </div>
-<div style="height: 160px;">
+<div style="height: 160px;" id="instructions">
     <div style="background: #cec9c9;width: 690px;">
         <div class="titleContainer">
             <div class="titleContent">
@@ -52,7 +52,7 @@
         <div style="height: 120px;width: 690px;">
             <div style="padding-left: 20px; font-size: 14px; color: #74666c;line-height: 30px">
                 <div style=" color:#000000">
-                    第一步: 申请SM平台账号;
+                    第一步: 申请SMAP平台账号;
                 </div>
                 <div style=" color:#000000">
                     第二步: 拼接HTTP请求URL,请求方式为POST;
@@ -68,7 +68,7 @@
     </div>
 
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="getSingleMesh">
     <div class="titleContainer">
         <div class="titleContent">
             获取图幅ID
@@ -174,7 +174,7 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="getMulitiMeshes">
     <div class="titleContainer">
         <div class="titleContent">
             批量获取图幅ID

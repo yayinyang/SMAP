@@ -575,6 +575,36 @@ tr>td {
     width: 10px;
     height: 9px;
 }
+.jumpBackground {
+    position: fixed;
+    text-align: left;
+    width: 100px;
+    background-color: rgba(233, 235, 240, 0.81);
+    z-index: 50;
+}
+.jumpStyle {
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding-left: 6px;
+    font-weight: 500;
+}
+.jumpStyleActive{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: rgba(20, 120, 255, 0.8);
+    text-align: center;
+    padding-left: 6px;
+    font-weight: 500;
+}
+.jumpStyle:hover{
+    color: rgba(20, 120, 255, 0.8);
+}
 /******************undevelopPage********************************/
 .undevelopPage{
     background: url('../img/undevelopPage.png') no-repeat;
