@@ -108,7 +108,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Mesh:[
             {
-                name: '瓦片信息',
+                name: '获取图幅信息',
                 id: 'apiName'
             },
             {
@@ -134,7 +134,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Pois:[
             {
-                name: '瓦片信息',
+                name: 'POI查询',
                 id: 'apiName'
             },
             {
@@ -152,7 +152,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Region:[
             {
-                name: '瓦片信息',
+                name: '行政区划查询',
                 id: 'apiName'
             },
             {
@@ -174,7 +174,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         RoadName:[
             {
-                name: '瓦片信息',
+                name: '道路名查询',
                 id: 'apiName'
             },
             {
@@ -199,7 +199,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Link:[
             {
-                name: '瓦片信息',
+                name: 'link信息查询',
                 id: 'apiName'
             },
             {
@@ -233,7 +233,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Layer:[
             {
-                name: '瓦片信息',
+                name: 'layer信息查询',
                 id: 'apiName'
             },
             {
@@ -255,7 +255,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         LayerStructure:[
             {
-                name: '瓦片信息',
+                name: '获取layer结构',
                 id: 'apiName'
             },
             {
@@ -277,7 +277,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Ak:[
             {
-                name: '瓦片信息',
+                name: '高程值',
                 id: 'apiName'
             },
             {
@@ -299,7 +299,7 @@ productServiceApp.controller('selectedController',function ($scope) {
         ],
         Tollcost:[
             {
-                name: '瓦片信息',
+                name: '路径收费',
                 id: 'apiName'
             },
             {
