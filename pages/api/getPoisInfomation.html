@@ -52,16 +52,16 @@
         </div>
         <div style="height: 120px;width: 690px;">
             <div style="padding-left: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-                <div style=" color:#000000">
+                <div style=" color:rgba(0,0,0,0.7)">
                     第一步: 申请SMAP平台账号;
                 </div>
-                <div style=" color:#000000">
+                <div style=" color:rgba(0,0,0,0.7)">
                     第二步: 拼接HTTP请求URL,请求方式为POST;
                 </div>
-                <div style="color:#000000">
+                <div style=" color:rgba(0,0,0,0.7)">
                     第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
                 </div>
-                <div style="color:#000000">
+                <div style=" color:rgba(0,0,0,0.7)">
                     如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
                 </div>
             </div>
@@ -69,10 +69,10 @@
     </div>
 
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="queryLatLon">
     <div class="titleContainer">
         <div class="titleContent">
-            查询POI名称及ID
+            经纬度查询
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -179,10 +179,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="queryTiles">
     <div class="titleContainer">
         <div class="titleContent">
-            查询POI名称及ID
+            瓦片查询
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -295,10 +295,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="multiQueryTiles">
     <div class="titleContainer">
         <div class="titleContent">
-            查询POI名称及ID
+            批量瓦片查询
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -405,10 +405,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="likePoiName">
     <div class="titleContainer">
         <div class="titleContent">
-            查询相似POI名称
+            相似POI名称
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -509,10 +509,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="likePoiCoordinate">
     <div class="titleContainer">
         <div class="titleContent">
-            模糊查询POI信息
+            相似POI坐标
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -613,10 +613,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="idOfPOI">
     <div class="titleContainer">
         <div class="titleContent">
-            查询POI ID
+            POI的ID查询
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -717,10 +717,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="restaurantOfMesh">
     <div class="titleContainer">
         <div class="titleContent">
-            查询餐饮类POI ID
+            图幅餐饮类
         </div>
     </div>
     <div class="apiDescriptionContainer">
@@ -821,10 +821,10 @@
         </div>
     </div>
 </div>
-<div class="apiContainer">
+<div class="apiContainer" id="restaurantOfTiles">
     <div class="titleContainer">
         <div class="titleContent">
-            查询餐饮类POI名称及ID
+            瓦片餐饮类
         </div>
     </div>
     <div class="apiDescriptionContainer">

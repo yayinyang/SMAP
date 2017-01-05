@@ -24,7 +24,7 @@ productServiceApp.constant('JumpConstant', {
             id: 'tileNumber'
         },
         {
-            name: '批量获取瓦片ID',
+            name: '批量获取瓦片',
             id: 'tilesNumber'
         }
     ],
@@ -50,7 +50,7 @@ productServiceApp.constant('JumpConstant', {
             id: 'getSingleMesh'
         },
         {
-            name: '批量获取图幅ID',
+            name: '批量获取图幅',
             id: 'getMulitiMeshes'
         },
     ],
@@ -71,6 +71,37 @@ productServiceApp.constant('JumpConstant', {
             name: '使用说明',
             id: 'instructions'
         },
+        {
+            name: '经纬度查询',
+            id: 'queryLatLon'
+        },
+        {
+            name: '瓦片查询',
+            id: 'queryTiles'
+        },
+        {
+            name: '批量瓦片查询',
+            id: 'multiQueryTiles'
+        },
+        {
+            name: '相似POI名称',
+            id: 'likePoiName'
+        },
+        {
+            name: '相似POI坐标',
+            id: 'likePoiCoordinate'
+        }, {
+            name: 'POI的ID查询',
+            id: 'idOfPOI'
+        },
+        {
+            name: '图幅餐饮类',
+            id: 'restaurantOfMesh'
+        },
+        {
+            name: '瓦片餐饮类',
+            id: 'restaurantOfTiles'
+        }
     ],
     Region: [
         {
@@ -112,10 +143,10 @@ productServiceApp.constant('JumpConstant', {
             id: 'instructions'
         },
         {
-            name: '单个瓦片道路名查询',
+            name: '获取道路名称',
             id: 'singleTileRoadName'
         }, {
-            name: '多个瓦片道路名查询',
+            name: '批量获取名称',
             id: 'mulitiTilesRoadName'
         },
     ],
@@ -137,19 +168,19 @@ productServiceApp.constant('JumpConstant', {
             id: 'instructions'
         },
         {
-            name: ' 单个瓦片link信息查询',
+            name: ' 获取瓦片Link',
             id: 'singleTile'
         },
         {
-            name: '多个瓦片link信息查询',
+            name: '批量获取瓦片',
             id: 'mulitiTiles'
         },
         {
-            name: 'layer内link信息查询',
+            name: 'layer查询',
             id: 'linkInLayer'
         },
         {
-            name: '自定义link信息查询',
+            name: '自定义查询',
             id: 'definedLink'
         }
     ],
