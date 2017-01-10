@@ -111,7 +111,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
     });      
     $scope.$on('show_product_event', function (event, data) {
         $scope.staticParam = {
-            specid: 11,
+            specid: $scope.specid,
             modeid: $scope.modeid,
             versionseason: $scope.versionseason,
             productID: data.productId
