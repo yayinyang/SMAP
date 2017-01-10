@@ -22,7 +22,8 @@
     </div>
     <div class="apiBriefContentContainer">
         <div class="apiBriefContent">
-            高程值API是一类计算指定区域（瓦片）内POI和LINK高程值的的服务接口，输入瓦片，返回JSON格式的查询数据，用于获取高程值的功能开发，目前只支持19级瓦片的访问。如需使用API，请先申请SMap平台账号。
+            NIMIF-G月产品为全量数据，可直接替换前一版全量数据实现数据更新。分省提供，每月一套文件。能够实现月更新的要素/属性类型参考《NIMIF-G月产品更新要素列表》。
+            MIF/MID格式，规格参考以下文档列表。
         </div>
     </div>
 </div>
@@ -37,17 +38,15 @@
             所有文档如需查看详情,请联系我们
         </div>
         <div style="padding-left: 20px">
-            <table id="TollcostRequireParam"
+            <table id="ProductDescriptionMIFGMonthParam"
                    data-toggle="table"
-                   data-url="../data/tileRequireParam.js"
+                   data-url="../data/ProductDescriptionMIFGMonthParam.js"
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="required" >是否填充</th>
-                    <th data-field="default" >缺省值</th>
-                    <th data-field="description">规则说明</th>
+                    <th data-field="paramName">文档名称</th>
+                    <th data-field="type" >版本</th>
+                    <th data-field="description">简介</th>
                 </tr>
                 </thead>
             </table>

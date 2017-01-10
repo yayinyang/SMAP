@@ -146,6 +146,9 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         $scope.jumpFlag = id;
         window.scrollTo(0,$('#' + id).position().top-40);
     };
+    angular.element(window.document).bind('scroll',function(){
+        console.log('ddd');
+    })
 })
 
 

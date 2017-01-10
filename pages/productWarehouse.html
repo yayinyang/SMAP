@@ -242,81 +242,13 @@
                         <div class="productStrategyText"><span style="font-size: 18px;color: #74666c">日产品列表</span></div>
                     </div>
                 </div>
-                <div style="height: 40px;padding: 0px 0px 0px 0px">
-                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                        <div style="float: left;width:320px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>ID</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:100px">
-                            <div style="padding: 10px 0px 0px 10px;text-align: left">
-                                <span>版本</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:80px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>发布类型</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:140px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>发布日期</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:90px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>操作</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="productDayList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;padding-left: 0px;margin-top: 0px">
-                        <li ng-repeat="item in dayProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
-                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px;display: inline-block">
-                                <div
-                                        style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 0px 10px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.product_id">
-                            </span>
+              <tab
+                      display-model='dayProduceData'
+                      display-total="dayTotal"
+                      display-page="dayPage"
+                      display-id="productDayList">
 
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 80px;padding: 0px 5px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.version_season">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 60px;padding: 0px 20px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.file_type|showName">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.create_time">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px;">
-                                    <a href="#"
-                                       id={{item.product_id}}
-                                       ng-click="stopPre($event, item)"
-                                    >
-                                        <div class="downloadNormal"></div>
-                                    </a>
-                                    <!--<bubble ng-cloak ng-if="item.open"  align="left top" for={{item.product_id}} close="item.open=false">-->
-                                       <!--你没有权限下载-->
-                                    <!--</bubble>-->
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div  style="width: 740px;border-top: 1px solid #74666c;padding-top: 20px">
-                    <div style="text-align: center;">
-                        <h5 ng-show="dayPage > (dayTotal/10)+1" style="color: rgba(0,0,0,0.8); font-size: 14px; font-weight: normal; -webkit-margin-before: 0px;-webkit-margin-after: 0px;">没有更多数据</h5>
-                        <div ng-show="dayPage <= (dayTotal/10)+1"
-                             ng-click="addDayProduct()"
-                             style="color:rgba(0,0,0,0.8);font-size: 14px"
-                             >加载更多...</div>
-                    </div>
-                </div>
+              </tab>
 
             </div>
             <div ng-hide="!monthFlag" style="width: 740px;padding-top: 30px;">
@@ -326,78 +258,13 @@
                         <div class="productStrategyText"><span style="font-size: 18px;color: #000000">月产品列表</span></div>
                     </div>
                 </div>
-                <div style="height: 40px;padding: 0px 0px 0px 0px">
-                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                        <div style="float: left;width:320px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>ID</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:100px">
-                            <div style="padding: 10px 0px 0px 10px;text-align: left">
-                                <span>版本</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:80px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>发布类型</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:140px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>发布日期</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:90px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>操作</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="productMonthList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;padding-left: 0px;margin-top: 0px">
-                        <li ng-repeat="item in monthProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
-                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px;display: inline-block">
-                                <div
-                                        style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 0px 10px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.product_id">
-                            </span>
+                <tab
+                        display-model='monthProduceData'
+                        display-total="monthTotal"
+                        display-page="monthPage"
+                        display-id="productMonthList">
 
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 80px;padding: 0px 5px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.version_season">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 60px;padding: 0px 20px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.file_type|showName">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.create_time">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px;">
-                                    <a href="#"
-                                       ng-click="stopPre($event, item)"
-                                    >
-                                        <div class="downloadNormal"></div>
-                                    </a>
-                                    <!--<bubble ng-if="item.open" for="btn" close="item.open=false">你没有权限下载</bubble>-->
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div  style="width: 740px;border-top: 1px solid #74666c;padding-top: 20px">
-                    <div style="text-align: center;">
-                        <h5 ng-show="monthPage > (monthTotal/10)+1" style="color: rgba(0,0,0,0.8); font-size: 14px; font-weight: normal; -webkit-margin-before: 0px;-webkit-margin-after: 0px;">没有更多数据</h5>
-                        <div ng-show="monthPage <= (monthTotal/10)+1"
-                             ng-click="addMonthProduct()"
-                             style="color:rgba(0,0,0,0.8);font-size: 14px"
-                        >加载更多...</div>
-                    </div>
-                </div>
+                </tab>
 
             </div>
             <div ng-hide="!seasonFlag" style="width: 740px;padding-top: 30px">
@@ -407,78 +274,13 @@
                         <div class="productStrategyText"><span style="font-size: 18px;color: #74666c">季产品列表</span></div>
                     </div>
                 </div>
-                <div style="height: 40px;padding: 0px 0px 0px 0px">
-                    <div style="background: #74666c;height: 100%;width: 100%;display: inline-block">
-                        <div style="float: left;width:320px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>ID</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:100px">
-                            <div style="padding: 10px 0px 0px 10px;text-align: left">
-                                <span>版本</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:80px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>发布类型</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:140px">
-                            <div style="padding: 10px 0px 0px 30px;text-align: left">
-                                <span>发布日期</span>
-                            </div>
-                        </div>
-                        <div style="float: left;width:90px">
-                            <div style="padding: 10px 0px 0px 0px;text-align: left">
-                                <span>操作</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="productSeasonList" style="padding: 0px 0px 0px 0px;text-align: left">
-                    <ul style=" list-style-type: none;padding-left: 0px;margin-top: 0px">
-                        <li ng-repeat="item in seasonProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
-                            <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px; display: inline-block">
-                                <div
-                                        style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 0px 10px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.product_id">
-                            </span>
+                <tab
+                        display-model='seasonProduceData'
+                        display-total="seasonTotal"
+                        display-page="seasonPage"
+                        display-id="productSeasonList">
 
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 80px;padding: 0px 5px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.version_season">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 60px;padding: 0px 20px; line-height: 64px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.file_type|showName">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 90px;padding: 10px 10px;">
-                            <span style="color:rgba(0,0,0,0.8)" ng-bind="item.create_time">
-                            </span>
-                                </div>
-                                <div style="float: left;font-size: 14px;width: 70px;padding: 20px 20px;">
-                                    <a href="#"
-                                       ng-click="stopPre($event, item)"
-                                    >
-                                        <div class="downloadNormal"></div>
-                                    </a>
-                                    <!--<bubble ng-if="item.open" for="btn" close="item.open=false">你没有权限下载</bubble>-->
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div  style="width: 740px;border-top: 1px solid #74666c;padding-top: 20px">
-                    <div style="text-align: center;">
-                        <h5 ng-show="seasonPage > (seasonTotal/10)+1" style="color:rgba(0,0,0,0.8);font-size: 14px; font-weight: normal; -webkit-margin-before: 0px;-webkit-margin-after: 0px;">没有更多数据</h5>
-                        <div ng-show="seasonPage <= (seasonTotal/10)+1"
-                             ng-click="addSeasonProduct()"
-                             style="color:rgba(0,0,0,0.8);font-size: 14px"
-                        >加载更多...</div>
-                    </div>
-                </div>
+                </tab>
 
             </div>
         </div>
@@ -500,7 +302,7 @@
                     </div>
                 </div>
                 <div style="width: 100%; height: 100px">
-                    <div style="padding: 16px 0px 0px  0px; text-align: left">
+                    <div style="padding-top: 16px; text-align: left">
                         <span style="font-size: 14px; color: #25396e;float: left" ng-bind="description"></span>
                     </div>
                 </div>
@@ -584,6 +386,7 @@
 
 </body>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../js/directives/tab/tab.js"></script>
 <script src="../lib/angular-popups/angular-popups.js"></script>
 <script src="../lib/angular-nvd3/d3.js"></script>
 <script src="../lib/angular-nvd3/nv.d3.js"></script>

@@ -28,9 +28,9 @@
             </div>
         </div>
     </div>
-    <div id="productSeasonList" style="padding: 0px 0px 0px 0px;text-align: left">
+    <div id={{displayId}} style="padding: 0px 0px 0px 0px;text-align: left">
         <ul style=" list-style-type: none;padding-left: 0px;margin-top: 0px">
-            <li ng-repeat="item in seasonProduceData" style="height: 64px" ng-click="showStaticInfo(item)">
+            <li ng-repeat="item in displayModel" style="height: 64px" ng-click="showStaticInfo(item)">
                 <div ng-class="{true:'liBgColor'}[item.product_id === flagId]" style="height: 64px; display: inline-block">
                     <div
                             style="float: left;font-family: Arial;font-size: 12px;width: 300px;padding: 0px 10px; line-height: 64px;">
@@ -64,12 +64,11 @@
     </div>
     <div  style="width: 740px;border-top: 1px solid #74666c;padding-top: 20px">
         <div style="text-align: center;">
-            <h5 ng-show="seasonPage > (seasonTotal/10)+1" style="color:rgba(0,0,0,0.8);font-size: 14px; font-weight: normal; -webkit-margin-before: 0px;-webkit-margin-after: 0px;">没有更多数据</h5>
-            <div ng-show="seasonPage <= (seasonTotal/10)+1"
-                 ng-click="addSeasonProduct()"
+            <h5 ng-show="displayPage >= (displayTotal/10)" style="color:rgba(0,0,0,0.8);font-size: 14px; font-weight: normal; -webkit-margin-before: 0px;-webkit-margin-after: 0px;">没有更多数据</h5>
+            <div ng-show="displayPage < (displayTotal/10)"
+                 ng-click="addProduct(displayId)"
                  style="color:rgba(0,0,0,0.8);font-size: 14px"
             >加载更多...</div>
         </div>
     </div>
-
 </div>
