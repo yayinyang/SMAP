@@ -107,10 +107,12 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
     ];
     $scope.dataServiceFlag = '';
     $scope.jumpFlag = '';
+    $scope.arrowFlag = true;
     $scope.jumpHeight = {
         height: '180px'
     };
     $scope.changeDataApiPage = function (parentName,type, name) {
+        $scope.arrowFlag = true;
         $scope.jumpFlag = '';
         $scope.jumps = JumpConstant[type];
         $scope.jumpHeight.height = 30 * $scope.jumps.length + 'px';
@@ -120,16 +122,17 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         $('#showApiName').text(name);
         $('#apiPage').load('../pages/api/get' + type + 'Infomation.html');
     };
-    $scope.showArrowDirect = function (type, num) {
+    $scope.showArrowDirect = function (service, num) {
+        $scope.arrowFlag = false;
+        $('#apiType').text(service.name);
+        $('#showApiName').empty();
         $scope.jumpFlag = '';
-        $scope.jumps = JumpConstant[type];
+        $scope.jumps = JumpConstant[service.type];
         $scope.jumpHeight.height = 30 * $scope.jumps.length + 'px';
-        if (type === 'summary') {
-            $('#apiPage').empty();
+        if (service.type === 'summary') {
             $('#apiPage').load('../pages/api/summary.html');
         }
-        if (type === 'code') {
-            $('#apiPage').empty();
+        if (service.type === 'code') {
             $('#apiPage').load('../pages/api/codeDescription.html');
         }
 

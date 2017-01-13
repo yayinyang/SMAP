@@ -235,7 +235,7 @@
                     </div>
                 </div>
             </div>
-            <div ng-hide="!dayFlag" style="width: 740px;">
+            <div ng-if="dayFlag" style="width: 740px;">
                 <div style="padding: 0px 0px 16px 0px;">
                     <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
                         <div class="produceListIcon"></div>
@@ -246,12 +246,13 @@
                       display-model='dayProduceData'
                       display-total="dayTotal"
                       display-page="dayPage"
+                      display-flag = 'dayFlag'
                       display-id="productDayList">
 
               </tab>
 
             </div>
-            <div ng-hide="!monthFlag" style="width: 740px;padding-top: 30px;">
+            <div ng-if="monthFlag" style="width: 740px;padding-top: 30px;">
                 <div style="padding: 0px 0px 16px 0px;">
                     <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
                         <div class="produceListIcon"></div>
@@ -262,12 +263,13 @@
                         display-model='monthProduceData'
                         display-total="monthTotal"
                         display-page="monthPage"
+                        display-flag = 'monthFlag'
                         display-id="productMonthList">
 
                 </tab>
 
             </div>
-            <div ng-hide="!seasonFlag" style="width: 740px;padding-top: 30px">
+            <div ng-if="seasonFlag" style="width: 740px;padding-top: 30px">
                 <div style="padding: 0px 0px 16px 0px;">
                     <div style="height: 30px; width: 100%;display: inline-block;padding-left: 8px;">
                         <div class="produceListIcon"></div>
@@ -278,6 +280,7 @@
                         display-model='seasonProduceData'
                         display-total="seasonTotal"
                         display-page="seasonPage"
+                        display-flag = 'seasonFlag'
                         display-id="productSeasonList">
 
                 </tab>

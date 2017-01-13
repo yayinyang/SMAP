@@ -171,15 +171,22 @@
                             </div>
                         </div>
                     </div>
-                    <div  ng-repeat="obj in item.children" ng-show="item.flag">
-                        <div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
-                            <div style="display: inline-block;" ng-click="changeDescriptionPages(obj)">
-                                <!--<div class="dotGrayDiv"></div>-->
-                                <div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">
-                                    <div class="dot"></div>
-                                </div>
-                                <div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">
-                                    <span style="font-size: 14px; color:#25396e; font-weight: bold" ng-bind="obj.name"></span>
+                    <div   ng-show="item.flag">
+                        <!--<div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">-->
+                            <!--<div style="display: inline-block;" ng-click="changeDescriptionPages(obj)">-->
+                                <!--&lt;!&ndash;<div class="dotGrayDiv"></div>&ndash;&gt;-->
+                                <!--<div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">-->
+                                    <!--<div class="dot"></div>-->
+                                <!--</div>-->
+                                <!--<div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">-->
+                                    <!--<span style="font-size: 14px; color:#25396e; font-weight: bold" ng-bind="obj.name"></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
+                            <div  class="showTypeList">
+                                <div ng-repeat="obj in item.children" ng-click="changeDescriptionPages(obj)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
+                                    {{obj.name}}
                                 </div>
                             </div>
                         </div>

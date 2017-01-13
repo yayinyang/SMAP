@@ -11,6 +11,7 @@ directiveApp.directive('tab',function () {
             displayModel:'=displayModel',
             displayTotal:'=displayTotal',
             displayPage: '=displayPage',
+            displayFlag: '=displayFlag',
             displayId:'@displayId'
         },
         controller:function ($scope) {
@@ -27,7 +28,9 @@ directiveApp.directive('tab',function () {
 //             });
         },
         link:function (scope, element, attrs) {
-            scope.flagId = '';
+            if(scope.displayFlag) {
+                scope.flagId = '';
+            }
             scope.showStaticInfo = function (item) {
                 scope.flagId = item.product_id;
                 scope.$emit('show_product_event', {productId: item.product_id });
