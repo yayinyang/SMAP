@@ -23,6 +23,9 @@ function showMenu(type, num) {
 function showSonMenu() {
     $('#produceHouseNavOfSon').css('display', 'block');
 }
+function hideSonMenu() {
+    $('#produceHouseNavOfSon').css('display', 'none');
+}
 function hideMenu(type) {
     switch (type) {
         case 'produceService':
@@ -38,6 +41,12 @@ function hideMenu(type) {
             break;
     }
 
+}
+function showOnlineUse(){
+    $('#onlineUse').css('display','block');
+}
+function hideOnlineUse() {
+    $('#onlineUse').css('display', 'none');
 }
 function hideIndexMenu() {
     $('#serviceInterfaceNav').css('display', 'none');
@@ -64,4 +73,10 @@ function directToDescription(type) {
     } else {
         window.location = 'productDescription.html';
     }
+}
+function goOnlineUse(){
+    $('#serviceInterfaceNav').css('display', 'none');
+    $('.menuDataServiceGrid').css('display', 'none');
+    $('#service').css('background-color', 'transparent');
+    window.location = 'pages/onlineUse.html';
 }
