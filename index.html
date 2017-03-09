@@ -75,7 +75,10 @@
                             <span >产品介绍</span>
                         </div>
                         <div style=" padding: 10px 10px;">
-                            <span  onmouseover="showSonMenu()">产品下载</span>
+                            <span  onmouseover="showSonMenu()"onmouseleave="hideSonMenu()">产品下载</span>
+                        </div>
+                        <div style=" padding: 10px 10px;">
+                            <span onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()" onclick="goOnlineUse()">在线体验</span>
                         </div>
 
                          <!--<div style="padding: 20px 10px">
@@ -127,6 +130,10 @@
                                     style="font-size: 14px; text-decoration: none;">
                                 NIMIF-K</a>
                         </div>
+                    </div>
+                    <div id="onlineUse" style="display: none; color: #fff;float: left; margin-top:95px;width: 100px;height:50px; z-index: 4;background: rgb(10, 33, 70)">
+                        <div style="padding: 2px;text-align: center">收费信息查询</div>
+                        <div style="padding: 2px;text-align: center">地图数据查询</div>
                     </div>
                 </div>
             </div>
