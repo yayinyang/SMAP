@@ -8,11 +8,11 @@ $(function () {
     var meshesParam = {
         coordinates: '116.38033,40.05565;116.38046,40.05567'
     };
-    $.post(App.Util.getFullUrl('coordinate/mesh.json'), meshParam, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinate/mesh.json'), meshParam, function (data) {
         $('#meshContent').empty();
         $('#meshContent').text(JSON.stringify(data, null, 4));
     });
-    $.post(App.Util.getFullUrl('coordinates/meshes.json'), meshesParam, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinates/meshes.json'), meshesParam, function (data) {
         $('#meshesContent').empty();
         $('#meshesContent').text(JSON.stringify(data, null, 4));
     });
@@ -22,7 +22,7 @@ function meshResult() {
     var param  = {
         coordinate: coordinate
     }
-    $.post(App.Util.getFullUrl('coordinate/mesh.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinate/mesh.json'), param, function (data) {
         $('#meshContent').empty();
         $('#meshContent').text(JSON.stringify(data, null, 4));
     });
@@ -32,7 +32,7 @@ function meshesResult() {
     var param = {
         coordinates: coordinates
     }
-    $.post(App.Util.getFullUrl('coordinates/meshes.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinates/meshes.json'), param, function (data) {
         $('#meshesContent').empty();
         $('#meshesContent').text(JSON.stringify(data, null, 4));
     });

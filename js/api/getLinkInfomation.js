@@ -8,7 +8,7 @@ $(function () {
         tilex: 431543,
         tiley: 198512
     };
-    $.post(App.Util.getFullUrl('layer/rdlink.json'), rdLinkParam, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/rdlink.json'), rdLinkParam, function (data) {
         $('#rdLinkContent').empty();
         $('#rdLinkContent').text(JSON.stringify(data, null, 4));
     });
@@ -18,7 +18,7 @@ $(function () {
         tilexy: '431534,198512,431534,198513',
     };
     console.log(rdLinksParam.toString());
-    $.post(App.Util.getFullUrl('layers/rdlink.json'), rdLinksParam, function (data) {
+    $.post(App.Util.getFullUrl('base/layers/rdlink.json'), rdLinksParam, function (data) {
         $('#rdLinksContent').empty();
         $('#rdLinksContent').text(JSON.stringify(data, null, 4));
     });
@@ -26,7 +26,7 @@ $(function () {
         layer: 'LINK_FC3',
         num: 2
     };
-    $.post(App.Util.getFullUrl('layer/numrdlink.json'), numRdLinkParam, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/numrdlink.json'), numRdLinkParam, function (data) {
         $('#numRdLinkContent').empty();
         $('#numRdLinkContent').text(JSON.stringify(data, null, 4));
     });
@@ -35,7 +35,7 @@ $(function () {
         attributes: 'LINK_ID',
         values: '304348,312332'
     };
-    $.post(App.Util.getFullUrl('layer/index.json'), indexParam, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/index.json'), indexParam, function (data) {
         $('#indexContent').empty();
         $('#indexContent').text(JSON.stringify(data, null, 4));
     });
@@ -47,7 +47,7 @@ function rdLinkResult() {
         tilex: $('#rdLinkTileX').val(),
         tiley: $('#rdLinkTileY').val()
     };
-    $.post(App.Util.getFullUrl('layer/rdlink.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/rdlink.json'), param, function (data) {
         $('#rdLinkContent').empty();
         $('#rdLinkContent').text(JSON.stringify(data, null, 4));
     });
@@ -58,7 +58,7 @@ function rdLinksResult() {
         level:  $('#rdLinksLevel').val(),
         tilexy: $('#rdLinksTileXY').val(),
     };
-    $.post(App.Util.getFullUrl('layers/rdlink.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/layers/rdlink.json'), param, function (data) {
         $('#rdLinksContent').empty();
         $('#rdLinksContent').text(JSON.stringify(data, null, 4));
     });
@@ -68,7 +68,7 @@ function numRdLinkResult() {
         layer: $('#numRdLinkLayer').val(),
         num: $('#numRdLinkNum')
     };
-    $.post(App.Util.getFullUrl('layer/numrdlink.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/numrdlink.json'), param, function (data) {
         $('#numRdLinkContent').empty();
         $('#numRdLinkContent').text(JSON.stringify(data, null, 4));
     });
@@ -79,7 +79,7 @@ function indexResult() {
         attributes: $('#indexAttributes').val(),
         values: $('#indexValues').val()
     };
-    $.post(App.Util.getFullUrl('layer/index.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/layer/index.json'), param, function (data) {
         $('#indexContent').empty();
         $('#indexContent').text(JSON.stringify(data, null, 4));
     });

@@ -116,7 +116,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             versionseason: $scope.versionseason,
             productID: data.productId
         };
-        dsEdit.getProduct('stat.json',$scope.staticParam).then(function (data) {
+        dsEdit.getProduct('base/stat.json',$scope.staticParam).then(function (data) {
             $scope.poiData = data.cnt.POI.split(",");
             $scope.roadData = data.cnt.ROAD.split(",");
             $scope.provinces = data.provinces;
@@ -144,11 +144,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             $scope.chartData.reverse();
         })
     })
-    dsEdit.getProduct('dayproductlist.json', $scope.param).then(function (data) {
+    dsEdit.getProduct('base/dayproductlist.json', $scope.param).then(function (data) {
         $scope.dayProduceData = data.dayProductList;
         $scope.dayTotal = data.total;
     });
-    dsEdit.getProduct('seasonproductlist.json', $scope.param).then(function (data) {
+    dsEdit.getProduct('base/seasonproductlist.json', $scope.param).then(function (data) {
         $scope.seasonTotal = data.total;
         $scope.seasonProduceData = data.seasonProductList;
     });
@@ -156,7 +156,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.dayPage++;
         $scope.param.page =  $scope.dayPage;
         if($scope.dayPage <= Math.ceil($scope.dayTotal/10)) {
-            dsEdit.getProduct('dayproductlist.json', $scope.param).then(function (data) {
+            dsEdit.getProduct('base/dayproductlist.json', $scope.param).then(function (data) {
                 $scope.dayProduceData = $scope.dayProduceData.concat(data.dayProductList);
             });
         }
@@ -165,7 +165,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.monthPage++;
         $scope.param.page = $scope.monthPage;
         if( $scope.monthPage <= Math.ceil($scope.monthTotal/10)) {
-            dsEdit.getProduct('monthproductlist.json', $scope.param).then(function (data) {
+            dsEdit.getProduct('base/monthproductlist.json', $scope.param).then(function (data) {
                 $scope.monthProduceData = $scope.monthProduceData.concat(data.monthProductList);
             });
         }
@@ -174,7 +174,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         $scope.seasonPage++;
         $scope.param.page =  $scope.seasonPage;
         if(  $scope.seasonPage <= Math.ceil($scope.seasonTotal/10)) {
-            dsEdit.getProduct('seasonproductlist.json', $scope.param).then(function (data) {
+            dsEdit.getProduct('base/seasonproductlist.json', $scope.param).then(function (data) {
                 $scope.seasonProduceData = $scope.seasonProduceData.concat(data.seasonProductList);
             });
         }
@@ -187,11 +187,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                     $scope.monthFlag = false;
                     $scope.seasonFlag = true;
                 }
-                dsEdit.getProduct('dayproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/dayproductlist.json',  $scope.param).then(function (data) {
                     $scope.dayProduceData = data.dayProductList;
                     $scope.dayTotal = data.total;
                 });
-                dsEdit.getProduct('seasonproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/seasonproductlist.json',  $scope.param).then(function (data) {
                     $scope.seasonProduceData = data.seasonProductList;
                     $scope.seasonTotal = data.total;
                 });
@@ -202,11 +202,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                     $scope.monthFlag = false;
                     $scope.seasonFlag = true;
                 }
-                dsEdit.getProduct('dayproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/dayproductlist.json',  $scope.param).then(function (data) {
                     $scope.dayProduceData = data.dayProductList;
                     $scope.dayTotal = data.total;
                 });
-                dsEdit.getProduct('seasonproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/seasonproductlist.json',  $scope.param).then(function (data) {
                     $scope.seasonProduceData = data.seasonProductList;
                     $scope.seasonTotal = data.total;
                 });
@@ -217,11 +217,11 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                     $scope.monthFlag = true;
                     $scope.seasonFlag = true;
                 }
-                dsEdit.getProduct('monthproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/monthproductlist.json',  $scope.param).then(function (data) {
                     $scope.monthProduceData = data.monthProductList;
                     $scope.monthTotal = data.total;
                 });
-                dsEdit.getProduct('seasonproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/seasonproductlist.json',  $scope.param).then(function (data) {
                     $scope.seasonProduceData = data.seasonProductList;
                     $scope.seasonTotal = data.total;
                 });
@@ -232,7 +232,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                     $scope.monthFlag = false;
                     $scope.seasonFlag = true;
                 }
-                dsEdit.getProduct('seasonproductlist.json',  $scope.param).then(function (data) {
+                dsEdit.getProduct('base/seasonproductlist.json',  $scope.param).then(function (data) {
                     $scope.seasonProduceData = data.seasonProductList;
                     $scope.seasonTotal = data.total;
                 });

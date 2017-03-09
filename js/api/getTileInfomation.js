@@ -12,11 +12,11 @@ $(function () {
         coordinates: '116.38033,40.05565;116.31095,39.9824'
     }
 
-    $.post(App.Util.getFullUrl('coordinate/tile.json'), tileParam, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinate/tile.json'), tileParam, function (data) {
         $('#tileContent').empty();
         $('#tileContent').text(JSON.stringify(data, null, 4));
     });
-    $.post(App.Util.getFullUrl('coordinates/tiles.json'), tilesParam, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinates/tiles.json'), tilesParam, function (data) {
         $('#tilesContent').empty();
         $('#tilesContent').text(JSON.stringify(data, null, 4));
     });
@@ -30,7 +30,7 @@ function tileResult() {
         lon: lon,
         lat: lat
     };
-    $.post(App.Util.getFullUrl('coordinate/tile.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinate/tile.json'), param, function (data) {
         $('#tileContent').empty();
         $('#tileContent').text(JSON.stringify(data, null, 4));
     });
@@ -42,7 +42,7 @@ function tilesResult() {
         level: level,
         coordinates: coordinates
     };
-    $.post(App.Util.getFullUrl('coordinates/tiles.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/coordinates/tiles.json'), param, function (data) {
         $('#tilesContent').empty();
         $('#tilesContent').text(JSON.stringify(data, null, 4));
     });
