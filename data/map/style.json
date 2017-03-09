@@ -1,5 +1,5 @@
-{ {
-  "glyphs": "http:127.0.0.1://fonts/{fontstack}/{range}",
+{
+  "glyphs": "minemap://fonts/{fontstack}/{range}",
   "layers": [{
     "id": "576a22cac9a04cefb8d4bb20c67024d8",
     "maxzoom": 22,
@@ -2135,94 +2135,93 @@
   "sprite": "minemap://sprite/sprite",
   "sources": {
     "Worldannotation": {
-      "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Worldannotation/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Building": {
-      "tiles": ["http://minedata.cn/data/Building/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Building/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Landuse": {
-      "tiles": ["http://minedata.cn/data/Landuse/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Landuse/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Worldislands": {
-      "tiles": ["http://minedata.cn/data/Worldislands/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Worldislands/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Ptline": {
-      "tiles": ["http://minedata.cn/data/Ptline/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Ptline/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Villtown": {
-      "tiles": ["http://minedata.cn/data/Villtown/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Villtown/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Greenface": {
-      "tiles": ["http://minedata.cn/data/Greenface/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Greenface/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Worldwaterface": {
-      "tiles": ["http://minedata.cn/data/Worldwaterface/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Worldwaterface/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Waterline": {
-      "tiles": ["http://minedata.cn/data/Waterline/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Waterline/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Subwaypolygon": {
-      "tiles": ["http://minedata.cn/data/Subwaypolygon/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Subwaypolygon/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Ptexit": {
-      "tiles": ["http://minedata.cn/data/Ptexit/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Ptexit/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Poi": {
-      "tiles": ["http://minedata.cn/data/Poi/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Poi/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Waterface": {
-      "tiles": ["http://minedata.cn/data/Waterface/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Waterface/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Adminbound": {
-      "tiles": ["http://minedata.cn/data/Adminbound/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Adminbound/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Ptstop": {
-      "tiles": ["http://minedata.cn/data/Ptstop/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Ptstop/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Railway": {
-      "tiles": ["http://minedata.cn/data/Railway/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Railway/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Adminflag": {
-      "tiles": ["http://minedata.cn/data/Adminflag/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Adminflag/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Annotation": {
-      "tiles": ["http://minedata.cn/data/Annotation/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Annotation/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Worldwaterline": {
-      "tiles": ["http://minedata.cn/data/Worldwaterline/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Worldwaterline/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Buildingmore": {
-      "tiles": ["http://minedata.cn/data/Buildingmore/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Buildingmore/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Road": {
-      "tiles": ["http://minedata.cn/data/Road/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Road/{z}/{x}/{y}"],
       "type": "vector"
     },
     "Worldcountries": {
-      "tiles": ["http://minedata.cn/data/Worldcountries/{z}/{x}/{y}"],
+      "tiles": ["minemapdata://Worldcountries/{z}/{x}/{y}"],
       "type": "vector"
     }
   },
   "version": 8
-}
 }

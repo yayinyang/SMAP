@@ -17,20 +17,56 @@
         }
     </style>
 </head>
-<body>
-<div id="map"></div>
 <script>
+   function loadMap() {
+       minemap.accessToken = '25cc55a69ea7422182d00d6b7c0ffa93';
+       minemap.solution = 716;
+       minemap.fontsUrl =  '../data/map/fonts';
+       minemap.domainUrl = 'http://minedata.cn';
+       var map = new minemap.Map({
+           container: 'map',
+           style: "../data/map/style.json",
+           center: [116.46, 39.92],
+           zoom: 16,
+           pitch: 60
+       });
+       var simple = {
+           "version" : 8,
+           "name" : "Bright",
+           "sources" :
+             {
+                 "toll" :
+                   {
+                       "type":"vector",
+                       "tiles":
+                         ['http://192.168.4.128:8080/mapspotter/view/infomation/{z}/{x}/{y}'],
+                   }
+             },
+           "sprite" : "http://localhost:63342/SMAP/data/map/sprite/sprite",
+           "layers" : [
+               {
+                   id: 'TollNode_Layer',
+                   type: 'symbol',
+                   interactive: true,
+                   "source" : "toll",
+                   'source-layer': 'InfoPoi',
+                   minzoom: 0,
+                   maxzoom: 17,
+                   layout:
+                     {
+                         'icon-image': 'police-15',
+                     },
+                   paint:
+                     {
+                         'icon-color': '#ff2d2d',
+                     },
 
-    minemap.accessToken = '25cc55a69ea7422182d00d6b7c0ffa93';
-    minemap.solution = 716;
-    var map = new minemap.Map({
-        container: 'map',
-        style: "../data/map/style.json",
-        center: [116.46, 39.92],
-        zoom: 16,
-        pitch: 60
-    });
-
+               }]
+       }
+       map.addLayer(simple);
+   }
 </script>
+<body onload="loadMap()">
+<div id="map"></div>
 </body>
 </html>
