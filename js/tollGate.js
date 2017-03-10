@@ -14,6 +14,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
     $scope.endFlag = false;
     $scope.startPid = '';
     $scope.endPid = '';
+    $scope.provincePid = 1;
+    $scope.provinceArr = province;
     $scope.originLayer = {
         "id": "route",
         "type": "line",
@@ -67,17 +69,24 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
         $scope.geojson.features.push(source);
         map.getSource(id).setData($scope.geojson);
     };
+    // 获取省 并定位
+    $scope.locationProvince = function (data) {
+        $scope.provincePid = data.id;
+        map.flyTo({center:[ data.point.x, data.point.y]});
+    };
     // 生成弹出框
     $scope.createPop = function (data) {
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
-          .setHTML('<h1>Hello World!</h1>')
+          .setHTML('<h1>路途费共 ' +
+              data.fee+
+            '元</h1>')
           .addTo(map);
         $scope.popuArr.push(popup);
     };
     // 搜索起点
     $scope.searchStartTollGate = function () {
-        dsEdit.getProduct('tollgate/tollnames/31/1', {name: $scope.startTollGate}).then(function (data) {
+        dsEdit.getProduct('tollgate/tollnames/'+$scope.provincePid+'/1', {name: $scope.startTollGate}).then(function (data) {
             $scope.startFlag = true;
             $scope.endFlag = false;
             $scope.tollGateArr = data;

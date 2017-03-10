@@ -84,7 +84,6 @@ body{
 }
 .onlineMap .searchResultList{
     width: 280px;
-    display: none;
 }
 .onlineMap .searchResultList ul{
     margin: 0;
