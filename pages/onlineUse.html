@@ -175,58 +175,49 @@
     <div  class="onlineMap">
         <div class=" leftSearchDiv">
             <div class="input-group btn-group" >
-                <button class="btn searchbar-exchange" id="exchangeInput" type="button"></button>
-                <input type="text" placeholder="请输入起点收费站" class="searchbar" id="searchInput1" style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;">
-                <input type="text" placeholder="请输入终点收费站"class="searchbar placeholderStyle" id="searchInput2"style="background-image:url('../img/onlineMap/finishingpoint.png');">
-                <img class="empty-input" src="../img/onlineMap/searchbar_close.png">
-                <span class="btn searchbtn">搜索</span>
+                <button
+                        class="btn searchbar-exchange"
+                        id="exchangeInput"
+                        type="button"
+                >
+                </button>
+                <input type="text"
+                       placeholder="请输入起点收费站"
+                       class="searchbar"
+                       id="searchInput1"
+                       ng-model="startTollGate"
+                       ng-change="searchStartTollGate()"
+                       style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
+                >
+                <input type="text"
+                       placeholder="请输入终点收费站"
+                       class="searchbar placeholderStyle"
+                       id="searchInput2"
+                       ng-model="endTollGate"
+                       ng-focus="searchEndTollGate()"
+                       ng-change="searchEndTollGate()"
+                       style="background-image:url('../img/onlineMap/finishingpoint.png');"
+                >
+                <img
+                        class="empty-input"
+                        src="../img/onlineMap/searchbar_close.png"
+                >
+                <span
+                        class="btn searchbtn"
+                        ng-click="getLinksFromStartToEnd()"
+                >搜索
+                </span>
             </div>
             <div class="searchResultList">
                 <ul>
-                    <li class="searchResult">
+                    <li
+                            class="searchResult"
+                            ng-repeat="tollGate  in tollGateArr"
+                            ng-click="getPidFromSearch(tollGate)"
+                    >
                         <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">沙河收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
-                    </li>
-                    <li class="searchResult">
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                        <span class="resultStation">收费站</span>
-                        <span class="stationLocation">北京市昌平区G7</span>
+                        <span class="resultStation" ng-bind="tollGate.name"></span>
+                        <span class="stationLocation" ng-bind="tollGate.admin_name"></span>
                     </li>
                 </ul>
 
