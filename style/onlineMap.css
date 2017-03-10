@@ -1,3 +1,6 @@
+/**
+ * Created by Songlin  Chen on 17.3.8.
+ */
 html,body{
     width: 100%;
     height: 100%;
@@ -5,18 +8,21 @@ html,body{
 body{
     padding-top: 44px;
 }
+.info:hover{
+    color: #3385ff;
+}
 .onlineMap{
     width: 100%;
     height: 100%;
-
 }
+/****************************左侧********************************/
 .leftSearchDiv{
-    width: 280px;
+    width: 340px;
     margin-top: 10px;
     margin-left: 10px;
     display: inline-block;
 }
-.onlineMap .input-group .searchbar-change{
+.onlineMap .input-group .searchbar-exchange{
     width: 30px;
     height: 60px;
     border-radius: 0;
@@ -32,18 +38,191 @@ body{
     background-position: 10px center;
     background-repeat: no-repeat;
     border:none;
-    border-bottom:1px solid #d0e4ff;
     height: 30px;
     outline: none;
     font-size: 12px;
+    color: #000000;
+    text-shadow:#546289 0.3 3px 2px ;
+}
+.onlineMap .input-group .searchbar::-webkit-input-placeholder{
     color: #1478FF;
 }
-.onlineMap .searchbtn{
+.onlineMap .input-group .placeholderStyle::-webkit-input-placeholder{
+    color: #000000;
+}
+.input-group .empty-input{
+    display: inline-block;
+    margin-top: -60px;
+    margin-left: -26px;
+    cursor: pointer;
+}
+.onlineMap .input-group .searchbtn{
+    float: left;
+    margin-left: 280px;
+    margin-top: -60px;
+    padding-top: 4px;
     height: 30px;
-    margin-top: -20px;
-    margin-left: -4px;
     color: #ffffff;
     background-color: #3385ff;
     border-radius: 0;
     border-color: #3385ff;
+
 }
+.onlineMap .input-group .searchbtn:hover{
+    cursor: pointer;
+}
+.onlineMap .searchResultList{
+    width: 280px;
+}
+.onlineMap .searchResultList ul{
+    margin: 0;
+    padding: 0;
+}
+.onlineMap .searchResultList ul .searchResult{
+    background-color: #ffffff;
+    height: 30px;
+    list-style-type: none;
+}
+.onlineMap .searchResultList ul .searchResult:hover{
+    background-color:#1478FF;
+}
+.onlineMap .searchResultList ul .searchResult:hover span.resultStation,
+.onlineMap .searchResultList ul .searchResult:hover span.stationLocation {
+    color:#ffffff;
+}
+.searchResult .logo{
+    padding: 0  10px;
+}
+.searchResult .resultStation{
+    padding-right: 10px;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+
+}
+.searchResult .stationLocation{
+    height: 30px;
+    color: #cccccc;
+
+    line-height: 30px;
+
+}
+
+/**********************右侧*************************/
+.onlineMap .selectedDiv{
+    float: right;
+    margin-top: 10px;
+}
+.onlineMap .selectedDiv .nowCity{
+    padding-left: 10px;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 200px;
+    border: none;
+    background: #ffffff;
+    outline: none;
+    cursor: pointer;
+    background-image:url("../img/onlineMap/arrow_normal.png");
+    background-repeat: no-repeat;
+    background-position: 60px 13px;
+    display: block;
+}
+.onlineMap .selectedDiv .choosedCity {
+    padding-left: 10px;
+    width: 280px;
+    height: 30px;
+    margin-bottom: 2px;
+    line-height: 30px;
+    border: none;
+    background: #ffffff;
+    outline: none;
+    cursor: pointer;
+    box-shadow:1px 2px 1px  #546289;
+    display: none;
+}
+.onlineMap .selectedDiv .choosedCity span{
+    color: #1478FF;
+    margin-right: 200px;
+}
+.cityList{
+    height: 175px;
+    width: 280px;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    display: none;
+
+}
+.cityFirstLetterList{
+    width: 100%;
+    height: 50px;
+    color: #1478FF;
+}
+.firstLetter{
+    display: inline-block;
+    font-size: 12px;
+    color: #1478FF;
+    width: 15px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 20px;
+}
+.allFirstLetters{
+    margin: 0;
+    padding: 0;
+}
+.allCities{
+    width: 100%;
+    height: 110px;
+    overflow: auto;
+    border-top: 1px solid #d0e4ff;
+    border-bottom:1px solid #d0e4ff;
+}
+.allCities::-webkit-scrollbar{
+    width: 6px;
+}
+.allCities::-webkit-scrollbar-track{
+    background-color: #f5f5f5;
+}
+.allCities::-webkit-scrollbar-thumb{
+    height: 5px;
+    width: 4px;
+    border-radius: 10px;
+    background-color: #cccccc;
+}
+.allCities .allCitiesList{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+.allCities .allCitiesList > li{
+    list-style-type: none;
+    width: 100%;
+}
+.allCities .allCitiesList > li .indexLetter{
+    display: inline-block;
+    color: #cccccc;
+    width: 10px;
+    padding: 0;
+    vertical-align: top;
+}
+.allCities .allCitiesList > li .citiesBox{
+  height: auto;
+}
+.allCities .allCitiesList > li .citiesBox ul{
+    display: inline-block;
+    width: 240px;
+    margin: 0;
+    padding: 0;
+}
+.allCities .allCitiesList > li .citiesBox ul li{
+    display: inline-block;
+    font-size: 12px;
+    list-style-type: none;
+    color: #333333;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+

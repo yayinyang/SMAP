@@ -28,7 +28,7 @@
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
                 <div id="solution" style="height: 36px; padding: 10px;">
-                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                         解决方案
                     </a>
                 </div>
@@ -79,7 +79,7 @@
                             <span  onmouseover="showSonMenu()"onmouseleave="hideSonMenu()">产品下载</span>
                         </div>
                         <div style=" padding: 10px 10px;">
-                            <span onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()" onclick="goOnlineUse()">在线体验</span>
+                            <span onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">在线体验</span>
                         </div>
 
                         <!--<div style="padding: 20px 10px">
@@ -132,15 +132,15 @@
                                 NIMIF-K</a>
                         </div>
                     </div>
-                    <div id="onlineUse" style="display: none; color: #fff;float: left; margin-top:95px;width: 100px;height:50px; z-index: 4;background: rgb(10, 33, 70)">
-                        <div style="padding: 2px;text-align: center">收费信息查询</div>
-                        <div style="padding: 2px;text-align: center">地图数据查询</div>
+                    <div id="onlineUse" class="box-shadow" style="display: none; margin-left: -10px;color: #fff;float: left; margin-top:95px;width: 100px;height:50px; z-index: 4;background: rgb(10, 33, 70)"onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">
+                        <div class ="info" style="padding: 2px;text-align: center">收费信息查询</div>
+                        <div class ="info" style="padding: 2px;text-align: center">地图数据查询</div>
                     </div>
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
                 <div id="support" style="height: 36px; padding: 10px;">
-                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                         技术支持
                     </a>
                 </div>
@@ -151,7 +151,7 @@
             </div>
             <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
                 <div id="login" style="height: 36px; padding: 10px;">
-                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
                         登录
                     </a>
                 </div>
@@ -165,16 +165,163 @@
     </div>
 </div>
 <div style="width: 100%;padding:40px 210px 20px 210px;height: 100%">
-    <div style="height: 40px;line-height:40px;text-align: lef;font-weight: 400;margin-top: -40px">
+
+    <div style="height: 40px;line-height:40px;text-align: left;font-weight: 400;margin-top: -40px">
         你现在的位置：产品仓库 > 在线体验 > 收费信息查询
     </div>
-    <div  class="onlineMap"  >
-        <div class="input-group btn-group leftSearchDiv">
-            <button class="btn searchbar-change" type="button"></button>
-            <input type="text" class="searchbar"style="background-image:url('../img/onlineMap/startingpoint.png');">
-            <input type="text" class="searchbar"style="background-image:url('../img/onlineMap/finishingpoint.png');">
+    <div  class="onlineMap">
+        <div class=" leftSearchDiv">
+            <div class="input-group btn-group" >
+                <button class="btn searchbar-exchange" id="exchangeInput" type="button"></button>
+                    <input type="text" placeholder="请输入起点收费站" class="searchbar" id="searchInput1" style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;">
+                    <input type="text" placeholder="请输入终点收费站"class="searchbar placeholderStyle" id="searchInput2"style="background-image:url('../img/onlineMap/finishingpoint.png');">
+                    <img class="empty-input" src="../img/onlineMap/searchbar_close.png">
+                <span class="btn searchbtn">搜索</span>
+             </div>
+            <div class="searchResultList">
+                <ul>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">沙河收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                    <li class="searchResult">
+                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="resultStation">收费站</span>
+                        <span class="stationLocation">北京市昌平区G7</span>
+                    </li>
+                </ul>
+
+            </div>
         </div>
-        <button class="btn searchbtn" type="button">搜索</button>
+        <div class="selectedDiv">
+            <div class="nowCity" >
+             北京市
+            </div>
+            <div class="choosedCity">
+                <span>北京市</span>
+                <img id="hideCityList" src="../img/onlineMap/arrow_active.png">
+            </div>
+            <div class="cityList">
+                <div class="cityFirstLetterList" >
+                    <ul class="allFirstLetters ">
+                        <li class="firstLetter"><a href="#">A</a></li>
+                        <li class="firstLetter"><a href="#">B</a></li>
+                        <li class="firstLetter"><a href="#">C</a></li>
+                        <li class="firstLetter"><a href="#">D</a></li>
+                        <li class="firstLetter"><a href="#">E</a></li>
+                        <li class="firstLetter"><a href="#">F</a></li>
+                        <li class="firstLetter"><a href="#">G</a></li>
+                        <li class="firstLetter"><a href="#">H</a></li>
+                        <li class="firstLetter"><a href="#">I</a></li>
+                        <li class="firstLetter"><a href="#">J</a></li>
+                        <li class="firstLetter"><a href="#">K</a></li>
+                        <li class="firstLetter"><a href="#">L</a></li>
+                        <li class="firstLetter"><a href="#">M</a></li>
+                        <li class="firstLetter"><a href="#">N</a></li>
+                        <li class="firstLetter"><a href="#">O</a></li>
+                        <li class="firstLetter"><a href="#">P</a></li>
+                        <li class="firstLetter"><a href="#">Q</a></li>
+                        <li class="firstLetter"><a href="#">R</a></li>
+                        <li class="firstLetter"><a href="#">S</a></li>
+                        <li class="firstLetter"><a href="#">T</a></li>
+                        <li class="firstLetter"><a href="#">U</a></li>
+                        <li class="firstLetter"><a href="#">V</a></li>
+                        <li class="firstLetter"><a href="#">W</a></li>
+                        <li class="firstLetter"><a href="#">X</a></li>
+                        <li class="firstLetter"><a href="#">Y</a></li>
+                        <li class="firstLetter"><a href="#">Z</a></li>
+                    </ul>
+                </div>
+                <div class="allCities">
+                    <ul class="allCitiesList">
+                        <li>
+                            <span class="indexLetter">A</span>
+                            <span class="citiesBox">
+                                <ul>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="indexLetter">B</span>
+                            <span class="citiesBox">
+                                <ul>
+                                    <li>合肥合肥合肥合肥合肥合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                </ul>
+                            </span>
+                        </li>
+                        <li>
+                            <span class="indexLetter">C</span>
+                            <span class="citiesBox">
+                                <ul>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                    <li>合肥</li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </div>
@@ -184,4 +331,5 @@
 <script src="../lib/switch/pageSwitch.min.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/menu.js"></script>
+<script src="../js/onlineMap.js"></script>
 </html>
