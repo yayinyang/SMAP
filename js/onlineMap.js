@@ -8,7 +8,6 @@ for (var i = 0;i < 26;i++){
 }
 */
 
-
 $('#exchangeInput').on('click',function (){
     var tmp = $('#searchInput1').val();
     $('#searchInput1').val($('#searchInput2').val());
