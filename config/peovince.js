@@ -114,13 +114,6 @@ var province = [
         ]
     },
     {
-        capture: 'Y',
-        id: 'captureY',
-        children: [
-            { id: 18, name: "云南", point: { x: 102.70973, y: 25.0453 } }
-        ]
-    },
-    {
         capture: 'Z',
         id: 'captureZ',
         children: [
