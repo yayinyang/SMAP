@@ -18,7 +18,6 @@ body{
     height: 100%;
 }
 .onlineMap{
-    border: 1px solid #cccccc;
     width: 100%;
     height: 100%;
 }
@@ -81,6 +80,9 @@ body{
 }
 .onlineMap .input-group .searchbtn:hover{
     cursor: pointer;
+}
+.onlineMap .input-group .searchbtn:active{
+    background-color: #0066cc;
 }
 .onlineMap .searchResultList{
     width: 280px;
@@ -240,5 +242,34 @@ body{
     padding-left: 10px;
     cursor: pointer;
 }
-
+/***************************右下角按钮****************************/
+.changeMapSizeDiv {
+    position: fixed;
+    z-index: 15;
+    width: 20px;
+    height: 54px;
+    right: 220px;
+    bottom: 50px ;
+}
+.addBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_max_normal.png");
+    background-position: center;
+    outline: none;
+    margin-bottom: 10px;
+}
+.addBtn:active{
+    background-image: url("../img/onlineMap/button_max_active.png");
+}
+.subBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_min_normal.png");
+    background-position: center;
+    outline: none;
+}
+.subBtn:active{
+    background-image: url("../img/onlineMap/button_min_active.png");
+}
 
