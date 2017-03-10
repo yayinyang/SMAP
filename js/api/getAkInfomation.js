@@ -7,7 +7,7 @@ $(function () {
         tilex: 431598,
         tiley: 198608
     };
-    $.post(App.Util.getFullUrl('ar.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/ar.json'), param, function (data) {
         $('#arContent').empty();
         $('#arContent').text(JSON.stringify(data, null, 4));
     });
@@ -18,7 +18,7 @@ function arResult() {
         tilex: $('#arTileX').val(),
         tiley: $('#arTileY').val()
     };
-    $.post(App.Util.getFullUrl('ar.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/ar.json'), param, function (data) {
         $('#arContent').empty();
         $('#arContent').text(JSON.stringify(data, null, 4));
     });

@@ -7,7 +7,7 @@ $(function () {
         tilex: 431460,
         tiley: 198568
     };
-    $.post(App.Util.getFullUrl('tile/rdlinks.json'), rdLinksParam, function (data) {
+    $.post(App.Util.getFullUrl('base/tile/rdlinks.json'), rdLinksParam, function (data) {
         $('#rdLinksContent').empty();
         $('#rdLinksContent').text(JSON.stringify(data, null, 4));
     });
@@ -15,7 +15,7 @@ $(function () {
         level: 19,
         tiles: '431460,198568;431534,198511'
     };
-    $.post(App.Util.getFullUrl('tiles/pois.json'), poisParam, function (data) {
+    $.post(App.Util.getFullUrl('base/tiles/pois.json'), poisParam, function (data) {
         $('#poisContent').empty();
         $('#poisContent').text(JSON.stringify(data, null, 4));
     });
@@ -26,7 +26,7 @@ function rdLinksResult() {
         tilex: $('#rdLinksTileX').val(),
         tiley: $('#rdLinksTileY').val()
     };
-    $.post(App.Util.getFullUrl('tile/rdlinks.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/tile/rdlinks.json'), param, function (data) {
         $('#rdLinksContent').empty();
         $('#rdLinksContent').text(JSON.stringify(data, null, 4));
     });
@@ -36,7 +36,7 @@ function poisResult() {
         level: $('#poisLevel').val(),
         tiles: $('#poisTiles').val()
     };
-    $.post(App.Util.getFullUrl('tiles/pois.json'), param, function (data) {
+    $.post(App.Util.getFullUrl('base/tiles/pois.json'), param, function (data) {
         $('#poisContent').empty();
         $('#poisContent').text(JSON.stringify(data, null, 4));
     });
