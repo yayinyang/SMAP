@@ -488,6 +488,9 @@ a>div:hover{
     color:#1478ff;
     cursor: pointer;
 }
+#produceHouseNavOfSon:hover{
+    display: block;
+}
 #produceHouseNavOfSon>div>a{
     color:#fff;
 }
@@ -615,6 +618,10 @@ tr>td {
     -o-background-size:cover;
     background-size:cover;
 }
+#onlineUse .info:hover{
+    color: #3385ff;
+}
+
 @media screen and (min-height: 780px)  {
     .undevelopPage{
         background: url('../img/undevelopPage.png') no-repeat;

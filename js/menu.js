@@ -48,6 +48,7 @@ function showOnlineUse(){
 function hideOnlineUse() {
     $('#onlineUse').css('display', 'none');
 }
+
 function hideIndexMenu() {
     $('#serviceInterfaceNav').css('display', 'none');
     $('.menuDataServiceGrid').css('display', 'none');
