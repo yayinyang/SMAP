@@ -183,7 +183,7 @@
                 </button>
                 <input type="text"
                        placeholder="请输入起点收费站"
-                       class="searchbar"
+                       class="searchbar placeholderStyle"
                        id="searchInput1"
                        ng-model="startTollGate"
                        ng-change="searchStartTollGate()"
@@ -191,7 +191,7 @@
                 >
                 <input type="text"
                        placeholder="请输入终点收费站"
-                       class="searchbar placeholderStyle"
+                       class="searchbar "
                        id="searchInput2"
                        ng-model="endTollGate"
                        ng-focus="searchEndTollGate()"
@@ -249,8 +249,6 @@
                         <li class="firstLetter"><a href="#X">X</a></li>
                         <li class="firstLetter"><a href="#Y">Y</a></li>
                         <li class="firstLetter"><a href="#Z">Z</a></li>
-
-
                     </ul>
                 </div>
                 <div class="allCities">
@@ -398,6 +396,10 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="changeMapSizeDiv">
+            <button class="addBtn"></button>
+            <button class="subBtn"></button>
         </div>
         <div id="map"></div>
     </div>
