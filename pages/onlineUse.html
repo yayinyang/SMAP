@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
     <script src="../config/layer.js"></script>
+    <script src="../config/peovince.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../lib/switch/pageSwitch.min.css">
@@ -253,143 +254,13 @@
                 </div>
                 <div class="allCities">
                     <ul class="allCitiesList">
-                        <li>
-                            <span class="indexLetter"><a name="A">A</a></span>
-                            <span class="citiesBox">
-                                <ul id="city">
-                                    <li id="13">安徽</li>
-                                 <!--   <li id="">澳门</li>-->
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="B">B</a></span>
+                        <li ng-repeat=" firstObj in provinceArr">
+                            <span class="indexLetter" ng-bind="firstObj.capture"></span>
                             <span class="citiesBox">
                                 <ul>
-                                    <li id="1">北京</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                        <span class="indexLetter"><a name="C">C</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="32">重庆</li>
-                                </ul>
-                            </span>
-                    </li>
-                        <li>
-                            <span class="indexLetter"><a name="F">F</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="31">福建</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="G">G</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="9">甘肃</li>
-                                    <li id="28">广东</li>
-                                    <li id="17">广西</li>
-                                    <li id="14">贵州</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="H">H</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="4">海南</li>
-                                    <li id="21">河北</li>
-                                    <li id="29">河南</li>
-                                    <li id="19">黑龙江</li>
-                                    <li id="23">湖北</li>
-                                    <li id="16">湖南</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="J">J</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="7">吉林</li>
-                                    <li id="26">江苏</li>
-                                    <li id="15">江西</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="L">L</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="27">辽宁</li>
-                                    <li id="12">内蒙古</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="N">N</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="8">宁夏</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="Q">Q</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="25">青海</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="S">S</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="22">山东</li>
-                                    <li id="11">山西</li>
-                                    <li id="30">陕西</li>
-                                    <li id="2">上海</li>
-                                    <li id="24">四川</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="T">T</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                   <!-- <li id="">台湾</li>-->
-                                    <li id="10">天津</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="X">X</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="5">西藏</li>
-                                  <!--  <li id="">香港</li>-->
-                                    <li id="6">新疆</li>
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="Y">Y</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="18">云南</li>
-
-                                </ul>
-                            </span>
-                        </li>
-                        <li>
-                            <span class="indexLetter"><a name="Z">Z</a></span>
-                            <span class="citiesBox">
-                                <ul>
-                                    <li id="20">浙江</li>
+                                    <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
+                                        <span style="color: blue" ng-bind="secondObj.name"></span>
+                                    </li>
                                 </ul>
                             </span>
                         </li>
