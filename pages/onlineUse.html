@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="tollGate">
 <head>
     <meta charset="UTF-8">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <script src="../config/layer.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../lib/switch/pageSwitch.min.css">
     <!--[if lt IE 10]>
@@ -11,7 +14,7 @@
     <link rel="stylesheet" href="../style/onlineMap.css">
     <title>SMap</title>
 </head>
-<body >
+<body  ng-controller="tollGateController">
 <div style="width: 100%;padding: 0px 210px;margin-top: -44px;background: #25396e; height: 44px">
     <div style="width:100%;height: 100%;">
         <div style="float: right;">
@@ -91,7 +94,7 @@
                         <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=11&&specName=IDB"
+                                    href="productWarehouse.html?specid=11&&specName=IDB"
                                     style="font-size: 14px; text-decoration: none;">
                                 IDB
                             </a>
@@ -99,35 +102,35 @@
                         <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=12&&specName=NIMIF-G"
+                                    href="productWarehouse.html?specid=12&&specName=NIMIF-G"
                                     style="font-size: 14px; text-decoration: none;">
                                 NIMIF-G</a>
                         </div>
                         <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=13&&specName=NAVEX"
+                                    href="productWarehouse.html?specid=13&&specName=NAVEX"
                                     style="font-size: 14px; text-decoration: none;">
                                 NAVEX</a>
                         </div>
                         <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=14&&specName=AIF"
+                                    href="productWarehouse.html?specid=14&&specName=AIF"
                                     style="font-size: 14px; text-decoration: none;">
                                 AIF</a>
                         </div>
                         <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=15&&specName=NIGDF-G"
+                                    href="productWarehouse.html?specid=15&&specName=NIGDF-G"
                                     style="font-size: 14px; text-decoration: none;">
                                 NIGDF-G</a>
                         </div>
                         <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
-                                    href="pages/productWarehouse.html?specid=16&&specName=NIMIF-K"
+                                    href="productWarehouse.html?specid=16&&specName=NIMIF-K"
                                     style="font-size: 14px; text-decoration: none;">
                                 NIMIF-K</a>
                         </div>
@@ -173,11 +176,11 @@
         <div class=" leftSearchDiv">
             <div class="input-group btn-group" >
                 <button class="btn searchbar-exchange" id="exchangeInput" type="button"></button>
-                    <input type="text" placeholder="请输入起点收费站" class="searchbar" id="searchInput1" style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;">
-                    <input type="text" placeholder="请输入终点收费站"class="searchbar placeholderStyle" id="searchInput2"style="background-image:url('../img/onlineMap/finishingpoint.png');">
-                    <img class="empty-input" src="../img/onlineMap/searchbar_close.png">
+                <input type="text" placeholder="请输入起点收费站" class="searchbar" id="searchInput1" style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;">
+                <input type="text" placeholder="请输入终点收费站"class="searchbar placeholderStyle" id="searchInput2"style="background-image:url('../img/onlineMap/finishingpoint.png');">
+                <img class="empty-input" src="../img/onlineMap/searchbar_close.png">
                 <span class="btn searchbtn">搜索</span>
-             </div>
+            </div>
             <div class="searchResultList">
                 <ul>
                     <li class="searchResult">
@@ -231,7 +234,7 @@
         </div>
         <div class="selectedDiv">
             <div class="nowCity" >
-             北京市
+                北京市
             </div>
             <div class="choosedCity">
                 <span>北京市</span>
@@ -321,15 +324,35 @@
                 </div>
             </div>
         </div>
-
-
+        <div id="map"></div>
     </div>
 </div>
-</body>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrap/js/bootstrap.js"></script>
 <script src="../lib/switch/pageSwitch.min.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/menu.js"></script>
 <script src="../js/onlineMap.js"></script>
+<script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../lib/angular-popups/angular-popups.js"></script>
+<script src="../lib/angular-nvd3/d3.js"></script>
+<script src="../lib/angular-nvd3/nv.d3.js"></script>
+<script src="../lib/angular-nvd3/angular-nvd3.js"></script>
+<script src="../config/Application.js"></script>
+<script src="../js/service/dataService.js"></script>
+<script src="../js/service/dataService-sMap.js"></script>
+<script src="../js/tollGate.js"></script>
+<script>
+    var map = new mapboxgl.Map({
+        container : 'map',
+        style : simple,
+        zoom : 14,
+        center : [ 116.38402, 39.96261 ],
+        maxZoom : 22,
+        minZoom : 5,
+        pitch: 0
+    });
+</script>
+</body>
+
 </html>

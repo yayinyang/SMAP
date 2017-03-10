@@ -1,7 +1,7 @@
 /**
  * Created by liwanchong on 2017/3/9.
  */
-var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups','directiveApp']);
+var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups']);
 tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', function ($scope, dsEdit, $location) {
     $scope.param = {
         name: '福建'
@@ -16,6 +16,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
         for (var i = 0, len = $scope.popuArr.length; i < len; i++) {
             $scope.popuArr[i].remove();
         }
+        $scope.popuArr.length = 0;
     };
     $scope.originLayer = {
         "id": "route",
