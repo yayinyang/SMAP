@@ -14,8 +14,9 @@ body{
 }
 .content{
     width: 100%;
-    padding:40px 210px 40px 210px;
+    padding:46px 210px 40px 210px;
     height: 100%;
+    background-color: #ffffff;
 }
 .onlineMap{
     width: 100%;
@@ -45,7 +46,7 @@ body{
     background-position:center;
 }
 .onlineMap .input-group .searchbar {
-    width: 250px;
+    width: 240px;
     padding-left: 30px;
     background-position: 10px center;
     background-repeat: no-repeat;
@@ -54,7 +55,6 @@ body{
     outline: none;
     font-size: 12px;
     color: #000000;
-    text-shadow:#546289 0.3 3px 2px ;
 }
 .onlineMap .input-group .placeholderStyle::-webkit-input-placeholder{
     color: #1478FF;
@@ -63,10 +63,10 @@ body{
 .input-group .empty-input{
     display: inline-block;
     margin-top: -60px;
-    margin-left: -26px;
+    margin-left: -16px;
     cursor: pointer;
 }
-.onlineMap .input-group .searchbtn{
+.onlineMap .leftSearchDiv div > .searchbtn{
     float: left;
     margin-left: 280px;
     margin-top: -60px;
@@ -83,6 +83,10 @@ body{
 }
 .onlineMap .input-group .searchbtn:active{
     background-color: #0066cc;
+    outline: none;
+}
+.onlineMap .input-group .searchbtn:focus{
+    outline: none;
 }
 .onlineMap .searchResultList{
     width: 280px;
@@ -116,7 +120,6 @@ body{
 .searchResult .stationLocation{
     height: 30px;
     color: #cccccc;
-
     line-height: 30px;
 
 }
@@ -154,6 +157,7 @@ body{
     outline: none;
     cursor: pointer;
     display: none;
+    box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);
 }
 .onlineMap .selectedDiv .choosedCity span{
     color: #1478FF;
@@ -165,6 +169,7 @@ body{
     padding: 5px 10px;
     background-color: #ffffff;
     display: none;
+    box-shadow: 0 -1px 2px  rgba(84, 98, 137, 0.3);
 
 }
 .cityFirstLetterList{
@@ -220,6 +225,7 @@ body{
 }
 .allCities .allCitiesList > li .indexLetter{
     display: inline-block;
+    font-size: 12px;
     color: #cccccc;
     width: 10px;
     padding: 0;
@@ -230,7 +236,6 @@ body{
 }
 .allCities .allCitiesList > li .citiesBox ul{
     display: inline-block;
-    width: 240px;
     margin: 0;
     padding: 0;
 }
@@ -239,8 +244,12 @@ body{
     font-size: 12px;
     list-style-type: none;
     color: #333333;
-    padding-left: 10px;
+    padding-left: 8px;
     cursor: pointer;
+}
+.allCities .allCitiesList > li .citiesBox ul li > span{
+    color: #333333;
+    font-size: 12px;
 }
 /***************************右下角按钮****************************/
 .changeMapSizeDiv {
@@ -272,4 +281,23 @@ body{
 .subBtn:active{
     background-image: url("../img/onlineMap/button_min_active.png");
 }
-
+/*******************************路费弹框********************************/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
+    border-top-color: #1478FF;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
+    margin: 0;
+    padding: 0;
+    width: 42px;
+    height: 22px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #1478ff;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
+    display: none;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > h1{
+    font-size: 10px;
+    display: inline;
+}

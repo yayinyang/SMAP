@@ -64,6 +64,8 @@ span{
 }
 .menu {
     display: none;
+    position: absolute;
+    z-index: 10;
     float: left;
     height: 120px;
     line-height: 22px;

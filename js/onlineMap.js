@@ -9,14 +9,14 @@ for (var i = 0;i < 26;i++){
 */
 
 $('#exchangeInput').on('click',function (){
-    var tmp = $('#searchInput1').val();
-    $('#searchInput1').val($('#searchInput2').val());
-    $('#searchInput2').val(tmp);
+    var tmp = $('#startStation').val();
+    $('#startStation').val($('#endStation').val());
+    $('#endStation').val(tmp);
 });
 
 $('.empty-input').on('click',function (){
-   $('#searchInput1').val('');
-    $('#searchInput2').val('');
+   $('#startStation').val('');
+    $('#endStation').val('');
 });
 $('.nowCity').on('click',function(){
     $('.nowCity').hide();
@@ -28,3 +28,4 @@ $('#hideCityList').on('click',function (){
     $('.cityList').hide();
     $('.nowCity').show();
 });
+

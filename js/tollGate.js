@@ -40,7 +40,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['red', 'blue', 'gray']
+    $scope.colorArr = ['#85b3e7', '#85b3e7', '#85b3e7']
     // 清空
     $scope.clearLines = function () {
         var geojson = {
@@ -78,7 +78,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
     $scope.createPop = function (data) {
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
-          .setHTML('<h1>路途费共 ' +
+          .setHTML('<h1>'+
               data.fee+
             '元</h1>')
           .addTo(map);

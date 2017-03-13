@@ -170,44 +170,47 @@
 </div>
 <div class ="content">
 
-    <div style="height: 40px;line-height:40px;text-align: left;font-weight: 400;margin-top: -40px">
+    <div style="height: 46px;line-height:46px;text-align: left;font-weight: 400;margin-top: -40px">
         你现在的位置：产品仓库 > 在线体验 > 收费信息查询
     </div>
     <div  class="onlineMap">
         <div class=" leftSearchDiv">
-            <div class="input-group btn-group" >
-                <button
+            <div style="width: 280px;background-color: #ffffff; box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);">
+                <div class="input-group btn-group">
+                    <button
                         class="btn searchbar-exchange"
                         id="exchangeInput"
                         type="button"
-                >
-                </button>
-                <input type="text"
-                       placeholder="请输入起点收费站"
-                       class="searchbar placeholderStyle"
-                       id="searchInput1"
-                       ng-model="startTollGate"
-                       ng-change="searchStartTollGate()"
-                       style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
-                >
-                <input type="text"
-                       placeholder="请输入终点收费站"
-                       class="searchbar "
-                       id="searchInput2"
-                       ng-model="endTollGate"
-                       ng-focus="searchEndTollGate()"
-                       ng-change="searchEndTollGate()"
-                       style="background-image:url('../img/onlineMap/finishingpoint.png');"
-                >
-                <img
-                        class="empty-input"
-                        src="../img/onlineMap/searchbar_close.png"
-                >
-                <span
+                     >
+                    </button>
+                    <input type="text"
+                           placeholder="请输入起点收费站"
+                           class="searchbar placeholderStyle"
+                           id="startStation"
+                           ng-model="startTollGate"
+                           ng-change="searchStartTollGate()"
+                           style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
+                    >
+                    <input type="text"
+                           placeholder="请输入终点收费站"
+                           class="searchbar "
+                           id="endStation"
+                           ng-model="endTollGate"
+                           ng-focus="searchEndTollGate()"
+                           ng-change="searchEndTollGate()"
+                           style="background-image:url('../img/onlineMap/finishingpoint.png');"
+                    >
+                    <img
+                            class="empty-input"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                </div>
+
+                <button
                         class="btn searchbtn"
                         ng-click="getLinksFromStartToEnd()"
                 >搜索
-                </span>
+                </button>
             </div>
             <div class="searchResultList">
                 <ul>
@@ -259,7 +262,7 @@
                             <span class="citiesBox">
                                 <ul>
                                     <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
-                                        <span style="color: blue" ng-bind="secondObj.name"></span>
+                                        <span ng-bind="secondObj.name"></span>
                                     </li>
                                 </ul>
                             </span>
