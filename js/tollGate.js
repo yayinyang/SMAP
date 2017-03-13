@@ -2,7 +2,7 @@
  * Created by liwanchong on 2017/3/9.
  */
 var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups']);
-tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', function ($scope, dsEdit, $location) {
+tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anchorScroll', function ($scope, dsEdit, $location) {
     $scope.param = {
         name: '福建'
     };
@@ -16,6 +16,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
     $scope.endPid = '';
     $scope.provincePid = 1;
     $scope.provinceArr = province;
+    $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.originLayer = {
         "id": "route",
         "type": "line",
@@ -144,4 +145,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', func
             }
         });
     };
+    $scope.goCapture = function (data){
+        var local = 'capture'+data;
+       $location.hash(local);
+        $anchorScroll();
+    }
 }]);

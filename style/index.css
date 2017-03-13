@@ -64,8 +64,6 @@ span{
 }
 .menu {
     display: none;
-    position: absolute;
-    z-index: 10;
     float: left;
     height: 120px;
     line-height: 22px;
@@ -620,7 +618,7 @@ tr>td {
     -o-background-size:cover;
     background-size:cover;
 }
-#onlineUse .info:hover{
+.info:hover{
     color: #3385ff;
 }
 

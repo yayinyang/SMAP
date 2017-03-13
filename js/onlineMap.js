@@ -14,9 +14,16 @@ $('#exchangeInput').on('click',function (){
     $('#endStation').val(tmp);
 });
 
-$('.empty-input').on('click',function (){
+$('#emptyStartStation').on('click',function (){
    $('#startStation').val('');
+
+});
+$('#endStation').focus(function (){
+    $('#emptyEndStation').css('display','line-block');
+});
+$('#emptyEndStation').on('click',function (){
     $('#endStation').val('');
+    $('#endStation').attr('placeholder','请选择终点收费站');
 });
 $('.nowCity').on('click',function(){
     $('.nowCity').hide();
@@ -29,3 +36,9 @@ $('#hideCityList').on('click',function (){
     $('.nowCity').show();
 });
 
+$('#endStation').focus(function (){
+    var val = $('#startStation').val();
+    if(val!=''){
+        $('#endStation').attr('placeholder','请选择以下可通达的终点收费站');
+    }
+});
