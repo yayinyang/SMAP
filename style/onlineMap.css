@@ -128,7 +128,12 @@ body{
     background-position: center ;
 }
 .noSearchResult .logo{
-    padding: 0 10px;
+    padding: 0 20px 0 10px;
+    width: 10px;
+    height: 10px;
+    background-image: url("../img/onlineMap/search_normal.png");
+    background-repeat: no-repeat;
+    background-position: center ;
 }
 .searchResult .resultStation{
     padding-right: 10px;
@@ -146,12 +151,11 @@ body{
 
 }
 .noSearchResult{
-    display: none;
     height: 30px;
     line-height: 30px;
     background-color: #ffffff;
 }
-.noSearchResult span.noResult{
+ span.noResult{
     color: #1478FF;
     font-size: 12px;
 }
