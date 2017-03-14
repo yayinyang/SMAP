@@ -17,6 +17,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.endPid = '';
     $scope.provincePid = 1;
     $scope.provinceArr = province;
+    $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.originLayer = {
         "id": "route",
         "type": "line",
@@ -41,7 +42,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['red', 'blue', 'gray']
+    $scope.colorArr = ['#85b3e7', '#85b3e7', '#85b3e7']
     // 清空
     $scope.clearLines = function () {
         var geojson = {
@@ -79,7 +80,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.createPop = function (data) {
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
-          .setHTML('<h1>路途费共 ' +
+          .setHTML('<h1>'+
               data.fee+
             '元</h1>')
           .addTo(map);
@@ -145,4 +146,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }
         });
     };
+    $scope.goCapture = function (data){
+        var local = 'capture'+data;
+       $location.hash(local);
+        $anchorScroll();
+    }
 }]);

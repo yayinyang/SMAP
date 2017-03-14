@@ -618,7 +618,7 @@ tr>td {
     -o-background-size:cover;
     background-size:cover;
 }
-#onlineUse .info:hover{
+.info:hover{
     color: #3385ff;
 }
 
