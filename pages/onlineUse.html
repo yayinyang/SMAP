@@ -255,7 +255,7 @@
                 <div class="allCities">
                     <ul class="allCitiesList">
                         <li ng-repeat=" firstObj in provinceArr">
-                            <span class="indexLetter" ng-bind="firstObj.capture"></span>
+                            <span class="indexLetter" id = {{firstObj.id}} ng-bind="firstObj.capture"></span>
                             <span class="citiesBox">
                                 <ul>
                                     <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">

@@ -219,9 +219,9 @@ body{
     width: 100%;
 }
 .allCities .allCitiesList > li .indexLetter{
-    display: inline-block;
+    /*display: inline-block;*/
     color: #cccccc;
-    width: 10px;
+    width: 15px;
     padding: 0;
     vertical-align: top;
 }
@@ -230,7 +230,7 @@ body{
 }
 .allCities .allCitiesList > li .citiesBox ul{
     display: inline-block;
-    width: 240px;
+    width: 220px;
     margin: 0;
     padding: 0;
 }
