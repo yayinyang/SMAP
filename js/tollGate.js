@@ -18,6 +18,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
     $scope.provinceArr = province;
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.printNotice = "";
+    $scope.endStationStyle = {
+        'border-bottom':'none'
+    };
     $scope.originLayer = {
         "id": "route",
         "type": "line",
@@ -97,9 +100,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
     $scope.createPop = function (data) {
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
-          .setHTML('<h1>'+
-              data.fee+
-            '元</h1>')
+          .setHTML(data.fee+ '元')
           .addTo(map);
         $scope.popuArr.push(popup);
     };
@@ -117,8 +118,14 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
                     'line-height': 30 + 'px',
                     'background-color': '#ffffff'
                 };
+                $scope.endStationStyle = {
+                    'border-bottom':'1px solid #d0e4ff'
+                };
                 $scope.printNotice = "无搜索结果，请重新输入";
             }else {
+                $scope.endStationStyle = {
+                    'border-bottom':'1px solid #d0e4ff'
+                };
                 $scope.noSearchResult = {
                     display: 'none',
                     height: 30 + 'px',
@@ -143,8 +150,14 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
                 'line-height': 30 + 'px',
                 'background-color': '#ffffff'
                 };
+                $scope.endStationStyle = {
+                    'border-bottom':'1px solid #d0e4ff'
+                };
                 $scope.printNotice = "无搜索结果，请重新输入";
             }else {
+                $scope.endStationStyle = {
+                    'border-bottom':'1px solid #d0e4ff'
+                };
                 $scope.noSearchResult = {
                 display: 'none',
                  height: 30 + 'px',
@@ -161,6 +174,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
          $scope.startTollGate = data.name;
          $scope.startFlag = false;
          $scope.tollGateArr.length = 0;
+         $scope.endStationStyle = {
+             'border-bottom':'none'
+         };
 
      }
      if ($scope.endFlag) {
@@ -168,6 +184,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
          $scope.endTollGate = data.name;
          $scope.endFlag = false;
          $scope.tollGateArr.length = 0;
+         $scope.endStationStyle = {
+             'border-bottom':'none'
+         };
      }
     };
     // 获取路径
@@ -180,6 +199,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
                 'line-height': 30 + 'px',
                 'background-color': '#ffffff'
             };
+            $scope.endStationStyle = {
+                'border-bottom':'1px solid #d0e4ff'
+            };
             $scope.printNotice = "请选择起点收费站";
         }else if($scope.endPid == ''){
                 $scope.noSearchResult = {
@@ -188,6 +210,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
                     'line-height': 30 + 'px',
                     'background-color': '#ffffff'
                 };
+            $scope.endStationStyle = {
+                'border-bottom':'1px solid #d0e4ff'
+            };
                 $scope.printNotice = "请选择终点收费站";
         }else{
             dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
