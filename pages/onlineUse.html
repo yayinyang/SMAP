@@ -136,7 +136,7 @@
                                 NIMIF-K</a>
                         </div>
                     </div>
-                    <div id="onlineUse" class="box-shadow" style="display: none; margin-left: -10px;color: #fff;float: left; margin-top:95px;width: 100px;height:50px;background: rgb(10, 33, 70);position: absolute;z-index: 25;left: 78px" onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">
+                    <div id="onlineUse" class="box-shadow" style="display: none; margin-left: -2px;color: #fff;float: left; margin-top:95px;width: 100px;height:50px;background: rgb(10, 33, 70);position: absolute;z-index: 25;left: 78px" onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">
                         <div class ="info" style="padding: 2px;text-align: center">收费信息查询</div>
                         <div class ="info" style="padding: 2px;text-align: center">地图数据查询</div>
                     </div>
@@ -194,6 +194,7 @@
                     <img
                             class="empty-input"
                             id="emptyStartStation"
+                            ng-click="emptyInput('startStation')"
                             src="../img/onlineMap/searchbar_close.png"
                     >
                     <input type="text"
@@ -208,6 +209,7 @@
                     <img
                             class="empty-input"
                             id="emptyEndStation"
+                            ng-click="emptyInput('endStation')"
                             src="../img/onlineMap/searchbar_close.png"
                     >
                 </div>
@@ -230,9 +232,9 @@
                         <span class="stationLocation" ng-bind="tollGate.admin_name"></span>
                     </li>
                 </ul>
-                <div class="noSearchResult">
-                    <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
-                    <span class="noResult">无搜索结果，请重新输入</span>
+                <div class="noSearchResult" ng-style="noSearchResult">
+                    <span class="logo"></span>
+                    <span class="noResult">{{printNotice}}</span>
                 </div>
 
             </div>
