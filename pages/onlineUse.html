@@ -75,7 +75,7 @@
                 <div style="width: 300px;position: absolute;margin-top: -4px;display:inline-block"
                      onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
                     <div class="menuWaresGrid" ></div>
-                    <div id="produceHouseNav"  class="menu box-shadow">
+                    <div id="produceHouseNav"  class="menu box-shadow" style="position: absolute;z-index: 25">
                         <div style="padding: 10px 10px" onclick="directToDescription(0)">
                             <span >产品介绍</span>
                         </div>
@@ -91,7 +91,7 @@
                        </div>-->
                     </div>
                     <div id="produceHouseNavOfSon" class="box-shadow"
-                         style="display:none; color: #fff;float: left;width: 100px;height:240px; z-index: 4;background: rgb(10, 33, 70)">
+                         style="display:none; color: #fff;float: left;width: 100px;height:240px;background: rgb(10, 33, 70);position: absolute;z-index: 25;left: 72px">
                         <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
@@ -136,7 +136,7 @@
                                 NIMIF-K</a>
                         </div>
                     </div>
-                    <div id="onlineUse" class="box-shadow" style="display: none; margin-left: -10px;color: #fff;float: left; margin-top:95px;width: 100px;height:50px; z-index: 4;background: rgb(10, 33, 70)"onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">
+                    <div id="onlineUse" class="box-shadow" style="display: none; margin-left: -10px;color: #fff;float: left; margin-top:95px;width: 100px;height:50px;background: rgb(10, 33, 70);position: absolute;z-index: 25;left: 78px" onmouseover="showOnlineUse()" onmouseleave="hideOnlineUse()">
                         <div class ="info" style="padding: 2px;text-align: center">收费信息查询</div>
                         <div class ="info" style="padding: 2px;text-align: center">地图数据查询</div>
                     </div>
@@ -170,44 +170,53 @@
 </div>
 <div class ="content">
 
-    <div style="height: 40px;line-height:40px;text-align: left;font-weight: 400;margin-top: -40px">
-        你现在的位置：产品仓库 > 在线体验 > 收费信息查询
+    <div style="height: 46px;line-height:46px;text-align: left;font-weight: 400;margin-top: -40px">
+        您现在的位置：产品仓库 <span style="font-size: 18px;color: #0f0f0f;display: inline">></span> 在线体验 <span style="font-size: 18px;color: #0f0f0f;display: inline">></span> 收费信息查询
     </div>
-    <div  class="onlineMap">
+    <div  class="onlineMap" style="clear: both">
         <div class=" leftSearchDiv">
-            <div class="input-group btn-group" >
-                <button
+            <div style="width: 280px;background-color: #ffffff; box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);">
+                <div class="input-group btn-group">
+                    <button
                         class="btn searchbar-exchange"
                         id="exchangeInput"
                         type="button"
-                >
-                </button>
-                <input type="text"
-                       placeholder="请输入起点收费站"
-                       class="searchbar placeholderStyle"
-                       id="searchInput1"
-                       ng-model="startTollGate"
-                       ng-change="searchStartTollGate()"
-                       style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
-                >
-                <input type="text"
-                       placeholder="请输入终点收费站"
-                       class="searchbar "
-                       id="searchInput2"
-                       ng-model="endTollGate"
-                       ng-focus="searchEndTollGate()"
-                       ng-change="searchEndTollGate()"
-                       style="background-image:url('../img/onlineMap/finishingpoint.png');"
-                >
-                <img
-                        class="empty-input"
-                        src="../img/onlineMap/searchbar_close.png"
-                >
-                <span
+                     >
+                    </button>
+                    <input type="text"
+                           placeholder="请输入起点收费站"
+                           class="searchbar placeholderStyle "
+                           id="startStation"
+                           ng-model="startTollGate"
+                           ng-change="searchStartTollGate()"
+                           style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
+                    >
+                    <img
+                            class="empty-input"
+                            id="emptyStartStation"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                    <input type="text"
+                           placeholder="请输入终点收费站"
+                           class="searchbar placeholderStyle "
+                           id="endStation"
+                           ng-model="endTollGate"
+                           ng-focus="searchEndTollGate()"
+                           ng-change="searchEndTollGate()"
+                           style="background-image:url('../img/onlineMap/finishingpoint.png');border-bottom:1px solid #d0e4ff;"
+                    >
+                    <img
+                            class="empty-input"
+                            id="emptyEndStation"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                </div>
+
+                <button
                         class="btn searchbtn"
                         ng-click="getLinksFromStartToEnd()"
                 >搜索
-                </span>
+                </button>
             </div>
             <div class="searchResultList">
                 <ul>
@@ -216,11 +225,15 @@
                             ng-repeat="tollGate  in tollGateArr"
                             ng-click="getPidFromSearch(tollGate)"
                     >
-                        <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                        <span class="logo"></span>
                         <span class="resultStation" ng-bind="tollGate.name"></span>
                         <span class="stationLocation" ng-bind="tollGate.admin_name"></span>
                     </li>
                 </ul>
+                <div class="noSearchResult">
+                    <span class="logo"><img src="../img/onlineMap/search_normal.png"></span>
+                    <span class="noResult">无搜索结果，请重新输入</span>
+                </div>
 
             </div>
         </div>
@@ -235,31 +248,17 @@
             <div class="cityList">
                 <div class="cityFirstLetterList" >
                     <ul class="allFirstLetters ">
-                        <li class="firstLetter"><a href="#A">A</a></li>
-                        <li class="firstLetter"><a href="#B">B</a></li>
-                        <li class="firstLetter"><a href="#C">C</a></li>
-                        <li class="firstLetter"><a href="#F">F</a></li>
-                        <li class="firstLetter"><a href="#G">G</a></li>
-                        <li class="firstLetter"><a href="#H">H</a></li>
-                        <li class="firstLetter"><a href="#J">J</a></li>
-                        <li class="firstLetter"><a href="#L">L</a></li>
-                        <li class="firstLetter"><a href="#N">N</a></li>
-                        <li class="firstLetter"><a href="#Q">Q</a></li>
-                        <li class="firstLetter"><a href="#S">S</a></li>
-                        <li class="firstLetter"><a href="#T">T</a></li>
-                        <li class="firstLetter"><a href="#X">X</a></li>
-                        <li class="firstLetter"><a href="#Y">Y</a></li>
-                        <li class="firstLetter"><a href="#Z">Z</a></li>
+                        <li class="firstLetter" ng-repeat="item in captureArr" ng-click="goCapture(item)">{{item}}</li>
                     </ul>
                 </div>
                 <div class="allCities">
                     <ul class="allCitiesList">
                         <li ng-repeat=" firstObj in provinceArr">
-                            <span class="indexLetter" ng-bind="firstObj.capture"></span>
+                            <a class="indexLetter" id=capture{{firstObj.capture}} ng-bind="firstObj.capture" ></a>
                             <span class="citiesBox">
                                 <ul>
                                     <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
-                                        <span style="color: blue" ng-bind="secondObj.name"></span>
+                                        <span ng-bind="secondObj.name"></span>
                                     </li>
                                 </ul>
                             </span>
@@ -294,7 +293,7 @@
     var map = new mapboxgl.Map({
         container : 'map',
         style : simple,
-        zoom : 14,
+        zoom : 10,
         center : [ 116.38402, 39.96261 ],
         maxZoom : 22,
         minZoom : 5,
