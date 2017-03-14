@@ -6,7 +6,6 @@ $('#exchangeInput').on('click',function (){
     $('#startStation').val($('#endStation').val());
     $('#endStation').val(tmp);
 });
-
 $('#endStation').focus(function (){
     $('#emptyEndStation').css('display','inline-block');
 });
@@ -17,7 +16,6 @@ $('#endStation').blur(function (){
     }else{
         $('#emptyEndStation').css('display','inline-block');
     }
-
 });
 $('.nowCity').on('click',function(){
     $('.nowCity').hide();
@@ -36,4 +34,10 @@ $('#endStation').focus(function (){
         $('#endStation').attr('placeholder','请选择以下可通达的终点收费站');
     }
 });
+function goOnlineUse(){
+    $('#serviceInterfaceNav').css('display', 'none');
+    $('.menuDataServiceGrid').css('display', 'none');
+    $('#service').css('background-color', 'transparent');
+    window.location = 'pages/onlineUse.html';
+}
 

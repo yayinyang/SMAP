@@ -46,7 +46,7 @@ function showOnlineUse(){
     $('#onlineUse').css('display','block');
 }
 function hideOnlineUse() {
-    $('#onlineUse').css('display', 'none');
+    $('#onlineUse').css('display','none');
 }
 
 function hideIndexMenu() {
