@@ -630,7 +630,7 @@ tr>td {
 /**************************菜单样式***************************************************************/
 .firstMenu {
     display: none;
-    margin-left: -5px;
+    margin-left: -2px;
     color: #fff;
     float: left;
     margin-top: 95px;

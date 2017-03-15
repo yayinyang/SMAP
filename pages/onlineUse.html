@@ -81,14 +81,14 @@
                             <span >产品介绍</span>
                         </div>
                         <div
-                                style=" padding: 10px 10px;"
+                                style=" padding: 10px 10px;text-shadow: 0px 1px 10px #000000"
                                 onmouseover="showSonMenu()"
                                 onmouseleave="hideSonMenu()"
                         >
                             <span>产品下载</span>
                         </div>
                         <div
-                                style=" padding: 10px 10px;"
+                                style=" padding: 10px 10px;text-shadow: 0px 1px 10px #000000"
                                 onmouseover="showOnlineUse()"
                                 onmouseleave="hideOnlineUse()"
                         >
@@ -103,7 +103,18 @@
                          class="box-shadow"
                          onmouseenter="showSonMenu()"
                          onmouseleave="hideSonMenu()"
-                         style="display:none; color: #fff;float: left;width: 100px;height:240px;background: rgb(10, 33, 70);position: absolute;z-index: 25;left: 72px">
+                         style="
+                             margin-left: -2px;
+                             display:none;
+                             color: #fff;
+                             float: left;
+                             width: 100px;
+                             height:240px;
+                             background: rgb(10, 33, 70);
+                             position: absolute;
+                             z-index: 25;
+                             left: 78px"
+                    >
                         <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
                             <a
                                     onclick="hideMenu('produceWares')"
@@ -152,8 +163,8 @@
                          class="box-shadow firstMenu"
                          onmouseover="showOnlineUse()"
                          onmouseleave="hideOnlineUse()">
-                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;text-decoration: none">收费信息查询</a></div>
-                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;text-decoration: none">地图数据查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">收费信息查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">地图数据查询</a></div>
                     </div>
                 </div>
             </div>
@@ -246,8 +257,8 @@
                             ng-click="getPidFromSearch(tollGate)"
                     >
                         <span class="logo"></span>
-                        <span class="resultStation" ng-bind="tollGate.name"></span>
-                        <span class="stationLocation" ng-bind="tollGate.admin_name"></span>
+                        <div class="resultStation" ng-bind="tollGate.name"></div>
+                        <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
                     </li>
                 </ul>
                 <div class="noSearchResult" ng-style="noSearchResult">
