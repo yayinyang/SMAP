@@ -50,6 +50,9 @@ body{
 .onlineMap .input-group .searchbar-exchange:hover{
     cursor:default;
 }
+.onlineMap .input-group .searchbar-exchange:active{
+    box-shadow: none;
+}
 .onlineMap .input-group .searchbar-exchange > img{
     cursor: pointer;
 }
