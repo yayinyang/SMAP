@@ -175,16 +175,16 @@ body{
     width: 80px;
     height: 30px;
     line-height: 30px;
-    font-size: 12px;
-    border: none;
     background: #ffffff;
-    outline: none;
     cursor: pointer;
     background-image:url("../img/onlineMap/arrow_normal.png");
     background-repeat: no-repeat;
     background-position: 60px 13px;
-    display: block;
     box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);
+}
+.onlineMap .selectedDiv .nowCity >span{
+    color: rgb(51,51,51);
+    font-size: 12px;
 }
 .onlineMap .selectedDiv .choosedCity {
     padding-left: 10px;
@@ -204,7 +204,11 @@ body{
 .onlineMap .selectedDiv .choosedCity span{
     color: #1478FF;
     font-size: 12px;
-    margin-right: 200px;
+}
+.onlineMap .selectedDiv .choosedCity .hideCityList{
+    position: absolute;
+    top: 13px;
+    right: 10px;
 }
 .cityList{
     height: 175px;
@@ -387,12 +391,12 @@ body{
 /**************************菜单样式***************************************************************/
 .firstMenu {
     display: none;
-    margin-left: -2px;
+    margin-left: -5px;
     color: #fff;
     float: left;
     margin-top: 95px;
-    width: 100px;
-    height: 50px;
+    width: 110px;
+    height: 80px;
     background: rgb(10, 33, 70);
     position: absolute;
     z-index: 25;

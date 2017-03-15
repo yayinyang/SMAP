@@ -47,7 +47,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['rgba(20,120,255,1)', 'rgba(20,120,255,0.7)', 'rgba(20,120,255,0.7)'];
+    $scope.colorArr = ['rgba(20,120,255,0.8)', 'rgba(20,120,255,0.7)', 'rgba(20,120,255,0.7)'];
     $scope.noSearchResult = {};
     $scope.showChoosedCity = function (arg){
         if(arg==='nowCity'){
@@ -69,7 +69,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             };
             $scope.cityList= {
                 display:'none'
-            }
+            };
         }
     };
     // 清空
@@ -79,7 +79,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             "features": []
         };
         for (var i = 0, len = $scope.popuArr.length; i < len; i++) {
-            map.getSource('route'+i).setData(geojson);
+            if (map.getSource('route'+i)) {
+                map.getSource('route'+i).setData(geojson);
+            }
             $scope.popuArr[i].remove();
         }
         $scope.popuArr.length = 0;
@@ -178,7 +180,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }else {
                 $scope.searchResult = {
                     display:'block'
-                }
+                };
                 $scope.endStationStyle = {
                     'border-bottom':'1px solid #d0e4ff'
                 };
@@ -219,6 +221,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }else {
                 $scope.endStationStyle = {
                     'border-bottom':'1px solid #d0e4ff'
+                };
+                $scope.searchResult = {
+                    display:'block'
                 };
                 $scope.noSearchResult = {
                 display: 'none',
