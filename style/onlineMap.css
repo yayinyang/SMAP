@@ -397,17 +397,4 @@ body{
 .hideDeleteBtn {
     display: none
 }
-/**************************菜单样式***************************************************************/
-.firstMenu {
-    display: none;
-    margin-left: -5px;
-    color: #fff;
-    float: left;
-    margin-top: 95px;
-    width: 110px;
-    height: 80px;
-    background: rgb(10, 33, 70);
-    position: absolute;
-    z-index: 25;
-    left: 78px;
-}
+
