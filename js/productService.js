@@ -145,9 +145,13 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         });
     };
     $scope.jumpToDiv = function (id) {
-        window.location.hash = '#' + id;
-        $scope.jumpFlag = id;
-        window.scrollTo(0,$('#' + id).position().top-40);
+        if(id === 'apiName'){
+            window.scrollTo(0,0);
+        }else{
+            window.location.hash = '#' + id;
+            $scope.jumpFlag = id;
+            window.scrollTo(0,$('#' + id).position().top-40);
+        }
     };
     angular.element(window.document).bind('scroll',function(){
         console.log('ddd');
