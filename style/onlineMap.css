@@ -105,6 +105,7 @@ body{
     padding: 0;
 }
 .onlineMap .searchResultList ul .searchResult{
+    display: none;
     background-color: #ffffff;
     height: 30px;
     list-style-type: none;
@@ -151,6 +152,7 @@ body{
 
 }
 .noSearchResult{
+    display: none;
     height: 30px;
     line-height: 30px;
     background-color: #ffffff;
@@ -168,12 +170,12 @@ body{
     z-index: 3;
 }
 .onlineMap .selectedDiv .nowCity{
-    padding-left: 10px;
+    padding-right: 13px;
+    text-align: center;
     width: 80px;
     height: 30px;
     line-height: 30px;
     font-size: 12px;
-    margin-left: 200px;
     border: none;
     background: #ffffff;
     outline: none;
@@ -370,6 +372,9 @@ body{
     background-color: rgba(20,120,255,0.8);
 }
 /***************************判断是否显示删除按钮****************************************************/
+.deleteBtn{
+    display: none;
+}
 .showDeleteBtn {
     display: inline-block;
     margin-top: 0;
@@ -379,9 +384,6 @@ body{
 .hideDeleteBtn {
     display: none;
 }
-<<<<<<< HEAD
-
-=======
 /**************************菜单样式***************************************************************/
 .firstMenu {
     display: none;
@@ -396,4 +398,4 @@ body{
     z-index: 25;
     left: 78px;
 }
->>>>>>> liwanchong04719/master
+

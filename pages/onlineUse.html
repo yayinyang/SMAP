@@ -212,7 +212,7 @@
                            ng-change="searchEndTollGate()"
                            style="background-image:url('../img/onlineMap/finishingpoint.png');"
                     >
-                    <img
+                    <img    class="deleteBtn"
                             ng-class="{true: 'showDeleteBtn', false: 'hideDeleteBtn'}[endTollGate.length !== 0]"
                             id="emptyEndStation"
                             ng-click="emptyInput('endStation')"
@@ -230,6 +230,7 @@
                 <ul>
                     <li
                             class="searchResult"
+                            ng-style="searchResult"
                             ng-repeat="tollGate  in tollGateArr"
                             ng-click="getPidFromSearch(tollGate)"
                     >
@@ -240,20 +241,20 @@
                 </ul>
                 <div class="noSearchResult" ng-style="noSearchResult">
                     <span class="logo"></span>
-                    <span class="noResult">{{printNotice}}</span>
+                    <span class="noResult" ng-bind="printNotice"></span>
                 </div>
 
             </div>
         </div>
         <div class="selectedDiv">
-            <div class="nowCity" >
-                北京市
+            <div class="nowCity" ng-style="nowCity" ng-click="showChoosedCity('nowCity')">
+               {{nowProvince}}
             </div>
-            <div class="choosedCity">
-                <span>北京市</span>
-                <img id="hideCityList" src="../img/onlineMap/arrow_active.png">
+            <div class="choosedCity" ng-style="choosedCity">
+                <span> {{nowProvince}}</span>
+                <img id="hideCityList" ng-click="showChoosedCity('choosedCity')" src="../img/onlineMap/arrow_active.png">
             </div>
-            <div class="cityList">
+            <div class="cityList" ng-style="cityList">
                 <div class="cityFirstLetterList" >
                     <ul class="allFirstLetters ">
                         <li class="firstLetter" ng-repeat="item in captureArr" ng-click="goCapture(item)">{{item}}</li>

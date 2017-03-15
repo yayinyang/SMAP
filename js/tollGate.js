@@ -19,6 +19,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.provinceArr = province;
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.printNotice = "";
+    $scope.nowProvince = '北京';
     $scope.endStationStyle = {
         'border-bottom':'none'
     };
@@ -41,18 +42,36 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "red",
+            "line-color": "rgba(20,120,255,1)",
             "line-width": 8
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['rgba(133,179,231,1)', 'rgba(133,179,231,0.7)', 'rgba(133,179,231,0.7)'];
-    $scope.noSearchResult = {
-        display: 'none',
-        height: 30 + 'px',
-        'line-height': 30 + 'px',
-        'background-color': '#ffffff'
-    }
+    $scope.colorArr = ['rgba(20,120,255,1)', 'rgba(20,120,255,0.7)', 'rgba(20,120,255,0.7)'];
+    $scope.noSearchResult = {};
+    $scope.showChoosedCity = function (arg){
+        if(arg==='nowCity'){
+            $scope.nowCity = {
+                display:'none'
+            };
+            $scope.choosedCity = {
+                display:'block'
+            };
+            $scope.cityList= {
+                display:'block'
+            }
+        }else{
+            $scope.nowCity = {
+                display:'block'
+            };
+            $scope.choosedCity ={
+                display:'none'
+            };
+            $scope.cityList= {
+                display:'none'
+            }
+        }
+    };
     // 清空
     $scope.clearLines = function () {
         var geojson = {
@@ -94,6 +113,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     // 获取省 并定位
     $scope.locationProvince = function (data) {
         $scope.provincePid = data.id;
+        $scope.nowProvince = data.name;
         map.flyTo({center:[ data.point.x, data.point.y]});
     };
     // 生成弹出框
@@ -150,15 +170,15 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             if($scope.tollGateArr.length == 0){
                 $scope.noSearchResult = {
                     display: 'block',
-                    height: 30 + 'px',
-                    'line-height': 30 + 'px',
-                    'background-color': '#ffffff'
                 };
                 $scope.endStationStyle = {
                     'border-bottom':'1px solid #d0e4ff'
                 };
                 $scope.printNotice = "无搜索结果，请重新输入";
             }else {
+                $scope.searchResult = {
+                    display:'block'
+                }
                 $scope.endStationStyle = {
                     'border-bottom':'1px solid #d0e4ff'
                 };
@@ -238,7 +258,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             features: [],
         };
         $scope.clearLines();
-        if($scope.startPid == ''){
+        if($scope.startPid == '' || $scope.endPid == ''){
             $scope.noSearchResult = {
                 display: 'block',
                 height: 30 + 'px',
@@ -248,18 +268,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endStationStyle = {
                 'border-bottom':'1px solid #d0e4ff'
             };
-            $scope.printNotice = "请选择起点收费站";
-        }else if($scope.endPid == ''){
-                $scope.noSearchResult = {
-                    display: 'block',
-                    height: 30 + 'px',
-                    'line-height': 30 + 'px',
-                    'background-color': '#ffffff'
-                };
-            $scope.endStationStyle = {
-                'border-bottom':'1px solid #d0e4ff'
-            };
-                $scope.printNotice = "请选择终点收费站";
+            $scope.printNotice = "请输入正确的起点和终点";
         }else{
             dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
                 // map.flyTo({center: data[0].pointGeoJson.coordinates});
