@@ -98,12 +98,42 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
     };
     // 生成弹出框
     $scope.createPop = function (data) {
+        var div = window.document.createElement('div');
+        div.style.textAlign = 'center';
+        div.innerHTML =
+            '<div class="feePop">'+data.fee +'元</div>' +
+            '<div class="tipPop"></div>';
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
-          .setHTML(data.fee+ '元')
+          .setDOMContent(div)
           .addTo(map);
         $scope.popuArr.push(popup);
     };
+    //起点图标
+    $scope.createStartTollIcon = function (data){
+        var div = window.document.createElement('div');
+        div.style.background = 'url("../img/onlineMap/tollstation_star.png")';
+        div.style.width = 25 + 'px';
+        div.style.height = 34 + 'px';
+        var Toll = new mapboxgl.Popup({closeOnClick: false})
+            .setLngLat(data[0].geoJson.coordinates[0])
+            .setDOMContent(div)
+            .addTo(map);
+        $scope.popuArr.push(Toll);
+    }
+    //终点图标
+    $scope.createEndTollIcon = function (data){
+        var div = window.document.createElement('div');
+        div.style.background = 'url("../img/onlineMap/tollstation_finish.png")';
+        div.style.width = 25 + 'px';
+        div.style.height = 34 + 'px';
+        var lastIndex = data[1].geoJson.coordinates.length - 1; //获取最后一个点的坐标
+        var Toll = new mapboxgl.Popup({closeOnClick: false})
+            .setLngLat(data[1].geoJson.coordinates[lastIndex])
+            .setDOMContent(div)
+            .addTo(map);
+        $scope.popuArr.push(Toll);
+    }
     // 搜索起点
     $scope.searchStartTollGate = function () {
         dsEdit.getProduct('tollgate/tollnames/' + $scope.provincePid + '/1', { name: $scope.startTollGate }).then(function (data) {
@@ -218,6 +248,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location','$anc
             dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
                 map.flyTo({center: data[0].pointGeoJson.coordinates});
                 $scope.linksArr = data;
+                $scope.createStartTollIcon(data);
+                $scope.createEndTollIcon(data);
                 for (var i = 0, len = data.length; i < len ;i++) {
                     if(map.getSource('route'+i)) {
                         $scope.addLines(data[i], 'route'+i);

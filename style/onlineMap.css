@@ -344,6 +344,7 @@ body{
     background-image: url("../img/onlineMap/button_min_active.png");
 }
 /*******************************路费弹框********************************/
+/*
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
     border-width:6px 3px 0;
     border-style:solid;
@@ -360,6 +361,34 @@ body{
     text-align: center;
     background-color: rgba(20,120,255,0.8);
 }
+*/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
+    display: none;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
+    padding:0;
+    background: transparent;
+    box-shadow: none;
+}
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
     display: none;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPop{
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border-width:6px 3px 0;
+    border-style:solid;
+    border-color:#1478FF transparent transparent;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .feePop{
+    margin: 0;
+    height: 24px;
+    padding:0 6px;
+    min-width: 52px;
+    line-height: 24px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    background-color: rgba(20,120,255,0.8);
 }
