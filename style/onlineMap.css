@@ -72,9 +72,6 @@ body{
     margin-left: -16px;
     cursor: pointer;
 }
-#emptyEndStation{
-    display: none;
-}
 .onlineMap .leftSearchDiv div > .searchbtn{
     float: left;
     margin-left: 280px;
@@ -279,8 +276,9 @@ body{
 .allCities .allCitiesList > li .indexLetter{
     display: inline-block;
     font-size: 12px;
+>>>>>>> smap/master
     color: #cccccc;
-    width: 10px;
+    width: 15px;
     padding: 0;
     text-decoration: none;
 }
@@ -373,6 +371,7 @@ body{
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
     display: none;
 }
+<<<<<<< HEAD
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPop{
     width: 0;
     height: 0;
@@ -392,3 +391,15 @@ body{
     text-align: center;
     background-color: rgba(20,120,255,0.8);
 }
+=======
+/***************************判断是否显示删除按钮****************************************************/
+.showDeleteBtn {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: -16px;
+    cursor: pointer;
+}
+.hideDeleteBtn {
+    display: none
+}
+>>>>>>> liwanchong04719/master

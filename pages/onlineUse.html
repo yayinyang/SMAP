@@ -2,7 +2,8 @@
 <html lang="en" ng-app="tollGate">
 <head>
     <meta charset="UTF-8">
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <script src='../lib/mapbox/mapbox-gl.js'></script>
+    <script src='../lib/turf/turf.min.js'></script>
     <script src="../config/layer.js"></script>
     <script src="../config/peovince.js"></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
@@ -189,6 +190,7 @@
                            id="startStation"
                            ng-model="startTollGate"
                            ng-change="searchStartTollGate()"
+                           ng-focus="searchStartTollGate()"
                            style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
                     >
                     <img
@@ -208,7 +210,7 @@
                            style="background-image:url('../img/onlineMap/finishingpoint.png');"
                     >
                     <img
-                            class="empty-input"
+                            ng-class="{true: 'showDeleteBtn', false: 'hideDeleteBtn'}[endTollGate.length !== 0]"
                             id="emptyEndStation"
                             ng-click="emptyInput('endStation')"
                             src="../img/onlineMap/searchbar_close.png"
@@ -283,7 +285,6 @@
 <script src="../lib/switch/pageSwitch.min.js"></script>
 <script src="../js/index.js"></script>
 <script src="../js/menu.js"></script>
-<script src="../js/onlineMap.js"></script>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/angular-popups/angular-popups.js"></script>
 <script src="../lib/angular-nvd3/d3.js"></script>
