@@ -46,7 +46,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['#85b3e7', '#85b3e7', '#85b3e7'];
+    $scope.colorArr = ['#85b3e7', 'red', '#85b3e7'];
     $scope.noSearchResult = {
         display: 'none',
         height: 30 + 'px',
@@ -81,17 +81,16 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         $scope.geojson.features.push(source);
         map.getSource(id).setData($scope.geojson);
     };
-    $scope.emptyInput = function (arg){
-        if(arg === 'startStation'){
+    $scope.emptyInput = function (arg) {
+        if (arg === 'startStation') {
             $scope.startTollGate = '';
-            $scope.searchStartTollGate();
             $scope.startPid = '';
-        }else{
+        } else {
             $scope.endTollGate = '';
-            $scope.searchEndTollGate();
             $scope.endPid = '';
         }
-    }
+        $scope.tollGateArr.length = 0;
+    };
     // 获取省 并定位
     $scope.locationProvince = function (data) {
         $scope.provincePid = data.id;
@@ -107,7 +106,13 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     };
     // 搜索起点
     $scope.searchStartTollGate = function () {
-        dsEdit.getProduct('tollgate/tollnames/' + $scope.provincePid + '/1', { name: $scope.startTollGate }).then(function (data) {
+        var startUrl = '';
+        if ($scope.endPid) {
+            startUrl = 'tollgate/tollnames/sec/' + $scope.endPid + '/2'
+        } else {
+            startUrl = 'tollgate/tollnames/' + $scope.provincePid + '/1';
+        }
+        dsEdit.getProduct(startUrl, { name: $scope.startTollGate }).then(function (data) {
             $scope.startFlag = true;
             $scope.endFlag = false;
             $scope.printNotice = "";
@@ -139,7 +144,13 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     };
     // 搜索终点
     $scope.searchEndTollGate = function () {
-        dsEdit.getProduct('tollgate/tollnames/sec/' + $scope.startPid + '/1', { name: $scope.endTollGate }).then(function (data) {
+        var endUrl = '';
+        if ($scope.startPid) {
+            endUrl = 'tollgate/tollnames/sec/' + $scope.startPid + '/1';
+        } else {
+            endUrl = 'tollgate/tollnames/' + $scope.provincePid + '/2';
+        }
+        dsEdit.getProduct(endUrl, { name: $scope.endTollGate }).then(function (data) {
             $scope.startFlag = false;
             $scope.endFlag = true;
             $scope.printNotice = "";
@@ -192,6 +203,10 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     };
     // 获取路径
     $scope.getLinksFromStartToEnd = function () {
+        var bounds = {
+            type: 'FeatureCollection',
+            features: [],
+        };
         $scope.clearLines();
         if($scope.startPid == ''){
             $scope.noSearchResult = {
@@ -217,7 +232,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 $scope.printNotice = "请选择终点收费站";
         }else{
             dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
-                map.flyTo({center: data[0].pointGeoJson.coordinates});
+                // map.flyTo({center: data[0].pointGeoJson.coordinates});
                 $scope.linksArr = data;
                 for (var i = 0, len = data.length; i < len ;i++) {
                     if(map.getSource('route'+i)) {
@@ -238,7 +253,12 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                         $scope.originLayer.source = source;
                         map.addLayer($scope.originLayer);
                     }
+                    var  pointFeature = turf.lineString(data[i].geoJson.coordinates);
+                    bounds.features.push(pointFeature);
                 }
+                const bbox = turf.bbox(bounds);
+                const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                map.fitBounds(v2, { maxZoom: 8 });
             });
         }
     };

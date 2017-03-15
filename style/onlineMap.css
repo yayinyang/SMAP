@@ -69,9 +69,6 @@ body{
     margin-left: -16px;
     cursor: pointer;
 }
-#emptyEndStation{
-    display: none;
-}
 .onlineMap .leftSearchDiv div > .searchbtn{
     float: left;
     margin-left: 280px;
@@ -274,9 +271,6 @@ body{
     width: 100%;
 }
 .allCities .allCitiesList > li .indexLetter{
-<<<<<<< HEAD
-    /*display: inline-block;*/
-=======
     display: inline-block;
     font-size: 12px;
 >>>>>>> smap/master
@@ -290,10 +284,6 @@ body{
 }
 .allCities .allCitiesList > li .citiesBox ul{
     display: inline-block;
-<<<<<<< HEAD
-    width: 220px;
-=======
->>>>>>> smap/master
     margin: 0;
     padding: 0;
 }
@@ -367,4 +357,14 @@ body{
 }
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
     display: none;
+}
+/***************************判断是否显示删除按钮****************************************************/
+.showDeleteBtn {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: -16px;
+    cursor: pointer;
+}
+.hideDeleteBtn {
+    display: none
 }
