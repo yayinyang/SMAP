@@ -40,4 +40,5 @@ function goOnlineUse(){
     $('#service').css('background-color', 'transparent');
     window.location = 'pages/onlineUse.html';
 }
+$
 

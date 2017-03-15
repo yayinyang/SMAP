@@ -272,8 +272,8 @@
         </div>
         <div id="map">
             <div class="changeMapSizeDiv">
-                <button class="addBtn"></button>
-                <button class="subBtn"></button>
+                <button class="addBtn" onclick="changeZoom('add')"></button>
+                <button class="subBtn" onclick="changeZoom('sub')"></button>
             </div>
         </div>
     </div>
@@ -303,6 +303,14 @@
         minZoom : 5,
         pitch: 0
     });
+    function changeZoom(arg){
+        var nowZoom = map.getZoom();
+        if(arg === 'add'){
+            map.setZoom(nowZoom+1);
+        }else{
+            map.setZoom(nowZoom-1);
+        }
+    }
 </script>
 </body>
 
