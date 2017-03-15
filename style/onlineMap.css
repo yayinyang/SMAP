@@ -21,6 +21,9 @@ body{
 .onlineMap{
     width: 100%;
     height: 100%;
+    position: relative;
+    top:0;
+    left: 0;
     border: 1px solid #c5cee6;
     /*box-shadow: 1px 1px 2px 5px #546289;*/
 }
@@ -159,8 +162,8 @@ body{
 
 /**********************右侧*************************/
 .onlineMap .selectedDiv{
-    right:220px;
-    margin-top: 10px;
+    right:10px;
+    top: 10px;
     position: absolute;
     z-index: 3;
 }
@@ -339,6 +342,7 @@ body{
     background-image: url("../img/onlineMap/button_min_active.png");
 }
 /*******************************路费弹框********************************/
+/*
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
     border-width:6px 3px 0;
     border-style:solid;
@@ -346,18 +350,48 @@ body{
 }
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
     margin: 0;
-    padding: 0;
-    width: 42px;
-    height: 16px;
-    line-height: 16px;
+    height: 24px;
+    padding:0 6px;
+    min-width: 52px;
+    line-height: 24px;
     color: #ffffff;
     font-size: 12px;
     text-align: center;
     background-color: rgba(20,120,255,0.8);
 }
+*/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
+    display: none;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
+    padding:0;
+    background: transparent;
+    box-shadow: none;
+}
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
     display: none;
 }
+<<<<<<< HEAD
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPop{
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border-width:6px 3px 0;
+    border-style:solid;
+    border-color:#1478FF transparent transparent;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .feePop{
+    margin: 0;
+    height: 24px;
+    padding:0 6px;
+    min-width: 52px;
+    line-height: 24px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+    background-color: rgba(20,120,255,0.8);
+}
+=======
 /***************************判断是否显示删除按钮****************************************************/
 .showDeleteBtn {
     display: inline-block;
@@ -368,3 +402,4 @@ body{
 .hideDeleteBtn {
     display: none
 }
+>>>>>>> liwanchong04719/master
