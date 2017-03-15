@@ -46,7 +46,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['#85b3e7', 'red', '#85b3e7'];
+    $scope.colorArr = ['rgba(133,179,231,1)', 'rgba(133,179,231,0.7)', 'rgba(133,179,231,0.7)'];
     $scope.noSearchResult = {
         display: 'none',
         height: 30 + 'px',

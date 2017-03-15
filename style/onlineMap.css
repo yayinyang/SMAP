@@ -189,7 +189,6 @@ body{
     width: 280px;
     height: 30px;
     line-height: 30px;
-    line-height: 30px;
     position: absolute;
     right: 0;
     z-index: 20;
@@ -276,7 +275,6 @@ body{
 .allCities .allCitiesList > li .indexLetter{
     display: inline-block;
     font-size: 12px;
->>>>>>> smap/master
     color: #cccccc;
     width: 15px;
     padding: 0;
@@ -322,7 +320,6 @@ body{
     background-size: cover;
     outline: none;
     margin-bottom: 10px;
-    outline: none;
     border: 0;
     box-shadow: 0 1px 3px rgba(84, 98, 137, 0.3);
 }
@@ -382,4 +379,21 @@ body{
 .hideDeleteBtn {
     display: none;
 }
+<<<<<<< HEAD
 
+=======
+/**************************菜单样式***************************************************************/
+.firstMenu {
+    display: none;
+    margin-left: -2px;
+    color: #fff;
+    float: left;
+    margin-top: 95px;
+    width: 100px;
+    height: 50px;
+    background: rgb(10, 33, 70);
+    position: absolute;
+    z-index: 25;
+    left: 78px;
+}
+>>>>>>> liwanchong04719/master
