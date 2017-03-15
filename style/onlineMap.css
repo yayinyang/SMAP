@@ -46,9 +46,15 @@ body{
     border-radius: 0;
     outline: none;
     background-color: #ffffff;
-    background-image: url('../img/onlineMap/searchbar_change.png');
-    background-repeat: no-repeat;
-    background-position:center;
+}
+.onlineMap .input-group .searchbar-exchange:hover{
+    cursor:default;
+}
+.onlineMap .input-group .searchbar-exchange:active{
+    box-shadow: none;
+}
+.onlineMap .input-group .searchbar-exchange > img{
+    cursor: pointer;
 }
 .onlineMap .input-group .searchbar {
     width: 240px;
@@ -331,7 +337,7 @@ body{
     border: 0;
     box-shadow: 0 1px 3px rgba(84, 98, 137, 0.3);
 }
-.addBtn:active{
+.addBtn:hover,.addBtn:active{
     background-image: url("../img/onlineMap/button_max_active.png");
 }
 .subBtn{
@@ -343,7 +349,7 @@ body{
     border: 0;
     box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
 }
-.subBtn:active{
+.subBtn:hover,.subBtn:active{
     background-image: url("../img/onlineMap/button_min_active.png");
 }
 /*******************************路费弹框********************************/
