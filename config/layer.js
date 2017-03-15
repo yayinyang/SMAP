@@ -7,7 +7,7 @@ var simple = {
             {
                 "type":"vector",
                 "tiles":
-                  ['http://192.168.4.128:8080/mapspotter/view/infomation/{z}/{x}/{y}'],
+                  ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
             },
           "Worldannotation": {
               "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -2237,7 +2237,7 @@ var simple = {
             type: 'symbol',
             interactive: true,
             "source" : "toll",
-            'source-layer': 'InfoPoi',
+            'source-layer': 'toll',
             minzoom: 0,
             maxzoom: 17,
             layout:

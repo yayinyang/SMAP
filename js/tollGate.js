@@ -46,7 +46,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['rgba(133,179,231,1)', 'rgba(133,179,231,0.7)', 'rgba(133,179,231,0.7)'];
+    $scope.colorArr = ['rgba(20,120,255,0.8)', 'rgba(20,120,255,0.7)', 'rgba(20,120,255,0.7)'];
     $scope.noSearchResult = {
         display: 'none',
         height: 30 + 'px',
@@ -60,7 +60,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             "features": []
         };
         for (var i = 0, len = $scope.popuArr.length; i < len; i++) {
-            map.getSource('route'+i).setData(geojson);
+            if (map.getSource('route'+i)) {
+                map.getSource('route'+i).setData(geojson);
+            }
             $scope.popuArr[i].remove();
         }
         $scope.popuArr.length = 0;

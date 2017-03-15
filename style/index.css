@@ -488,13 +488,19 @@ a>div:hover{
     color:#1478ff;
     cursor: pointer;
 }
-#produceHouseNavOfSon:hover{
+#produceHouseNavOfSon:hover,
+#onlineUse:hover
+{
     display: block;
 }
-#produceHouseNavOfSon>div>a{
+#produceHouseNavOfSon>div>a,
+#onlineUse>div>a
+{
     color:#fff;
 }
-#produceHouseNavOfSon>div:hover{
+#produceHouseNavOfSon>div:hover,
+#onlineUse>div:hover
+{
     background-color:#1478ff;
     cursor: pointer;
 }
