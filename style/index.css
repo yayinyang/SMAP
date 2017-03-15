@@ -627,7 +627,20 @@ tr>td {
 .info:hover{
     color: #3385ff;
 }
-
+/**************************菜单样式***************************************************************/
+.firstMenu {
+    display: none;
+    margin-left: -5px;
+    color: #fff;
+    float: left;
+    margin-top: 95px;
+    width: 120px;
+    height: 80px;
+    background: rgb(10, 33, 70);
+    position: absolute;
+    z-index: 25;
+    left: 78px;
+}
 @media screen and (min-height: 780px)  {
     .undevelopPage{
         background: url('../img/undevelopPage.png') no-repeat;

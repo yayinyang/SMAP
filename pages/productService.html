@@ -68,18 +68,28 @@
                         <div style="padding: 10px 10px" onclick="directToDescription(1)">
                             <span >产品介绍</span>
                         </div>
-                        <div style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000">
-                            <span  onmouseover="showSonMenu()">产品下载</span>
+                        <div
+                                style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000"
+                                onmouseover="showSonMenu()"
+                                onmouseleave="hideSonMenu()"
+                        >
+                            <span>产品下载</span>
+                        </div>
+                        <div
+                                style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000"
+                                onmouseover="showOnlineUse()"
+                                onmouseleave="hideOnlineUse()"
+                        >
+                            <span>在线体验</span>
                         </div>
                         <!--<div style="padding: 20px 10px">
-                            <span style="font-size: 18px" onmouseover="showSonMenu()">在线体验</span>
-                        </div>
-                        <div style="padding: 20px 10px">
                             <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
                         </div>-->
                     </div>
                     <div id="produceHouseNavOfSon"
                          class="box-shadow"
+                         onmouseenter="showSonMenu()"
+                         onmouseleave="hideSonMenu()"
                          style="display:none; color: #fff;float: left;width: 100px;height:240px; z-index: 4;background: rgb(10, 33, 70)">
                         <div style="padding: 10px;">
                             <a
@@ -124,6 +134,13 @@
                                     style="font-size: 14px; text-decoration: none;">
                                 NIMIF-K</a>
                         </div>
+                    </div>
+                    <div id="onlineUse"
+                         class="box-shadow firstMenu"
+                         onmouseover="showOnlineUse()"
+                         onmouseleave="hideOnlineUse()">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;text-decoration: none">收费信息查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;text-decoration: none">地图数据查询</a></div>
                     </div>
                 </div>
             </div>
