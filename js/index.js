@@ -27,3 +27,10 @@ function redirecting(type) {
 function redirectingAPi() {
     window.location = 'pages/productService.html';
 }
+function setSize() {
+
+    var height = window.innerHeight;
+    var banner = document.getElementById('banner');
+    banner.style.height = height + 'px';
+
+}
