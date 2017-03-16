@@ -1,0 +1,37 @@
+.firstNav {
+    background-color: #25396e;
+    height: 39px;
+    width: 300px;
+    border-bottom: 1px solid #182848;
+}
+.verticalLine {
+    float: left;
+    width: 4px;
+    border-right: 2px solid #1478FF;
+    height: 40px;
+}
+.firstContent {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    padding-left: 14px;
+    font-weight: 600;
+}
+.firstContentFrom{
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    padding-left: 20px;
+    font-weight: 600;
+}
+.showChildren {
+    display: block;
+
+}
+.hideChildren{
+    display: none;
+}
