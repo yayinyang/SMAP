@@ -226,7 +226,7 @@ span{
 }
 #dayProduceIcon{
     background: url('../img/produceService/dayProduce.png') no-repeat;
-    width:110px;
+    background-position: center;
     height: 90px;
 
 }
@@ -242,8 +242,8 @@ span{
 }
 #monthProduceIcon{
     background: url('../img/produceService/monthProduce.png') no-repeat;
-    width:110px;
     height: 90px;
+    background-position: center;
 }
 #monthProduce:hover{
     background: url('../img/produceService/selectProductService.png') no-repeat top;
@@ -257,7 +257,7 @@ span{
 }
 #seasonProduceIcon{
     background: url('../img/produceService/seasonProduce.png') no-repeat;
-    width:110px;
+    background-position: center;
     height: 90px;
 }
 #seasonProduce:hover{
