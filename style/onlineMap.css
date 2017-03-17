@@ -151,7 +151,7 @@ body{
     height: 30px;
     font-size: 12px;
     line-height: 30px;
-    max-width: 210px;
+   /* max-width: 210px;*/ //文字过多会串行，解决办法待沟通
     overflow: hidden;
     color: #333333;
     vertical-align: middle;
