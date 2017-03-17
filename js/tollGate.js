@@ -51,9 +51,12 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.noSearchResult = {};
     $scope.exChangeInput = function(){
         var tmp = $scope.startTollGate;
+        var tmpPid = $scope.startPid;
         $scope.startTollGate = $scope.endTollGate;
+        $scope.startPid = $scope.endPid;
         $scope.endTollGate = tmp;
-    }
+        $scope.endPid = tmpPid;
+    };
     $scope.showChoosedCity = function (arg){
         if(arg==='nowCity'){
             $scope.nowCity = {

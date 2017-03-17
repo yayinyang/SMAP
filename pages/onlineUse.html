@@ -163,8 +163,8 @@
                          class="box-shadow firstMenu"
                          onmouseover="showOnlineUse()"
                          onmouseleave="hideOnlineUse()">
-                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">收费信息查询</a></div>
-                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">地图数据查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 3px 2px  #000000;text-align: center;"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">收费信息查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 3px 2px #000000;text-align: center;"><a href="onlineUse.html" style="font-size: 14px; color: white;text-decoration: none">地图数据查询</a></div>
                     </div>
                 </div>
             </div>
@@ -215,7 +215,7 @@
                            id="startStation"
                            ng-model="startTollGate"
                            ng-change="searchStartTollGate()"
-                           ng-focus="searchStartTollGate()"
+
                            style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
                     >
                     <img
@@ -230,7 +230,6 @@
                            ng-style="endStationStyle"
                            id="endStation"
                            ng-model="endTollGate"
-                           ng-focus="searchEndTollGate()"
                            ng-change="searchEndTollGate()"
                            style="background-image:url('../img/onlineMap/finishingpoint.png');"
                     >
