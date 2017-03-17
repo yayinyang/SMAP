@@ -20,6 +20,7 @@ $(function () {
         $('#tilesContent').empty();
         $('#tilesContent').text(JSON.stringify(data, null, 4));
     });
+    $()
 });
 function tileResult() {
     var level = $('#tileLevel').val();

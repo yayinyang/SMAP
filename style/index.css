@@ -530,7 +530,7 @@ a>div:hover{
 /********************************dataService*******************************/
 .showTypeList {
     padding: 0px 50px 0px 60px;
-    line-height: 40px;
+    line-height: 30px;
     color: rgba(37, 57, 110, 0.5);
     font-size: 14px;
     font-weight: bold;
@@ -559,20 +559,6 @@ tr>td {
     font-size: 14px;
     font-weight: normal;
     border-bottom: 1px solid #dddddd;
-}
-.api_Input {
-    border-radius: 4px;
-    color: #000000;
-    font-size: 14px;
-    width: 470px;
-    height: 30px;
-    display: inline-block;
-    box-shadow: none;
-    border: 1px solid #ccc;
-}
-.api_Input:focus {
-    border-color: #5693ff;
-    box-shadow: none;
 }
 .arrowNormal{
     background: url('../img/produceService/arrowActive.png') no-repeat;

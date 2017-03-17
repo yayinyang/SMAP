@@ -128,14 +128,17 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         $('#showApiName').empty();
         $scope.jumpFlag = '';
         $scope.jumps = JumpConstant[service.type];
-        $scope.jumpHeight.height = 30 * $scope.jumps.length + 'px';
-        if (service.type === 'summary') {
-            $('#apiPage').load('../pages/api/summary.html');
+        if ($scope.jumps) {
+            $scope.jumpHeight.height = 30 * $scope.jumps.length + 'px';
+            if (service.type === 'summary') {
+                $('#apiPage').load('../pages/api/summary.html');
+            }
+            if (service.type === 'code') {
+                $('#apiPage').load('../pages/api/codeDescription.html');
+            }
+        } else {
+            $scope.jumpHeight = 0;
         }
-        if (service.type === 'code') {
-            $('#apiPage').load('../pages/api/codeDescription.html');
-        }
-
         $scope.services.forEach(function (item, index) {
             if (index === num) {
                 item.flag = !item.flag;
