@@ -84,12 +84,22 @@
 .apiResultContainer {
     width: 688px;
     height: 298px;
-    border: 1px solid #bdc3d3;
+    /*border: 1px solid #bdc3d3;*/
 }
 .apiResultButtonsContainer {
     height: 24px;
     width: 140px;
     padding-left: 19px;
+}
+.apiButtonOfUndo{
+    float: left;
+    background-color: #74666c;
+    height: 24px;
+    width: 60px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 24px;
+    color: #fff;
 }
 .apiButtonOfRun {
     float: left;
@@ -101,6 +111,11 @@
     line-height: 24px;
     color: #fff;
 }
+.apiButtonOfRun:hover,
+.apiButtonOfUndo:hover
+{
+    cursor: pointer;
+}
 .apiButtonOfReset {
     background-color: #e66a98;
     height: 24px;
@@ -108,6 +123,9 @@
     font-size: 14px;
     color: #fff;
     line-height: 24px;
+}
+.apiButtonOfReset:hover{
+    cursor: pointer;
 }
 .apiShowResultName {
     height: 16px;
@@ -134,5 +152,24 @@
     height: 100%;
     width: 100%;
     font-size: 14px;
+}
+.apiInputWidth {
+    padding-left: 40px;
+    width: 400px;
+    float: left;
+}
+.api_Input {
+    border-radius: 4px;
+    color: #000000;
+    font-size: 14px;
+    width: 440px;
+    height: 30px;
+    display: inline-block;
+    box-shadow: none;
+    border: 1px solid #ccc;
+}
+.api_Input:focus {
+    border-color: #5693ff;
+    box-shadow: none;
 }
 /******************左侧导航栏****************************/
