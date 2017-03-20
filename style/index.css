@@ -65,7 +65,7 @@ span{
 .menu {
     display: none;
     float: left;
-    height: 120px;
+    height: 80px;
     line-height: 22px;
     width: 76px;
     background: rgb(10, 33, 70);
@@ -340,6 +340,7 @@ span{
     background: url('../img/develop/moreNormal.png') no-repeat;
     width: 120px;
     height: 40px;
+    cursor: pointer;
 }
 #basicInterfaceMore:hover {
     background: url('../img/develop/moreActive.png');
@@ -360,6 +361,7 @@ span{
     width: 120px;
     height: 40px;
     float: right;
+    cursor: pointer;
 }
 #extendedInterfaceMore:hover {
     background: url('../img/develop/moreActive.png');
@@ -499,10 +501,14 @@ a>div:hover{
     color:#fff;
 }
 #produceHouseNavOfSon>div:hover,
-#onlineUse>div:hover
+#onlineUse:hover
 {
     background-color:#1478ff;
     cursor: pointer;
+}
+#onlineUse > a:hover
+{
+    color: #1478FF !important;
 }
 .pageUpIcon{
     background: url('../img/productWarehouse/pageUp.png') no-repeat;

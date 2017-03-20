@@ -47,7 +47,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['rgba(20,120,255,0.8)', 'rgba(20,120,255,0.7)', 'rgba(20,120,255,0.7)'];
+    $scope.colorArr = ['rgba(20,120,255,0.1)', 'rgba(20,120,255,0.5)', 'rgba(20,120,255,0.3)'];
     $scope.noSearchResult = {};
     $scope.exChangeInput = function(){
         var tmp = $scope.startTollGate;
@@ -154,7 +154,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             .setDOMContent(div)
             .addTo(map);
         $scope.popuArr.push(Toll);
-    }
+    };
     //终点图标
     $scope.createEndTollIcon = function (data){
         var div = window.document.createElement('div');
@@ -167,7 +167,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             .setDOMContent(div)
             .addTo(map);
         $scope.popuArr.push(Toll);
-    }
+    };
     // 搜索起点
     $scope.searchStartTollGate = function () {
         var startUrl = '';
