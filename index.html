@@ -26,14 +26,18 @@
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                <div id="solution" style="height: 36px; padding: 10px;">
-                        <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-                           解决方案
-                        </a>
+                <div id="solution" style="height: 36px;width: 84px; text-align: center;padding: 10px;" onmouseover="showMenu('onlineUse',1)" onmouseleave="hideMenu('onlineUse')">
+                    <a href="pages/undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                        解决方案
+                    </a>
                 </div>
                 <div id="solutionBottom"
                      style="height: 4px;width: 100%;">
-
+                </div>
+                <div id="onlineUse" style="height: 40px;box-shadow:0 10px 10px #000;text-align: center;vertical-align: middle;background: rgb(10, 33, 70);text-shadow: 0px 1px 10px #000000;display: none" onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
+                    <a href="pages/onlineUse.html" style="color: white;text-decoration: none">
+                        收费信息查询
+                    </a>
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
@@ -87,16 +91,6 @@
                                 产品下载
                             </span>
                         </div>
-                        <div
-                                style=" padding: 0 10px 10px 10px;"
-                                onmouseover="showOnlineUse()"
-                                onmouseleave="hideOnlineUse()"
-                        >
-                            <span>
-                                在线体验
-                            </span>
-                        </div>
-
                          <!--<div style="padding: 20px 10px">
                             <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
                         </div>-->
@@ -148,16 +142,6 @@
                                     style="font-size: 14px; text-decoration: none;">
                                 NIMIF-K</a>
                         </div>
-                    </div>
-                    <div
-                            id="onlineUse"
-                            class="box-shadow"
-                            style="display: none;margin-left: 1px; color: #fff;float: left; margin-top:75px;width: 110px;height:80px; z-index: 10;background: rgb(10, 33, 70)"
-                            onmouseover="showOnlineUse()"
-                            onmouseleave="hideOnlineUse()"
-                    >
-                        <div  style="height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000"><a href="pages/onlineUse.html" style="color: white;text-decoration: none">收费信息查询</a></div>
-                        <div  style="height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000"><a href="pages/onlineUse.html" style="color: white;text-decoration: none">地图数据查询</a></div>
                     </div>
                 </div>
             </div>

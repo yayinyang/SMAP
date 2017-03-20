@@ -17,6 +17,11 @@ function showMenu(type, num) {
             $('.menuWaresGrid').css('background-color', '#60c5ff');
             $('#produce').css('background-color', '#1478ff');
             break;
+        case 'onlineUse' :
+            $('#onlineUse').css('display', 'block');
+            $('#solution').css('background-color', '#1478ff');
+            $('#solutionBottom').css('background-color', '#60c5ff');
+            break;
     }
 
 }
@@ -39,6 +44,11 @@ function hideMenu(type) {
             $('.menuWaresGrid').css('display', 'none');
             $('#produce').css('background-color', 'transparent');
             break;
+            case 'onlineUse' :
+            $('#onlineUse').css('display', 'none');
+            $('#solution').css('background-color', 'transparent');
+            $('#solutionBottom').css('background-color', 'transparent');
+            break;
     }
 
 }
@@ -48,7 +58,6 @@ function showOnlineUse(){
 function hideOnlineUse() {
     $('#onlineUse').css('display','none');
 }
-
 function hideIndexMenu() {
     $('#serviceInterfaceNav').css('display', 'none');
     $('.menuDataServiceGrid').css('display', 'none');

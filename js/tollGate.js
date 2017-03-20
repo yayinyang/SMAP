@@ -154,7 +154,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             .setDOMContent(div)
             .addTo(map);
         $scope.popuArr.push(Toll);
-    }
+    };
     //终点图标
     $scope.createEndTollIcon = function (data){
         var div = window.document.createElement('div');
@@ -167,7 +167,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             .setDOMContent(div)
             .addTo(map);
         $scope.popuArr.push(Toll);
-    }
+    };
     // 搜索起点
     $scope.searchStartTollGate = function () {
         var startUrl = '';
