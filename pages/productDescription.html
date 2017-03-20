@@ -178,8 +178,8 @@
         height: 600px;">
                 <div ng-repeat="item  in descriptions">
                     <div style="background-color: #25396e;height: 40px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(item, $index)">
-                        <div style="float:left;border-right: 2px solid #1478FF;height: 40px;padding-left: 4px" ng-show="item.flag"></div>
-                        <div style="float:left;height: 40px;line-height: 40px; font-size: 14px;color: #fff;padding-left: 15px;font-weight: 600" ng-bind="item.name"></div>
+                        <div style="float: left;width: 4px;border-right: 2px solid #1478FF;height: 40px;" ng-show="item.flag"></div>
+                        <div ng-class="{true: 'firstContent', false: 'firstContentFrom'}[item.flag]"  ng-bind="item.name"></div>
                         <div style="height: 40px;float: right;padding-right: 20px;" ng-if="item.type !=='strategyProduct'">
                             <div style="height: 10px;width:5px;padding:15px 0px">
                                 <div   ng-class="{true:'arrowNormal', false:'arrowActive'}[item.flag]"></div>
@@ -237,6 +237,26 @@
     </div>
 </div>
 </body>
+<style>
+    .firstContent{
+        float:left;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #fff;
+        padding-left: 9px;
+        font-weight: 600
+    }
+    .firstContentFrom{
+        float:left;
+        height: 40px;
+        line-height: 40px;
+        font-size: 14px;
+        color: #fff;
+        padding-left: 15px;
+        font-weight: 600
+    }
+</style>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
