@@ -124,6 +124,9 @@ body{
 .onlineMap .searchResultList ul .searchResult:hover div.stationLocation {
     color:#ffffff;
 }
+.onlineMap .searchResultList ul .searchResult:hover div.resultStation{
+
+}
 .onlineMap .searchResultList ul .searchResult:hover  span.logo{
     background-image: url("../img/onlineMap/search_active.png");
 } 
@@ -147,17 +150,19 @@ body{
 }
 .searchResult .resultStation{
     display: inline-block;
-    padding-right: 10px;
     height: 30px;
     font-size: 12px;
     line-height: 30px;
-    max-width: 210px;
+    max-width: 190px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     overflow: hidden;
     color: #333333;
     vertical-align: middle;
 }
 .searchResult .stationLocation{
     display: inline-block;
+    padding-left: 15px;
     height: 30px;
     font-size: 12px;
     color: #cccccc;

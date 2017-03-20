@@ -214,6 +214,7 @@
                            class="searchbar placeholderStyle "
                            id="startStation"
                            ng-model="startTollGate"
+                           ng-focus="searchStartTollGate()"
                            ng-change="searchStartTollGate()"
 
                            style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
@@ -230,6 +231,7 @@
                            ng-style="endStationStyle"
                            id="endStation"
                            ng-model="endTollGate"
+                           ng-focus="searchEndTollGate()"
                            ng-change="searchEndTollGate()"
                            style="background-image:url('../img/onlineMap/finishingpoint.png');"
                     >
@@ -297,7 +299,7 @@
                 </div>
             </div>
         </div>
-        <div id="map">
+        <div id="map" ng-click="emptyTollGate()">
             <div class="changeMapSizeDiv">
                 <button class="addBtn" onclick="changeZoom('add')"></button>
                 <button class="subBtn" onclick="changeZoom('sub')"></button>

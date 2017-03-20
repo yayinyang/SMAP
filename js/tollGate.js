@@ -80,6 +80,10 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             };
         }
     };
+    //搜索div失去焦点时清空预览项
+    $scope.emptyTollGate = function(){
+        $scope.tollGateArr = [];
+    };
     // 清空
     $scope.clearLines = function () {
         var geojson = {
