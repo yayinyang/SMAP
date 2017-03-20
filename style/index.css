@@ -303,6 +303,7 @@ span{
 /**********************************开发API***************************/
 #developContainer{
     height: 660px;
+    overflow: hidden;
     background-color: #ffffff;
 }
 #developIcon {

@@ -42,12 +42,12 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             "line-cap": "round"
         },
         "paint": {
-            "line-color": "rgba(20,120,255,1)",
+            "line-color": "rgba(20,120,255,0.8)",
             "line-width": 8
         }
     };
     $scope.linksArr = [];
-    $scope.colorArr = ['rgba(20,120,255,0.1)', 'rgba(20,120,255,0.5)', 'rgba(20,120,255,0.3)'];
+    $scope.colorArr = ['rgba(20,120,255,0.8)', 'rgba(20,120,255,0.3)', 'rgba(20,120,255,0.3)'];
     $scope.noSearchResult = {};
     $scope.exChangeInput = function(){
         var tmp = $scope.startTollGate;
