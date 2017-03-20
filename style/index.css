@@ -371,7 +371,7 @@ span{
 #solutionContainer{
     background: url('../img/solution/solution.png') no-repeat;
     height: 600px;
-    background-size: cover;
+    background-size: 100% 100%;
 }
 #solutionMarksContainer{
     /*background: url('../img/solution/solutionMarks.png') no-repeat;*/
