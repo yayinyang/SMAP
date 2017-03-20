@@ -198,7 +198,7 @@
                                 <!--</div>-->
                             <!--</div>-->
                         <!--</div>-->
-                        <div style="width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">
+                        <div  ng-class="{true:'showBottomLine',false:'hideBottomLine'}[item.children.length > 0]">
                             <div  class="showTypeList">
                                 <div ng-repeat="obj in item.children" ng-click="changeDescriptionPages(obj)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
                                     {{obj.name}}
@@ -218,7 +218,7 @@
                     <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
                 </div>
                 <div style="float: left;  padding: 20px 0px " id="navigation">
-                    <ul style="list-style-type: none;">
+                    <ul style="list-style-type: none;height: 14px">
                         <li><a href="#">产品仓库</a></li>
                         <li>></li>
                         <li><a href="#">产品介绍</a></li>
@@ -255,6 +255,15 @@
         color: #fff;
         padding-left: 15px;
         font-weight: 600
+    }
+    .showBottomLine{
+        width: 100%;
+        background-color: #e9ebf0;
+        border-bottom: 1px solid #c2c7d6;
+    }
+    .hideBottomLine{
+        width: 100%;
+        background-color: #e9ebf0;
     }
 </style>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
