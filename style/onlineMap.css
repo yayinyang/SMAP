@@ -396,6 +396,9 @@ span.noResult{
     text-align: center;
     background-color: rgba(20,120,255,0.8);
 }
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .empPop{
+    /*height: 30px;*/
+}
 /***************************判断是否显示删除按钮****************************************************/
 .deleteBtn{
     display: none;
