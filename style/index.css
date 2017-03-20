@@ -374,9 +374,9 @@ span{
     background-size: cover;
 }
 #solutionMarksContainer{
-    background: url('../img/solution/solutionMarks.png') no-repeat;
+    /*background: url('../img/solution/solutionMarks.png') no-repeat;*/
     height: 600px;
-    background-size: cover;
+    /*background-size: cover;*/
 }
 #solutionIcon {
     float: left;
