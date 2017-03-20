@@ -7,175 +7,166 @@
 </head>
 <body>
 
-<div style="background: #25396e; height: 44px">
-    <div style="padding: 0px 210px;background: #25396e; height: 44px">
-        <div style="width:100%;height: 100%;">
-            <div style="float: right;">
-                <div id="homePage" class="topTittle">
-                    <div  style="height: 36px;padding: 10px">
-                        <a style="font-size: 14px;color: white;text-decoration: none" href="../index.html">
-                            首页
+<div style="background: #25396e; height: 40px">
+    <div style="padding: 0px 210px;background: #25396e; height: 40px">
+        <div style="display: inline-block;float: right;">
+            <div id="homePage" class="topTittle">
+                <div  style="height: 16px;padding: 10px">
+                    <a  href="../index.html" style="font-size: 14px;color: white;text-decoration: none">
+                        首页
+                    </a>
+                </div>
+                <div id="homePageBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                <div id="solution" style="height: 36px;width: 104px;text-align: center;"onmouseover="showMenu('onlineUse',1)" onmouseleave="hideMenu('onlineUse')">
+                    <a href="undevelopPage.html" style="height:26px;padding-top: 15px;display:inline-block;font-size: 14px;text-align:center;color: white;text-decoration: none">
+                        解决方案
+                    </a>
+
+                    <div id="solutionBottom"
+                         style="height: 4px;width: 100%;margin-top: -5px">
+                    </div>
+                    <div id="onlineUse" style="height: 40px;line-height:40px;box-shadow:0 10px 10px #000;text-align: center;background: rgb(10, 33, 70);text-shadow: 0 1px 10px #000000;display: none" onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
+                        <a href="onlineUse.html" style="color: white;font-size: 14px;text-decoration: none">
+                            收费信息查询
                         </a>
-                    </div>
-                    <div id="homePageBottom"
-                         style="height: 4px;width: 100%;">
-
-                    </div>
-                </div>
-                <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                    <div id="solution" style="height: 36px;width: 104px;text-align: center;" onmouseover="showMenu('onlineUse',1)" onmouseleave="hideMenu('onlineUse')">
-                        <a href="undevelopPage.html" style="height:36px;padding-top: 10px;display:inline-block;font-size: 14px;text-align:center;color: white;text-decoration: none">
-                            解决方案
-                        </a>
-
-                        <div id="solutionBottom"
-                             style="height: 4px;width: 100%;">
-                        </div>
-                        <div id="onlineUse" style="height: 40px;line-height:40px;box-shadow:0 10px 10px #000;text-align: center;background: rgb(10, 33, 70);text-shadow: 0 1px 10px #000000;display: none" onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
-                            <a href="onlineUse.html" style="color: white;text-decoration: none">
-                                收费信息查询
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                    <div id="service" style="height: 36px; padding: 10px;text-shadow: 0 1px 10px #000"
-                         onmouseleave="hideMenu('produceService')" onmouseover="showMenu('produceService', 0)">
-                        <span>
-                            产品服务
-                        </span>
-                    </div>
-                    <div id="serviceBottom"
-                         style="height: 4px;width: 100%;">
-                    </div>
-                    <div style="width: 76px;position: absolute;margin-top: -4px;"
-                         onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
-                        <div class="menuDataServiceGrid" ></div>
-                        <div id="serviceInterfaceNav" class="menu box-shadow" style="height: 40px">
-                            <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000">
-                            <span onclick=" hideWaresMenu()">
-                                服务接口
-                            </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div  class="topTittle" style="padding: 0px 0px 0px 50px;" >
-                    <div id="produce" style="height: 36px; padding: 10px;"  onmouseleave="hideMenu('produceWares')" onmouseover="showMenu('produceWares', 0)">
-                        <span >
-                            产品仓库
-                        </span>
-                    </div>
-                    <div id="produceBottom"
-                         style="height: 4px;width: 100%;">
-                    </div>
-                    <div style="width: 300px;position: absolute;margin-top: -4px;display:inline-block"
-                         onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
-                        <div class="menuWaresGrid" ></div>
-                        <div id="produceHouseNav"  class="menu box-shadow" style="position: absolute;z-index: 25">
-                            <div style="padding: 10px 10px" onclick="directToDescription()">
-                                <span >产品介绍</span>
-                            </div>
-                            <div
-                                    style=" padding: 10px 10px;text-shadow: 0px 1px 10px #000000"
-                                    onmouseover="showSonMenu()"
-                                    onmouseleave="hideSonMenu()"
-                            >
-                                <span>产品下载</span>
-                            </div>
-
-                            <!--<div style="padding: 20px 10px">
-                               <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
-                           </div>-->
-                        </div>
-                        <div id="produceHouseNavOfSon"
-                             class="box-shadow"
-                             onmouseenter="showSonMenu()"
-                             onmouseleave="hideSonMenu()"
-                             style="
-                             margin-left: -1px;
-                             display:none;
-                             color: #fff;
-                             float: left;
-                             width: 100px;
-                             height:240px;
-                             background: rgb(10, 33, 70);
-                             position: absolute;
-                             z-index: 25;
-                             left: 78px"
-                        >
-                            <div style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=11&&specName=IDB"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    IDB
-                                </a>
-                            </div>
-                            <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=12&&specName=NIMIF-G"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    NIMIF-G</a>
-                            </div>
-                            <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=13&&specName=NAVEX"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    NAVEX</a>
-                            </div>
-                            <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=14&&specName=AIF"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    AIF</a>
-                            </div>
-                            <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=15&&specName=NIGDF-G"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    NIGDF-G</a>
-                            </div>
-                            <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
-                                <a
-                                        onclick="hideMenu('produceWares')"
-                                        href="productWarehouse.html?specid=16&&specName=NIMIF-K"
-                                        style="font-size: 14px; text-decoration: none;">
-                                    NIMIF-K</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
-                    <div id="support" style="height: 36px; padding: 10px;">
-                        <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-                            技术支持
-                        </a>
-                    </div>
-                    <div id="supportBottom"
-                         style="height: 4px;width: 100%;">
-
-                    </div>
-                </div>
-                <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
-                    <div id="login" style="height: 36px; padding: 10px;">
-                        <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
-                            登录
-                        </a>
-                    </div>
-                    <div id="loginBottom"
-                         style="height: 4px;width: 100%;">
-
                     </div>
                 </div>
             </div>
-            <div id="logo"></div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                <div id="service" style="height: 16px; padding: 10px;text-shadow: 0 1px 10px #000"
+                     onmouseleave="hideMenu('produceService')" onmouseover="showMenu('produceService', 0)">
+                        <span>
+                            产品服务
+                        </span>
+                </div>
+                <div id="serviceBottom"
+                     style="height: 4px;width: 100%;">
+                </div>
+                <div style="width: 76px;position: absolute;margin-top: -4px"
+                     onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
+                    <div class="menuDataServiceGrid" ></div>
+                    <div id="serviceInterfaceNav" class="menu box-shadow" style="height: 40px">
+                        <div style="padding: 10px 10px;font-size: 14px;text-shadow: 0 1px 10px #000" onclick="hideServiceMenu()">
+                            <span>服务接口</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px;" >
+                <div id="produce" style="height: 16px; padding: 10px;"  onmouseleave="hideMenu('produceWares')" onmouseover="showMenu('produceWares', 0)">
+                        <span >
+                            产品仓库
+                        </span>
+                </div>
+                <div id="produceBottom"
+                     style="height: 4px;width: 100%;">
+                </div>
+                <div style="width: 300px;position: absolute;margin-top: -4px"
+                     onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
+                    <div class="menuWaresGrid" ></div>
+                    <div id="produceHouseNav"  class="menu box-shadow">
+                        <div style="padding: 10px 10px" onclick="directToDescription(1)">
+                            <span >产品介绍</span>
+                        </div>
+                        <div
+                                style=" padding: 10px 10px; text-shadow: 0px 1px 10px #000000"
+                                onmouseover="showSonMenu()"
+                                onmouseleave="hideSonMenu()"
+                        >
+                            <span>产品下载</span>
+                        </div>
+                        <!--<div style="padding: 20px 10px">
+                            <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
+                        </div>-->
+                    </div>
+                    <div id="produceHouseNavOfSon"
+                         class="box-shadow"
+                         onmouseenter="showSonMenu()"
+                         onmouseleave="hideSonMenu()"
+                         style="display:none; color: #fff;float: left;width: 100px;height:240px; z-index: 4;background: rgb(10, 33, 70)">
+                        <div style="padding: 10px;">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=11&&specName=IDB"
+                                    style="font-size: 14px; text-decoration: none;">
+                                IDB
+                            </a>
+                        </div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=12&&specName=NIMIF-G"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIMIF-G</a>
+                        </div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=13&&specName=NNAVEX"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NAVEX</a>
+                        </div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=14&&specName=AIF"
+                                    style="font-size: 14px; text-decoration: none;">
+                                AIF</a>
+                        </div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=15&&specName=NIGDF-G"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIGDF-G</a>
+                        </div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=16&&specName=NIMIF-K"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIMIF-K</a>
+                        </div>
+                    </div>
+                    <div id="onlineUse"
+                         class="box-shadow firstMenu"
+                         onmouseover="showOnlineUse()"
+                         onmouseleave="hideOnlineUse()">
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;font-size:14px;text-decoration: none">收费信息查询</a></div>
+                        <div  style="padding: 10px;text-shadow: 0px 1px 10px #000000"><a href="onlineUse.html" style="color: white;font-size:14px;text-decoration: none">地图数据查询</a></div>
+                    </div>
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
+                <div id="support" style="height: 16px; padding: 10px;">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                        技术支持
+                    </a>
+                </div>
+                <div id="supportBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
+            <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
+                <div id="login" style="height: 16px; padding: 10px;">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                        登录
+                    </a>
+                </div>
+                <div id="loginBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
         </div>
+        <div id="logo"></div>
+    </div>
 </div>
 <div style="width: 100%;height: 100%;padding: 100px 0">
     <table style="width: 100%;height: 100%">
