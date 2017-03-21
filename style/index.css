@@ -501,13 +501,12 @@ a>div:hover{
 {
     color:#fff;
 }
-#produceHouseNavOfSon>div:hover,
-#onlineUse:hover
+#produceHouseNavOfSon>div:hover
 {
     background-color:#1478ff;
     cursor: pointer;
 }
-#onlineUse > a:hover
+#onlineUse > div >a:hover
 {
     color: #1478FF !important;
 }

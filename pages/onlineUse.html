@@ -32,18 +32,23 @@
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                <div id="solution" style="height: 36px;width: 104px;text-align: center;" onmouseover="showMenu('onlineUse',1)" onmouseleave="hideMenu('onlineUse')">
-                    <a href="undevelopPage.html" style="height:36px;padding-top: 16px;display:inline-block;font-size: 14px;text-align:center;color: white;text-decoration: none">
+                <div id="solution" style="padding: 16px 10px 0 10px;text-shadow: 0 1px 10px #000;width: 104px;text-align: center;"
+                     onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                    <a href="undevelopPage.html" style="display:inline-block;font-size: 14px;color: white;text-decoration: none">
                         解决方案
                     </a>
-
-                    <div id="solutionBottom"
-                         style="height: 4px;width: 100%;">
-                    </div>
-                    <div id="onlineUse" style="height: 40px;line-height:40px;position:relative;z-index:20;box-shadow:0 10px 10px #000;text-align: center;background: rgb(10, 33, 70);text-shadow: 0 1px 10px #000000;display: none" onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
-                        <a href="onlineUse.html" style="color: white;text-decoration: none">
-                            收费信息查询
-                        </a>
+                </div>
+                <div id="solutionBottom"
+                     style="height: 4px;width: 100%;"  onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                </div>
+                <div style="width: 104px;position: absolute;margin-top: 0;"
+                     onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
+                    <div id="onlineUse" class="menu box-shadow" style="height: 40px;width: 104px">
+                        <div style="padding: 10px 0;font-size: 14px;text-align: center">
+                            <a href="onlineUse.html" style="color: white;text-decoration: none">
+                                收费信息查询
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,15 +199,15 @@
     <div style="height: 56px;text-align: left;font-weight: 400;margin-top: -40px;">
         <div style="width: 740px;">
             <div style="height: 56px;">
-                <div style="float: left; padding: 20px 0px">
+                <div style="float: left; padding: 20px 0 0 0">
                     <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
                 </div>
-                <div style="float: left;  padding: 20px 0 " id="navigation">
+                <div style="float: left;  padding: 13px 0 0 0 " id="navigation">
                     <ul style="list-style-type: none;">
                         <li><a href="#">产品仓库</a></li>
-                        <li>></li>
+                        <li style="font-size: 20px">></li>
                         <li><a href="#">在线体验</a></li>
-                        <li>></li>
+                        <li style="font-size: 20px">></li>
                         <li><a href="#" id="apiType">收费信息查询</a></li>
                     </ul>
                 </div>

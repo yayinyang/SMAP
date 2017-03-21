@@ -23,18 +23,23 @@
                 </div>
             </div>
             <div  class="topTittle" style="padding: 0px 0px 0px 50px">
-                <div id="solution" style="height: 16px;padding: 10px 0;width: 104px;text-align: center;"onmouseover="showMenu('onlineUse',1)" onmouseleave="hideMenu('onlineUse')">
-                    <a href="undevelopPage.html" style="display:inline-block;font-size: 14px;text-align:center;color: white;text-decoration: none">
+                <div id="solution" style="padding: 10px 0 0 0;text-shadow: 0 1px 10px #000;width: 104px;text-align: center;"
+                     onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                    <a href="undevelopPage.html" style="display:inline-block;font-size: 14px;color: white;text-decoration: none">
                         解决方案
                     </a>
-
-                    <div id="solutionBottom"
-                         style="height: 4px;width: 100%;">
-                    </div>
-                    <div id="onlineUse" style="height: 40px;line-height:40px;box-shadow:0 10px 10px #000;text-align: center;background: rgb(10, 33, 70);text-shadow: 0 1px 10px #000000;display: none" onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
-                        <a href="onlineUse.html" style="color: white;font-size: 14px;text-decoration: none">
-                            收费信息查询
-                        </a>
+                </div>
+                <div id="solutionBottom"
+                     style="height: 4px;width: 100%;"  onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                </div>
+                <div style="width: 104px;position: absolute;margin-top: 0;"
+                     onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
+                    <div id="onlineUse" class="menu box-shadow" style="height: 40px;width: 104px">
+                        <div style="padding: 10px 0;font-size: 14px;text-align: center">
+                            <a href="onlineUse.html" style="color: white;text-decoration: none">
+                                收费信息查询
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
