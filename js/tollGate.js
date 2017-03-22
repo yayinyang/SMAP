@@ -123,6 +123,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endPid = '';
         }
         $scope.tollGateArr.length = 0;
+        $scope.clearLines();
     };
     // 获取省 并定位
     $scope.locationProvince = function (data) {
