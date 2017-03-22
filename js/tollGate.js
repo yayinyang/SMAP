@@ -131,12 +131,18 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         map.flyTo({center:[ data.point.x, data.point.y]});
     };
     // 生成弹出框
-    $scope.createPop = function (data) {
+    $scope.createPop = function (data,index) {
         var div = window.document.createElement('div');
         div.style.textAlign = 'center';
-        div.innerHTML =
-            '<div class="feePop">'+data.fee +'元</div>' +
-            '<div class="tipPop"></div>';
+        if(index===0){
+            div.innerHTML =
+                '<div class="feePopDeep">'+data.fee +'元</div>' +
+                '<div class="tipPopDeep"></div>';
+        }else{
+            div.innerHTML =
+                '<div class="feePop">'+data.fee +'元</div>' +
+                '<div class="tipPop"></div>';
+        }
         var popup = new mapboxgl.Popup({closeOnClick: false})
           .setLngLat(data.pointGeoJson.coordinates)
           .setDOMContent(div)
@@ -307,7 +313,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                                 "geometry": data[i].geoJson
                             }
                         };
-                        $scope.createPop(data[i]);
+                        $scope.createPop(data[i],i);
                         $scope.originLayer.source = source;
                         map.addLayer($scope.originLayer);
                     }
