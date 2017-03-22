@@ -472,14 +472,20 @@ input[type="radio"] {
     width:100%;
 }
 .downloadNormal{
-    background: url('../img/productWarehouse/downloadNormal.png') no-repeat;
+    /*background: url('../img/productWarehouse/downloadNormal.png') no-repeat;*/
+    background: white;
+    border: 1px solid #74666c;
+    font-size: 14px;
+    color: #74666c;
     width: 60px;
+    text-align: center;
+    line-height: 22px;
     height: 24px;
 }
 a>div:hover{
-    background: url('../img/productWarehouse/downloadActive.png') no-repeat;
-    width: 60px;
-    height: 24px;
+    /*background: url('../img/productWarehouse/downloadActive.png') no-repeat;*/
+    background:  #74666c;
+    color: #ffffff;
 }
 .darkBlueIcon {
     background:  url("../img/productWarehouse/darkBlueIcon.png") no-repeat 50% 50%;
