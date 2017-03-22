@@ -338,13 +338,19 @@ span{
     width: 100%;
 }
 #basicInterfaceMore {
-    background: url('../img/develop/moreNormal.png') no-repeat;
+    /*background: url('../img/develop/moreNormal.png') no-repeat;*/
+    background: white;
+    border: 1px solid #74666c;
     width: 120px;
+    font-size: 18px;
+    color: #74666c;
     height: 40px;
+    line-height: 38px;
     cursor: pointer;
 }
 #basicInterfaceMore:hover {
-    background: url('../img/develop/moreActive.png');
+   background:  #74666c;
+    color: #ffffff;
 }
 #extendedInterface {
     float: right;
@@ -358,14 +364,19 @@ span{
     height:240px;
 }
 #extendedInterfaceMore {
-    background: url('../img/develop/moreNormal.png') no-repeat;
+    background: white;
+    border: 1px solid #74666c;
     width: 120px;
+    font-size: 18px;
+    color: #74666c;
     height: 40px;
-    float: right;
+    line-height: 38px;
     cursor: pointer;
+    float: right;
 }
 #extendedInterfaceMore:hover {
-    background: url('../img/develop/moreActive.png');
+    background:  #74666c;
+    color: #ffffff;
 }
 /*****************************地图***********************************/
 #solutionContainer{

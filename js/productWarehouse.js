@@ -80,7 +80,7 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
                     top: 5,
                     right: 10,
                     bottom: 5,
-                    left: 3
+                    left: 1
                 },
                 rightAlign: true
             },
