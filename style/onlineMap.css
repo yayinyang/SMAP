@@ -7,7 +7,7 @@ html,body{
     height: 100%;
 }
 body{
-    padding-top: 40px;
+    padding-top: 44px;
 }
 .info:hover{
     color: #3385ff;
@@ -383,7 +383,7 @@ span.noResult{
     margin: 0 auto;
     border-width:6px 3px 0;
     border-style:solid;
-    border-color:#1478FF transparent transparent;
+    border-color:rgba(20,120,255,0.8) transparent transparent;
 }
 .onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPop{
     width: 0;
