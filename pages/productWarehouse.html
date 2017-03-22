@@ -334,58 +334,58 @@
                     <div style="float: left;padding-left: 10px"><span style="font-size: 14px; color: #25396e">各要素比例</span></div>
                 </div>
                 <div style="width: 100%; height: 300px">
-                    <div style="padding: 16px 0px 0px  20px">
+                    <div>
                         <nvd3 options='options' data='chartData'></nvd3>
                     </div>
                 </div>
                 <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
-                    <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">POI</span></div>
-                    <div style="float: left;width: 50%"><span style="font-size: 14px; color: #25396e">道路</span></div>
+                    <div style="float: left; width: 50%;text-align: left"><span style="font-size: 14px; color: #25396e">POI</span></div>
+                    <div style="float: left;width: 50%;text-align: left"><span style="font-size: 14px; color: #25396e">道路</span></div>
                 </div>
                 <div style="width: 100%; height: 200px; display: inline-block">
-                    <div style="float: left; width: 50%">
-                        <div style="padding: 10px">
+                    <div style="float: left; width: 50%;text-align: left">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">新增:{{poiData[0]}}个</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">删除:{{poiData[1]}}个</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">修改:{{poiData[2]}}个</span>
                         </div>
                     </div>
-                    <div style="float: left; width: 50%">
-                        <div style="padding: 10px">
+                    <div style="float: left; width: 50%;text-align: left">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">新增:{{roadData[0]}}公里</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">删除:{{roadData[1]}}公里</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">修改:{{roadData[1]}}公里</span>
                         </div>
                     </div>
                 </div>
                 <div style="width: 100%; height: 40px;border-bottom: 1px solid #bdc3d3;display: inline-block">
-                    <div style="float: left; width: 50%"><span style="font-size: 14px; color: #25396e">道路(按等级统计)</span></div>
+                    <div style="float: left; width: 50%;text-align: left"><span style="font-size: 14px; color: #25396e">道路(按等级统计)</span></div>
                 </div>
                 <div style="width: 100%; height: 200px; display: inline-block">
-                    <div style="float: left; width: 50%">
-                        <div style="padding: 10px">
+                    <div style="float: left; width: 50%;text-align: left">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">高速:{{highSpeed}}公里</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">城高:{{interHighSpeed}}公里</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">国道:{{nationalRoad}}公里</span>
                         </div>
                     </div>
-                    <div style="float: left; width: 50%">
-                        <div style="padding: 10px">
+                    <div style="float: left; width: 50%;text-align: left">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">省道:{{provincialRoad}}公里</span>
                         </div>
-                        <div style="padding: 10px">
+                        <div style="padding: 10px 0">
                             <span style="font-size: 14px; color: #25396e">其他:{{otherRoad}}公里</span>
                         </div>
                     </div>
@@ -397,7 +397,7 @@
                 <div style="width: 100%;height: 800px; padding-top: 8px; display: inline-block">
                     <div ng-repeat="province in provinces" style="float: left; height:24px;padding-right: 6px;padding-bottom: 16px">
                         <div class="provinceSpan">
-                            <span>{{province}}</span>
+                            <span style="display: block;line-height: 24px ">{{province}}</span>
                         </div>
                     </div>
                 </div>
