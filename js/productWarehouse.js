@@ -78,9 +78,9 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
             legend: {
                 margin: {
                     top: 5,
-                    right: 10,
+                    right: 30,
                     bottom: 5,
-                    left: 1
+                    left: 0
                 },
                 rightAlign: true
             },
