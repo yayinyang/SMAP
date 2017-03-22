@@ -122,7 +122,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endTollGate = '';
             $scope.endPid = '';
         }
+        $scope.clearLines(); // 清空地图上的数据
         $scope.tollGateArr.length = 0;
+
     };
     // 获取省 并定位
     $scope.locationProvince = function (data) {
@@ -187,7 +189,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endFlag = false;
             $scope.printNotice = "";
             $scope.tollGateArr = data;
-            if($scope.tollGateArr.length == 0){
+            if($scope.tollGateArr.length === 0){
                 $scope.noSearchResult = {
                     display: 'block',
                 };
@@ -281,7 +283,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             features: [],
         };
         $scope.clearLines();
-        if($scope.startPid == '' || $scope.endPid == ''){
+        if($scope.startPid === '' || $scope.endPid === ''){
             $scope.noSearchResult = {
                 display: 'block',
                 height: 30 + 'px',
