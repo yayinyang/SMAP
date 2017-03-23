@@ -613,6 +613,7 @@ tr>td {
     text-align: center;
     padding-left: 6px;
     font-weight: 500;
+    border: none;
 }
 .jumpStyleActive{
     float: left;
@@ -622,6 +623,7 @@ tr>td {
     color: rgba(20, 120, 255, 0.8);
     text-align: center;
     padding-left: 4px;
+    border-left: 2px solid #1478ff;
     font-weight: 500;
 }
 .jumpStyle:hover{

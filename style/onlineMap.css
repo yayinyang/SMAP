@@ -415,8 +415,23 @@ span.noResult{
     text-align: center;
     background-color: rgba(20,120,255,0.3);
 }
-.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .empPop{
-    /*height: 30px;*/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popStartIcon{
+    background:url("../img/onlineMap/tollstation_star.png");
+    width: 25px;
+    height: 34px;
+    font-size: 12px;
+    color: #ffffff;
+    padding-top:3px;
+    padding-left:6px;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popEndIcon{
+    background:url("../img/onlineMap/tollstation_finish.png");
+    width: 25px;
+    height: 34px;
+    font-size: 12px;
+    color: #ffffff;
+    padding-top:3px;
+    padding-left:6px;
 }
 /***************************判断是否显示删除按钮****************************************************/
 .deleteBtn{

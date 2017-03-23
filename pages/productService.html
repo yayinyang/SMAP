@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style/index.css">
     <title>SMAP</title>
 </head>
-<body style="text-align: center;background-color: #fff;overflow-y: scroll;overflow-x:hidden;height:auto" onload =setSize()  onresize = setSize()>
+<body style="text-align: center;background-color: #fff;overflow-y: scroll;overflow-x:hidden;" onload =setSize()  onresize = setSize()>
 <div style="width: 100%;position: fixed;z-index: 100;height: 44px">
     <div style="padding: 0px 210px;background: #25396e; height: 40px;padding-top: 4px">
         <div style="float: right;">
@@ -229,9 +229,9 @@
             <div style="width: 100%;height: 1px">
                 <div  class="jumpBackground"id="jumpDiv" ng-style="jumpHeight">
                     <div style="height: 30px;width: 100px;" ng-repeat="jump in jumps">
-                        <div style="float: left;padding: 5px 0px;height: 20px" ng-show="jump.id === jumpFlag">
+                       <!-- <div style="float: left;padding: 5px 0px;height: 20px" ng-show="jump.id === jumpFlag">
                             <div style="height:18px; border: 1px solid #1478ff"></div>
-                        </div>
+                        </div>-->
                         <div  ng-click="jumpToDiv(jump.id)"
                               ng-bind="jump.name"
                               ng-class="{true: 'jumpStyleActive', false: 'jumpStyle'}[jump.id === jumpFlag]"
