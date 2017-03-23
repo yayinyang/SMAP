@@ -482,6 +482,10 @@ input[type="radio"] {
     line-height: 22px;
     height: 24px;
 }
+.downloadNormal:hover{
+    background:  #74666c;
+    color: #ffffff;
+}
 a>div:hover{
     /*background: url('../img/productWarehouse/downloadActive.png') no-repeat;*/
     background:  #74666c;

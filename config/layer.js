@@ -6,8 +6,7 @@ var simple = {
           "toll" :
             {
                 "type":"vector",
-                "tiles":
-                  ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
+                "tiles": ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
             },
           "Worldannotation": {
               "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
