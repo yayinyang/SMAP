@@ -153,9 +153,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     //起点图标
     $scope.createStartTollIcon = function (data){
         var div = window.document.createElement('div');
-        div.style.background = 'url("../img/onlineMap/tollstation_star.png")';
-        div.style.width = 25 + 'px';
-        div.style.height = 34 + 'px';
+        div.setAttribute('class','popStartIcon');
+        div.innerHTML = '起';
         var Toll = new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(data[0].geoJson.coordinates[0])
             .setDOMContent(div)
@@ -165,9 +164,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     //终点图标
     $scope.createEndTollIcon = function (data){
         var div = window.document.createElement('div');
-        div.style.background = 'url("../img/onlineMap/tollstation_finish.png")';
-        div.style.width = 25 + 'px';
-        div.style.height = 34 + 'px';
+        div.setAttribute('class','popEndIcon');
+        div.innerHTML = '终';
         var lastIndex = data[1].geoJson.coordinates.length - 1; //获取最后一个点的坐标
         var Toll = new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(data[1].geoJson.coordinates[lastIndex])

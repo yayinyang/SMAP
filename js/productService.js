@@ -155,13 +155,36 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             $scope.jumpFlag = id;
             window.scrollTo(0,$('#' + id).position().top-40);
         }
+        $scope.highLightTeg();
     };
-    angular.element(window.document).bind('scroll',function(){
-        console.log('ddd');
-    })
-})
-
-
-
+    $scope.highLightTeg = function() {
+        var indexList = document.getElementById('jumpDiv');
+        var apiPage = document.getElementById('apiPage');
+        var tegArr = [];
+        var indexPosition = [];
+        var scrollHeight = document.body.scrollTop;
+        for (var i = 4; i < apiPage.children.length; i++) {
+            //i 从4开始循环是为了去掉前面四个非div节点
+            tegArr[i - 4] = apiPage.children[i].getAttribute('id');
+            indexPosition[i - 4] = $('#' + tegArr[i - 4]).position().top - 40;
+        }
+        console.log(indexPosition);
+        console.log(scrollHeight);
+        for (var j = 0; j < indexPosition.length; j++) {
+            if (j===0 && scrollHeight > indexPosition[j] && scrollHeight < indexPosition[j + 1]) {
+                indexList.children[0].children[0].setAttribute('class', 'jumpStyleActive');
+                indexList.children[j + 1].children[0].setAttribute('class', 'jumpStyle');
+            } else if (j === indexPosition.length - 1 && scrollHeight > indexPosition[j]) {
+                indexList.children[j].children[0].setAttribute('class', 'jumpStyleActive');
+                indexList.children[j - 1].children[0].setAttribute('class', 'jumpStyle');
+            } else if (scrollHeight > indexPosition[j] && scrollHeight < indexPosition[j + 1]) {
+                indexList.children[j].children[0].setAttribute('class', 'jumpStyleActive');
+                indexList.children[j - 1].children[0].setAttribute('class', 'jumpStyle');
+                indexList.children[j + 1].children[0].setAttribute('class', 'jumpStyle');
+            }
+        }
+    };
+    angular.element(window.document).bind('scroll',$scope.highLightTeg);
+});
 
 
