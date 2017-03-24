@@ -189,12 +189,15 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         var indexPosition = [];
         var scrollHeight = document.body.scrollTop;
         var bodyHeight = document.body.clientHeight;
-        if(bodyHeight <= 1000){ //不满足滚动条件
-            for (var i = 3; i < apiPage.children.length; i++) {
-                //i 从3开始循环是为了去掉前面3个非div节点
-                tegArr[i - 3] = apiPage.children[i].getAttribute('id');
-                indexPosition[i - 3] = $('#' + tegArr[i - 3]).position().top - 40;
+        var j = 0;
+        for (var i = 0; i < apiPage.children.length; i++) {
+            if(apiPage.children[i].nodeName==='DIV'){
+                tegArr[j] = apiPage.children[i].getAttribute('id');
+                indexPosition[j] = $('#' + tegArr[j]).position().top - 40;
+                j++
             }
+        }
+        if(bodyHeight <= 1000){ //不满足滚动条件
             if(scrollHeight === 0){
                 indexList
                     .children[0]
@@ -219,11 +222,6 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
                 }
             }
         }else{
-            for (var i = 4; i < apiPage.children.length; i++) {
-                //i 从4开始循环是为了去掉前面四个非div节点
-                tegArr[i - 4] = apiPage.children[i].getAttribute('id');
-                indexPosition[i - 4] = $('#' + tegArr[i - 4]).position().top - 40;
-            }
             for (var i = 0; i < indexPosition.length; i++) {
                 if (scrollHeight < indexPosition[0]) { //判断滚动高度小于第一个节点高度
                     indexList
