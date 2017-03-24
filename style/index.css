@@ -79,9 +79,9 @@ span{
     background-color: #60c5ff;
 }
 .box-shadow{
-    -webkit-box-shadow:0 10px 10px #000;
-    -moz-box-shadow:0 10px 10px #000;
-    box-shadow:0 10px 10px #000;
+    -webkit-box-shadow:0 5px 10px #000;
+    -moz-box-shadow:0 5px 10px #000;
+    box-shadow:0 5px 10px #000;
 }
 /**********************888******************************************/
 #typesContainer{
