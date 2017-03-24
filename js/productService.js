@@ -148,14 +148,39 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         });
     };
     $scope.jumpToDiv = function (id) {
-        if(id === 'apiName'){
-            window.scrollTo(0,0);
+        var innerHeight = window.innerHeight;
+        if(innerHeight < 730){
+            if(id === 'apiName'||id==='code'){
+                window.scrollTo(0,0);
+                $scope.highLightTeg();
+            } else  if(id==='summaryExplain'||id==='summary'){
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+            }else{
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+                window.scrollTo(0,$('#' + id).position().top-40);
+                $scope.highLightTeg();
+
+            }
         }else{
-            window.location.hash = '#' + id;
-            $scope.jumpFlag = id;
-            window.scrollTo(0,$('#' + id).position().top-40);
+            if(id === 'apiName'){
+                window.scrollTo(0,0);
+                $scope.highLightTeg();
+            } else  if(id==='summaryExplain'||id==='summary'
+                ||id==='code'||id==='codeExplain'){
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+            }else{
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+                window.scrollTo(0,$('#' + id).position().top-40);
+                $scope.highLightTeg();
+
+            }
         }
-        $scope.highLightTeg();
+
+
     };
     $scope.highLightTeg = function() {
         var indexList = document.getElementById('jumpDiv');
@@ -163,55 +188,82 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         var tegArr = [];
         var indexPosition = [];
         var scrollHeight = document.body.scrollTop;
-        for (var i = 4; i < apiPage.children.length; i++) {
-            //i 从4开始循环是为了去掉前面四个非div节点
-            tegArr[i - 4] = apiPage.children[i].getAttribute('id');
-            indexPosition[i - 4] = $('#' + tegArr[i - 4]).position().top - 40;
+        var bodyHeight = document.body.clientHeight;
+        var j = 0;
+        for (var i = 0; i < apiPage.children.length; i++) {
+            if(apiPage.children[i].nodeName==='DIV'){
+                tegArr[j] = apiPage.children[i].getAttribute('id');
+                indexPosition[j] = $('#' + tegArr[j]).position().top - 40;
+                j++
+            }
         }
-        console.log(indexPosition);
-        console.log(scrollHeight);
-        for(var i = 0; i < indexPosition.length; i++){
-            if( scrollHeight < indexPosition[0]){ //判断滚动高度小于第一个节点高度
+        if(bodyHeight <= 1000){ //不满足滚动条件
+            if(scrollHeight === 0){
                 indexList
                     .children[0]
                     .children[0]
                     .setAttribute('class', 'jumpStyleActive');
-                for(var j =1;j < indexPosition.length;j++){ //从第二个开始使用normal样式
-                        indexList
-                            .children[j]
-                            .children[0]
-                            .setAttribute('class', 'jumpStyle');
-                }
-            }
-            if(i !==indexPosition.length-1 && scrollHeight >= indexPosition[i]
-                &&scrollHeight < indexPosition[i+1]){
+                for (var j = 1; j < indexPosition.length; j++) { //全部使用normal样式
                     indexList
-                        .children[i]
+                        .children[j]
                         .children[0]
-                        .setAttribute('class', 'jumpStyleActive');
-                for(var j =0;j < indexPosition.length;j++){
-                    if(i!==j){  //除当前节点外的其他节点全部使用normal样式
-                        indexList
-                            .children[j]
-                            .children[0]
-                            .setAttribute('class', 'jumpStyle');
-                    }
+                        .setAttribute('class', 'jumpStyle');
                 }
-            }else if(scrollHeight >= indexPosition[indexPosition.length-1]){ //判断滚动高度是否大于最后一个节点高度
+            }else {
                 indexList
                     .children[indexPosition.length-1]
                     .children[0]
                     .setAttribute('class', 'jumpStyleActive');
-                for(var j =0;j < indexPosition.length-1;j++){   //前n-1个使用normal样式
+                for (var j = 0; j < indexPosition.length - 1; j++) {   //前n-1个使用normal样式
+                    indexList
+                        .children[j]
+                        .children[0]
+                        .setAttribute('class', 'jumpStyle');
+                }
+            }
+        }else{
+            for (var i = 0; i < indexPosition.length; i++) {
+                if (scrollHeight < indexPosition[0]) { //判断滚动高度小于第一个节点高度
+                    indexList
+                        .children[0]
+                        .children[0]
+                        .setAttribute('class', 'jumpStyleActive');
+                    for (var j = 1; j < indexPosition.length; j++) { //从第二个开始使用normal样式
                         indexList
                             .children[j]
                             .children[0]
                             .setAttribute('class', 'jumpStyle');
                     }
+                }
+                if (i !== indexPosition.length - 1 && scrollHeight >= indexPosition[i]
+                    && scrollHeight < indexPosition[i + 1]) { //滚动高度在 i到i+1之间
+                    indexList
+                        .children[i]
+                        .children[0]
+                        .setAttribute('class', 'jumpStyleActive');
+                    for (var j = 0; j < indexPosition.length; j++) {
+                        if (i !== j) {  //除当前节点外的其他节点全部使用normal样式
+                            indexList
+                                .children[j]
+                                .children[0]
+                                .setAttribute('class', 'jumpStyle');
+                        }
+                    }
+                } else if (scrollHeight >= indexPosition[indexPosition.length - 1]) { //判断滚动高度是否大于最后一个节点高度
+                    indexList
+                        .children[indexPosition.length - 1]
+                        .children[0]
+                        .setAttribute('class', 'jumpStyleActive');
+                    for (var j = 0; j < indexPosition.length - 1; j++) {   //前n-1个使用normal样式
+                        indexList
+                            .children[j]
+                            .children[0]
+                            .setAttribute('class', 'jumpStyle');
+                    }
+                }
             }
+
         }
     };
     angular.element(window.document).bind('scroll',$scope.highLightTeg);
 });
-
-
