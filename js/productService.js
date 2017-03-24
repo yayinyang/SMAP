@@ -148,19 +148,38 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         });
     };
     $scope.jumpToDiv = function (id) {
-       if(id === 'apiName'||id==='code'){
-           window.scrollTo(0,0);
-           $scope.highLightTeg();
-       } else  if(id==='summaryExplain'||id==='summary'){
-           window.location.hash = '#' + id;
-           $scope.jumpFlag = id;
-        }else{
-            window.location.hash = '#' + id;
-            $scope.jumpFlag = id;
-            window.scrollTo(0,$('#' + id).position().top-40);
-            $scope.highLightTeg();
+        var innerHeight = window.innerHeight;
+        if(innerHeight < 730){
+            if(id === 'apiName'||id==='code'){
+                window.scrollTo(0,0);
+                $scope.highLightTeg();
+            } else  if(id==='summaryExplain'||id==='summary'){
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+            }else{
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+                window.scrollTo(0,$('#' + id).position().top-40);
+                $scope.highLightTeg();
 
-       }
+            }
+        }else{
+            if(id === 'apiName'){
+                window.scrollTo(0,0);
+                $scope.highLightTeg();
+            } else  if(id==='summaryExplain'||id==='summary'
+                ||id==='code'||id==='codeExplain'){
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+            }else{
+                window.location.hash = '#' + id;
+                $scope.jumpFlag = id;
+                window.scrollTo(0,$('#' + id).position().top-40);
+                $scope.highLightTeg();
+
+            }
+        }
+
 
     };
     $scope.highLightTeg = function() {
