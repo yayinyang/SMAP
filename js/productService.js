@@ -170,17 +170,44 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         }
         console.log(indexPosition);
         console.log(scrollHeight);
-        for (var j = 0; j < indexPosition.length; j++) {
-            if (j===0 && scrollHeight > indexPosition[j] && scrollHeight < indexPosition[j + 1]) {
-                indexList.children[0].children[0].setAttribute('class', 'jumpStyleActive');
-                indexList.children[j + 1].children[0].setAttribute('class', 'jumpStyle');
-            } else if (j === indexPosition.length - 1 && scrollHeight > indexPosition[j]) {
-                indexList.children[j].children[0].setAttribute('class', 'jumpStyleActive');
-                indexList.children[j - 1].children[0].setAttribute('class', 'jumpStyle');
-            } else if (scrollHeight > indexPosition[j] && scrollHeight < indexPosition[j + 1]) {
-                indexList.children[j].children[0].setAttribute('class', 'jumpStyleActive');
-                indexList.children[j - 1].children[0].setAttribute('class', 'jumpStyle');
-                indexList.children[j + 1].children[0].setAttribute('class', 'jumpStyle');
+        for(var i = 0; i < indexPosition.length; i++){
+            if( scrollHeight < indexPosition[0]){ //判断滚动高度小于第一个节点高度
+                indexList
+                    .children[0]
+                    .children[0]
+                    .setAttribute('class', 'jumpStyleActive');
+                for(var j =1;j < indexPosition.length;j++){ //从第二个开始使用normal样式
+                        indexList
+                            .children[j]
+                            .children[0]
+                            .setAttribute('class', 'jumpStyle');
+                }
+            }
+            if(i !==indexPosition.length-1 && scrollHeight >= indexPosition[i]
+                &&scrollHeight < indexPosition[i+1]){
+                    indexList
+                        .children[i]
+                        .children[0]
+                        .setAttribute('class', 'jumpStyleActive');
+                for(var j =0;j < indexPosition.length;j++){
+                    if(i!==j){  //除当前节点外的其他节点全部使用normal样式
+                        indexList
+                            .children[j]
+                            .children[0]
+                            .setAttribute('class', 'jumpStyle');
+                    }
+                }
+            }else if(scrollHeight >= indexPosition[indexPosition.length-1]){ //判断滚动高度是否大于最后一个节点高度
+                indexList
+                    .children[indexPosition.length-1]
+                    .children[0]
+                    .setAttribute('class', 'jumpStyleActive');
+                for(var j =0;j < indexPosition.length-1;j++){   //前n-1个使用normal样式
+                        indexList
+                            .children[j]
+                            .children[0]
+                            .setAttribute('class', 'jumpStyle');
+                    }
             }
         }
     };
