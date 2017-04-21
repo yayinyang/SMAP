@@ -7,7 +7,7 @@ App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
 };
 App.Temp = {
-    accessToken: 'E485214565fetch087acde70',
+    accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ',
 };
 
 App.Util = {

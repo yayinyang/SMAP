@@ -220,14 +220,15 @@
                         <li>></li>
                         <li><a href="#" id="apiType">数据服务型</a></li>
                         <li ng-show="arrowFlag">></li>
-                        <li><a href="#" id="showApiName">获取瓦片信息</a></li>
+                        <li><a href="#" id="showApiName">施工道路</a></li>
                     </ul>
                 </div>
             </div>
+            <!--<div id="wordExport">下载</div>-->
         </div>
         <div style="float: left; width: 740px;text-align: left">
             <div style="width: 100%;height: 1px">
-                <div  class="jumpBackground"id="jumpDiv" ng-style="jumpHeight">
+                <div  class="jumpBackground" id="jumpDiv" ng-style="jumpHeight">
                     <div style="height: 30px;width: 100px;" ng-repeat="jump in jumps">
                        <!-- <div style="float: left;padding: 5px 0px;height: 20px" ng-show="jump.id === jumpFlag">
                             <div style="height:18px; border: 1px solid #1478ff"></div>
@@ -249,6 +250,8 @@
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
+<script src="../lib/wordExport/fileSave.js"></script>
+<script src="../lib/wordExport/jqery.wordexport.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../js/service/dataService.js"></script>
 <script src="../js/service/dataService-sMap.js"></script>
@@ -269,5 +272,10 @@
         }
         jumpDiv.style.right = rightOffset;
     }
+//    $(function () {
+//       $('#wordExport').click(function (event) {
+//           $('#apiPage').wordExport();
+//       })
+//    });
 </script>
 </html>

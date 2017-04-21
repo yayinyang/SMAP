@@ -4,55 +4,356 @@
     <meta charset='utf-8' />
     <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.js'></script>
+    <script src='../lib/turf/turf.min.js'></script>
     <script src="../config/layer.js"></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-        #features {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            width: 300px;
-            overflow: auto;
-            background: rgba(255, 255, 255, 0.8);
-        }
-        /*#map canvas {*/
-        /*cursor: crosshair;*/
-        /*}*/
-    </style>
+    <script src="../config/peovince.js"></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.24.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../lib/switch/pageSwitch.min.css">
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="../style/ie9.css">
+    <![endif]-->
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/onlineMap.css">
 </head>
-<body ng-controller="tollGateController">
-<div id='map'></div>
-<div id="features">
-    <button ng-click="clearLines()">清空</button>
-    <button ng-click="addLines()">显示</button>
+<body  ng-controller="tollGateController" style="overflow-y: scroll;">
+<div style="width: 100%;padding: 4px 210px 0 210px;margin-top: -44px;background: #25396e; height: 44px;">
+    <div style="width:100%;height: 100%;">
+        <div style="float: right;">
+            <div id="homePage" class="topTittle">
+                <div  style="padding:0 10px;line-height:36px;height: 36px">
+                    <a style="font-size: 14px;color: white;text-decoration: none" href="../index.html">
+                        首页
+                    </a>
+                </div>
+                <div id="homePageBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                <div id="solution" style="padding:0 10px;line-height:36px;height: 36px;text-shadow: 0 1px 10px #000;width: 104px;text-align: center;"
+                     onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                     <span>
+                        解决方案
+                    </span>
+                </div>
+                <div id="solutionBottom"
+                     style="height: 4px;width: 100%;"  onmouseleave="hideMenu('onlineUse')" onmouseover="showMenu('onlineUse', 0)">
+                </div>
+                <div style="width: 104px;position: absolute;margin-top: 0;"
+                     onmouseenter="showMenu('onlineUse', 1)"  onmouseleave="hideMenu('onlineUse')">
+                    <div id="onlineUse" class="menu box-shadow" style="height: 40px;width: 104px">
+                        <div style="padding: 10px 0;font-size: 14px;text-align: center">
+                            <a href="onlineUse.html" style="color: white;text-decoration: none">
+                                收费信息查询
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px">
+                <div id="service" style="padding:0 10px;line-height:36px;height: 36px;text-shadow: 0 1px 10px #000"
+                     onmouseleave="hideMenu('produceService')" onmouseover="showMenu('produceService', 0)">
+                        <span>
+                            产品服务
+                        </span>
+                </div>
+                <div id="serviceBottom"
+                     style="height: 4px;width: 100%;">
+                </div>
+                <div style="width: 76px;position: absolute;margin-top: -4px;"
+                     onmouseenter="showMenu('produceService', 1)"  onmouseleave="hideMenu('produceService')">
+                    <div class="menuDataServiceGrid" ></div>
+                    <div id="serviceInterfaceNav" class="menu box-shadow" style="height: 40px">
+                        <div style="padding: 10px 10px;font-size: 14px;">
+                            <span onclick=" hideWaresMenu()">
+                                服务接口
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px;" >
+                <div id="produce" style="padding:0 10px;line-height:36px;height: 36px"  onmouseleave="hideMenu('produceWares')" onmouseover="showMenu('produceWares', 0)">
+                        <span >
+                            产品仓库
+                        </span>
+                </div>
+                <div id="produceBottom"
+                     style="height: 4px;width: 100%;">
+                </div>
+                <div style="width: 300px;position: absolute;margin-top: -4px;display:inline-block"
+                     onmouseenter="showMenu('produceWares', 1)" onmouseleave="hideMenu('produceWares')">
+                    <div class="menuWaresGrid" ></div>
+                    <div id="produceHouseNav"  class="menu box-shadow" style="position: absolute;z-index: 25">
+                        <div style="padding: 10px 10px" onclick="directToDescription()">
+                            <span >产品介绍</span>
+                        </div>
+                        <div
+                                style=" padding: 10px 10px;text-shadow: 0px 1px 10px #000000"
+                                onmouseover="showSonMenu()"
+                                onmouseleave="hideSonMenu()"
+                        >
+                            <span>产品下载</span>
+                        </div>
+
+                        <!--<div style="padding: 20px 10px">
+                           <span style="font-size: 18px" onmouseover="showSonMenu()">规格查询</span>
+                       </div>-->
+                    </div>
+                    <div id="produceHouseNavOfSon"
+                         class="box-shadow"
+                         onmouseenter="showSonMenu()"
+                         onmouseleave="hideSonMenu()"
+                         style="
+                             margin-left: -1px;
+                             display:none;
+                             color: #fff;
+                             float: left;
+                             width: 100px;
+                             height:240px;
+                             background: rgb(10, 33, 70);
+                             position: absolute;
+                             z-index: 25;
+                             left: 78px"
+                    >
+                        <div style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=11&&specName=IDB"
+                                    style="font-size: 14px; text-decoration: none;">
+                                IDB
+                            </a>
+                        </div>
+                        <div  style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=12&&specName=NIMIF-G"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIMIF-G</a>
+                        </div>
+                        <div  style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=13&&specName=NAVEX"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NAVEX</a>
+                        </div>
+                        <div  style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=14&&specName=AIF"
+                                    style="font-size: 14px; text-decoration: none;">
+                                AIF</a>
+                        </div>
+                        <div  style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=15&&specName=NIGDF-G"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIGDF-G</a>
+                        </div>
+                        <div  style="height: 40px;line-height: 40px;text-align: center;text-shadow: 0px 1px 10px #000000">
+                            <a
+                                    onclick="hideMenu('produceWares')"
+                                    href="productWarehouse.html?specid=16&&specName=NIMIF-K"
+                                    style="font-size: 14px; text-decoration: none;">
+                                NIMIF-K</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div  class="topTittle" style="padding: 0px 0px 0px 50px;">
+                <div id="support" style=" padding:0 10px;line-height:36px;height: 36px">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                        技术支持
+                    </a>
+                </div>
+                <div id="supportBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
+            <div  class="topTittle" style=" padding: 0px 0px 0px 50px;">
+                <div id="login" style="padding:0 10px;line-height:36px;height: 36px">
+                    <a href="undevelopPage.html" style="font-size: 14px;color: white;text-decoration: none">
+                        登录
+                    </a>
+                </div>
+                <div id="loginBottom"
+                     style="height: 4px;width: 100%;">
+
+                </div>
+            </div>
+        </div>
+        <div id="logo" style="float: none"></div>
+    </div>
 </div>
+<div class ="content">
+
+    <!--  <div style="height: 56px;line-height:46px;text-align: left;font-weight: 400;margin-top: -56px;">
+          您现在的位置：产品仓库 <span style="font-size: 20px;margin: auto 7px;color: #0f0f0f;display: inline">></span> 在线体验 <span style="font-size: 20px;margin: auto 7px;color: #0f0f0f;display: inline">></span> 收费信息查询
+      </div>-->
+    <div style="height: 56px;text-align: left;font-weight: 400;margin-top: -40px;">
+        <div style="width: 740px;">
+            <div style="height: 56px;">
+                <div style="float: left; padding: 20px 0 0 0">
+                    <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
+                </div>
+                <div style="float: left;  padding: 13px 0 0 0 " id="navigation">
+                    <ul style="list-style-type: none;">
+                        <li><a href="#">产品仓库</a></li>
+                        <li style="font-size: 20px">></li>
+                        <li><a href="#">在线体验</a></li>
+                        <li style="font-size: 20px">></li>
+                        <li><a href="#" id="apiType">收费信息查询</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="onlineMap" style="clear: both">
+        <div class=" leftSearchDiv">
+            <div style="width: 280px;background-color: #ffffff; box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);">
+                <div class="input-group btn-group">
+                    <button
+                            class="btn searchbar-exchange"
+                            type="button"
+                    >
+                        <img  ng-click="exChangeInput()" src="../img/onlineMap/searchbar_change.png">
+                    </button>
+                    <input type="text"
+                           placeholder="请输入起点收费站"
+                           class="searchbar placeholderStyle "
+                           id="startStation"
+                           ng-model="startTollGate"
+                           ng-focus="searchStartTollGate()"
+                           ng-change="searchStartTollGate()"
+
+                           style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
+                    >
+                    <img
+                            class="empty-input"
+                            id="emptyStartStation"
+                            ng-click="emptyInput('startStation')"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                    <input type="text"
+                           placeholder="请输入终点收费站"
+                           class="searchbar placeholderStyle"
+                           ng-style="endStationStyle"
+                           id="endStation"
+                           ng-model="endTollGate"
+                           ng-focus="searchEndTollGate()"
+                           ng-change="searchEndTollGate()"
+                           style="background-image:url('../img/onlineMap/finishingpoint.png');"
+                    >
+                    <img    class="deleteBtn"
+                            ng-class="{true: 'showDeleteBtn', false: 'hideDeleteBtn'}[endTollGate.length !== 0]"
+                            id="emptyEndStation"
+                            ng-click="emptyInput('endStation')"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                </div>
+
+                <button
+                        class="btn searchbtn"
+                        ng-click="getLinksFromStartToEnd()"
+                >搜索
+                </button>
+            </div>
+            <div class="searchResultList">
+                <ul>
+                    <li
+                            class="searchResult"
+                            ng-style="searchResult"
+                            ng-repeat="tollGate  in tollGateArr"
+                            ng-click="getPidFromSearch(tollGate)"
+                    >
+                        <span class="logo"></span>
+                        <div class="resultStation" ng-bind="tollGate.name"></div>
+                        <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
+                    </li>
+                </ul>
+                <div class="noSearchResult" ng-style="noSearchResult">
+                    <span class="logo"></span>
+                    <span class="noResult" ng-bind="printNotice"></span>
+                </div>
+
+            </div>
+        </div>
+        <div class="selectedDiv">
+            <div class="nowCity" ng-style="nowCity" ng-click="showChoosedCity('nowCity')">
+                <span ng-bind="nowProvince"></span>
+            </div>
+            <div class="choosedCity" ng-style="choosedCity">
+                <span ng-bind="nowProvince"></span>
+                <img class="hideCityList" ng-click="showChoosedCity('choosedCity')" src="../img/onlineMap/arrow_active.png">
+            </div>
+            <div class="cityList" ng-style="cityList">
+                <div class="cityFirstLetterList" >
+                    <ul class="allFirstLetters ">
+                        <li class="firstLetter" ng-repeat="item in captureArr" ng-click="goCapture(item)">{{item}}</li>
+                    </ul>
+                </div>
+                <div class="allCities">
+                    <ul class="allCitiesList">
+                        <li ng-repeat=" firstObj in provinceArr">
+                            <a class="indexLetter" id=capture{{firstObj.capture}} ng-bind="firstObj.capture" ></a>
+                            <span class="citiesBox">
+                                <ul>
+                                    <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
+                                        <span ng-bind="secondObj.name"></span>
+                                    </li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="map" ng-click="emptyTollGate()">
+            <div class="changeMapSizeDiv">
+                <button class="addBtn" onclick="changeZoom('add')"></button>
+                <button class="subBtn" onclick="changeZoom('sub')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.js"></script>
+<script src="../lib/switch/pageSwitch.min.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/menu.js"></script>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
-<script src="../js/directives/tab/tab.js"></script>
 <script src="../lib/angular-popups/angular-popups.js"></script>
 <script src="../lib/angular-nvd3/d3.js"></script>
 <script src="../lib/angular-nvd3/nv.d3.js"></script>
 <script src="../lib/angular-nvd3/angular-nvd3.js"></script>
-<script src="../lib/jquery/jquery.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../js/service/dataService.js"></script>
 <script src="../js/service/dataService-sMap.js"></script>
-<script src="../js/menu.js"></script>
 <script src="../js/tollGate.js"></script>
 <script>
     var map = new mapboxgl.Map({
         container : 'map',
         style : simple,
-        zoom : 14,
+        zoom : 10,
         center : [ 116.38402, 39.96261 ],
         maxZoom : 22,
         minZoom : 5,
         pitch: 0
     });
+    function changeZoom(arg){
+        var nowZoom = map.getZoom();
+        if(arg === 'add'){
+            map.setZoom(nowZoom+1);
+        }else{
+            map.setZoom(nowZoom-1);
+        }
+    }
 </script>
-
 </body>
 </html>
