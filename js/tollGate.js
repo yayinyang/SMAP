@@ -166,9 +166,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         var div = window.document.createElement('div');
         div.setAttribute('class','popEndIcon');
         div.innerHTML = '终';
-        var lastIndex = data[1].geoJson.coordinates.length - 1; //获取最后一个点的坐标
+        var lastIndex = data[0].geoJson.coordinates.length - 1; //获取最后一个点的坐标
         var Toll = new mapboxgl.Popup({closeOnClick: false})
-            .setLngLat(data[1].geoJson.coordinates[lastIndex])
+            .setLngLat(data[0].geoJson.coordinates[lastIndex])
             .setDOMContent(div)
             .addTo(map);
         $scope.popuArr.push(Toll);
