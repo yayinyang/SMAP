@@ -129,17 +129,19 @@ body{
 }
 .onlineMap .searchResultList ul .searchResult:hover  span.logo{
     background-image: url("../img/onlineMap/search_active.png");
+    color: #ffffff;
 } 
 .searchResult .logo{
-   display: inline-block;
+    display: inline-block;
     width: 30px;
     height: 30px;
+    color: #333333;
     background-image: url("../img/onlineMap/search_normal.png");
     background-repeat: no-repeat;
     vertical-align: middle;
     background-position: center ;
 }
-.noSearchResult .logo{
+.noSearchResult .logo{.
     display: inline-block;
     vertical-align:middle;
     width: 30px;
@@ -168,7 +170,6 @@ body{
     color: #cccccc;
     line-height: 30px;
     vertical-align: middle;
-
 }
 .noSearchResult{
     display: none;
@@ -323,7 +324,8 @@ span.noResult{
     padding-left: 8px;
     cursor: pointer;
 }
-.allCities .allCitiesList > li .citiesBox ul li> span:hover,.allCities .allCitiesList > li .citiesBox ul li> span:active{
+.allCities .allCitiesList > li .citiesBox ul li> span:hover,
+.allCities .allCitiesList > li .citiesBox ul li> span:active{
    color: #1478FF;
 }
 .allCities .allCitiesList > li .citiesBox ul li > span{
@@ -432,6 +434,28 @@ span.noResult{
     color: #ffffff;
     padding-top:3px;
     padding-left:6px;
+}
+/***************************地图收费站图标****************************************************/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popTollGateIcon{
+    background:url("../img/onlineMap/tollstation_finish.png");
+    width: 25px;
+    height: 34px;
+    font-size: 12px;
+    line-height: 25px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    text-align:center;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popTollGateIconHeightLight{
+    background:url("../img/onlineMap/POI_blue.png");
+    width: 25px;
+    height: 34px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 25px;
+    color: #ffffff;
+    text-align:center;
+    cursor: pointer;
 }
 /***************************判断是否显示删除按钮****************************************************/
 .deleteBtn{
