@@ -14,6 +14,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.startFlag = false;
     $scope.endFlag = false;
     $scope.isReadySearchFlag = false;
+    $scope.isSearchStartTollGate = true;
     $scope.startPid = '';
     $scope.endPid = '';
     $scope.lastClickNode = 0;
@@ -23,6 +24,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.printNotice = "";
     $scope.nowProvince = '北京';
     $scope.tollGateOnMapArr= [];
+    $scope.resultPageNum = 0;
+    $scope.resultPageTotal = 1;
     $scope.endStationStyle = {
         'border-bottom':'none'
     };
@@ -52,6 +55,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.linksArr = [];
     $scope.colorArr = ['rgba(20,120,255,0.8)', 'rgba(20,120,255,0.3)', 'rgba(20,120,255,0.3)'];
     $scope.noSearchResult = {};
+    $scope.paging = {};
     $scope.exChangeInput = function(){
         var tmp = $scope.startTollGate;
         var tmpPid = $scope.startPid;
@@ -206,6 +210,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         div.setAttribute('class', 'popTollGateIconHeightLight');
         div.innerHTML = index+1;
         $scope.tollGateOnMapArr[index].setDOMContent(div);
+        mapboxgl.Map.center = $scope.tollGateArr[index].geoJson.coordinates;
     };
 
     // 取消收费站高亮
@@ -296,19 +301,44 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }
         });
     };
+    $scope.turnToPage = function (page) {
+        switch (page){
+            case 1:
+                ($scope.resultPageNum < $scope.resultPageTotal) ?
+                    ++$scope.resultPageNum : $scope.resultPageNum ;
+                break;
+            case -1:
+                ($scope.resultPageNum > 0) ?
+                    --$scope.resultPageNum : $scope.resultPageNum ;
+                break;
+            default: $scope.resultPageNum = 0;
+        }
+        // 判断当前搜索结果是起点收费站还是终点收费站
+        if($scope.isSearchStartTollGate){
+            $scope.searchStartTollGate();
+        }else{
+            $scope.searchEndTollGate();
+        }
+    };
     // 搜索起点
     $scope.searchStartTollGate = function () {
         var bounds = [];
         var startUrl = '';
+        var parameter = {
+            name: $scope.startTollGate,
+            pageCnt: $scope.resultPageNum,
+            pages: 10,
+        };
         if ($scope.endPid) {
             startUrl = 'tollgate/tollnames/sec/' + $scope.endPid + '/2'
         } else {
             startUrl = 'tollgate/tollnames/' + $scope.provincePid + '/1';
         }
-        dsEdit.getProduct(startUrl, { name: $scope.startTollGate }).then(function (data) {
+        dsEdit.getProduct(startUrl, parameter).then(function (data) {
             $scope.startFlag = true;
             $scope.endFlag = false;
             $scope.isReadySearchFlag = true;
+            $scope.isSearchStartTollGate = true;
             $scope.tollGateArr = data;
             $scope.createTollGateIcon(data);
             for(var i = 0; i < data.length; i++){
@@ -323,7 +353,11 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                     'border-bottom':'1px solid #d0e4ff'
                 };
                 $scope.printNotice = "无搜索结果，请重新输入";
+                $scope.paging = {
+                    display: 'none',
+                };
             }else {
+                $scope.resultPageTotal = Math.ceil(data[0].totalCnt/10);
                 $scope.searchResult = {
                     display:'block'
                 };
@@ -336,27 +370,36 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                     'line-height': 30 + 'px',
                     'background-color': '#ffffff'
                 };
+                $scope.paging = {
+                    display: 'block',
+                };
             }
             if(bounds.length > 0){
                 var features = turf.featureCollection(bounds);
                 var bbox = turf.bbox(features);
                 const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
-                map.fitBounds(v2, { maxZoom: 8 });
+                map.fitBounds(v2, { maxZoom: 15 });
             }
         });
     };
     $scope.searchEndTollGate = function () {
         var bounds = [];
         var endUrl = '';
+        var parameter = {
+            name: $scope.endTollGate,
+            pageCnt: $scope.resultPageNum,
+            pages: 10,
+        };
         if ($scope.startPid) {
             endUrl = 'tollgate/tollnames/sec/' + $scope.startPid + '/1';
         } else {
             endUrl = 'tollgate/tollnames/' + $scope.provincePid + '/2';
         }
-        dsEdit.getProduct(endUrl, { name: $scope.endTollGate }).then(function (data) {
+        dsEdit.getProduct(endUrl, parameter).then(function (data) {
             $scope.startFlag = false;
             $scope.endFlag = true;
             $scope.isReadySearchFlag = true;
+            $scope.isSearchStartTollGate = false;
             $scope.printNotice = "";
             $scope.tollGateArr = data;
             $scope.createTollGateIcon(data);
@@ -375,7 +418,11 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                     'border-bottom':'1px solid #d0e4ff'
                 };
                 $scope.printNotice = "无搜索结果，请重新输入";
+                $scope.paging = {
+                    display: 'none',
+                };
             }else {
+                $scope.resultPageTotal = Math.ceil(data[0].totalCnt/10);
                 $scope.endStationStyle = {
                     'border-bottom':'1px solid #d0e4ff'
                 };
@@ -388,12 +435,15 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                     'line-height': 30 + 'px',
                     'background-color': '#ffffff'
                 };
+                $scope.paging = {
+                    display: 'block',
+                };
             }
             if(bounds.length > 0){
                 var features = turf.featureCollection(bounds);
                 var bbox = turf.bbox(features);
                 const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
-                map.fitBounds(v2, { maxZoom: 8 });
+                map.fitBounds(v2, { maxZoom: 15 });
             }
         });
     };
@@ -426,15 +476,11 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         if ($scope.endFlag) {
             $scope.endTollGate = data.name;
             $scope.endPid = data.pid;
-            $scope.tollGateArr.length = 0;
-            $scope.endStationStyle = {
-                'border-bottom':'none'
-            };
         }
         $scope.showNormalTollGate($scope.lastClickNode);
         $scope.lastClickNode = index; //记录当前点击的节点，当下次点击其他节点时是取消高亮
         $scope.showHeightLightTollGate(index);
-    }
+    };
     // 获取路径
     $scope.getLinksFromStartToEnd = function () {
         var bounds = {
@@ -442,6 +488,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             features: [],
         };
         $scope.clearLines();
+        $scope.resultPageNum = 0;
         if($scope.startTollGate !== '' && $scope.endTollGate ===''){
             $scope.searchStartTollGate();
         } else if($scope.startTollGate === '' && $scope.endTollGate !== ''){
@@ -453,6 +500,12 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 $scope.searchEndTollGate();
             }else{
                 $scope.clearTollGateIcon();
+                $scope.paging = {
+                    display: 'none',
+                };
+                $scope.searchResult = {
+                    display:'none'
+                };
                 dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
                     // map.flyTo({center: data[0].pointGeoJson.coordinates});
                     $scope.linksArr = data;
@@ -482,7 +535,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                     }
                     const bbox = turf.bbox(bounds);
                     const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
-                    map.fitBounds(v2, { maxZoom: 8 });
+                    map.fitBounds(v2,{ maxZoom: 12 });
                 });
             }
         }
@@ -491,18 +544,5 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         var local = 'capture'+data;
         $location.hash(local);
         $anchorScroll();
-    }
-    var pt1 = turf.point([114.175329, 22.2524])
-    var pt2 = turf.point([114.170007, 22.267969])
-    var pt3 = turf.point([114.200649, 22.274641])
-    var pt4 = turf.point([114.200649, 22.274641])
-    var pt5 = turf.point([114.186744, 22.265745])
-    var features = turf.featureCollection([pt1, pt2, pt3, pt4, pt5])
-
-    var bbox = turf.bbox(features);
-
-    var bboxPolygon = turf.bboxPolygon(bbox);
-    console.log(features);
-    console.log(bbox);
-    console.log(bboxPolygon);
+    };
 }]);

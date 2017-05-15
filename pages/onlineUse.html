@@ -292,6 +292,21 @@
                     <span class="logo"></span>
                     <span class="noResult" ng-bind="printNotice"></span>
                 </div>
+                <div class="paging" ng-style="paging">
+                    <div>
+                        <div class="pageNum">
+                            <span ng-bind="resultPageNum+1"></span>
+                            <span>/</span>
+                            <span ng-bind="resultPageTotal + '页'"></span>
+                        </div>
+
+                        <div class="toPage">
+                            <button class="toFirstPage" ng-click="turnToPage(0)"></button>
+                            <button class="tolastPage"  ng-click="turnToPage(-1)"></button>
+                            <button class="toNextPage"  ng-click="turnToPage(1)"></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="selectedDiv">
