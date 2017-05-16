@@ -16,6 +16,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.isReadySearchFlag = false;
     $scope.isSearchStartTollGate = true;
     $scope.chooseStartTollGate = false;
+    $scope.chooseEndTollGate = false;
     $scope.startPid = '';
     $scope.endPid = '';
     $scope.lastClickNode = 0;
@@ -224,8 +225,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
 
         map.flyTo({
             center: loc,
-            zoom: 13,
-            speed: 1,
+            zoom: 15,
+            speed: 1.5,
         });
     };
 
@@ -334,20 +335,29 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
         // 判断当前搜索结果是起点收费站还是终点收费站
         if($scope.isSearchStartTollGate){
-            $scope.searchStartTollGate();
+            $scope.searchStartTollGate($scope.tmpTollGate);
         }else{
-            $scope.searchEndTollGate();
+            $scope.searchEndTollGate($scope.tmpTollGate);
         }
     };
     // 搜索起点
-    $scope.searchStartTollGate = function () {
+    $scope.searchStartTollGate = function (param) {
         var bounds = [];
         var startUrl = '';
-        var parameter = {
-            name: $scope.startTollGate,
-            pageCnt: $scope.resultPageNum,
-            pages: 10,
-        };
+        if(param){
+            var parameter = {
+                name: param,
+                pageCnt: $scope.resultPageNum,
+                pages: 10,
+            };
+        }else{
+            var parameter = {
+                name: $scope.startTollGate,
+                pageCnt: $scope.resultPageNum,
+                pages: 10,
+            };
+            $scope.tmpTollGate = $scope.startTollGate;
+        }
         if ($scope.endPid) {
             startUrl = 'tollgate/tollnames/sec/' + $scope.endPid + '/2'
         } else {
@@ -401,14 +411,23 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }
         });
     };
-    $scope.searchEndTollGate = function () {
+    $scope.searchEndTollGate = function (param) {
         var bounds = [];
         var endUrl = '';
-        var parameter = {
-            name: $scope.endTollGate,
-            pageCnt: $scope.resultPageNum,
-            pages: 10,
-        };
+        if(param){
+            var parameter = {
+                name: $scope.endTollGate,
+                pageCnt: $scope.resultPageNum,
+                pages: 10,
+            };
+        }else{
+            var parameter = {
+                name: param,
+                pageCnt: $scope.resultPageNum,
+                pages: 10,
+            };
+            $scope.tmpTollGate = $scope.endTollGate;
+        }
         if ($scope.startPid) {
             endUrl = 'tollgate/tollnames/sec/' + $scope.startPid + '/1';
         } else {
@@ -419,7 +438,6 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endFlag = true;
             $scope.isReadySearchFlag = true;
             $scope.isSearchStartTollGate = false;
-            $scope.printNotice = "";
             $scope.tollGateArr = data;
             $scope.createTollGateIcon(data);
             for(var i = 0; i < data.length; i++){
@@ -511,14 +529,23 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         $scope.chooseStartTollGate = false;
         if($scope.startTollGate !== '' && $scope.endTollGate ===''){
             $scope.searchStartTollGate();
+            $scope.chooseEndTollGate = false;
         } else if($scope.startTollGate === '' && $scope.endTollGate !== ''){
             $scope.searchEndTollGate();
+            $scope.chooseEndTollGate = false;
         } else if($scope.startTollGate !== '' && $scope.endTollGate !==''){
-            if($scope.startPid === ''){
+            if($scope.startPid === '' && $scope.endPid ===''){
                 $scope.chooseStartTollGate = true;
+                $scope.chooseEndTollGate = true;
                 $scope.printNotice = '请选择正确的起点';
                 $scope.searchStartTollGate();
+            }else if($scope.startPid === '' && $scope.endPid !==''){
+                $scope.searchStartTollGate();
             }else if($scope.endPid === ''){
+                if($scope.chooseEndTollGate){
+                    $scope.printNotice = '请选择正确的终点';
+                    console.log($scope.printNotice);
+                }
                 $scope.searchEndTollGate();
             }else{
                 $scope.clearTollGateIcon();
@@ -528,6 +555,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 $scope.searchResult = {
                     display:'none'
                 };
+                $scope.chooseEndTollGate = false;
                 dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
                     // map.flyTo({center: data[0].pointGeoJson.coordinates});
                     $scope.linksArr = data;
