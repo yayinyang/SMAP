@@ -276,6 +276,12 @@
                 </div>
             </div>
             <div class="searchResultList" ng-if="isReadySearchFlag">
+                <div class="noSearchResult" style="height: 32px;display: block;padding: 0 10px;" ng-show="chooseStartTollGate">
+                    <div style="border-bottom: 1px solid #d0e4ff;">
+                        <span class="logo" style="width:18px;background-position:left;"></span>
+                        <span class="noResult" ng-bind="printNotice"></span>
+                    </div>
+                </div>
                 <ul>
                     <li
                             class="searchResult"
