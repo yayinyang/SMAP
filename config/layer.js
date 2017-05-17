@@ -1017,55 +1017,8 @@ var simple = {
             "minzoom": 14.0,
             "type": "symbol",
             "filter": ["all", ["==", "kindcode", "120201"], [">=", "rank", 1]]
-        }, {
-            "id": "10629e6309bc4618b884e1e0dfbece3d",
-            "maxzoom": 17.5,
-            "source": "Annotation",
-            "layout": {
-                "text-size": 12.0,
-                "icon-image": "museum-15",
-                "visibility": "visible",
-                "text-optional": false,
-                "text-field": "{name_zh}",
-                "text-ignore-placement": false,
-                "text-offset": [0, 1.3]
-            },
-            "source-layer": "Annotation",
-            "paint": {
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 0.8,
-                "text-color": "#544946",
-                "icon-color": "#ff0000",
-                "text-translate": [0, 0]
-            },
-            "minzoom": 11.0,
-            "type": "symbol",
-            "filter": ["all", ["==", "kindcode", "160205"], [">=", "rank", 3]]
-        }, {
-            "id": "9ad5db7fc802469b881706f6d16e8e6d",
-            "maxzoom": 17.5,
-            "source": "Annotation",
-            "layout": {
-                "text-size": 12.0,
-                "icon-image": "zoo-15",
-                "visibility": "visible",
-                "text-optional": false,
-                "text-field": "{name_zh}",
-                "text-ignore-placement": false,
-                "text-offset": [0, 1.3]
-            },
-            "source-layer": "Annotation",
-            "paint": {
-                "text-halo-color": "#ffffff",
-                "text-halo-width": 0.8,
-                "text-color": "#544946",
-                "icon-color": "#ff0000",
-                "text-translate": [0, 0]
-            },
-            "minzoom": 11.0,
-            "type": "symbol",
-            "filter": ["all", ["==", "kindcode", "180308"]]
-        }, {
+        },
+        {
             "id": "3c5f8a6c51cf4678975287dbe8b6d549",
             "maxzoom": 17.5,
             "source": "Annotation",
