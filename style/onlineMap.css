@@ -129,11 +129,13 @@ body{
 }
 .onlineMap .searchResultList ul .searchResult:hover  span.logo{
     background-image: url("../img/onlineMap/search_active.png");
+    color: #ffffff;
 } 
 .searchResult .logo{
-   display: inline-block;
+    display: inline-block;
     width: 30px;
     height: 30px;
+    color: #333333;
     background-image: url("../img/onlineMap/search_normal.png");
     background-repeat: no-repeat;
     vertical-align: middle;
@@ -168,7 +170,6 @@ body{
     color: #cccccc;
     line-height: 30px;
     vertical-align: middle;
-
 }
 .noSearchResult{
     display: none;
@@ -181,6 +182,89 @@ span.noResult{
     vertical-align:middle;
     color: #1478FF;
     font-size: 12px;
+}
+.onlineMap .searchResultList .paging{
+    display: none;
+    width: 280px;
+    padding: 0 10px;
+    height: 30px;
+    background-color: #ffffff;
+}
+.onlineMap .searchResultList .paging > div{
+    border-top: 1px solid #d0e4ff;
+    height: 28px;
+    padding: 4px 0;
+}
+.onlineMap .searchResultList .paging div .pageNum{
+    display: inline-block;
+    width: 55px;
+    color: #1478ff;
+
+}
+.onlineMap .searchResultList .paging div .pageNum > span{
+    color: #1478ff;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    vertical-align: middle;
+}
+.onlineMap .searchResultList .paging div .toPage {
+    display: inline-block;
+    margin-left: 80px;
+}
+.onlineMap .searchResultList .paging div .toPage button{
+    margin-left: 10px;
+    outline: none;
+    color: #1478ff;
+    padding: 0;
+    background-color: #ffffff;
+    border: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.onlineMap .searchResultList .paging div .toPage button.toFirstPage{
+    width: 40px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_firstpage_normal.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.toFirstPageDisabled{
+    width: 40px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_firstpage_normal.png');
+    opacity: 0.3;
+}
+.onlineMap .searchResultList .paging div .toPage button.toFirstPage:hover,
+.onlineMap .searchResultList .paging div .toPage button.toFirstPage:active{
+    background-image: url('../img/onlineMap/button_firstpage_active.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.toNextPage{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_nextpage_normal.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.toNextPageDisabled{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_nextpage_normal.png');
+    opacity: 0.3;
+}
+.onlineMap .searchResultList .paging div .toPage button.toNextPage:hover,
+.onlineMap .searchResultList .paging div .toPage button.toNextPage:active{
+    background-image: url('../img/onlineMap/button_nextpage_active.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.tolastPage{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_lastpage_normal.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.tolastPageDisabled{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_lastpage_normal.png');
+    opacity: 0.3;
+}
+.onlineMap .searchResultList .paging div .toPage button.tolastPage:hover,
+.onlineMap .searchResultList .paging div .toPage button.tolastPage:active{
+    background-image: url('../img/onlineMap/button_lastpage_active.png');
 }
 
 /**********************右侧*************************/
@@ -323,7 +407,8 @@ span.noResult{
     padding-left: 8px;
     cursor: pointer;
 }
-.allCities .allCitiesList > li .citiesBox ul li> span:hover,.allCities .allCitiesList > li .citiesBox ul li> span:active{
+.allCities .allCitiesList > li .citiesBox ul li> span:hover,
+.allCities .allCitiesList > li .citiesBox ul li> span:active{
    color: #1478FF;
 }
 .allCities .allCitiesList > li .citiesBox ul li > span{
@@ -432,6 +517,30 @@ span.noResult{
     color: #ffffff;
     padding-top:3px;
     padding-left:6px;
+}
+/***************************地图收费站图标****************************************************/
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popTollGateIcon{
+    background:url("../img/onlineMap/tollstation_finish.png");
+    width: 25px;
+    height: 34px;
+    font-size: 12px;
+    line-height: 25px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    text-align:center;
+}
+.onlineMap .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popTollGateIconHeightLight{
+    background:url("../img/onlineMap/POI_blue.png");
+    width: 25px;
+    height: 34px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 25px;
+    color: #ffffff;
+    position: relative;
+    z-index: 500;
+    text-align:center;
+    cursor: pointer;
 }
 /***************************判断是否显示删除按钮****************************************************/
 .deleteBtn{
