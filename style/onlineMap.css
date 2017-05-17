@@ -184,6 +184,7 @@ span.noResult{
     font-size: 12px;
 }
 .onlineMap .searchResultList .paging{
+    display: none;
     width: 280px;
     padding: 0 10px;
     height: 30px;
@@ -225,6 +226,12 @@ span.noResult{
     height: 20px;
     background-image: url('../img/onlineMap/button_firstpage_normal.png');
 }
+.onlineMap .searchResultList .paging div .toPage button.toFirstPageDisabled{
+    width: 40px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_firstpage_normal.png');
+    opacity: 0.3;
+}
 .onlineMap .searchResultList .paging div .toPage button.toFirstPage:hover,
 .onlineMap .searchResultList .paging div .toPage button.toFirstPage:active{
     background-image: url('../img/onlineMap/button_firstpage_active.png');
@@ -234,6 +241,12 @@ span.noResult{
     height: 20px;
     background-image: url('../img/onlineMap/button_nextpage_normal.png');
 }
+.onlineMap .searchResultList .paging div .toPage button.toNextPageDisabled{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_nextpage_normal.png');
+    opacity: 0.3;
+}
 .onlineMap .searchResultList .paging div .toPage button.toNextPage:hover,
 .onlineMap .searchResultList .paging div .toPage button.toNextPage:active{
     background-image: url('../img/onlineMap/button_nextpage_active.png');
@@ -242,6 +255,12 @@ span.noResult{
     width: 20px;
     height: 20px;
     background-image: url('../img/onlineMap/button_lastpage_normal.png');
+}
+.onlineMap .searchResultList .paging div .toPage button.tolastPageDisabled{
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/onlineMap/button_lastpage_normal.png');
+    opacity: 0.3;
 }
 .onlineMap .searchResultList .paging div .toPage button.tolastPage:hover,
 .onlineMap .searchResultList .paging div .toPage button.tolastPage:active{

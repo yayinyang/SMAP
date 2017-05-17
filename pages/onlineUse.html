@@ -266,7 +266,7 @@
                             ng-click="getKeywordFromPreSearch(tollGate)"
                     >
                         <span class="logo"></span>
-                        <div class="resultStation" ng-bind="tollGate.name"></div>
+                        <div class="resultStation" ng-bind="tollGate.fullName"></div>
                         <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
                     </li>
                 </ul>
@@ -276,8 +276,8 @@
                 </div>
             </div>
             <div class="searchResultList" ng-if="isReadySearchFlag">
-                <div class="noSearchResult" style="height: 32px;display: block;padding: 0 10px;"
-                     ng-show="chooseStartTollGate || chooseEndTollGate">
+                <div class="noSearchResult" style="height: 32px;padding: 0 10px;"
+                     ng-style="chooseTollGate">
                     <div style="border-bottom: 1px solid #d0e4ff;">
                         <span class="logo" style="width:18px;background-position:left;"></span>
                         <span class="noResult" ng-bind="printNotice"></span>
@@ -308,9 +308,27 @@
                         </div>
 
                         <div class="toPage">
-                            <button class="toFirstPage" ng-click="turnToPage(0)"></button>
-                            <button class="tolastPage"  ng-click="turnToPage(-1)"></button>
-                            <button class="toNextPage"  ng-click="turnToPage(1)"></button>
+                            <button
+                                    ng-class="{ true: 'toFirstPageDisabled',  false: 'toFirstPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(0)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'tolastPageDisabled',  false: 'tolastPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(-1)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'toNextPageDisabled',  false: 'toNextPage'}
+                                    [(resultPageNum + 1) === resultPageTotal]"
+                                    ng-click="turnToPage(1)"
+                                    ng-disabled="(resultPageNum + 1) === resultPageTotal"
+                            >
+                            </button>
                         </div>
                     </div>
                 </div>
