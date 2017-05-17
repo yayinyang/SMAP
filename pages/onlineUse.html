@@ -192,10 +192,6 @@
     </div>
 </div>
 <div class ="content">
-
-  <!--  <div style="height: 56px;line-height:46px;text-align: left;font-weight: 400;margin-top: -56px;">
-        您现在的位置：产品仓库 <span style="font-size: 20px;margin: auto 7px;color: #0f0f0f;display: inline">></span> 在线体验 <span style="font-size: 20px;margin: auto 7px;color: #0f0f0f;display: inline">></span> 收费信息查询
-    </div>-->
     <div style="height: 56px;text-align: left;font-weight: 400;margin-top: -40px;">
         <div style="width: 740px;">
             <div style="height: 56px;">
@@ -227,11 +223,9 @@
                     <input type="text"
                            placeholder="请输入起点收费站"
                            class="searchbar placeholderStyle "
-                           id="startStation"
                            ng-model="startTollGate"
-                           ng-focus="searchStartTollGate()"
-                           ng-change="searchStartTollGate()"
-
+                           ng-change="PreSearchStartTollGate()"
+                           ng-focus="PreSearchStartTollGate()"
                            style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
                     >
                     <img
@@ -244,10 +238,9 @@
                            placeholder="请输入终点收费站"
                            class="searchbar placeholderStyle"
                            ng-style="endStationStyle"
-                           id="endStation"
                            ng-model="endTollGate"
-                           ng-focus="searchEndTollGate()"
-                           ng-change="searchEndTollGate()"
+                           ng-change="PreSearchEndTollGate()"
+                           ng-focus="PreSearchEndTollGate()"
                            style="background-image:url('../img/onlineMap/finishingpoint.png');"
                     >
                     <img    class="deleteBtn"
@@ -264,15 +257,40 @@
                 >搜索
                 </button>
             </div>
-            <div class="searchResultList">
+            <div class="searchResultList" ng-if="!isReadySearchFlag">
                 <ul>
                     <li
                             class="searchResult"
                             ng-style="searchResult"
                             ng-repeat="tollGate  in tollGateArr"
-                            ng-click="getPidFromSearch(tollGate)"
+                            ng-click="getKeywordFromPreSearch(tollGate)"
                     >
                         <span class="logo"></span>
+                        <div class="resultStation" ng-bind="tollGate.fullName"></div>
+                        <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
+                    </li>
+                </ul>
+                <div class="noSearchResult" ng-style="noSearchResult">
+                    <span class="logo"></span>
+                    <span class="noResult" ng-bind="printNotice"></span>
+                </div>
+            </div>
+            <div class="searchResultList" ng-if="isReadySearchFlag">
+                <div class="noSearchResult" style="height: 32px;padding: 0 10px;"
+                     ng-style="chooseTollGate">
+                    <div style="border-bottom: 1px solid #d0e4ff;">
+                        <span class="logo" style="width:18px;background-position:left;"></span>
+                        <span class="noResult" ng-bind="printNotice"></span>
+                    </div>
+                </div>
+                <ul>
+                    <li
+                            class="searchResult"
+                            ng-style="searchResult"
+                            ng-repeat="tollGate  in tollGateArr"
+                            ng-click="getPidFromSearch(tollGate,$index)"
+                    >
+                        <span class="logo" style="background:none;font-size: 12px;text-align: center;line-height: 30px">{{$index+1}}.</span>
                         <div class="resultStation" ng-bind="tollGate.name"></div>
                         <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
                     </li>
@@ -281,7 +299,39 @@
                     <span class="logo"></span>
                     <span class="noResult" ng-bind="printNotice"></span>
                 </div>
+                <div class="paging" ng-style="paging">
+                    <div>
+                        <div class="pageNum">
+                            <span ng-bind="resultPageNum+1"></span>
+                            <span>/</span>
+                            <span ng-bind="resultPageTotal + '页'"></span>
+                        </div>
 
+                        <div class="toPage">
+                            <button
+                                    ng-class="{ true: 'toFirstPageDisabled',  false: 'toFirstPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(0)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'tolastPageDisabled',  false: 'tolastPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(-1)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'toNextPageDisabled',  false: 'toNextPage'}
+                                    [(resultPageNum + 1) === resultPageTotal]"
+                                    ng-click="turnToPage(1)"
+                                    ng-disabled="(resultPageNum + 1) === resultPageTotal"
+                            >
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="selectedDiv">
