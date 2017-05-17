@@ -98,7 +98,7 @@ var simple = {
           }
       },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
-    "sprite" : "http://fs.navinfo.com/smap/data/map/sprite/sprite",
+    "sprite" : "http://localhost:63342/SMAP/data/map/sprite/sprite",
     "layers" : [
         {
             "id": "576a22cac9a04cefb8d4bb20c67024d8",
@@ -451,7 +451,6 @@ var simple = {
             "maxzoom": 17.5,
             "source": "Villtown",
             "layout": {
-                "icon-image": "marker-15",
                 "visibility": "none",
                 "text-field": "{name_zh}"
             },
@@ -467,7 +466,6 @@ var simple = {
             "source": "Road",
             "layout": {
                 "text-size": 9.0,
-                "icon-image": "motorway_1",
                 "visibility": "none",
                 "text-field": "{name_brief}",
                 "symbol-placement": "line"
@@ -1023,7 +1021,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "museum-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1047,7 +1044,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "zoo-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1071,7 +1067,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "lodging-11",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1095,7 +1090,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "building-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1119,7 +1113,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "building-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1143,7 +1136,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "toll",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-ignore-placement": false,
@@ -1213,7 +1205,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "landscape-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1237,7 +1228,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "restaurant-15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-offset": [0, 1.3]
@@ -1259,7 +1249,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "landscape-15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-offset": [0, 1.3]
@@ -1280,7 +1269,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12,
-                "icon-image": "point-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-ignore-placement": false,
@@ -1303,7 +1291,6 @@ var simple = {
             "maxzoom": 17.5,
             "source": "Ptstop",
             "layout": {
-                "icon-image": "bus-15",
                 "visibility": "visible"
             },
             "source-layer": "Ptstop",
@@ -1339,7 +1326,6 @@ var simple = {
             "source": "Ptstop",
             "layout": {
                 "text-size": 13.0,
-                "icon-image": "transfer_15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "center",
@@ -1361,7 +1347,6 @@ var simple = {
             "source": "Ptstop",
             "layout": {
                 "text-size": 13,
-                "icon-image": "metro-station-1",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "center",
@@ -1577,7 +1562,6 @@ var simple = {
             "source": "Adminflag",
             "layout": {
                 "text-size": 14.0,
-                "icon-image": "circle-brown-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-rotation-alignment": "map",
@@ -1603,7 +1587,6 @@ var simple = {
             "source": "Adminflag",
             "layout": {
                 "text-size": 14.0,
-                "icon-image": "circle-red-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-ignore-placement": false,
@@ -1632,7 +1615,6 @@ var simple = {
                     "stops": [[3, 16], [17, 24]],
                     "base": 1
                 },
-                "icon-image": "star-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "bottom",
@@ -1658,7 +1640,6 @@ var simple = {
                     "stops": [[3, 16], [17, 24]],
                     "base": 1
                 },
-                "icon-image": "circle-red-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "bottom",
@@ -1707,7 +1688,7 @@ var simple = {
             maxzoom: 17,
             layout:
               {
-                  'icon-image': 'police-15',
+                  'icon-image': 'tollstation',
               },
             paint:
               {
