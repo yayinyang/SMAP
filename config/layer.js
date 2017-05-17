@@ -98,7 +98,7 @@ var simple = {
           }
       },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
-    "sprite" : "http://fs.navinfo.com/smap/data/map/sprite/sprite",
+    "sprite" : "http://localhost:63342/SMAP/data/map/sprite/sprite",
     "layers" : [
         {
             "id": "576a22cac9a04cefb8d4bb20c67024d8",
@@ -1660,11 +1660,7 @@ var simple = {
             maxzoom: 17,
             layout:
               {
-                  'icon-image': 'police-15',
-              },
-            paint:
-              {
-                  'icon-color': '#ff2d2d',
+                  'icon-image': 'red',
               },
 
         }]
