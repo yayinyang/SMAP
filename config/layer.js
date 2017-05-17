@@ -6,7 +6,8 @@ var simple = {
           "toll" :
             {
                 "type":"vector",
-                "tiles": ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
+                "tiles":
+                  ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
             },
           "Worldannotation": {
               "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -451,7 +452,6 @@ var simple = {
             "maxzoom": 17.5,
             "source": "Villtown",
             "layout": {
-                "icon-image": "marker-15",
                 "visibility": "none",
                 "text-field": "{name_zh}"
             },
@@ -467,7 +467,6 @@ var simple = {
             "source": "Road",
             "layout": {
                 "text-size": 9.0,
-                "icon-image": "motorway_1",
                 "visibility": "none",
                 "text-field": "{name_brief}",
                 "symbol-placement": "line"
@@ -1017,14 +1016,58 @@ var simple = {
             "minzoom": 14.0,
             "type": "symbol",
             "filter": ["all", ["==", "kindcode", "120201"], [">=", "rank", 1]]
-        },
-        {
+        }, {
+            "id": "10629e6309bc4618b884e1e0dfbece3d",
+            "maxzoom": 17.5,
+            "source": "Annotation",
+            "layout": {
+                "text-size": 12.0,
+                "visibility": "visible",
+                "text-optional": false,
+                "text-field": "{name_zh}",
+                "text-ignore-placement": false,
+                "text-offset": [0, 1.3]
+            },
+            "source-layer": "Annotation",
+            "paint": {
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 0.8,
+                "text-color": "#544946",
+                "icon-color": "#ff0000",
+                "text-translate": [0, 0]
+            },
+            "minzoom": 11.0,
+            "type": "symbol",
+            "filter": ["all", ["==", "kindcode", "160205"], [">=", "rank", 3]]
+        }, {
+            "id": "9ad5db7fc802469b881706f6d16e8e6d",
+            "maxzoom": 17.5,
+            "source": "Annotation",
+            "layout": {
+                "text-size": 12.0,
+                "visibility": "visible",
+                "text-optional": false,
+                "text-field": "{name_zh}",
+                "text-ignore-placement": false,
+                "text-offset": [0, 1.3]
+            },
+            "source-layer": "Annotation",
+            "paint": {
+                "text-halo-color": "#ffffff",
+                "text-halo-width": 0.8,
+                "text-color": "#544946",
+                "icon-color": "#ff0000",
+                "text-translate": [0, 0]
+            },
+            "minzoom": 11.0,
+            "type": "symbol",
+            "filter": ["all", ["==", "kindcode", "180308"]]
+        }, {
             "id": "3c5f8a6c51cf4678975287dbe8b6d549",
             "maxzoom": 17.5,
             "source": "Annotation",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "lodging-11",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1048,7 +1091,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "building-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1072,7 +1114,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "building-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1096,7 +1137,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "toll",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-ignore-placement": false,
@@ -1166,7 +1206,6 @@ var simple = {
             "source": "Annotation",
             "layout": {
                 "text-size": 12,
-                "icon-image": "landscape-15",
                 "visibility": "visible",
                 "text-optional": false,
                 "text-field": "{name_zh}",
@@ -1190,7 +1229,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "restaurant-15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-offset": [0, 1.3]
@@ -1212,7 +1250,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12.0,
-                "icon-image": "landscape-15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-offset": [0, 1.3]
@@ -1233,7 +1270,6 @@ var simple = {
             "source": "Poi",
             "layout": {
                 "text-size": 12,
-                "icon-image": "point-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-ignore-placement": false,
@@ -1256,7 +1292,6 @@ var simple = {
             "maxzoom": 17.5,
             "source": "Ptstop",
             "layout": {
-                "icon-image": "bus-15",
                 "visibility": "visible"
             },
             "source-layer": "Ptstop",
@@ -1292,7 +1327,6 @@ var simple = {
             "source": "Ptstop",
             "layout": {
                 "text-size": 13.0,
-                "icon-image": "transfer_15",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "center",
@@ -1314,7 +1348,6 @@ var simple = {
             "source": "Ptstop",
             "layout": {
                 "text-size": 13,
-                "icon-image": "metro-station-1",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "center",
@@ -1530,7 +1563,6 @@ var simple = {
             "source": "Adminflag",
             "layout": {
                 "text-size": 14.0,
-                "icon-image": "circle-brown-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-rotation-alignment": "map",
@@ -1556,7 +1588,6 @@ var simple = {
             "source": "Adminflag",
             "layout": {
                 "text-size": 14.0,
-                "icon-image": "circle-red-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-ignore-placement": false,
@@ -1585,7 +1616,6 @@ var simple = {
                     "stops": [[3, 16], [17, 24]],
                     "base": 1
                 },
-                "icon-image": "star-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "bottom",
@@ -1611,7 +1641,6 @@ var simple = {
                     "stops": [[3, 16], [17, 24]],
                     "base": 1
                 },
-                "icon-image": "circle-red-11",
                 "visibility": "visible",
                 "text-field": "{name_zh}",
                 "text-anchor": "bottom",
@@ -1660,7 +1689,11 @@ var simple = {
             maxzoom: 17,
             layout:
               {
-                  'icon-image': 'red',
+                  'icon-image': 'tollstation',
+              },
+            paint:
+              {
+                  'icon-color': '#ff2d2d',
               },
 
         }]

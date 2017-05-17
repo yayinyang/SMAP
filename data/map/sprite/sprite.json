@@ -1,17 +1,1 @@
-{"marker-15":{ "x": 45, "y": 28, "width": 10, "height": 15, "pixelRatio":1, "sdf":true },
-  "museum-15": { "x": 55, "y": 15, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "zoo-15": { "x": 55, "y": 0, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "building-15": { "x": 30, "y": 43, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "Tiananmen": { "x": 0, "y": 0, "width": 23, "height": 12, "pixelRatio":1, "sdf":true },
-  "restaurant-15": { "x": 15, "y": 28, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "landscape-15": { "x": 30, "y": 28, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "point-11": { "x": 45, "y": 43, "width": 11, "height": 11, "pixelRatio":1, "sdf":true },
-  "bus-15": { "x": 0, "y": 28, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "transfer_15": { "x": 0, "y": 43, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "metro-station-1": { "x": 15, "y": 43, "width": 15, "height": 15, "pixelRatio":1, "sdf":true },
-  "circle-brown-11": { "x": 23, "y": 16, "width": 11, "height": 11, "pixelRatio":1, "sdf":true },
-  "circle-red-11": { "x": 55, "y": 30, "width": 11, "height": 11, "pixelRatio":1, "sdf":true },
-  "star-11": { "x": 39, "y": 16, "width": 11, "height": 11, "pixelRatio":1, "sdf":true },
-  "red": { "x": 39, "y": 0, "width": 16, "height": 16, "pixelRatio":1, "sdf":false },
-  "green": { "x": 23, "y": 0, "width": 16, "height": 16, "pixelRatio":1, "sdf":false },
-  "white": { "x": 0, "y": 12, "width": 16, "height": 16, "pixelRatio":1, "sdf":false }}
+{"marker-15":{"x":71,"y":30,"width":10,"height":15,"pixelRatio":1,"sdf":true},"museum-15":{"x":30,"y":48,"width":15,"height":15,"pixelRatio":1,"sdf":true},"zoo-15":{"x":0,"y":48,"width":15,"height":15,"pixelRatio":1,"sdf":true},"building-15":{"x":71,"y":0,"width":15,"height":15,"pixelRatio":1,"sdf":true},"Tiananmen":{"x":48,"y":0,"width":23,"height":12,"pixelRatio":1,"sdf":true},"restaurant-15":{"x":48,"y":12,"width":15,"height":15,"pixelRatio":1,"sdf":true},"landscape-15":{"x":48,"y":27,"width":15,"height":15,"pixelRatio":1,"sdf":true},"point-11":{"x":11,"y":63,"width":11,"height":11,"pixelRatio":1,"sdf":true},"bus-15":{"x":15,"y":48,"width":15,"height":15,"pixelRatio":1,"sdf":true},"transfer_15":{"x":71,"y":15,"width":15,"height":15,"pixelRatio":1,"sdf":true},"metro-station-1":{"x":45,"y":48,"width":15,"height":15,"pixelRatio":1,"sdf":true},"circle-brown-11":{"x":0,"y":63,"width":11,"height":11,"pixelRatio":1,"sdf":true},"circle-red-11":{"x":60,"y":48,"width":11,"height":11,"pixelRatio":1,"sdf":true},"star-11":{"x":71,"y":45,"width":11,"height":11,"pixelRatio":1,"sdf":true},"red":{"x":0,"y":24,"width":24,"height":24,"pixelRatio":1,"sdf":true},"green":{"x":24,"y":0,"width":24,"height":24,"pixelRatio":1,"sdf":true},"white":{"x":0,"y":0,"width":24,"height":24,"pixelRatio":1,"sdf":true},"tollstation":{"x":24,"y":24,"width":17,"height":17,"pixelRatio":1,"sdf":false}}
