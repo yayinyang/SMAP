@@ -238,18 +238,17 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     };
 
     // 取消收费站高亮
-    $scope.showNormalTollGate = function (index) {
-       /* var div = window.document.createElement('div');
-        div.setAttribute('class','popTollGateIcon');
-        div.innerHTML = index+1;
-        $scope.tollGateOnMapArr[index].setDOMContent(div);*/
+    $scope.showNormalTollGate = function () {
        if($scope.HeightLightTollGate){
            $scope.HeightLightTollGate.remove();
        }
     };
     // 联想搜索起点
-    $scope.PreSearchStartTollGate = function () {
+    $scope.PreSearchStartTollGate = function (e) {
         var startUrl = '';
+        if(e === 'change'){
+            $scope.startPid = '';
+        }
         if ($scope.endPid) {
             startUrl = 'tollgate/tollnames/sec/' + $scope.endPid + '/2'
         } else {
@@ -286,8 +285,11 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         });
     };
     // 联想搜索终点
-    $scope.PreSearchEndTollGate = function () {
+    $scope.PreSearchEndTollGate = function (e) {
         var endUrl = '';
+        if(e ===  'change'){
+            $scope.endPid = '';
+        }
         if ($scope.startPid) {
             endUrl = 'tollgate/tollnames/sec/' + $scope.startPid + '/1';
         } else {
@@ -496,16 +498,18 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     // 获取起点和终点的关键字
     $scope.getKeywordFromPreSearch = function (data) {
      if ($scope.startFlag) {
-         $scope.startTollGate = data.fullName;
+         $scope.startTollGate = data.name;
          $scope.startFlag = false;
+         $scope.startPid = data.pid;
          $scope.tollGateArr.length = 0;
          $scope.endStationStyle = {
              'border-bottom':'none'
          };
      }
      if ($scope.endFlag) {
-         $scope.endTollGate = data.fullName;
+         $scope.endTollGate = data.name;
          $scope.endFlag = false;
+         $scope.endPid = data.pid;
          $scope.tollGateArr.length = 0;
          $scope.endStationStyle = {
              'border-bottom':'none'
@@ -522,8 +526,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.endTollGate = data.name;
             $scope.endPid = data.pid;
         }
-        $scope.showNormalTollGate($scope.lastClickNode);
-        $scope.lastClickNode = index; //记录当前点击的节点，当下次点击其他节点时是取消高亮
+        $scope.showNormalTollGate();
+        $scope.lastClickNode = index; //记录当前点击的节点,并高亮
         $scope.showHeightLightTollGate(index);
     };
     // 获取路径
@@ -533,6 +537,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             features: [],
         };
         $scope.clearLines();
+        $scope.showNormalTollGate();
         $scope.resultPageNum = 0;
         $scope.chooseStartTollGate = false;
         $scope.chooseTollGate = {
@@ -616,5 +621,10 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         var local = 'capture'+data;
         $location.hash(local);
         $anchorScroll();
+    };
+    $scope.GoSearch = function (e) {
+        if(e.keyCode === 13){
+            $scope.getLinksFromStartToEnd();
+        }
     };
 }]);
