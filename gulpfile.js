@@ -21,17 +21,21 @@ var path = {
             'index.html',
         ],
         css:['style*/*.css'],
-        js:['js*/*.js',
+        js:[
             'js*/api*/*.js',
             'js*/constant*/*.js',
             'js*/directives*/tab*/*.js',
-            'js*/service*/*.js',
             'config*/*.js',
-            'data*/*.js',
-            'data*/map*/.'
+            'js*/tollGate.js',
+        ],
+        buildjs:[
+            'js/*.js',
+            'js/service/dataService.js',
+            'js/service/dataService-sMap.js',
+
         ],
         image:['img*/*.{png,jpg,gif,ico,svg}','img*/**/*.{png,jpg,gif,ico,svg}'],
-        plugins:['lib*/**/*.*','data*/map*/*.*','data*/map*/**/*.*'],
+        plugins:['lib*/**/*.*','data*/*.*','data*/**/*.*'],
         zip:'dist',
     },
     output:{
@@ -61,10 +65,21 @@ gulp.task('css', function () {
         .pipe(gulp.dest(path.output.dist));
 });
 
+gulp.task('buildjs', function () {
+    return gulp.src(path.input.buildjs)
+        .pipe(ngAnnotate({single_quotes: true}))
+        .pipe(concat('build.js'))
+        .pipe(uglify({
+            mangle: false, //不修改变量名
+        }))
+        .pipe(gulp.dest(path.output.dist));
+});
 gulp.task('js', function () {
     return gulp.src(path.input.js)
         .pipe(ngAnnotate({single_quotes: true}))
-        .pipe(uglify())
+        .pipe(uglify({
+            mangle: false, //不修改变量名
+        }))
         .pipe(gulp.dest(path.output.dist));
 });
 
@@ -99,5 +114,5 @@ gulp.task('clean',function(){
 });
 
 gulp.task('publish', function (callback) {
-    runSequence('clean',['html','css', 'js','plugins','image'],'zip_new',callback);
+    runSequence('clean',['html','css', 'js','buildjs','plugins','image'],callback);
 });
