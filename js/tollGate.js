@@ -152,8 +152,10 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         $scope.provincePid = data.id;
         $scope.nowProvince = data.name;
         map.flyTo({center:[ data.point.x, data.point.y]});
-        $scope.emptyInput('startStation');
-        $scope.emptyInput('endStation');
+        $scope.startTollGate = '';
+        $scope.startPid = '';
+        $scope.endTollGate = '';
+        $scope.endPid = '';
     };
     // 生成弹出框
     $scope.createPop = function (data,index) {
