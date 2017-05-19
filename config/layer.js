@@ -1686,7 +1686,7 @@ var simple = {
             "source" : "toll",
             'source-layer': 'toll',
             minzoom: 0,
-            maxzoom: 17,
+            maxzoom: 17.1,
             layout:
               {
                   'icon-image': 'tollstation',

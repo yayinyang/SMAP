@@ -152,6 +152,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         $scope.provincePid = data.id;
         $scope.nowProvince = data.name;
         map.flyTo({center:[ data.point.x, data.point.y]});
+        $scope.emptyInput('startStation');
+        $scope.emptyInput('endStation');
     };
     // 生成弹出框
     $scope.createPop = function (data,index) {
@@ -382,6 +384,9 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 bounds.push(point);
             }
             if($scope.tollGateArr.length === 0){
+                $scope.chooseTollGate = {
+                    display: 'none',
+                };
                 $scope.noSearchResult = {
                     display: 'block',
                 };
@@ -559,18 +564,20 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             if($scope.startPid === '' && $scope.endPid ===''){
                 $scope.chooseStartTollGate = true;
                 $scope.chooseEndTollGate = true;
-                $scope.chooseTollGate = {
-                    display: 'block',
-                };
-                $scope.printNotice = '请选择正确的起点';
                 $scope.searchStartTollGate();
+                if($scope.tollGateArr.length > 0 ){
+                    $scope.chooseTollGate = {
+                        display: 'block',
+                    };
+                    $scope.printNotice = '请选择正确的起点';
+                }
             }else if($scope.startPid === '' && $scope.endPid !==''){
                 $scope.searchStartTollGate();
             }else if($scope.endPid === ''){
-                if($scope.chooseEndTollGate){
+                $scope.searchEndTollGate();
+                if($scope.chooseEndTollGate && $scope.tollGateArr.length > 0){
                     $scope.printNotice = '请选择正确的终点';
                 }
-                $scope.searchEndTollGate();
             }else{
                 $scope.clearTollGateIcon();
                 $scope.paging = {
@@ -585,34 +592,41 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 };
                 dsEdit.getProduct('tollgate/path/'+$scope.startPid+'/'+$scope.endPid).then(function (data) {
                     // map.flyTo({center: data[0].pointGeoJson.coordinates});
-                    $scope.linksArr = data;
-                    $scope.createStartTollIcon(data);
-                    $scope.createEndTollIcon(data);
-                    for (var i = 0, len = data.length; i < len ;i++) {
-                        if(map.getSource('route'+i)) {
-                            $scope.addLines(data[i], 'route'+i,i);
-                        } else {
-                            var obj = $scope.originLayer;
-                            obj.id = 'route' + i;
-                            obj.paint['line-color'] = $scope.colorArr[i];
-                            var source = {
-                                "type": "geojson",
-                                "data": {
-                                    "type": "Feature",
-                                    "properties": {},
-                                    "geometry": data[i].geoJson
-                                }
-                            };
-                            $scope.createPop(data[i],i);
-                            $scope.originLayer.source = source;
-                            map.addLayer($scope.originLayer);
+                    if(data.length === 0){
+                        $scope.noSearchResult = {
+                            display: 'block',
+                        };
+                        $scope.printNotice = '无搜索结果，请重新输入';
+                    }else {
+                        $scope.linksArr = data;
+                        $scope.createStartTollIcon(data);
+                        $scope.createEndTollIcon(data);
+                        for (var i = 0, len = data.length; i < len ;i++) {
+                            if(map.getSource('route'+i)) {
+                                $scope.addLines(data[i], 'route'+i,i);
+                            } else {
+                                var obj = $scope.originLayer;
+                                obj.id = 'route' + i;
+                                obj.paint['line-color'] = $scope.colorArr[i];
+                                var source = {
+                                    "type": "geojson",
+                                    "data": {
+                                        "type": "Feature",
+                                        "properties": {},
+                                        "geometry": data[i].geoJson
+                                    }
+                                };
+                                $scope.createPop(data[i],i);
+                                $scope.originLayer.source = source;
+                                map.addLayer($scope.originLayer);
+                            }
+                            var  pointFeature = turf.lineString(data[i].geoJson.coordinates);
+                            bounds.features.push(pointFeature);
                         }
-                        var  pointFeature = turf.lineString(data[i].geoJson.coordinates);
-                        bounds.features.push(pointFeature);
+                        const bbox = turf.bbox(bounds);
+                        const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                        map.fitBounds(v2,{padding: 50} );
                     }
-                    const bbox = turf.bbox(bounds);
-                    const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
-                    map.fitBounds(v2,{padding: 50} );
                 });
             }
         }
