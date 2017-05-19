@@ -99,7 +99,7 @@ var simple = {
           }
       },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
-    "sprite" : "http://localhost:63342/SMAP/data/map/sprite/sprite",
+    "sprite" : "http://fs.navinfo.com/smap/data/map/sprite/sprite",
     "layers" : [
         {
             "id": "576a22cac9a04cefb8d4bb20c67024d8",
@@ -1691,10 +1691,5 @@ var simple = {
               {
                   'icon-image': 'tollstation',
               },
-            paint:
-              {
-                  'icon-color': '#ff2d2d',
-              },
-
         }]
 }
