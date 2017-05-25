@@ -2,18 +2,19 @@
 <html lang="en" ng-app="tollGate">
 <head>
     <meta charset="UTF-8">
-    <script src='../lib/mapbox/mapbox-gl.js'></script>
-    <script src='../lib/turf/turf.min.js'></script>
-    <script src="../config/layer.js"></script>
-    <script src="../config/peovince.js"></script>
+    <!-- build:css ../style/onlineUse.css -->
+
     <link href='../lib/mapbox/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="../lib/switch/pageSwitch.min.css">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/onlineMap.css">
+    <!-- endbuild -->
+
     <!--[if lt IE 10]>
     <link rel="stylesheet" href="../style/ie9.css">
     <![endif]-->
-    <link rel="stylesheet" href="../style/index.css">
-    <link rel="stylesheet" href="../style/onlineMap.css">
+
     <title>SMap</title>
 </head>
 <body  ng-controller="tollGateController" style="overflow-y: scroll;" ng-keypress="GoSearch($event)">
@@ -370,6 +371,11 @@
         </div>
     </div>
 </div>
+<!-- build:js ../js/onlineUse.js -->
+<script src='../lib/mapbox/mapbox-gl.js'></script>
+<script src='../lib/turf/turf.min.js'></script>
+<script src="../config/layer.js"></script>
+<script src="../config/peovince.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../lib/bootstrap/js/bootstrap.js"></script>
 <script src="../lib/switch/pageSwitch.min.js"></script>
@@ -384,6 +390,8 @@
 <script src="../js/service/dataService.js"></script>
 <script src="../js/service/dataService-sMap.js"></script>
 <script src="../js/tollGate.js"></script>
+<!-- endbuild -->
+
 <script>
     var map = new mapboxgl.Map({
         container : 'map',

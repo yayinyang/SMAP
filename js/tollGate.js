@@ -420,7 +420,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             if(bounds.length > 0){
                 var features = turf.featureCollection(bounds);
                 var bbox = turf.bbox(features);
-                const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
                 map.fitBounds(v2, { maxZoom: 15 });
             }
         });
@@ -497,7 +497,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             if(bounds.length > 0){
                 var features = turf.featureCollection(bounds);
                 var bbox = turf.bbox(features);
-                const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
                 map.fitBounds(v2, { maxZoom: 15 });
             }
         });
@@ -625,8 +625,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                             var  pointFeature = turf.lineString(data[i].geoJson.coordinates);
                             bounds.features.push(pointFeature);
                         }
-                        const bbox = turf.bbox(bounds);
-                        const v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                        var bbox = turf.bbox(bounds);
+                        var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
                         map.fitBounds(v2,{padding: 50} );
                     }
                 });
