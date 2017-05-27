@@ -44,7 +44,7 @@ function hideMenu(type) {
             $('.menuWaresGrid').css('display', 'none');
             $('#produce').css('background-color', 'transparent');
             break;
-            case 'onlineUse' :
+        case 'onlineUse' :
             $('#onlineUse').css('display', 'none');
             $('#solution').css('background-color', 'transparent');
             $('#solutionBottom').css('background-color', 'transparent');

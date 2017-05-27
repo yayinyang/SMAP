@@ -1,7 +1,7 @@
 /**
  * Created by liwanchong on 2016/12/15.
  */
-var product = angular.module("product", ['dataService', 'nvd3', 'angular-popups','directiveApp']);
+var product = angular.module("product", ['dataService', 'nvd3', 'angular-popups','directiveApp','navApp']);
 product.filter('showName', function() {
     var showObj = {
         1: 'mif',
@@ -304,6 +304,5 @@ product.controller("productController", ['$scope', 'dsEdit','$location', functio
         if(!item.open) {
             item.open = true;
         }
-
     }
 }]);

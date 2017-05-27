@@ -1,7 +1,7 @@
 /**
  * Created by liwanchong on 2017/3/9.
  */
-var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups']);
+var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups','navApp']);
 tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$anchorScroll', function (
   $scope, dsEdit, $location, $anchorScroll) {
     $scope.param = {

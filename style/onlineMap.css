@@ -6,9 +6,6 @@ html,body{
     min-width: 1180px;
     height: 100%;
 }
-body{
-    padding-top: 44px;
-}
 .info:hover{
     color: #3385ff;
 }

@@ -4,7 +4,7 @@
 $(function () {
     $('#apiPage').load('../pages/api/getTileInfomation.html');
 });
-var productServiceApp = angular.module('productServiceApp', []);
+var productServiceApp = angular.module('productServiceApp', ['navApp']);
 productServiceApp.controller('selectedController',function ($scope,JumpConstant) {
     $scope.services = [
         {

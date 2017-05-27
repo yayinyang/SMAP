@@ -1,13 +1,13 @@
 /**
  * Created by liwanchong on 2016/12/28.
  */
-var productDescriptionApp = angular.module('productDescriptionApp', []);
+var productDescriptionApp = angular.module('productDescriptionApp', ['navApp']);
 productDescriptionApp.run(function($rootScope, $templateCache) {
     $rootScope.$on('$viewContentLoaded', function() {
         $templateCache.removeAll();
     });
 });
-productDescriptionApp.controller('productDescriptionController',function ($scope) {
+productDescriptionApp.controller('productDescriptionController',function ($timeout,$scope) {
     $scope.arrowFlag = true;
     $scope.descriptions = [
         {
