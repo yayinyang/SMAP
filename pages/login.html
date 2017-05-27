@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="login">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Smap</title>
+    <link rel="stylesheet" href="../lib/angular-nvd3/nv.d3.css">
+    <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../style/login.css">
+
 </head>
-<body>
+<body ng-controller="loginController" >
 
     <div class="container">
         <header class="header">
             <p class="chineseP">企业用户登陆</p>
             <p class="englishP">Business users login</p>
         </header>
-        <div class="center-login">
+        <div class="center-login" >
             <div class="header_img"><img src="../img/login/logo@2x.png"/></div>
             <p class="wel">Welcome to SMap!</p>
             <form action="#" method="post" class="formDiv clearfix">
                 <div class="userIcon"><img src="../img/login/icon-326446@2x.png"/></div>
                 <div class="passWordIcon"><img src="../img/login/icon-133622@2x.png"/></div>
-                <input class="userName" type="text"/>
-                <p class="clearfix p_lineHeight hide">用户名不存在，请重新输入！</p>
-                <input class="passWord" type="text"/>
-                <p class="passWord_msg p_lineHeight hide">密码错误，请重新输入！</p>
-                <a class="forget_div p_lineHeight1 f_r" href="javascript:void(0)">忘记密码？</a>
-                <input class="verification_code f_l " type="text"/>
-                <span class="f_l">WWWW</span>
+                <input class="userName" type="text"  ng-model="name" ng-focus="hide_name_err()" />
+                <p class="clearfix p_lineHeight hide" id="name_err">用户名不存在，请重新输入！</p>
+                <input class="passWord" type="password" ng-focus="hide_pwd_err()"  ng-model="pwd"/>
+                <p class="passWord_msg p_lineHeight hide" id="pwd_err">密码错误，请重新输入！</p>
+                <a class="forget_div p_lineHeight1 f_r" href="javascript:void(0)" ng-click="pwd_f()">忘记密码？</a>
+                <input class="verification_code f_l " type="text" ng-model="code"  ng-focus="hide_code_err()"/>
+                <span class="f_l" ng-model="code_v" ng-bind="code_v" ></span>
                 <p class="change_code">
-                    <a href="javascript:void(0);">看不清？换一个</a>
+                    <a href="javascript:void(0);" ng-click="code_g()">看不清？换一个</a>
                 </p>
-                <p class="clearfix p_lineHeight hide">验证码错误，请重新输入！</p>
-                <a href="javascript:void(0);" class="f_l submit_Div">立即登录</a>
+                <p class="clearfix p_lineHeight hide" id="code_err">验证码错误，请重新输入！</p>
+                <a href="javascript:void(0);" class="f_l submit_Div" ng-click="submit()">立即登录</a>
             </form>
         </div>
     </div>
+<div id="code" class="opacity">12321</div>
 </body>
+<script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../config/Application.js"></script>
+<script src="../js/login.js"></script>
 </html>
