@@ -1,0 +1,99 @@
+@charset "UTF-8";
+html,body,ul,li,p{
+    padding: 0;
+    margin: 0;
+}
+input{
+    /*去除input默认样式*/
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+a{
+    /*去除a标签点击高亮状态*/
+    -webkit-tap-highlight-color:transparent;
+    /*去除ie9a标签的虚线框*/
+    outline: none;
+
+}
+/*自定义字体*/
+@font-face {
+    font-family: 'SourceHanSansCN-Medium';
+    src: url('../fonts/SourceHanSansK-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-Normal';
+    src: url('../fonts/SourceHanSansK-Normal.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-Regular';
+    src:  url('../fonts/SourceHanSansK-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-Light';
+    src:url('../fonts/SourceHanSansK-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-Heavy';
+    src: url('../fonts/SourceHanSansK-Heavy.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-ExtraLight';
+    src:   url('../fonts/SourceHanSansK-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'SourceHanSansCN-Bold';
+    src:url('../fonts/SourceHanSansK-Bold.ttf') format('truetype');
+}
+
+header, section, footer, aside, nav, article, figure {
+    display: block;
+}
+.f_l{
+    float: left;
+}
+.f_r{
+    float: right;
+}
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    display: block;
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+html,body{
+    font-size: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+@media screen and (max-width: 1680px) {
+    html{
+        font-size: 17.5px;
+    }
+}
+@media screen and (max-width:1600px){
+    html{
+        font-size: 16.66px;
+    }
+}
+@media screen and (max-width:1440px){
+    html{
+        font-size: 15px;
+    }
+}
+@media screen and (max-width:1366px){
+    html{
+        font-size: 14px;
+    }
+}
+@media screen and (max-width:1280px){
+    html{
+        font-size: 13px;
+    }
+}

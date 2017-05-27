@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Roadwork">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”renderer” content=”webkit”>
+    <!--让IE的文档模式永远都是最新的-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SMap</title>
+    <link rel="stylesheet" href="../../style/base.css">
+    <link rel="stylesheet" href="../../style/roadwork.css">
+    <script src="../../lib/angularjs/1.4.4/angular.js"></script>
+    <script src="../../js/roadwork/roadwork.js"></script>
+</head>
+<body>
+    <div class="container">
+        <ul class="tapJump" ng-controller="RoadController">
+            <li ng-click="changePage('pageOne')" ng-class="{'active':pagename=='pageOne'}"><a href="#pageOne">1</a></li>
+            <li ng-click="changePage('pageTwo')" ng-class="{'active':pagename=='pageTwo'}"><a href="#pageTwo">2</a></li>
+            <li ng-click="changePage('pageThree')" ng-class="{'active':pagename=='pageThree'}"><a href="#pageThree">3</a></li>
+            <li ng-click="changePage('pageFour')" ng-class="{'active':pagename=='pageFour'}"><a href="#pageFour">4</a></li>
+        </ul>
+        <header class="header_div"></header>
+        <div class="page_one wrap" id="pageOne">
+            <div><img src="../../img/roadwork/page1.png">
+                <a href="javascript:void(0);">在线体验</a>
+            </div>
+        </div>
+        <div class="page_two wrap" id="pageTwo">
+            <div>
+                <img src="../../img/roadwork/page2.png">
+            </div>
+        </div>
+        <div class="page_three wrap" id="pageThree">
+            <div><img src="../../img/roadwork/page3-1.png" alt=""></div>
+            <div><img src="../../img/roadwork/page3-2.png" alt=""></div>
+        </div>
+        <div class="page_four wrap" id="pageFour">
+            <div><img src="../../img/roadwork/page4.png" ></div>
+            <div><img src="../../img/roadwork/page4-2.png" ></div>
+        </div>
+    </div>
+</body>
+
+</html>
