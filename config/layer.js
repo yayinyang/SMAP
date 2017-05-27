@@ -99,7 +99,7 @@ var simple = {
           }
       },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
-    "sprite" : "http://localhost:63342/SMAP/data/map/sprite/sprite",
+    "sprite" : "http://localhost:8000/dist/data/map/sprite/sprite",
     "layers" : [
         {
             "id": "576a22cac9a04cefb8d4bb20c67024d8",
