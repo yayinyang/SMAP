@@ -121,11 +121,11 @@ login.controller("loginController", ['$scope', function ($scope) {
                         $scope.code_v = $scope.code_g();
                         return false;
                     default:
-                        //window.location.href=App.Config.appRoot;
-                        //data.msg
+                        window.location.href=App.Config.appRoot;
+                        //
                         $.post( App.Config.testloginServiceUrl+"tokenCheck",
                             {
-                                token:'8fa750c791b6a205a022ed7bfa737814'
+                                token:data.msg
                             },
                             function (data,status) {
                                 console.log("status: " + status);

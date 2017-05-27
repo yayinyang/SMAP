@@ -1,13 +1,13 @@
 /**
  * Created by liwanchong on 2016/12/28.
  */
-var productDescriptionApp = angular.module('productDescriptionApp', []);
+var productDescriptionApp = angular.module('productDescriptionApp', ['navApp']);
 productDescriptionApp.run(function($rootScope, $templateCache) {
     $rootScope.$on('$viewContentLoaded', function() {
         $templateCache.removeAll();
     });
 });
-productDescriptionApp.controller('productDescriptionController',function ($scope) {
+productDescriptionApp.controller('productDescriptionController',function ($timeout,$scope) {
     $scope.arrowFlag = true;
     $scope.descriptions = [
         {
@@ -86,9 +86,9 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
         $scope.arrowFlag = false;
         $('#apiType').text(item.name);
         $('#showApiName').empty();
-         if(item.type === 'strategyProduct') {
-             $('#apiPage').load('../pages/descriptions/strategyProduct.html');
-         }
+        if(item.type === 'strategyProduct') {
+            $('#apiPage').load('../pages/descriptions/strategyProduct.html');
+        }
 
         $scope.descriptions.forEach(function (item, index) {
             if (index === num) {
@@ -108,5 +108,4 @@ productDescriptionApp.controller('productDescriptionController',function ($scope
         // $scope.descriptionUrl = '../pages/descriptions/'+type+'.html';
     };
 })
-
 
