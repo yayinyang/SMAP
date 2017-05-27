@@ -271,6 +271,10 @@ productServiceApp.constant('JumpConstant', {
             name: '计算收费金额',
             id: 'tollCostContainer'
         },
+        {
+            name: '用户反馈接口',
+            id: 'feedbackContainer'
+        },
     ],
     summary: [
         {
@@ -290,6 +294,84 @@ productServiceApp.constant('JumpConstant', {
         {
             name: '状态码介绍',
             id: 'codeExplain',
+        }
+    ],
+    Construction: [
+        {
+            name: '施工道路信息',
+            id: 'apiName'
+        },
+        {
+            name: 'API介绍',
+            id: 'apiExplain'
+        },
+        {
+            name: '适用场景',
+            id: 'useCase'
+        },
+        {
+            name: '使用说明',
+            id: 'instructions'
+        },
+        {
+            name: '获取施工信息',
+            id: 'constructionNumber'
+        },
+        {
+            name: '用户反馈接口',
+            id: 'feedbackContainer'
+        }
+    ],
+    Daily: [
+        {
+            name: '日出品信息',
+            id: 'apiName'
+        },
+        {
+            name: 'API介绍',
+            id: 'apiExplain'
+        },
+        {
+            name: '适用场景',
+            id: 'useCase'
+        },
+        {
+            name: '使用说明',
+            id: 'instructions'
+        },
+        {
+            name: '获取下载列表',
+            id: 'constructionNumber'
+        },
+        {
+            name: '下载信息接口',
+            id: 'feedbackContainer'
+        }
+    ],
+    Limit: [
+        {
+            name: '限行限号信息',
+            id: 'apiName'
+        },
+        {
+            name: 'API介绍',
+            id: 'apiExplain'
+        },
+        {
+            name: '适用场景',
+            id: 'useCase'
+        },
+        {
+            name: '使用说明',
+            id: 'instructions'
+        },
+        {
+            name: '获取最新信息',
+            id: 'limitNumber'
+        },
+        {
+            name: '查询指定信息',
+            id: 'queryDateContainer'
         }
     ]
 

@@ -2,7 +2,7 @@
  * Created by liwanchong on 2016/12/21.
  */
 $(function () {
-    $('#apiPage').load('../pages/api/getTileInfomation.html');
+    $('#apiPage').load('../pages/api/getConstructionInfomation.html');
 });
 var productServiceApp = angular.module('productServiceApp', ['navApp']);
 productServiceApp.controller('selectedController',function ($scope,JumpConstant) {
@@ -22,36 +22,16 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
                     type: 'dataService',
                     children: [
                         {
-                            name: '获取瓦片信息',
-                            type: 'Tile'
+                            name: '施工道路',
+                            type: 'Construction'
                         },
                         {
-                            name: '获取图幅属性',
-                            type: 'Mesh'
+                            name: '限行限号',
+                            type: 'Limit'
                         },
                         {
-                            name: 'POI查询',
-                            type: 'Pois'
-                        },
-                        {
-                            name: '行政区划查询',
-                            type: 'Region'
-                        },
-                        {
-                            name: '道路名查询',
-                            type: 'RoadName'
-                        },
-                        {
-                            name: 'link信息查询',
-                            type: 'Link'
-                        },
-                        {
-                            name: 'layer信息查询',
-                            type: 'Layer'
-                        },
-                        {
-                            name: '获取layer结构',
-                            type: 'LayerStructure'
+                            name: '日出品服务',
+                            type: 'Daily'
                         },
                     ]
                 },
@@ -60,11 +40,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
                     type: 'algorithmService',
                     children: [
                         {
-                            name: '高程值',
-                            type: 'Ak'
-                        },
-                        {
-                            name: '路径收费',
+                            name: '收费信息',
                             type: 'Tollcost'
                         }
                     ]
@@ -81,7 +57,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
     ];
     $scope.jumps = [
         {
-            name: '瓦片信息',
+            name: '施工道路信息',
             id: 'apiName'
         },
         {
@@ -97,12 +73,12 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             id: 'instructions'
         },
         {
-            name: '获取瓦片ID',
-            id: 'tileNumber'
+            name: '获取施工信息',
+            id: 'constructionNumber'
         },
         {
-            name: '批量获取瓦片ID',
-            id: 'tilesNumber'
+            name: '用户反馈接口',
+            id: 'feedbackContainer'
         }
     ];
     $scope.dataServiceFlag = '';

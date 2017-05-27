@@ -1,28 +1,30 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
+<link rel="stylesheet" href="../style/api.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
-<script src="../js/api/getTollcostInfomation.js"></script>
+<script src="../js/api/getLimitInfomation.js"></script>
 
-<div style="height: 130px;" id="apiName">
+<div style="height: 130px;" id="limitInfo">
     <div class="titleContainer">
         <div class="titleContent">
-            路径收费
+            限行限号信息
         </div>
     </div>
     <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;">
-            最后更新时间:2017年04月01日
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
+            最后更新时间:2017年04月10日
         </div>
     </div>
 </div>
-<div style="height: 250px;" id="apiExplain">
+<div style="height: 160px;" id="apiExplain">
     <div class="titleContainer">
-        <div class="titleContent">
+        <div class="titleContent" >
             API介绍
         </div>
     </div>
     <div style="height: 120px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;line-height: 30px">
-            路径收费API是一类计算收费站之间指定路径的收费金额的服务接口，输入起始收费站和终止收费站的之间的路径坐标(包含起始收费站和终止收费站的坐标)，返回该路径的预估出行费用，用于路径收费的功能开发。支持同时输入多条收费路径，收费站之间的路径坐标点不能太少，否则会影响计算结果的准确度。如需使用API，请先申请SMap平台账号。
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
+            获取限行限号信息API是一类以HTTP形似提供的服务接口。
+            返回csv格式的查询数据,用于获取限行限号信息的开发功能。如需开发使用API,请先申请SMap平台账号。
         </div>
     </div>
 </div>
@@ -33,8 +35,8 @@
         </div>
     </div>
     <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;">
-            用于路径收费的功能开发。
+        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
+            待补充
         </div>
     </div>
 </div>
@@ -46,39 +48,38 @@
             </div>
         </div>
         <div style="height: 140px;width: 690px;">
-            <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-                <div style=" color:#000000">
+            <div style="padding-left: 20px; padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
+                <div style=" color:rgba(0,0,0,0.7)">
                     第一步: 申请SMAP平台账号;
                 </div>
-                <div style=" color:#000000">
+                <div style=" color:rgba(0,0,0,0.7)">
                     第二步: 拼接HTTP请求URL,请求方式为POST;
                 </div>
-                <div style="color:#000000">
-                    第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
+                <div style="color:rgba(0,0,0,0.7)">
+                    第三步: 接收HTTP请求返回的csv格式数据,解析数据;
                 </div>
-                <div style="color:#000000">
+                <div style="color:rgba(0,0,0,0.7)">
                     如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<div class="apiContainer" id="tollCostContainer">
+<div class="apiContainer" id="limitNumber">
     <div class="titleContainer">
         <div class="titleContent">
-            计算路径收费金额
+            获取最新的限行限号信息
         </div>
     </div>
     <div class="apiDescriptionContainer">
         <div class="apiDescription">
-            计算路径收费金额API服务地址：
+            获取施工道路信息 API服务地址
         </div>
     </div>
     <div class="apiIPContainer">
         <div class="apiIP">
             <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/base/tollcost
+                http://fs.navinfo.com/smapapi/platelimit/hour.csv
             </div>
         </div>
     </div>
@@ -90,16 +91,15 @@
             </div>
         </div>
         <div style="padding-left: 20px">
-            <table id="TollcostRequireParam"
+            <table id="tableConstructionRequire"
                    data-toggle="table"
-                   data-url="../data/TollcostRequireParam.js"
+                   data-url="../data/limitRequireParam.js"
             >
                 <thead>
                 <tr >
                     <th data-field="paramName">参数名</th>
                     <th data-field="type" >类型</th>
-                    <th data-field="required" >是否填充</th>
-                    <th data-field="default" >缺省值</th>
+                    <th data-field="required" >是否必填</th>
                     <th data-field="description">规则说明</th>
                 </tr>
                 </thead>
@@ -107,16 +107,16 @@
         </div>
     </div>
     <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
+        <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求http body</span>
+                <span style="font-size: 14px;color: #74666c;"> 访问失败返回参数</span>
             </div>
         </div>
         <div style="padding-left: 20px">
-            <table id="TollcostRequireBody"
+            <table id="constructionReturnTable"
                    data-toggle="table"
-                   data-url="../data/TollcostRequireBody.js"
+                   data-url="../data/limitFailReturnParam.js"
             >
                 <thead>
                 <tr >
@@ -132,22 +132,12 @@
         <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
+            <span style="font-size: 14px;color: #74666c;"> 访问成功返回值</span>
             </div>
         </div>
-        <div style="padding-left: 20px">
-            <table id="ReturnParam"
-                   data-toggle="table"
-                   data-url="../data/ReturnParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
+        <div style="padding-left:20px;">
+            <br/>
+            <span style="font-size: 14px;color: #74666c;">不输入参数filename时：返回当前时间最新的限行限号的csv文件，否则返回指定的filename的csv文件。文件编码采用UTF-8 无BOM格式。</span>
         </div>
     </div>
     <div class="apiParamContainer">
@@ -160,53 +150,58 @@
         <div style="height: 66px;width: 690px;">
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smap/tollcost
+                    http://fs.navinfo.com/smapapi/platelimit/hour.csv
                 </div>
             </div>
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">coordinates</div>
-                <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="tollCostCoordinates">
+                <div class="apiExampleParamList">ak</div>
+                <div class="apiInputWidth">
+                    <input type="text" class="api_Input" id="ak">
+                </div>
+            </div>
+            <div class="apiExampleRequireParamContainer">
+                <div class="apiExampleParamList">filename</div>
+                <div class="apiInputWidth">
+                    <input type="text" class="api_Input" id="filename">
                 </div>
             </div>
         </div>
-
     </div>
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="tollCostResult()">运行</div>
+                <div class="apiButtonOfUndo" onclick="limitResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(1)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="tollCostContent"></textarea>
+                <textarea class="textContent" id="limitContent"></textarea>
             </div>
         </div>
     </div>
 </div>
-<div class="apiContainer" id="feedbackContainer">
+<div class="apiContainer" id="queryDateContainer">
     <div class="titleContainer">
         <div class="titleContent">
-            用户反馈接口
+            查询某天的限行限号接口
         </div>
     </div>
 
     <div style="height: 140px;width: 690px;">
         <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
             <div style=" color:#000000">
-                说明: 允许用户上报一些纠错信息，主要内容包含路线，金额，车型，carId;
+                说明: 查询指定日期发布的信息.
             </div>
             <div style=" color:#000000">
                 请求方式: POST;
             </div>
             <div style="color:#000000">
-                返回格式: JSON格式数据;
+                返回格式: csv格式数据;
             </div>
             <div style="color:#000000">
                 字符编码：接口的输入参数和输出数据编码全部统一为UTF-8;
@@ -215,13 +210,13 @@
     </div>
     <div class="apiDescriptionContainer">
         <div class="apiDescription">
-            用户反馈接口API服务地址：
+            接口API服务地址：
         </div>
     </div>
     <div class="apiIPContainer">
         <div class="apiIP">
             <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/tollgate/feedback
+                http://fs.navinfo.com/smapapi/platelimit/query
             </div>
         </div>
     </div>
@@ -235,36 +230,13 @@
         <div style="padding-left: 20px">
             <table id="FeedbackRequireParam"
                    data-toggle="table"
-                   data-url="../data/FeedbackRequireParam.js"
+                   data-url="../data/limitQueryDateRequireParam.js"
             >
                 <thead>
                 <tr >
                     <th data-field="paramName">参数名</th>
                     <th data-field="type" >类型</th>
-                    <th data-field="required" >是否填充</th>
-                    <th data-field="default" >缺省值</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求http body</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="FeedbackRequireBody"
-                   data-toggle="table"
-                   data-url="../data/FeedbackRequireBody.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
+                    <th data-field="required" >是否必填</th>
                     <th data-field="description">规则说明</th>
                 </tr>
                 </thead>
@@ -279,9 +251,9 @@
             </div>
         </div>
         <div style="padding-left: 20px">
-            <table id="FeedbackReturnParam"
+            <table id="ConstructionFeedbackReturnParam"
                    data-toggle="table"
-                   data-url="../data/FeedbackReturnParam.js"
+                   data-url="../data/ConstructionFeedbackReturnParam.js"
             >
                 <thead>
                 <tr >
@@ -303,32 +275,37 @@
         <div style="height: 66px;width: 690px;">
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/tollgate/feedback
+                    http://fs.navinfo.com/smapapi/platelimit/query
                 </div>
             </div>
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">coordinates</div>
+                <div  class="apiExampleParamList">ak</div>
                 <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="feedbackCoordinates">
+                    <input type="text"  class="api_Input" id="limitparam1">
+                </div>
+            </div>
+            <div class="apiExampleRequireParamContainer">
+                <div  class="apiExampleParamList">date</div>
+                <div style="width: 420px;float: right">
+                    <input type="text"  class="api_Input" id="limitparam2">
                 </div>
             </div>
         </div>
-
     </div>
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="tollCostFeedbackResult()">运行</div>
+                <div class="apiButtonOfUndo" onclick="limitDateResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult(0)">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="feedbackContent"></textarea>
+                <textarea class="textContent" id="limitDateContent"></textarea>
             </div>
         </div>
     </div>
