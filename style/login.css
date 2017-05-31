@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.container{
+.container {
     width: 100%;
     height: 100%;
     background-image: url("../img/login/login.png");
@@ -8,108 +8,126 @@
     background-repeat: no-repeat;
     overflow: hidden;
 }
+
 /*头部开始*/
-.header{
+.header {
     height: 5.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    padding:1.25rem 0 0 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 1.25rem 0 0 2.5rem;
+    box-sizing: border-box;
 }
-.chineseP{
-    color:#fff;
+
+.chineseP {
+    color: #fff;
     font-family: SourceHanSansCN-Medium;
     font-size: 1.8rem;
+    line-height: 1.8rem;
 
 }
-.englishP{
-    color:rgba(255,255,255,0.5);
+
+.englishP {
+    color: rgba(255, 255, 255, 0.5);
     font-family: SourceHanSansCN-Light;
     font-size: 1.2rem;
+    line-height: 1.2rem;
 }
+
 /*头部结束*/
 
-
 /*登陆框开始*/
-.center-login{
+.center-login {
     width: 27rem;
     height: 27.4rem;
     margin: 7.25rem auto auto auto;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
 }
-.header_img{
+
+.header_img {
     width: 100%;
     padding: 1rem 0 0 8.5rem;
 }
-.header_img img{
+
+.header_img img {
     width: 8rem;
 }
-.wel{
+
+.wel {
     text-align: center;
     font-family: SourceHanSansCN-Normal;
     font-size: 1.2rem;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 0.45rem;
 }
-.formDiv{
+
+.formDiv {
     width: 100%;
     padding: 0 2.875rem;
     box-sizing: border-box;
     position: relative;
 
 }
-.formDiv p{
-    color: rgba(255,255,255,0.8);
+
+.formDiv p {
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.9rem;
     font-family: SourceHanSansCN-Light;
 }
-.formDiv a{
+
+.formDiv a {
     text-decoration: none;
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     display: block;
 }
-.formDiv span{
+
+.formDiv span {
     overflow: hidden;
     display: block;
     width: 5.5rem;
     height: 3rem;
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 5px;
     margin-left: 5px;
     line-height: 3rem;
     text-align: center;
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
-.hide{
+
+.hide {
     visibility: hidden;
 }
-.userName,.passWord{
+
+.userName, .passWord {
     box-sizing: border-box;
     width: 21.25rem;
     height: 3rem;
     padding-left: 3.5rem;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     font-size: 1.2rem;
     color: #fff;
 }
-.passWord_msg{
+
+.passWord_msg {
     display: inline-block;
 }
-.forget_div{
+
+.forget_div {
     font-size: 1rem;
     display: inline-block;
 }
 
-.verification_code{
+.verification_code {
     width: 8.5rem;
     height: 3rem;
     font-size: 1.2rem;
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 5px;
     text-align: center;
     color: #fff;
 }
+
 /*ie不支持该布局*/
 /*.change_code{
     display: flex;
@@ -120,23 +138,24 @@
 .change_code a{
 text-align: right;
 }*/
-.change_code{
+.change_code {
     position: relative;
     left: 0;
-    top:0;
+    top: 0;
     height: 3rem;
     /*z-index: -1;*/
-    width: 6.5rem;
+    width: 6.3rem;
     float: right;
 }
-.change_code a{
+
+.change_code a {
     position: absolute;
     right: 0;
     bottom: 0;
     cursor: pointer;
 }
 
-.submit_Div{
+.submit_Div {
     display: block;
     margin-top: 1rem;
     width: 21.25rem;
@@ -150,47 +169,78 @@ text-align: right;
     font-size: 1.3rem;
     cursor: pointer;
 }
-.submit_Div:active{
+
+.submit_Div:active {
     background-color: #0d5491;
 }
 
-
-.marginTop{
+.marginTop {
     margin-top: 0.35rem;
 }
-.userIcon{
+
+.userIcon {
     position: absolute;
     height: 1.6rem;
     width: 1.4rem;
     left: 4.125rem;
     top: 0.75rem;
 }
-.userIcon img{
+
+.userIcon img {
     width: 100%;
     height: 100%;
 }
-.passWordIcon{
+
+.passWordIcon {
     position: absolute;
     height: 1.6rem;
     width: 1.2rem;
     left: 4.125rem;
     top: 5.45rem;
 }
-.passWordIcon img{
+
+.passWordIcon img {
     width: 100%;
     height: 100%;
 }
-.p_lineHeight{
-    line-height:1.7rem ;
-}
-.p_lineHeight1{
-    line-height:1.8rem ;
-}
-/*登陆框结束*/
 
-[ng\:cloak], [ng-cloak], .ng-cloak {
+.p_lineHeight {
+    line-height: 1.7rem;
+}
+
+.p_lineHeight1 {
+    line-height: 1.8rem;
+}
+
+/*登陆框结束*/
+/*提示框开始*/
+.login_msg {
+    position: absolute;
+    z-index: 99999;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.login_msg_div {
+    width: 14.8rem;
+    height: 7.65rem;
+    margin: 19.45rem auto auto auto;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 5px;position: relative;
+}
+
+.login_msg_div a {
+    background-color: #337ab7;color: white;width: 9.2rem;height:2.5rem;display: block;border-radius: 5px;text-decoration: none;text-align: center;line-height:2.5rem;margin: 50px auto;
+}
+
+.login_msg_div span {
+    position: absolute;left: 274px;top: 5px;cursor: pointer;
+}
+.hideDiv{
     display: none;
 }
 
-
-.opacity{ opacity:0.3; filter: alpha(opacity=30); background-color:#000; }

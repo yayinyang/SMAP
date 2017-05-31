@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="../lib/angular-nvd3/nv.d3.css">
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../style/login.css">
-
 </head>
 <body ng-controller="loginController" >
-
     <div class="container">
         <header class="header">
             <p class="chineseP">企业用户登陆</p>
@@ -35,6 +33,12 @@
                 <p class="clearfix p_lineHeight hide" id="code_err">验证码错误，请重新输入！</p>
                 <a href="javascript:void(0);" class="f_l submit_Div" ng-click="submit()">立即登录</a>
             </form>
+        </div>
+    </div>
+    <div class="login_msg hideDiv" id="cus">
+        <div class="login_msg_div">
+            <span ng-click="cus_close()">X</span>
+            <a href="javascript:void(0);">请联系我们</a>
         </div>
     </div>
 </body>
