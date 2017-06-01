@@ -232,19 +232,25 @@ body > div.container > div > form > span{
 .login_msg_div {
     width: 14.8rem;
     height: 7.65rem;
-    margin: 19.75rem auto auto auto;
-    background-color: white;
+    margin: 19.65rem auto auto auto;
+    /*background-color: white;*/
     overflow: hidden;
     border-radius: 5px;position: relative;
 }
 
+.login_msg_div #cus_pic {
+width: 14.8rem;
+height: 7.65rem;
+}
+/*
 .login_msg_div a {
-    /*background-color: #337ab7;*/color: #337ab7;/*width: 9.2rem;*/height:2.5rem;display: block;border-radius: 5px;text-decoration: none;text-align: center;line-height:1.5rem;
+    !*background-color: #337ab7;*!color: #337ab7;!*width: 9.2rem;*!height:2.5rem;display: block;border-radius: 5px;text-decoration: none;text-align: center;line-height:1.5rem;
     font-size: 0.99rem;
     margin: 2.5rem auto ;
 }
+*/
 
-.login_msg_div img {
+.login_msg_div img:first-child {
     margin: 0;padding: 0; position: absolute;left: 13.1rem;top: 2px;cursor: pointer;width: 25px;height: 25px;
 }
 .hideDiv{
