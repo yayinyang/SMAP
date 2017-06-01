@@ -24,8 +24,7 @@ App.Util = {
     getFullUrl: function (url) {
         return App.Config.serviceUrl + '/' + url + '?ak=' + (App.Temp.accessToken || '');
     },
-    checkToken: function () {
-        var taken_code = '';
+    checkToken: function () {//检查当前token是否可用
         var isCorrect = false;
         $.ajax({
             url:App.Config.testloginServiceUrl + "tokenCheck",
@@ -35,19 +34,25 @@ App.Util = {
                 token: sessionStorage.getItem('token')
             },
             success:function (data, status) {
-                data = JSON.parse(data);
-                taken_code = data.code;
-                if (200 == data.code) {
+                if (200 == JSON.parse(data).code) {
                     isCorrect = true;
                 }
             }
         });
         return isCorrect;
     },
-    sout:function () {//弹出重新登录框
+    setUrl:function (window) {
+        sessionStorage.setItem('p_url',window.location.href);
+    },
+    toLogin:function (window) {//跳转到登录页面
+        App.Util.setUrl(window);
+        window.location.href=App.Config.appRoot+'/pages/login.html';
+    },
+    sout:function (window) {//弹出重新登录框
+        App.Util.setUrl(window);
         new LoginMsg(App.Config.appRoot+'/pages/login.html').show();
     },
-    getToken:function () {
+    getToken:function () {//获取当前token
         return sessionStorage.getItem('token');
     }
 };

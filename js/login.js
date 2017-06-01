@@ -94,8 +94,12 @@ login.controller("loginController", ['$scope', function ($scope) {
                         $scope.code_v = $scope.code_g();
                         return false;
                     default:
+                        var p_url =  sessionStorage.getItem('p_url');
+                        console.log('login-js =>p_url= '+p_url)
+                        if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
+                            p_url = App.Config.appRoot;
                         sessionStorage.setItem('token',data.msg);
-                        window.location.href=App.Config.appRoot;
+                        window.location.href=p_url;
                         break;
                 }
             });
