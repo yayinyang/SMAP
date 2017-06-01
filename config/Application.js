@@ -4,7 +4,7 @@
 var App = {};
 
 App.dev = {
-    host: '172.21.4.66'
+    host: '10.0.0.72'
 };
 
 // web app全局配置信息

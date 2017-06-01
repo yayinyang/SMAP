@@ -138,13 +138,16 @@
 .change_code a{
 text-align: right;
 }*/
+body > div.container > div > form > span{
+    margin-left: 1px;
+}
 .change_code {
     position: relative;
     left: 0;
     top: 0;
     height: 3rem;
     /*z-index: -1;*/
-    width: 6.3rem;
+    width: 7rem;
     float: right;
 }
 
@@ -153,6 +156,8 @@ text-align: right;
     right: 0;
     bottom: 0;
     cursor: pointer;
+    width: 100%;
+    text-align: right;
 }
 
 .submit_Div {
@@ -227,18 +232,20 @@ text-align: right;
 .login_msg_div {
     width: 14.8rem;
     height: 7.65rem;
-    margin: 19.45rem auto auto auto;
+    margin: 19.75rem auto auto auto;
     background-color: white;
     overflow: hidden;
     border-radius: 5px;position: relative;
 }
 
 .login_msg_div a {
-    background-color: #337ab7;color: white;width: 9.2rem;height:2.5rem;display: block;border-radius: 5px;text-decoration: none;text-align: center;line-height:2.5rem;margin: 50px auto;
+    /*background-color: #337ab7;*/color: #337ab7;/*width: 9.2rem;*/height:2.5rem;display: block;border-radius: 5px;text-decoration: none;text-align: center;line-height:1.5rem;
+    font-size: 0.99rem;
+    margin: 2.5rem auto ;
 }
 
-.login_msg_div span {
-    position: absolute;left: 274px;top: 5px;cursor: pointer;
+.login_msg_div img {
+    margin: 0;padding: 0; position: absolute;left: 13.1rem;top: 2px;cursor: pointer;width: 25px;height: 25px;
 }
 .hideDiv{
     display: none;
