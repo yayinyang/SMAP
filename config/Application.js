@@ -4,7 +4,7 @@
 var App = {};
 
 App.dev = {
-    host: '10.0.0.72'
+    host: '172.21.4.66'
 };
 
 // web app全局配置信息
@@ -24,7 +24,12 @@ App.Util = {
     getFullUrl: function (url) {
         return App.Config.serviceUrl + '/' + url + '?ak=' + (App.Temp.accessToken || '');
     },
-    checkToken: function () {//检查当前token是否可用
+    //获取当前token
+    getToken:function () {
+        return sessionStorage.getItem('token');
+    },
+    //检查当前token是否可用
+    checkToken: function () {
         var isCorrect = false;
         $.ajax({
             url:App.Config.testloginServiceUrl + "tokenCheck",
@@ -41,20 +46,21 @@ App.Util = {
         });
         return isCorrect;
     },
+    //存储url
     setUrl:function (window) {
         sessionStorage.setItem('p_url',window.location.href);
     },
-    toLogin:function (window) {//跳转到登录页面
+    //跳转到登录页面
+    toLogin:function (window) {
         App.Util.setUrl(window);
         window.location.href=App.Config.appRoot+'/pages/login.html';
     },
-    sout:function (window) {//弹出重新登录框
+    //弹出重新登录框
+    sout:function (window) {
         App.Util.setUrl(window);
         new LoginMsg(App.Config.appRoot+'/pages/login.html').show();
-    },
-    getToken:function () {//获取当前token
-        return sessionStorage.getItem('token');
     }
+
 };
 
 (function(w){

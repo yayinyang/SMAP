@@ -232,15 +232,15 @@ body > div.container > div > form > span{
 .login_msg_div {
     width: 14.8rem;
     height: 7.65rem;
-    margin: 19.65rem auto auto auto;
+    margin: 19.55rem auto auto auto;
     /*background-color: white;*/
     overflow: hidden;
     border-radius: 5px;position: relative;
 }
 
 .login_msg_div #cus_pic {
-width: 14.8rem;
-height: 7.65rem;
+    width: 14.8rem;
+    height: 7.65rem;
 }
 /*
 .login_msg_div a {
