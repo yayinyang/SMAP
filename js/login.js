@@ -73,7 +73,7 @@ login.controller("loginController", ['$scope', function ($scope) {
         if(!$scope.checkCode()){
             return false;
         };
-        return $.post( App.Config.testloginServiceUrl+"login",
+        return $.post( App.Config.checkServiceUrl+"login",
             {
                 parameter:JSON.stringify({
                         loginNo: $scope.name,
@@ -82,24 +82,29 @@ login.controller("loginController", ['$scope', function ($scope) {
             }
             ,function (data, status) {
                 data = JSON.parse(data);
-                switch (data.errcode) {
-                    case 301:
+                switch (data.code) {
+                    case "301":
                         $("#name_err").text("用户名不存在，请重新输入！");
                         $("#name_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();
                         return false;
-                    case 302:
+                    case "302":
                         $("#pwd_err").text("密码错误，请重新输入！");
                         $("#pwd_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();
                         return false;
-                    default:
+                    case "200":
                         var p_url =  sessionStorage.getItem('p_url');
-                        console.log('login-js =>p_url= '+p_url)
+
+                        console.log('data.errcode: '+data.code);
+                        console.log('login-js =>p_url= '+p_url);
+
                         if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
                             p_url = App.Config.appRoot;
                         sessionStorage.setItem('token',data.msg);
                         window.location.href=p_url;
+                    default:
+
                         break;
                 }
             });

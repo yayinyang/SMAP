@@ -3,25 +3,24 @@
  */
 var App = {};
 
-App.dev = {
-    host: '172.21.3.172'
+App.dev={
+    host:'172.21.3.172'
+};
+App.checkServer = {
+    dev:{
+        checkServiceUrl:'http://' + App.dev.host + '/smap/sync/user/'
+    },
+    release:{
+        checkServiceUrl:'http://fs.navinfo.com/smap/sync/user/'
+    }
 };
 
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-    appRoot:'http://localhost:63342/SMAP',
-    loginServiceUrl:'http://fs.navinfo.com/smap/sync/user/',
-    testloginServiceUrl:'http://172.21.4.92/smap/sync/user/',
-    tokenCheckServiceUrl:'http://fs.navinfo.com/smap/sync/user/',
-    testtokenCheckServiceUrl:'http://172.21.4.92/smap/sync/user/',
+    appRoot:'/smap',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
-
-    loginServiceUrl: 'http://fs.navinfo.com/smap/sync/user/',
-    tokenCheckServiceUrl: 'http://fs.navinfo.com/smap/sync/user/',
-    testloginServiceUrl: 'http://' + App.dev.host + '/smap/sync/user/',
-    testtokenCheckServiceUrl: 'http://' + App.dev.host + '/smap/sync/user/'
-
+    checkServiceUrl:App.checkServer.dev.checkServiceUrl
 };
 App.Temp = {
     accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ'
@@ -38,7 +37,7 @@ App.Util = {
     checkToken: function () {
         var isCorrect = false;
         $.ajax({
-            url:App.Config.testloginServiceUrl + "tokenCheck",
+            url:App.Config.checkServiceUrl + "tokenCheck",
             async:false,
             type:'post',
             data:{
