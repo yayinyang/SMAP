@@ -85,6 +85,3 @@ window.onscroll =  function() {
         $(fatherDiv).append(str);
     }
 }
-
-
-
