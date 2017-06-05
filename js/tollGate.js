@@ -1,6 +1,8 @@
 /**
  * Created by liwanchong on 2017/3/9.
  */
+
+
 var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups','navApp']);
 tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$anchorScroll', function (
   $scope, dsEdit, $location, $anchorScroll) {
@@ -643,4 +645,17 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.getLinksFromStartToEnd();
         }
     };
+    map.on('click','TollNode_Layer',function (e) {
+        var loc = [];
+        var div = window.document.createElement('div');
+        div.innerHTML =
+            '<div class="feePopDeep">'+'16548564</div>' +
+            '<div class="tipPopDeep"></div>';
+        loc.push(e.lngLat.lng);
+        loc.push(e.lngLat.lat);
+        new mapboxgl.Popup()
+            .setLngLat(loc)
+            .setDOMContent(div)
+            .addTo(map);
+    });
 }]);
