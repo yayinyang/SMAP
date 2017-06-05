@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Roadwork">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name=”renderer” content=”webkit”>
@@ -8,16 +8,17 @@
     <title>SMap</title>
     <link rel="stylesheet" href="../../style/base.css">
     <link rel="stylesheet" href="../../style/roadwork.css">
+    <script src="../../lib/jquery/jquery.js"></script>
     <script src="../../lib/angularjs/1.4.4/angular.js"></script>
     <script src="../../js/roadwork/roadwork.js"></script>
 </head>
-<body>
+<body >
     <div class="container">
-        <ul class="tapJump" ng-controller="RoadController">
-            <li ng-click="changePage('pageOne')" ng-class="{'active':pagename=='pageOne'}"><a href="#pageOne">1</a></li>
-            <li ng-click="changePage('pageTwo')" ng-class="{'active':pagename=='pageTwo'}"><a href="#pageTwo">2</a></li>
-            <li ng-click="changePage('pageThree')" ng-class="{'active':pagename=='pageThree'}"><a href="#pageThree">3</a></li>
-            <li ng-click="changePage('pageFour')" ng-class="{'active':pagename=='pageFour'}"><a href="#pageFour">4</a></li>
+        <ul class="tapJump" >
+            <li onclick="changePage('pageOne')" class="active"><a href="#pageOne">1</a></li>
+            <li onclick="changePage('pageTwo')" ><a href="#pageTwo">2</a></li>
+            <li onclick="changePage('pageThree')"><a href="#pageThree">3</a></li>
+            <li onclick="changePage('pageFour')" ><a href="#pageFour">4</a></li>
         </ul>
         <header class="header_div"></header>
         <div class="page_one wrap" id="pageOne">
@@ -39,6 +40,7 @@
             <div><img src="../../img/roadwork/page4-2.png" ></div>
         </div>
     </div>
+
 </body>
 
 </html>
