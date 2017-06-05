@@ -101,7 +101,7 @@ login.controller("loginController", ['$scope', function ($scope) {
 
                         if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
                             p_url = App.Config.appRoot;
-                        sessionStorage.setItem('token',data.msg);
+                        sessionStorage.setItem('token',data.token);
                         window.location.href=p_url;
                     default:
 
