@@ -18,8 +18,9 @@ App.checkServer = {
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-    appRoot:'/smap',
+    appRoot:'/SMAP',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
+
     checkServiceUrl:App.checkServer.dev.checkServiceUrl
 };
 App.Temp = {
@@ -33,6 +34,9 @@ App.Util = {
     getToken:function () {
         return sessionStorage.getItem('token');
     },
+    deleteToken:function () {
+        sessionStorage.removeItem('token');
+    },
     //检查当前token是否可用
     checkToken: function () {
         var isCorrect = false;
@@ -44,7 +48,7 @@ App.Util = {
                 token: sessionStorage.getItem('token')
             },
             success:function (data, status) {
-                if (200 == JSON.parse(data).code) {
+                if (200 == JSON.parse(data).errcode) {
                     isCorrect = true;
                 }
             }

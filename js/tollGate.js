@@ -672,17 +672,4 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
                 .setDOMContent(div)
                 .addTo(map);
     });
-  /*  $scope.$watch($scope.changeZoom,function (newVal,oldVal) {
-        if($scope.showTollGateName.lenght > 0){
-            $scope.showTollGateName.remove();
-            var div = window.document.createElement('div');
-            div.innerHTML =
-                '<div class="feePopDeep">收费站名称：'+$scope.TollGateName +'</div>' +
-                '<div class="tipPopDeep"></div>';
-            $scope.showTollGateName = new mapboxgl.Popup()
-                .setLngLat($scope.tollGateLocation)
-                .setDOMContent(div)
-                .addTo(map);
-        }
-    });*/
 }]);
