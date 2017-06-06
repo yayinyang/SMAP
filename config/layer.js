@@ -1705,11 +1705,11 @@ var constructionLayer ={
     "name" : "Bright",
     "sources" :
         {
-            "toll" :
+            "construction" :
                 {
                     "type":"vector",
                     "tiles":
-                        ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
+                        ['http://fs.navinfo.com/smapapi/construction/tile/{z}/{x}/{y}'],
                 },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -3382,16 +3382,17 @@ var constructionLayer ={
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
         },
         {
-            id: 'TollNode_Layer',
+            id: 'construction_Layer',
             type: 'symbol',
             interactive: true,
-            "source" : "toll",
-            'source-layer': 'toll',
+            "source" : "construction",
+            'source-layer': 'construction',
             minzoom: 0,
             maxzoom: 17.1,
             layout:
                 {
-                    'icon-image': 'tollstation',
+                    'icon-image': 'constructionIcon',
+                    'icon-size': 0.4,
                 },
             paint:
                 {
@@ -5097,6 +5098,5 @@ var trafficLimitedLayer ={
                 {
                     'icon-color': '#ff2d2d',
                 },
-
         }]
 };

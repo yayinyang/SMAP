@@ -57,7 +57,7 @@
                         产品介绍
                     </a>
                 </div>
-                <div class="navSecTitle">
+                <div class="navSecTitle"  ng-if="isLogin">
                     <a>
                         产品下载
                     </a>
@@ -120,8 +120,7 @@
             </div>
             <div  class="navTitle">
                 <div class="navFontStyle">
-                    <a ng-click="turnToPage('login.html')">
-                        登录
+                    <a ng-click="turnToPage('login.html')" ng-bind="loginTitle">
                     </a>
                 </div>
                 <div class="navTitleBottom">

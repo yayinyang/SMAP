@@ -28,6 +28,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.printNotice = "";
     $scope.nowProvince = '北京';
     $scope.tollGateOnMapArr= [];
+    $scope.showTollGateName = [];
     $scope.resultPageNum = 0;
     $scope.resultPageTotal = 1;
     $scope.endStationStyle = {
@@ -229,7 +230,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         var div = window.document.createElement('div');
         div.setAttribute('class', 'popTollGateIconHeightLight');
         div.innerHTML = index+1;
-        var loc = $scope.tollGateArr[index].geoJson.coordinates
+        var loc = $scope.tollGateArr[index].geoJson.coordinates;
         // $scope.tollGateOnMapArr[index].setDOMContent(div);
         $scope.HeightLightTollGate = new mapboxgl.Popup()
             .setLngLat(loc)
@@ -645,17 +646,30 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             $scope.getLinksFromStartToEnd();
         }
     };
+    $scope.changeZoom = function (arg) {
+        var nowZoom = map.getZoom();
+        if(arg === 'add'){
+            map.setZoom(nowZoom+1);
+        }else{
+            map.setZoom(nowZoom-1);
+        }
+    };
     map.on('click','TollNode_Layer',function (e) {
-        var loc = [];
-        var div = window.document.createElement('div');
-        div.innerHTML =
-            '<div class="feePopDeep">'+'16548564</div>' +
-            '<div class="tipPopDeep"></div>';
-        loc.push(e.lngLat.lng);
-        loc.push(e.lngLat.lat);
-        new mapboxgl.Popup()
-            .setLngLat(loc)
-            .setDOMContent(div)
-            .addTo(map);
+            $scope.tollGateLocation = [];
+            $scope.TollGateName = e.features[0].properties.name;
+            var div = window.document.createElement('div');
+            div.innerHTML =
+                '<div class="feePopDeep">收费站名称：'+$scope.TollGateName+'</div>' +
+                '<div class="tipPopDeep"></div>';
+        $scope.tollGateLocation.push(e.lngLat.lng);
+        $scope.tollGateLocation.push(e.lngLat.lat);
+
+            console.log(e.lngLat.lng);
+            console.log(e.lngLat.lat);
+
+        $scope.showTollGateName =  new mapboxgl.Popup()
+                .setLngLat($scope.tollGateLocation)
+                .setDOMContent(div)
+                .addTo(map);
     });
 }]);

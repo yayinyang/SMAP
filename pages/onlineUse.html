@@ -192,8 +192,8 @@
         </div>
         <div id="map" ng-click="emptyTollGate()">
             <div class="changeMapSizeDiv">
-                <button class="addBtn" onclick="changeZoom('add')"></button>
-                <button class="subBtn" onclick="changeZoom('sub')"></button>
+                <button class="addBtn" ng-click="changeZoom('add')"></button>
+                <button class="subBtn" ng-click="changeZoom('sub')"></button>
             </div>
         </div>
     </div>
@@ -232,14 +232,6 @@
         minZoom : 5,
         pitch: 0
     });
-    function changeZoom(arg){
-        var nowZoom = map.getZoom();
-        if(arg === 'add'){
-            map.setZoom(nowZoom+1);
-        }else{
-            map.setZoom(nowZoom-1);
-        }
-    }
 </script>
 </body>
 
