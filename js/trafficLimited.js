@@ -2,7 +2,7 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: trafficLimitedLayer,
     zoom: 10,
-    center: [ 116.38402, 39.96261 ],
+    center: [ 120.1536, 30.26555 ],
     maxZoom: 17,
     minZoom: 5,
     pitch: 0
