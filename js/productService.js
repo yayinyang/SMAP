@@ -8,7 +8,7 @@ var productServiceApp = angular.module('productServiceApp', ['navApp']);
 productServiceApp.controller('selectedController',function ($scope,JumpConstant) {
     $scope.services = [
         {
-            name: '概述',
+            name: '入门指南',
             flag: false,
             type: 'summary'
         },
@@ -22,17 +22,9 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
                     type: 'dataService',
                     children: [
                         {
-                            name: '施工道路',
-                            type: 'Construction'
-                        },
-                        {
-                            name: '限行限号',
-                            type: 'Limit'
-                        },
-                        {
-                            name: '日出品服务',
+                            name: '日产品更新',
                             type: 'Daily'
-                        },
+                        }
                     ]
                 },
                 {
@@ -40,8 +32,16 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
                     type: 'algorithmService',
                     children: [
                         {
-                            name: '收费信息',
+                            name: '收费信息服务',
                             type: 'Tollcost'
+                        },
+                        {
+                            name: '道路施工服务',
+                            type: 'Construction'
+                        },
+                        {
+                            name: '限行限号服务',
+                            type: 'Limit'
                         }
                     ]
                 }

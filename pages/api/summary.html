@@ -1,27 +1,60 @@
 <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
+<link rel="stylesheet" href="../style/summary.css"/>
 
-<div class="apiDescriptionContent" id="summary">
-    <div class="titleContainer">
-        <div class="titleContent">
-            概述
+<!--
+<div class="apiDescriptionContent" id="summary" style="display:none">
+    <div class="titleContainer" >
+        <div class="titleContent" >
+            入门指南
         </div>
     </div>
-    <div class="apiUpdateContainer">
+    <div class="apiUpdateContainer" >
         <div class="apiUpdate">
-            最后更新时间:2016年12月07日
+            最后更新时间:2016年12月7日
         </div>
     </div>
 </div>
-<div class="apiBriefContainer"  id="summaryExplain">
+<div class="apiBriefContainer"  id="summaryExplain" style="display:none">
     <div class="titleContainer">
         <div class="titleContent">
-            简介
+            简介2017年6月5日
         </div>
     </div>
     <div class="apiBriefContentContainer">
         <div class="apiBriefContent">
             高程值API是一类计算指定区域（瓦片）内POI和LINK高程值的的服务接口，输入瓦片，返回JSON格式的查询数据，用于获取高程值的功能开发，目前只支持19级瓦片的访问。如需使用API，请先申请SMap平台账号。
         </div>
+    </div>
+</div>
+-->
+
+<div class="guideContainer">
+    <div  class="apiBriefContent " id="summary">
+        <div class="guide">入门指南</div>
+        <div>最后更新时间：2016年12月7日</div>
+    </div>
+
+    <div class="apiBriefContent">
+        <p>本指南用于指导开发人员如何使用SMap服务接口</p>
+    </div>
+    <div class="titleContainer">
+        第一步：申请SMap平台账号；
+    </div>
+    <div class="apiBriefContent">
+        <p>企业用户：联系我们，获取SMap账号</p>
+        <p>个人用户：暂不支持，敬请期待</p>
+    </div>
+    <div class="titleContainer">
+        第二步：拼接HTTP请求URL，请求方式为POST；
+    </div>
+    <div class="apiBriefContent">
+        <p>第一步申请的key需作为必填参数一同发送。API参考手册中已为您提供免费的key，仅供示例使用。</p>
+    </div>
+    <div class="titleContainer">
+        第三步：接收HTTP请求返回的数据，解析数据；
+    </div>
+    <div class="apiBriefContent">
+        <p>如无特殊声明，接口的输入参数和输出数据编码全部统一为UTF-8。</p>
     </div>
 </div>

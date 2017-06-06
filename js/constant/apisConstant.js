@@ -278,13 +278,13 @@ productServiceApp.constant('JumpConstant', {
     ],
     summary: [
         {
-            name: '概述',
+            name: '入门指南',
             id: 'summary'
-        },
+        }/*,
         {
             name: '简介',
             id: 'summaryExplain'
-        }
+        }*/
     ],
     code: [
         {
