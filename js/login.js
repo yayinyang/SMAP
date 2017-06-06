@@ -73,7 +73,7 @@ login.controller("loginController", ['$scope', function ($scope) {
         if(!$scope.checkCode()){
             return false;
         };
-        return $.post( App.Config.testloginServiceUrl+"login",
+        return $.post( App.Config.checkServiceUrl+"login",
             {
                 parameter:JSON.stringify({
                         loginNo: $scope.name,
@@ -93,13 +93,18 @@ login.controller("loginController", ['$scope', function ($scope) {
                         $("#pwd_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();
                         return false;
-                    default:
+                    case 200:
                         var p_url =  sessionStorage.getItem('p_url');
-                        console.log('login-js =>p_url= '+p_url)
+
+                        console.log('data.errcode: '+data.errcode);
+                        console.log('login-js =>p_url= '+p_url);
+
                         if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
                             p_url = App.Config.appRoot;
-                        sessionStorage.setItem('token',data.msg);
+                        sessionStorage.setItem('token',data.token);
                         window.location.href=p_url;
+                    default:
+
                         break;
                 }
             });
