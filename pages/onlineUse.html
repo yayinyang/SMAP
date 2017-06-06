@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="../style/ie9.css">
     <![endif]-->
 
-    <title>SMap</title>
+        <title>SMap</title>
 </head>
 <body  ng-controller="tollGateController" style="overflow-y: scroll;" ng-keypress="GoSearch($event)">
 <nav-bar></nav-bar>
 <div class ="content">
-    <div style="height: 56px;text-align: left;font-weight: 400;margin-top: -40px;">
+    <div style="height: 56px;text-align: left;font-weight: 400;">
         <div style="width: 740px;">
             <div style="height: 56px;">
                 <div style="float: left; padding: 20px 0 0 0">
@@ -28,7 +28,7 @@
                 </div>
                 <div style="float: left;  padding: 13px 0 0 0 " id="navigation">
                     <ul style="list-style-type: none;">
-                        <li><a href="#">解决方案</a></li>
+                        <li><a href="#">在线体验</a></li>
                         <li style="font-size: 20px">></li>
                         <li><a href="#" id="apiType">收费信息查询</a></li>
                     </ul>
@@ -200,6 +200,7 @@
 </div>
 <!-- build:js ../js/onlineUse.js -->
 <script src='../lib/mapbox/mapbox-gl.js'></script>
+<script src="../config/Application.js"></script>
 <script src='../lib/turf/turf.min.js'></script>
 <script src="../config/layer.js"></script>
 <script src="../config/peovince.js"></script>

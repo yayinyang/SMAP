@@ -14,19 +14,29 @@
             </div>
             <div  class="navTitle">
                 <div class="navFontStyle" style="width: 104px;padding: 0;text-align: center">
-                    解决方案
+                    服务产品
                 </div>
                 <div class="navTitleBottom">
                 </div>
                 <div class="navSecTitle">
-                    <a ng-click="turnToPage('onlineUse.html')">
-                        收费信息查询
+                    <a>
+                        收费信息服务
+                    </a>
+                </div>
+                <div class="navSecTitle">
+                    <a ng-click="turnToPage('roadwork/roadwork.html')">
+                        道理施工服务
+                    </a>
+                </div>
+                <div class="navSecTitle">
+                    <a ng-click="turnToPage('roadwork/trafficControl.html')">
+                        限行限号服务
                     </a>
                 </div>
             </div>
             <div  class="navTitle">
                 <div class="navFontStyle">
-                    产品服务
+                    开发中心
                 </div>
                 <div class="navTitleBottom">
                 </div>
@@ -87,17 +97,30 @@
 
             </div>
             <div  class="navTitle">
-                <div class="navFontStyle">
-                    <a ng-click="turnToPage('undevelopPage.html')">
-                        技术支持
-                    </a>
+                <div class="navFontStyle" style="width: 104px;padding: 0;text-align: center">
+                    在线体验
                 </div>
                 <div class="navTitleBottom">
+                </div>
+                <div class="navSecTitle">
+                    <a ng-click="turnToPage('onlineUse.html')">
+                        收费信息查询
+                    </a>
+                </div>
+                <div class="navSecTitle">
+                    <a ng-click="turnToPage('construction.html')">
+                        施工数据展示
+                    </a>
+                </div>
+                <div class="navSecTitle">
+                    <a ng-click="turnToPage('trafficLimited.html')">
+                        限行数据展示
+                    </a>
                 </div>
             </div>
             <div  class="navTitle">
                 <div class="navFontStyle">
-                    <a ng-click="turnToPage('undevelopPage.html')">
+                    <a ng-click="turnToPage('login.html')">
                         登录
                     </a>
                 </div>
@@ -112,10 +135,13 @@
         color: #ffffff;
         text-decoration: none;
     }
-    .navTitle:not(:last-child){
-        height: 40px;
+    .navTitle{
+        height:40px;
         cursor: pointer;
-        margin-right:50px;
+
+    }
+    .navTitle:not(:last-child){
+        margin-right: 50px;
     }
     .navFontStyle{
         color: #ffffff;
@@ -150,6 +176,7 @@
         font-size: 14px;
         padding: 0 10px;
         position: relative;
+        text-align: center;
         z-index: 100;
         background-color: #0a2146;
         box-shadow: 0 5px 10px #000;
