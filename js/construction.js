@@ -2,22 +2,16 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: constructionLayer,
     zoom: 10,
-    center: [ 116.38402, 39.96261 ],
+    center: [ 120.1536, 30.26555 ],
     maxZoom: 17,
     minZoom: 5,
     pitch: 0
 });
 
-map.on('click','TollNode_Layer',function (e) {
-    console.log(e);
-});
-
-
-
 angular.module("construction",["navApp"]).controller("constructionController",["$scope","$location","$anchorScroll",function (
     $scope,$location,$anchorScroll) {
     $scope.provinceArr = province;
-    $scope.nowProvince = '北京';
+    $scope.nowProvince = '浙江';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
 
     $scope.showChoosedCity = function (arg){
@@ -55,4 +49,7 @@ angular.module("construction",["navApp"]).controller("constructionController",["
         $location.hash(local);
         $anchorScroll();
     };
+    map.on('click','construction_Layer',function (e) {
+        console.log(e);
+    })
 }]);

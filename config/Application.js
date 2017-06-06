@@ -17,11 +17,6 @@ App.Config = {
     testtokenCheckServiceUrl:'http://172.21.4.92/smap/sync/user/',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
 
-    loginServiceUrl: 'http://fs.navinfo.com/smap/sync/user/',
-    tokenCheckServiceUrl: 'http://fs.navinfo.com/smap/sync/user/',
-    testloginServiceUrl: 'http://' + App.dev.host + '/smap/sync/user/',
-    testtokenCheckServiceUrl: 'http://' + App.dev.host + '/smap/sync/user/'
-
 };
 App.Temp = {
     accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ'
