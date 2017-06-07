@@ -100,60 +100,60 @@
 .main_div{
     border: 32px solid #e6e6e6;
 }
-.main_div>ul>li{
+.main_div>ul>li.li_div{
     overflow: hidden;
     position: relative;
 }
-.main_div>ul>li>img,.main_div>ul>li>p{
+.main_div>ul>li.li_div>img,.main_div>ul>li.li_div>p{
     float: left;
     width: 50%;
     height: 338px;
 }
-.main_div>ul>li:nth-child(1)>p{
+.main_div>ul>li.li_div:nth-child(1)>p{
     box-sizing: border-box;
     background-color: #57b6ca;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(2)>p{
+.main_div>ul>li.li_div:nth-child(2)>p{
     box-sizing: border-box;
     background-color: #597888;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(3)>p{
+.main_div>ul>li.li_div:nth-child(3)>p{
     box-sizing: border-box;
     background-color: #f9a358;
     padding-top:54px;
 }
 
-.main_div>ul>li:nth-child(4)>p{
+.main_div>ul>li.li_div:nth-child(4)>p{
     box-sizing: border-box;
     background-color: #59b495;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(5)>p{
+.main_div>ul>li.li_div:nth-child(5)>p{
     box-sizing: border-box;
     background-color: #d8626e;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(6)>p{
+.main_div>ul>li.li_div:nth-child(6)>p{
     box-sizing: border-box;
     background-color: #9d6cdc;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(7)>p{
+.main_div>ul>li.li_div:nth-child(7)>p{
     box-sizing: border-box;
     background-color: #749dbc;
     padding-top:54px;
 }
-.main_div>ul>li:nth-child(8)>p{
+.main_div>ul>li.li_div:nth-child(8)>p{
     box-sizing: border-box;
     background-color: #8c9bad;
     padding-top:54px;
 }
-.main_div>ul>li:not(:last-child){
+.main_div>ul>li.li_div:not(:last-child){
     margin-bottom: 30px;
 }
-.main_div>ul>li:nth-child(2n-1)::after{
+.main_div>ul>li.li_div:nth-child(2n-1)::after{
     content: attr(data-msg);
     display: block;
     width: 48px;
@@ -169,7 +169,7 @@
     text-decoration: underline;
     font-weight: 700;
 }
-.main_div>ul>li:nth-child(2n)::after{
+.main_div>ul>li.li_div:nth-child(2n)::after{
     content: attr(data-msg);
     display: block;
     width: 48px;
