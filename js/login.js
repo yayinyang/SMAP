@@ -12,7 +12,6 @@ login.controller("loginController", ['$scope', function ($scope) {
         return authCode;
     };
     $scope.code_v = $scope.code_g();
-
     $scope.checkName=function () {
         if(typeof ($scope.name) === "undefined"||$scope.name.trim().length<1){
             $("#name_err").text("用户名不能为空，请输入！");
@@ -21,21 +20,6 @@ login.controller("loginController", ['$scope', function ($scope) {
         }else{
             return true;
         }
-        /*return $.post( App.Config.testServerNameUrl,{
-            type:'name',
-            name:$scope.name
-
-        },function (data, status) {
-            if ("true"==data){
-
-                if($("#name_err").is(":visible")){
-                    $("#name_err").addClass("hide");
-                }
-            }else{
-                $("#name_err").removeClass("hide");
-                return false;
-            }
-        })*/;
     };
     $scope.hide_name_err = function () {
         if($("#name_err").is(":visible")){
@@ -50,20 +34,17 @@ login.controller("loginController", ['$scope', function ($scope) {
         }else{
             return true;
         }
-    }
-
+    };
     $scope.hide_pwd_err = function () {
         if($("#pwd_err").is(":visible")){
             $("#pwd_err").addClass("hide");
         }
     };
-
     $scope.checkCode = function () {
         if ("undefined" === typeof($scope.code)){
             $("#code_err").text("验证码不能为空，请输入！")
             $("#code_err").removeClass("hide");
             return false;
-
         }else{
             if($scope.code.toLowerCase()!==$scope.code_v.toLowerCase()){
                 $("#code_err").text("验证码错误，请重新输入！")
@@ -82,7 +63,6 @@ login.controller("loginController", ['$scope', function ($scope) {
             $("#code_err").addClass("hide");
         }
     };
-
     $scope.submit = function () {
         if(!$scope.checkName()){
             return false;
@@ -93,9 +73,7 @@ login.controller("loginController", ['$scope', function ($scope) {
         if(!$scope.checkCode()){
             return false;
         };
-        console.log(" $scope.name: "+ $scope.name);
-        console.log(" $scope.pwd: "+ $scope.pwd);
-        return $.post( App.Config.testloginServiceUrl+"login",
+        return $.post( App.Config.checkServiceUrl+"login",
             {
                 parameter:JSON.stringify({
                         loginNo: $scope.name,
@@ -103,12 +81,7 @@ login.controller("loginController", ['$scope', function ($scope) {
                 })
             }
             ,function (data, status) {
-
                 data = JSON.parse(data);
-                console.log(data);
-                console.log("data.token: "+data.token);
-                var t = data.token;
-                console.log(t);
                 switch (data.errcode) {
                     case 301:
                         $("#name_err").text("用户名不存在，请重新输入！");
@@ -120,26 +93,26 @@ login.controller("loginController", ['$scope', function ($scope) {
                         $("#pwd_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();
                         return false;
+                    case 200:
+                        var p_url =  sessionStorage.getItem('p_url');
+
+                        console.log('data.errcode: '+data.errcode);
+                        console.log('login-js =>p_url= '+p_url);
+
+                        if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
+                            p_url = App.Config.appRoot;
+                        sessionStorage.setItem('token',data.token);
+                        window.location.href=p_url;
                     default:
-                        window.location.href=App.Config.appRoot;
-                        //
-                        $.post( App.Config.testloginServiceUrl+"tokenCheck",
-                            {
-                                token:data.msg
-                            },
-                            function (data,status) {
-                                console.log("status: " + status);
-                                console.log("token_check: "+data)
-                            });
+
                         break;
                 }
-
-
-
-                });
+            });
     };
-
     $scope.pwd_f = function () {
-
+        $("#cus").removeClass('hideDiv');
     };
+    $scope.cus_close = function () {
+        $("#cus").addClass('hideDiv');
+    }
 }]);
