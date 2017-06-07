@@ -1,335 +1,354 @@
-<link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getTollcostInfomation.js"></script>
+<style>
+    .main_div{
+        width: 100%;
+        border: none;
+        margin-top: 20px;
+    }
+    .main_div>div:not(:last-child){
+        border-bottom: 1px solid black;
+    }
 
-<div style="height: 130px;" id="apiName">
-    <div class="titleContainer">
-        <div class="titleContent">
-            路径收费
-        </div>
-    </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;">
-            最后更新时间:2017年04月01日
-        </div>
-    </div>
-</div>
-<div style="height: 250px;" id="apiExplain">
-    <div class="titleContainer">
-        <div class="titleContent">
-            API介绍
-        </div>
-    </div>
-    <div style="height: 120px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;line-height: 30px">
-            路径收费API是一类计算收费站之间指定路径的收费金额的服务接口，输入起始收费站和终止收费站的之间的路径坐标(包含起始收费站和终止收费站的坐标)，返回该路径的预估出行费用，用于路径收费的功能开发。支持同时输入多条收费路径，收费站之间的路径坐标点不能太少，否则会影响计算结果的准确度。如需使用API，请先申请SMap平台账号。
-        </div>
-    </div>
-</div>
-<div style="height: 130px;" id="useCase">
-    <div class="titleContainer">
-        <div class="titleContent">
-            适用场景
-        </div>
-    </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: #74666c;">
-            用于路径收费的功能开发。
-        </div>
-    </div>
-</div>
-<div style="height: 180px;" id="instructions">
-    <div style="background: #cec9c9;width: 690px;">
-        <div class="titleContainer">
-            <div class="titleContent">
-                使用说明
-            </div>
-        </div>
-        <div style="height: 140px;width: 690px;">
-            <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-                <div style=" color:#000000">
-                    第一步: 申请SMAP平台账号;
-                </div>
-                <div style=" color:#000000">
-                    第二步: 拼接HTTP请求URL,请求方式为POST;
-                </div>
-                <div style="color:#000000">
-                    第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
-                </div>
-                <div style="color:#000000">
-                    如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
-                </div>
-            </div>
-        </div>
+    .main_div p{
+        padding: 0;
+        margin: 0;
+        font-size: 14px;
+        font-family: sans-serif;
+    }
+    .main_div .p1{
+        font-size: 22px;
+    }
+    .main_div .fontColor{
+        color: rgba(0,0,0,0.7);
+    }
+    .main_div .p2{
+        margin-bottom: 176px;
+    }
+    /*.main_div .p3>img{
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }*/
+    .main_div .p3::after{
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url("../img/produceService/icon-675084.png");
+        background-repeat: no-repeat;
+        background-size: 24px;
+    }
+    .main_div .p3{
+        font-size: 20px;
+        position: relative;
+        text-indent: 30px;
+    }
+    .main_div .p4{
+        width: 393px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid black;
+        margin-bottom: 48px;
+    }
+    .main_div .p5{
+        margin-bottom: 48px;
+    }
+    .main_div .p6{
+        margin-bottom: 48px;
+        text-indent: 15px;
+        font-family: Arial, 微软雅黑, Arial, sans-serif;
+        color: rgba(0,0,0,0.7);
+    }
+    .main_div .p7{
+        margin-bottom: 190px;
+        text-indent: 15px;
+        font-family: Arial, 微软雅黑, Arial, sans-serif;
+        color: rgba(0,0,0,0.7);
+    }
+    .main_div .p6::after{
+        content: "";
+        display: block;
+        background-color: gray;
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        position: relative;
+        left: 0;
+        top: -32px;
+
+    }
+
+    .main_div .p7::after{
+        content: "";
+        display: block;
+        background-color: gray;
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        position: relative;
+        left: 0;
+        top: -14px;
+    }
+
+    .main_div .p8{
+        margin-top: 113px;
+        font-size: 20px;
+        text-indent: 28px;
+        position: relative;
+    }
+
+    .main_div .p9{
+        padding-bottom:28px;
+        width: 393px;
+        border-bottom: 1px solid black;
+        margin-bottom: 65px;
+    }
+    .main_div .p10{
+        margin-bottom: 36px;
+        position: relative;
+    }
+    .main_div .p11{
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .main_div .p12{
+        margin-bottom: 65px;
+    }
+    .main_div .p13{
+        margin-bottom: 47px;
+        position: relative;
+    }
+    .icon{
+        text-indent: 25px;
+    }
+    .icon::after{
+        content: "";
+        background-image: url("../img/produceService/icon-259863.png");
+        display: block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-size:100% 80%;
+        background-repeat: no-repeat;
+        transform: rotate(90deg);
+    }
+    .titleIcon::after{
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("../img/produceService/icon-505752.png");
+        background-size: 24px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .button{
+        text-decoration: none;
+        display: block;
+        width: 119px;
+        height: 44px;
+        background-color:#169bd5 ;
+        color: white;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 44px;
+        float: left;
+    }
+    .cle{
+        clear: both;
+    }
+    .f_l{
+        float: left;
+    }
+    .f_r{
+        float: right;
+    }
+    .m_l{
+        margin-left: 25px;
+    }
+    .p_service{
+        width: 100%;
+        height: 46px;
+        border: 1px solid black;
+        border-radius: 5px;
+        line-height: 46px;
+    }
+    .coor_div{
+        line-height: 132px;
+        margin-bottom: 67px;
+        overflow: hidden;
+    }
+    .coor_div>span{
+        display: inline-block;
+        height: 130px;
+        line-height: 130px;
+        color: black;
+    }
+    .coor_p{
+        width: 609px;
+        height: 130px;
+        border-radius: 5px;
+        border: 1px solid black;
+        display:block;
+        line-height: 15px;
+        -ms-word-break: break-all;
+        word-break: break-all;
+        padding: 20px!important;
+        overflow-x:hidden ;
+        overflow-y: scroll;
+        box-sizing: border-box;
+    }
+    .ret_val{
+        width: 100%;
+        height: 364px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-bottom: 129px!important;
+    }
+    .main_div .user_feedback{
+        font-size: 20px;
+        text-indent:28px;
+        position: relative;
+        margin-top: 113px!important;
+    }
+    .user_feedback::after{
+        content: "";
+        display: block;
+        width: 24px;
+        height: 24px;
+        background-image: url("../img/produceService/icon-642083.png");
+        background-repeat: no-repeat;
+        background-size: 24px;
+        position: absolute;
+        top: 2px;
+        left: 0;
+
+    }
+    .main_div .margin1{
+        margin-top: 22px;
+        margin-bottom: 84px;
+    }
+    .main_div .margin2{
+        margin-top: 70px;
+    }
+    .main_div .margin3{
+        margin-top: 84px;
+    }
+    .main_div .request{
+        color: #169bd5;
+        margin :39px auto 35px auto;
+    }
+    .button_father{
+        margin-bottom: 51px;
+        overflow: hidden;
+    }
+    .main_div .a1{
+        margin-left: 20px;
+    }
+
+</style>
+
+<div class="main_div">
+    <div>
+        <div id="apiName"> <p class="p1" >收费信息服务</p></div>
+        <p class="p2">最后更新时间：2016年12月10日</p>
+        <p class="p3" id="apiExplain">API介绍</p>
+        <p class="p4">API Introduction</p>
+        <p class="p5">收费信息服务API是一组支持收费信息查询、用户反馈等功能的服务接口，是收费信息服务产品的核心服务。内容包括：收费查询API、用户反馈API等</p>
+        <p class="p6">收费信息查询API：计算收费站之间指定路径的收费金额的服务接口。输入起始收费站和终止收费站之间的路径坐标，包含起始收费站和终止收费站的坐标，服务接口返回该路径的预估出行费用</p>
+        <p class="p7">用户反馈API：支持用户上报纠错信息，包含：路线，金额，车型等</p>
     </div>
 
-</div>
-<div class="apiContainer" id="tollCostContainer">
-    <div class="titleContainer">
-        <div class="titleContent">
-            计算路径收费金额
-        </div>
-    </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            计算路径收费金额API服务地址：
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/base/tollcost
-            </div>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="TollcostRequireParam"
-                   data-toggle="table"
-                   data-url="../data/TollcostRequireParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="required" >是否填充</th>
-                    <th data-field="default" >缺省值</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求http body</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="TollcostRequireBody"
-                   data-toggle="table"
-                   data-url="../data/TollcostRequireBody.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiReturnParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="ReturnParam"
-                   data-toggle="table"
-                   data-url="../data/ReturnParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiServiceExampleContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
-            </div>
-        </div>
-        <div style="height: 66px;width: 690px;">
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smap/tollcost
-                </div>
-            </div>
-        </div>
-        <div class="apiExampleRequireParam">请求参数</div>
-        <div style="width: 690px;padding: 0px 100px 0px 64px">
-            <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">coordinates</div>
-                <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="tollCostCoordinates">
-                </div>
-            </div>
-        </div>
 
-    </div>
-    <div class="apiResultContainer">
-        <div style="padding: 10px 20px 20px 20px">
-            <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="tollCostResult()">运行</div>
-                <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
-                </div>
-            </div>
-            <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="tollCostContent"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="apiContainer" id="feedbackContainer">
-    <div class="titleContainer">
-        <div class="titleContent">
-            用户反馈接口
-        </div>
-    </div>
-
-    <div style="height: 140px;width: 690px;">
-        <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-            <div style=" color:#000000">
-                说明: 允许用户上报一些纠错信息，主要内容包含路线，金额，车型，carId;
-            </div>
-            <div style=" color:#000000">
-                请求方式: POST;
-            </div>
-            <div style="color:#000000">
-                返回格式: JSON格式数据;
-            </div>
-            <div style="color:#000000">
-                字符编码：接口的输入参数和输出数据编码全部统一为UTF-8;
-            </div>
-        </div>
-    </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            用户反馈接口API服务地址：
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/tollgate/feedback
-            </div>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="FeedbackRequireParam"
-                   data-toggle="table"
-                   data-url="../data/FeedbackRequireParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="required" >是否填充</th>
-                    <th data-field="default" >缺省值</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求http body</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="FeedbackRequireBody"
-                   data-toggle="table"
-                   data-url="../data/FeedbackRequireBody.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiReturnParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 返回参数</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="FeedbackReturnParam"
-                   data-toggle="table"
-                   data-url="../data/FeedbackReturnParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiServiceExampleContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
-            </div>
-        </div>
-        <div style="height: 66px;width: 690px;">
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/tollgate/feedback
-                </div>
-            </div>
-        </div>
-        <div class="apiExampleRequireParam">请求参数</div>
-        <div style="width: 690px;padding: 0px 100px 0px 64px">
-            <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">coordinates</div>
-                <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="feedbackCoordinates">
-                </div>
+    <div>
+        <p class="p8 titleIcon" id="useCase">收费信息查询</p>
+        <p class="p9">Charge information inquiries</p>
+        <p class="p10 icon">API说明</p>
+        <p class="p11 fontColor">服务地址：http://fs.navinfo.com/smapapi/base/tollcost</p>
+        <p class="p12 p11 fontColor">接口类型：post</p>
+        <p class="p13 icon">请求参数</p>
+        <div style="width: 100%;overflow: hidden;">
+            <div style="width: 715px;float: right">
+                <table id="TollcostRequireParam"
+                       data-toggle="table"
+                       data-url="../data/TollcostRequireParam.js"
+                >
+                    <thead>
+                    <tr >
+                        <th data-field="paramName">参数名</th>
+                        <th data-field="type" >类型</th>
+                        <th data-field="required" >是否填充</th>
+                        <th data-field="default" >缺省值</th>
+                        <th data-field="description">规则说明</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
 
-    </div>
-    <div class="apiResultContainer">
-        <div style="padding: 10px 20px 20px 20px">
-            <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="tollCostFeedbackResult()">运行</div>
-                <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
-                </div>
-            </div>
-            <div class="apiShowResultName">返回结果</div>
-            <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="feedbackContent"></textarea>
+
+        <p class="margin1 p11 fontColor">注：收费站之间的路径坐标点不能太少，否则会影响计算结果的准确度。</p>
+        <p class="p13 icon">返回参数</p>
+        <div style="width: 100%;overflow: hidden;">
+            <div style="width:715px;float: right">
+                <table id="TollcostRequireBody"
+                       data-toggle="table"
+                       data-url="../data/TollcostRequireBody.js">
+                    <thead>
+                    <tr>
+                        <th data-field="paramName">参数名</th>
+                        <th data-field="type" >类型</th>
+                        <th data-field="description">规则说明</th>
+                    </tr>
+                    </thead>
+                </table>
             </div>
         </div>
+
+
+        <p class="icon p13 margin2">返回结果示例</p>
+        <p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <p class="icon p13 margin3">服务示例</p>
+        <div style="width: 100%;overflow: hidden;"><div style="width: 720px;float: right">
+            <p class="p_service fontColor p11">
+                http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
+        </div></div>
+
+
+        <p class="request p11">请求参数</p>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">coordinates</span><p class="coor_p f_r">119.6295898,31.6795595,119.636627,31.676809,119.637680,31.676788,119.63........</p></div>
+        <div class="button_father"><a class="button a1" href="javascript:void(0);">运行</a><a class="button m_l" href="javascript:void(0);">重置</a></div>
+        <p class="cle request p11">返回结果</p>
+        <p class="ret_val fontColor">
+            {
+            "data": {
+            "route": "L1",
+            "tollCost": 30
+            },
+            "errcode": 200,
+            "errmsg": "OK"
+            }
+
+        </p>
     </div>
+    <div>
+        <p class="user_feedback" id="feedbackContainer">用户反馈</p>
+        <p class="p4">Customer feedback</p>
+    </div>
+
+
+
+
+
+
 </div>
+
