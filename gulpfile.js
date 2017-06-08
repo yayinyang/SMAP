@@ -392,7 +392,7 @@ gulp.task('trafficLimited', function() {
 });
 gulp.task('roadwork', function() {
     if(develop){
-        return gulp.src('pages/roadwork/roadwork.html')
+        return gulp.src('pages/roadwork.html')
             .pipe(usemin({
                 css: [
                     sourcemaps.init({
@@ -416,9 +416,9 @@ gulp.task('roadwork', function() {
                     sourcemaps.write('../../maps/js/')
                 ],
             }))
-            .pipe(gulp.dest('dist/pages/roadwork/'));
+            .pipe(gulp.dest('dist/pages'));
     }else{
-        return gulp.src('pages/roadwork/roadwork.html')
+        return gulp.src('pages/roadwork.html')
             .pipe(sourcemaps.init())
             .pipe(usemin({
                 css: [ minifyCss(),rev() ],
@@ -427,13 +427,13 @@ gulp.task('roadwork', function() {
                     mangle: false, //不修改变量名
                 }), rev() ],
             }))
-            .pipe(gulp.dest('dist/pages/roadwork'));
+            .pipe(gulp.dest('dist/pages'));
     }
 
 });
 gulp.task('trafficControl', function() {
     if(develop){
-        return gulp.src('pages/roadwork/trafficControl.html')
+        return gulp.src('pages/trafficControl.html')
             .pipe(usemin({
                 css: [
                     sourcemaps.init({
@@ -457,9 +457,9 @@ gulp.task('trafficControl', function() {
                     sourcemaps.write('../../maps/js/')
                 ],
             }))
-            .pipe(gulp.dest('dist/pages/roadwork/'));
+            .pipe(gulp.dest('dist/pages'));
     }else{
-        return gulp.src('pages/roadwork/trafficControl.html')
+        return gulp.src('pages/trafficControl.html')
             .pipe(sourcemaps.init())
             .pipe(usemin({
                 css: [ minifyCss(),rev() ],
@@ -468,7 +468,7 @@ gulp.task('trafficControl', function() {
                     mangle: false, //不修改变量名
                 }), rev() ],
             }))
-            .pipe(gulp.dest('dist/pages/roadwork/'));
+            .pipe(gulp.dest('dist/pages'));
     }
 
 });
@@ -577,8 +577,8 @@ gulp.task('watch',function (event) {
     gulp.watch(['pages/productDescription.html'],['productDescription']);
     gulp.watch(['pages/productService.html'],['productService']);
     gulp.watch(['pages/productWarehouse.html'],['productWarehouse']);
-    gulp.watch(['pages/roadwork/trafficControl.html'],['trafficControl']);
-    gulp.watch(['pages/roadwork/roadwork.html'],['roadwork']);
+    gulp.watch(['pages/trafficControl.html'],['trafficControl']);
+    gulp.watch(['pages/roadwork.html'],['roadwork']);
     gulp.watch(['pages/construction.html'],['construction']);
     gulp.watch(['pages/trafficLimited.html'],['trafficLimited']);
     gulp.watch(['pages/undevelopPage.html'],['undevelopPage']);
