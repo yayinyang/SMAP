@@ -41,7 +41,7 @@
                             <a class="indexLetter" id=capture{{firstObj.capture}} ng-bind="firstObj.capture" ></a>
                             <span class="citiesBox">
                             <ul>
-                                <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
+                                <li title="{{secondObj.name}}"  ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
                                     <span ng-bind="secondObj.name"></span>
                                 </li>
                             </ul>
@@ -69,6 +69,8 @@
 <script src="../js/construction.js"></script>
 <script src="../js/directives/nav/nav.js"></script>
 <!-- endbuild -->
+
+<script src="../js/directives/nav/nav.js"></script>
 
 
 

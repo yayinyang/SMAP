@@ -6,6 +6,7 @@
 
     <link href='../lib/mapbox/mapbox-gl.css' rel='stylesheet' />
     <link href="../style/trafficLimited.css" rel="stylesheet" />
+    <!-- endbuild -->
 
     <title>SMap</title>
 </head>
@@ -17,6 +18,7 @@
         <ul style="list-style: none;margin: 0;vertical-align: middle;padding: 22px 0 0 0;display: flex">
             <li style="font-size: 14px;color:rgba(0,0,0,0.7)">您现在的位置:</li>
             <li style="font-size: 14px;padding-left: 5px;color:rgba(0,0,0,0.7)">在线体验</li>
+
             <li style="font-size: 20px;padding:0 4px 0 9px;margin-top: -6px; ;color:rgba(0,0,0,1)">></li>
             <li style="font-size: 14px;padding-left: 5px; color:rgba(0,0,0,0.7)">限行数据展示</li>
         </ul>
@@ -42,7 +44,7 @@
                             <a class="indexLetter" id=capture{{firstObj.capture}} ng-bind="firstObj.capture" ></a>
                             <span class="citiesBox">
                             <ul>
-                                <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
+                                <li title="{{secondObj.name}}" ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
                                     <span ng-bind="secondObj.name"></span>
                                 </li>
                             </ul>
@@ -51,6 +53,20 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div class="limitCondition">
+            <ul>
+                <li ng-repeat="kind in limitKind" style="margin-bottom: 10px">
+                    <img ng-if="!kind.isLimit" ng-src={{kind.limitImgSrc}} ng-click="changeCondition($index)"/>
+                    <img ng-if="kind.isLimit" ng-src={{kind.imgSrc}} ng-click="changeCondition($index)"/>
+                    <ul>
+                        <li ng-repeat="item in kind.children" ng-click="changeDetailKind(item.kind)">
+                                <input id=item.label ng-model="item.flag"  type="checkbox"/>
+                                <span ng-bind="item.kind"  style="font-size: 12px"></span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </div>
     <div id="map">
@@ -69,6 +85,8 @@
 <script src="../js/trafficLimited.js"></script>
 <script src="../js/directives/nav/nav.js"></script>
 <!-- endbuild -->
+
+<script src="../js/directives/nav/nav.js"></script>
 
 
 
