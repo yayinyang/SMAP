@@ -5099,7 +5099,6 @@ var trafficLimitedLayer ={
                     "stops": [[6, 1.5], [20, 10]],
                     "base": 1.2
                 },
-
             },
 
         },{
@@ -5112,7 +5111,8 @@ var trafficLimitedLayer ={
             'layout': {},
             'paint': {
                 'fill-color': '#088',
-                'fill-opacity': 0.6
+                'fill-opacity': 0.6,
+                'fill-outline-color': '#FF0000',
             }
 
         },]

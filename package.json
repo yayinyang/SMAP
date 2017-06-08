@@ -22,7 +22,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp dev",
-    "release": "gulp release"
+    "release": "gulp release --scripts-prepend-node-path=auto"
   },
   "repository": {
     "type": "git",

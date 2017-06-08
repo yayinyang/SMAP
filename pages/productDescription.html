@@ -3,113 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <!-- build:css ../style/description.css -->
+    <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../lib/bootstrapTable/bootstrap-table.css">
     <link rel="stylesheet" href="../style/description.css">
     <link rel="stylesheet" href="../style/index.css">
     <!-- endbuild -->
-
     <title>SMAP</title>
 </head>
 <body ng-controller="productDescriptionController" style="min-width: 1200px;text-align: center;background-color: #fff;overflow-y: scroll;height: 100%">
 <nav-bar></nav-bar>
-<div   style="display: inline-block; width: 1070px;margin-top: 40px;background: white;">
-    <div style="float: left; width: 330px;background: white;">
-        <div style="float:left; padding-top: 16px;width: 300px;height: 500px">
-            <div style="
-            position: fixed;
-        width: 300px;
-        text-align: left;
-        height: 600px;">
-                <div ng-repeat="item  in descriptions">
-                    <div style="background-color: #25396e;height: 40px;width: 300px;border-bottom: 1px solid #182848" ng-click="showArrowDirect(item, $index)">
-                        <div style="float: left;width: 4px;border-right: 2px solid #1478FF;height: 40px;" ng-show="item.flag"></div>
-                        <div ng-class="{true: 'firstContent', false: 'firstContentFrom'}[item.flag]"  ng-bind="item.name"></div>
-                        <div style="height: 40px;float: right;padding-right: 20px;" ng-if="item.type !=='strategyProduct'">
-                            <div style="height: 10px;width:5px;padding:15px 0px">
-                                <div   ng-class="{true:'arrowNormal', false:'arrowActive'}[item.flag]"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div   ng-show="item.flag">
-                        <!--<div  style="height: 40px;width: 100%;background-color: #e9ebf0; border-bottom: 1px solid #c2c7d6">-->
-                            <!--<div style="display: inline-block;" ng-click="changeDescriptionPages(obj)">-->
-                                <!--&lt;!&ndash;<div class="dotGrayDiv"></div>&ndash;&gt;-->
-                                <!--<div style="float: left;padding:14px 10px 10px 20px;height: 12px;line-height: 40px">-->
-                                    <!--<div class="dot"></div>-->
-                                <!--</div>-->
-                                <!--<div class="textDiv" style="padding-left: 0px;line-height: 40px;height: 40px">-->
-                                    <!--<span style="font-size: 14px; color:#25396e; font-weight: bold" ng-bind="obj.name"></span>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <div  ng-class="{true:'showBottomLine',false:'hideBottomLine'}[item.children.length > 0]">
-                            <div  class="showTypeList">
-                                <div ng-repeat="obj in item.children" ng-click="changeDescriptionPages(obj)" ng-class="{true:'selectedBg'}[obj.type === dataServiceFlag]">
-                                    {{obj.name}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+    <p>产品介绍</p>
+    <p>product description</p>
+    <div class="main_div">
+        <ul>
+            <li class="li_div" data-msg="01">
+                <img src="../img/productDescription/100315198.png" alt="">
+                <p><img src="../img/productDescription/1.png" alt=""></p>
+            </li>
+            <li class="li_div" data-msg="02">
+                <p><img src="../img/productDescription/ADAS.png" alt=""></p>
+                <img src="../img/productDescription/500358488.png" alt="">
 
-            </div>
-        </div>
-    </div>
-    <div style="float:left;width: 740px;background: white;height: 100%">
-        <div style="width: 740px;border-bottom: 1px solid #bdc3d3;">
-            <div style="height: 56px;">
-                <div style="float: left; padding: 20px 0px">
-                    <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
-                </div>
-                <div style="float: left;  padding: 20px 0px " id="navigation">
-                    <ul style="list-style-type: none;height: 14px">
-                        <li><a href="#">产品仓库</a></li>
-                        <li>></li>
-                        <li><a href="#">产品介绍</a></li>
-                        <li>></li>
-                        <li><a href="#" id="apiType">日产品</a></li>
-                        <li ng-show="arrowFlag">></li>
-                        <li><a href="#" id="showApiName">NIMIF-G</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div style="float: left; width: 740px;text-align: left" id="apiPage" >
-             <!--<div ng-include="descriptionUrl"></div>-->
-        </div>
+            </li>
+            <li class="li_div" data-msg="03">
+                <img src="../img/productDescription/500032934.png" alt="">
+                <p><img src="../img/productDescription/kcdt.png" alt=""></p>
+            </li>
+            <li class="li_div" data-msg="04">
+                <p><img src="../img/productDescription/xrdh.png" alt=""></p>
+                <img src="../img/productDescription/500120092.png" alt="">
+
+            </li>
+            <li class="li_div" data-msg="05">
+                <img src="../img/productDescription/pexels-photo-93398.png" alt="">
+                <p><img src="../img/productDescription/tccdh.png" alt=""></p>
+            </li>
+            <li class="li_div" data-msg="06">
+                <p><img src="../img/productDescription/cdz.png" alt=""></p>
+                <img src="../img/productDescription/413079.png" alt="">
+
+            </li>
+            <li class="li_div" data-msg="07">
+                <img src="../img/productDescription/MJO.png" alt="">
+                <p><img src="../img/productDescription/swdt.png" alt=""></p>
+            </li>
+            <li class="li_div" data-msg="08">
+                <p><img src="../img/productDescription/tysd.png" alt=""></p>
+                <img src="../img/productDescription/500320709.png" alt="">
+            </li>
+        </ul>
+
 
     </div>
+
 </div>
 </body>
-<style>
-    .firstContent{
-        float:left;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-        color: #fff;
-        padding-left: 9px;
-        font-weight: 600
-    }
-    .firstContentFrom{
-        float:left;
-        height: 40px;
-        line-height: 40px;
-        font-size: 14px;
-        color: #fff;
-        padding-left: 15px;
-        font-weight: 600
-    }
-    .showBottomLine{
-        width: 100%;
-        background-color: #e9ebf0;
-        border-bottom: 1px solid #c2c7d6;
-    }
-    .hideBottomLine{
-        width: 100%;
-        background-color: #e9ebf0;
-    }
-</style>
+
 <!-- build:js ../js/description.js -->
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../lib/jquery/jquery.js"></script>
