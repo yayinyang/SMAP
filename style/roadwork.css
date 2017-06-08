@@ -30,7 +30,7 @@
 .page_one>div{
     width: 49.95rem;
     height: 26.35rem;
-    margin: 11.35rem auto auto 23rem;
+    margin: 11.35rem auto auto auto;
     position: relative;
 }
 .page_one>div>img{
@@ -91,13 +91,13 @@
     background-color: #f6f6f6;
 }
 .page_two>div{
-    margin: 4.75rem auto auto 23.8rem;
-    width: 49.3rem;
-    height: 26.2rem;
+    /*margin: 4.75rem auto auto auto;*/
+    width: 100%;
+    height: 100%;
 }
 .page_two>div>img{
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 /*第二页结束*/
 /*第三页开始*/
@@ -106,13 +106,13 @@
     overflow: hidden;
 }
 .page_three>div:nth-child(1){
-    margin: 4.5rem auto 8.3rem 23.9rem;
+    margin: 4.5rem auto 8.3rem auto;
     width: 45.4rem;
     height: 31.25rem;
 
 }
 .page_three>div:nth-child(2){
-    margin: auto auto auto 28.25rem;
+    margin: auto;
     width: 42.55em;
     height: 17.75rem;
 
@@ -131,12 +131,12 @@
 .page_four>div:nth-child(1){
     width: 51.1rem;
     height: 43rem;
-    margin: 5.7rem auto 3.9rem 23.95rem;
+    margin: 5.7rem auto 3.9rem auto;
 }
 .page_four>div:nth-child(2){
     width: 57.8rem;
     height: 25.45rem;
-    margin: auto auto auto 18.6rem;
+    margin: auto;
 }
 .page_four>div:nth-child(1)>img,.page_four>div:nth-child(2)>img{
     width: 100%;

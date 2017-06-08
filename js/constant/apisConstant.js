@@ -252,7 +252,7 @@ productServiceApp.constant('JumpConstant', {
     ],
     Tollcost: [
         {
-            name: '路径收费',
+            name: '收费信息服务',
             id: 'apiName'
         },
         {
@@ -260,31 +260,23 @@ productServiceApp.constant('JumpConstant', {
             id: 'apiExplain'
         },
         {
-            name: '适用场景',
+            name: '收费信息查询',
             id: 'useCase'
         },
         {
-            name: '使用说明',
-            id: 'instructions'
-        },
-        {
-            name: '计算收费金额',
-            id: 'tollCostContainer'
-        },
-        {
-            name: '用户反馈接口',
+            name: '用户反馈',
             id: 'feedbackContainer'
-        },
+        }
     ],
     summary: [
         {
-            name: '概述',
+            name: '入门指南',
             id: 'summary'
-        },
+        }/*,
         {
             name: '简介',
             id: 'summaryExplain'
-        }
+        }*/
     ],
     code: [
         {
