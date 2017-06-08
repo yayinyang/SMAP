@@ -1,25 +1,20 @@
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getTollcostInfomation.js"></script>
-<link rel="stylesheet" href="../style/tollcost.css"/>
+<link rel="stylesheet" href="../style/tollcost.css">
 
-<div class="main_div">
-    <div>
-        <div id="apiName"> <p class="p1" >收费信息服务</p></div>
+    <div class="main_div" id="apiName">
+        <p class="p1" >收费信息服务</p>
         <p class="p2">最后更新时间：2016年12月10日</p>
-        <div id="apiExplain">
-            <p class="p3" >API介绍</p>
-        </div>
+    </div>
+    <div class="main_div" id="apiExplain">
+        <p class="p3" >API介绍</p>
         <p class="p4">API Introduction</p>
         <p class="p5">收费信息服务API是一组支持收费信息查询、用户反馈等功能的服务接口，是收费信息服务产品的核心服务。内容包括：收费查询API、用户反馈API等</p>
         <p class="p6">收费信息查询API：计算收费站之间指定路径的收费金额的服务接口。输入起始收费站和终止收费站之间的路径坐标，包含起始收费站和终止收费站的坐标，服务接口返回该路径的预估出行费用</p>
         <p class="p7">用户反馈API：支持用户上报纠错信息，包含：路线，金额，车型等</p>
     </div>
-
-
-    <div>
-        <div id="useCase">
-            <p class="p8 titleIcon" >收费信息查询</p>
-        </div>
+    <div class="main_div" id="useCase">
+        <p class="p8 titleIcon" >收费信息查询</p>
         <p class="p9">Charge information inquiries</p>
         <p class="p10 icon">API说明</p>
         <p class="p11 fontColor">服务地址：http://fs.navinfo.com/smapapi/base/tollcost</p>
@@ -53,11 +48,11 @@
                        data-toggle="table"
                        data-url="../data/TollcostRequireBody.js">
                     <thead>
-                    <tr>
-                        <th data-field="paramName">参数名</th>
-                        <th data-field="type" >类型</th>
-                        <th data-field="description">规则说明</th>
-                    </tr>
+                        <tr>
+                            <th data-field="paramName">参数名</th>
+                            <th data-field="type" >类型</th>
+                            <th data-field="description">规则说明</th>
+                        </tr>
                     </thead>
                 </table>
             </div>
@@ -68,18 +63,25 @@
         <p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
         <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>
         <p class="icon p13 margin3">服务示例</p>
-        <div style="width: 100%;overflow: hidden;"><div style="width: 716px;float: right">
-            <p class="p_service fontColor p11">
-                http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
-        </div></div>
+        <div style="width: 100%;overflow: hidden;">
+            <div style="width: 727px;float: right">
+                <p class="p_service fontColor p11">
+                    http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
+            </div>
+        </div>
 
 
         <p class="request p11">请求参数</p>
         <div class="coor_div fontColor">
-            <span class="f_l p11">coordinates</span><p class="coor_p f_r">119.6295898,31.6795595,119.636627,31.676809,119.637680,31.676788,119.63........</p></div>
-        <div class="button_father"><a class="button a1" href="javascript:void(0);">运行</a><a class="button m_l" href="javascript:void(0);">重置</a></div>
+            <span class="f_l p11">coordinates</span>
+            <input class="coor_p f_r" id="tollCostCoordinates" value="119.6295898,31.6795595,119.636627,31.676809,119.637680,31.676788,119.63........" ></input>
+        </div>
+        <div class="button_father">
+                <a class="button a1" href="javascript:tollCostResult();">运行</a>
+                <a class="button m_l" href="javascript:resetResult(0);">重置</a>
+        </div>
         <p class="cle request p11">返回结果</p>
-        <p class="ret_val fontColor">
+        <p class="ret_val fontColor" id="tollCostContent">
             {
             "data": {
             "route": "L1",
@@ -88,19 +90,10 @@
             "errcode": 200,
             "errmsg": "OK"
             }
+
         </p>
     </div>
-    <div>
-        <div id="feedbackContainer">
-            <p class="user_feedback" >用户反馈</p>
-        </div>
+    <div class="main_div" id="feedbackContainer">
+        <p class="user_feedback" >用户反馈</p>
         <p class="p4">Customer feedback</p>
     </div>
-
-
-
-
-
-
-</div>
-
