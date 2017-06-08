@@ -108,7 +108,7 @@ angular.module("construction",["navApp"]).controller("constructionController",["
         var loc = [];
         var div = window.document.createElement('div');
         var description = decodeURI(data.features[0].properties.construction_desc);
-        console.log(data.features[0].properties.construction_time);
+      /*  console.log(data.features[0].properties.construction_time);*/
         var date = decodeURIComponent(data.features[0].properties.construction_time);
         var time = date.replace(/\+/g, '');
         loc.push(geo.coordinates[0][0]);

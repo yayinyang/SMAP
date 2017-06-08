@@ -3410,7 +3410,7 @@ var trafficLimitedLayer ={
                 {
                     "type":"vector",
                     "tiles":
-                        ['http://fs.navinfo.com/smapapi/platelimit/tile/{z}/{x}/{y}?'+ App.Config.platelimit],
+                        ['http://fastmap.navinfo.com/smap_p/plateres/web/condition/{z}/{x}/{y}?'+ App.Config.platelimit],
                 },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
