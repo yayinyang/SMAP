@@ -8,7 +8,6 @@ var map = new mapboxgl.Map({
     repaint: true,
     pitch: 0
 });
-
 angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController",["$scope","$location","$timeout","$anchorScroll",function (
     $scope,$location,$timeout,$anchorScroll) {
     $scope.provinceArr = province;
