@@ -56,7 +56,8 @@
         </div>
         <div class="limitCondition">
             <ul>
-                <li ng-repeat="childrenItem in limitKind" class="firstCondation">
+                <li ng-repeat="childrenItem in limitKind" class="firstCondation"
+                    ng-class="{true: 'listHeightLight',false: ''}[childrenItem.isLimit ]">
                     <div ng-bind="childrenItem.kind"
                          ng-click="changeCondition($index)"
                          ng-class="{true: 'conditionHeightLight',false: ''}[childrenItem.isLimit && !childrenItem.children]"
@@ -65,11 +66,14 @@
                     <div ng-class="{true: 'IconOpenStyle', false: 'IconCloseStyle'}[childrenItem.childrenIsOpen]">
                     </div>
                     <ul>
-                        <li ng-show="childrenItem.childrenIsOpen" ng-repeat="item in childrenItem.children" ng-click="changeDetailKind(item.kind)">
+                        <li ng-show="childrenItem.childrenIsOpen"
+                            ng-repeat="item in childrenItem.children"
+                            ng-click="changeDetailKind(item.kind)"
+                        >
                             <div for={{item.label}}  ng-model="item.flag"  ng-class="{true: 'checked', false: 'normal'}[item.flag]">
                             </div>
                             <div ng-bind="item.kind"
-                                 ng-class="{true: 'conditionHeightLight',false: ''}[item.flag]"
+                                 ng-class="{true: 'subConditionHeightLight',false: ''}[item.flag]"
                                  style="display: inline-block"></div>
                         </li>
                     </ul>

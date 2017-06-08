@@ -230,6 +230,13 @@ body{
 }
 
 .limitCondition ul li div.conditionHeightLight{
+    background-color: #0164de;
+    color: #ffffff;
+}
+.limitCondition ul li.listHeightLight{
+    border-top: 1px solid #0164de;
+}
+.limitCondition ul li ul li div.subConditionHeightLight{
     color: #0164de;
 }
 .limitCondition ul li .IconOpenStyle{
