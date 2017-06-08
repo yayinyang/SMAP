@@ -60,7 +60,7 @@
                     <img ng-if="!kind.isLimit" ng-src={{kind.limitImgSrc}} ng-click="changeCondition($index)"/>
                     <img ng-if="kind.isLimit" ng-src={{kind.imgSrc}} ng-click="changeCondition($index)"/>
                     <ul>
-                        <li ng-repeat="item in kind.children" ng-click="changeDetailKind(item.kind)">
+                        <li ng-show="kind.isLimit" ng-repeat="item in kind.children" ng-click="changeDetailKind(item.kind)">
                                 <input id=item.label ng-model="item.flag"  type="checkbox"/>
                                 <span ng-bind="item.kind"  style="font-size: 12px"></span>
                         </li>

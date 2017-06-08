@@ -15,6 +15,59 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
     $scope.indexUrl = 'abc';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.src = '../img/trafficLimited/';
+    $scope.imgSrc = [
+        {
+            kind: 'number',
+            src: $scope.src + 'number.png',
+        },
+        {
+            kind: 'field',
+            src: $scope.src + 'field.png',
+        },
+        {
+            kind: 'carKind',
+            src: $scope.src + 'carKind.png',
+        },
+        {
+            kind: 'energy',
+            src: $scope.src + 'energy.png',
+        },
+        {
+            kind: 'card',
+            src: $scope.src + 'card.png',
+        },
+        {
+            kind: 'other',
+            src: $scope.src + 'other.png',
+        },
+
+    ];
+    $scope.limitImgSrc = [
+        {
+            kind: 'numberLimited',
+            src: $scope.src + 'numberLimited.png',
+        },
+        {
+            kind: 'fieldLimited',
+            src: $scope.src + 'fieldLimited.png',
+        },
+        {
+            kind: 'carKindLimited',
+            src: $scope.src + 'carKindLimited.png',
+        },
+        {
+            kind: 'energyLimited',
+            src: $scope.src + 'energyLimited.png',
+        },
+        {
+            kind: 'cardLimited',
+            src: $scope.src + 'cardLimited.png',
+        },
+        {
+            kind: 'otherLimited',
+            src: $scope.src + 'otherLimited.png',
+        },
+    ];
     $scope.searchParameter = {};
     $scope.lineLayer = {
         "id": 'line_Limited_Layer',
@@ -52,22 +105,23 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         }
 
     };
+
     $scope.limitKind = [
         {
-            kind: '限号',
+            kind: 'number',
             isLimit: false,
-            imgSrc: $scope.src + 'number.png',
-            limitImgSrc: $scope.src + 'numberLImited.png',
+            imgSrc: $scope.imgSrc[0].src ,
+            limitImgSrc: $scope.limitImgSrc[0].src ,
         }, {
-            kind: '外阜车',
+            kind: 'field',
             isLimit: false,
-            imgSrc: $scope.src + 'field.png',
-            limitImgSrc: $scope.src + 'fieldLimited.png',
+            imgSrc:$scope.imgSrc[1].src,
+            limitImgSrc: $scope.limitImgSrc[1].src,
         }, {
-            kind: '车型',
+            kind: 'carKind',
             isLimit: false,
-            imgSrc: $scope.src + 'carKind.png',
-            limitImgSrc: $scope.src + 'carKindLimited.png',
+            imgSrc: $scope.imgSrc[2].src,
+            limitImgSrc:  $scope.limitImgSrc[2].src,
             children:[
                 {
                     kind: '客车',
@@ -82,10 +136,10 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
             ]
 
         }, {
-            kind: '能源',
+            kind: 'energy',
             isLimit: false,
-            imgSrc: $scope.src + 'energy.png',
-            limitImgSrc: $scope.src + 'energyLimited.png',
+            imgSrc: $scope.imgSrc[3].src,
+            limitImgSrc:  $scope.limitImgSrc[3].src,
             children:[
                 {
                     kind: '燃油',
@@ -104,10 +158,10 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                 },
             ]
         }, {
-            kind: '车牌',
+            kind: 'card',
             isLimit: false,
-            imgSrc: $scope.src + 'card.png',
-            limitImgSrc: $scope.src + 'cardLimited.png',
+            imgSrc: $scope.imgSrc[4].src,
+            limitImgSrc: $scope.limitImgSrc[4].src,
             children:[
                 {
                     kind: '蓝牌',
@@ -136,10 +190,10 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                 },
             ]
         }, {
-            kind: '其他',
+            kind: 'other',
             isLimit: true,
-            imgSrc: $scope.src + 'other.png',
-            limitImgSrc: $scope.src + 'otherLimited.png',
+            imgSrc: $scope.imgSrc[5].src,
+            limitImgSrc:  $scope.limitImgSrc[5].src,
         },
     ]
     $scope.showChoosedCity = function (arg){
@@ -167,6 +221,9 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
     };
     $scope.changeCondition = function (index) {
         $scope.limitKind[index].isLimit = !$scope.limitKind[index].isLimit;
+        if($scope.limitKind[index].isLimit){
+            $scope.limitKind[index].imgSrc = $scope.imgSrc[index].src;
+        }
         if( $scope.limitKind[index].children){
             if($scope.limitKind[index].isLimit){
                 for(var i = 0; i < $scope.limitKind[index].children.length; i++){
@@ -186,16 +243,16 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                 for(var j = 0; j < $scope.limitKind[i].children.length; j++){
                     if($scope.limitKind[i].children[j].kind === data){
                         $scope.limitKind[i].children[j].flag = !$scope.limitKind[i].children[j].flag;
+                        var childrenFlag = 0;
+                        for(var k = 0; k < $scope.limitKind[i].children.length; k++){
+                            childrenFlag += Number($scope.limitKind[i].children[k].flag);
+                        }
+                        if(childrenFlag === 0){
+                            $scope.limitKind[i].imgSrc = $scope.limitImgSrc[i].src;
+                        }else{
+                            $scope.limitKind[i].imgSrc = $scope.imgSrc[i].src;
+                        }
                     }
-                }
-                var childrenFlag = 0;
-                for(var k = 0; k < $scope.limitKind[i].children.length; k++){
-                   childrenFlag += Number($scope.limitKind[i].children[k].flag);
-                }
-                if(childrenFlag === 0){
-                    $scope.limitKind[i].isLimit = false;
-                }else{
-                    $scope.limitKind[i].isLimit = true;
                 }
             }
         }
