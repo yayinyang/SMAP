@@ -3,9 +3,9 @@
     border: none;
     margin-top: 20px;
 }
-.main_div>div:not(:last-child){
+/*.main_div>div:not(:last-child){
     border-bottom: 1px solid black;
-}
+}*/
 
 .main_div p{
     padding: 0;
