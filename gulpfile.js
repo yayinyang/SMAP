@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
     concat = require('gulp-concat'),
     minifyCss = require('gulp-minify-css'),
-   /* ngAnnotate = require('gulp-ng-annotate'),
-    gutil = require('gulp-util'),*/
+    ngAnnotate = require('gulp-ng-annotate'),
+    // gutil = require('gulp-util'),
     uglify = require('gulp-uglify'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),
@@ -17,7 +17,8 @@ var path = {
     input:{
         tmpl:[
             'pages/**/*.*',
-            '!pages/*.html'
+            '!pages/*.html',
+            'pages/roadwork/*.*',
         ],
         image:[
             'img*/*.{png,jpg,gif,ico,svg}',
@@ -121,7 +122,8 @@ gulp.task('homepage', function() {
                 js: [
                     sourcemaps.init({
                         loadMaps: true
-                    }) ,
+                    }),
+                    ngAnnotate(),
                     uglify({
                         mangle: false, //不修改变量名
                     }),
@@ -136,7 +138,9 @@ gulp.task('homepage', function() {
             .pipe(usemin({
                 css: [rev() ],
                 html: [ htmlmin({ collapseWhitespace: true }) ],
-                js: [ uglify({
+                js: [
+                    ngAnnotate(),
+                    uglify({
                     mangle: false, //不修改变量名
                 }), rev() ],
             }))
@@ -345,6 +349,170 @@ gulp.task('construction', function() {
     }
 
 });
+gulp.task('trafficLimited', function() {
+    if(develop){
+        return gulp.src('pages/trafficLimited.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/style/')
+                ],
+                html: [ htmlmin({ collapseWhitespace: true }) ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }else{
+        return gulp.src('pages/trafficLimited.html')
+            .pipe(sourcemaps.init())
+            .pipe(usemin({
+                css: [ minifyCss(),rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }
+
+});
+gulp.task('roadwork', function() {
+    if(develop){
+        return gulp.src('pages/roadwork/roadwork.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/style/')
+                ],
+                html: [ htmlmin({ collapseWhitespace: true }) ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages/roadwork/'));
+    }else{
+        return gulp.src('pages/roadwork/roadwork.html')
+            .pipe(sourcemaps.init())
+            .pipe(usemin({
+                css: [ minifyCss(),rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages/roadwork'));
+    }
+
+});
+gulp.task('trafficControl', function() {
+    if(develop){
+        return gulp.src('pages/roadwork/trafficControl.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/style/')
+                ],
+                html: [ htmlmin({ collapseWhitespace: true }) ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages/roadwork/'));
+    }else{
+        return gulp.src('pages/roadwork/trafficControl.html')
+            .pipe(sourcemaps.init())
+            .pipe(usemin({
+                css: [ minifyCss(),rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages/roadwork/'));
+    }
+
+});
+gulp.task('login', function() {
+    if(develop){
+        return gulp.src('pages/login.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/style/')
+                ],
+                html: [ htmlmin({ collapseWhitespace: true }) ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }else{
+        return gulp.src('pages/login.html')
+            .pipe(sourcemaps.init())
+            .pipe(usemin({
+                css: [ minifyCss(),rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }
+
+});
 gulp.task('undevelopPage', function() {
     if(develop){
         return gulp.src('pages/undevelopPage.html')
@@ -396,7 +564,11 @@ gulp.task('clean',function(){
 });
 
 gulp.task('pages',function () {
-    runSequence(['homepage','onlineUse','productDescription','productService','productWarehouse','undevelopPage',]);
+    runSequence([
+        'homepage','onlineUse','productDescription','productService',
+        'productWarehouse','undevelopPage','trafficLimited','construction',
+        'trafficControl','roadwork','login',
+    ]);
 });
 
 gulp.task('watch',function (event) {
@@ -405,7 +577,12 @@ gulp.task('watch',function (event) {
     gulp.watch(['pages/productDescription.html'],['productDescription']);
     gulp.watch(['pages/productService.html'],['productService']);
     gulp.watch(['pages/productWarehouse.html'],['productWarehouse']);
+    gulp.watch(['pages/roadwork/trafficControl.html'],['trafficControl']);
+    gulp.watch(['pages/roadwork/roadwork.html'],['roadwork']);
+    gulp.watch(['pages/construction.html'],['construction']);
+    gulp.watch(['pages/trafficLimited.html'],['trafficLimited']);
     gulp.watch(['pages/undevelopPage.html'],['undevelopPage']);
+    gulp.watch(['pages/login.html'],['login']);
     gulp.watch(['pages/**/*.*','!pages/*.*'],['tmpl']);
     gulp.watch(['js/**/*.*','js/*.*'],['pages']);
     gulp.watch(['style/*.*'],['pages']);
@@ -424,7 +601,9 @@ gulp.task('watch',function (event) {
             'js/directives/tab/*.*'
         ],['plugins']);
     var msg = 'File ' + event.path + ' was ' + event.type;
-    console.log(msg);
+    if(event.path){
+        console.log(msg);
+    }
 });
 // 启动服务
 gulp.task('webserver',function () {

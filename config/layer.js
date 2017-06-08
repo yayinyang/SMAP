@@ -3406,11 +3406,11 @@ var trafficLimitedLayer ={
     "name" : "Bright",
     "sources" :
         {
-            "toll" :
+            "platelimit" :
                 {
                     "type":"vector",
                     "tiles":
-                        ['http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}'],
+                        ['http://fs.navinfo.com/smapapi/platelimit/tile/{z}/{x}/{y}?'+ App.Config.platelimit],
                 },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -5081,23 +5081,39 @@ var trafficLimitedLayer ={
             "minzoom": 3,
             "type": "symbol",
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
-        },
-        {
-            id: 'TollNode_Layer',
-            type: 'symbol',
-            interactive: true,
-            "source" : "toll",
-            'source-layer': 'toll',
-            minzoom: 0,
-            maxzoom: 17.1,
-            layout:
-                {
-                    'icon-image': 'tollstation',
-                },
-            paint:
-                {
-                    'icon-color': '#ff2d2d',
+        },{
+            "id": 'line_Limited_Layer',
+            "type": 'line',
+            "source" : "platelimit",
+            'source-layer': 'platelimit_line',
+            "minzoom": 5,
+            "maxzoom": 17.1,
+            "layout": {
+                "line-join": "round",
+                "visibility": "visible",
+                "line-cap": "round"
+            },
+            "paint": {
+                "line-color": "#FF0000",
+                "line-width": {
+                    "stops": [[6, 1.5], [20, 10]],
+                    "base": 1.2
                 },
 
-        }]
+            },
+
+        },{
+            "id": 'polygon_Limited_Layer',
+            "type": 'fill',
+            "source" : "platelimit",
+            'source-layer': 'platelimit_polygon',
+            "minzoom": 5,
+            "maxzoom": 17.1,
+            'layout': {},
+            'paint': {
+                'fill-color': '#088',
+                'fill-opacity': 0.6
+            }
+
+        },]
 };

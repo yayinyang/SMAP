@@ -178,6 +178,9 @@ body{
     padding-left: 8px;
     cursor:pointer ;
 }
+.allCities .allCitiesList > li .citiesBox ul li:not([title='天津']){
+    cursor:not-allowed ;
+}
 .allCities .allCitiesList > li .citiesBox ul li> span:hover,
 .allCities .allCitiesList > li .citiesBox ul li> span:active{
     color: #1478FF;
