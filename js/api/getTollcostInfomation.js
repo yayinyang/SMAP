@@ -22,4 +22,5 @@ function tollCostResult() {
 }
 function resetResult() {
     $('#tollCostContent').empty();
+    return;
 }
