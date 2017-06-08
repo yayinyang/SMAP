@@ -14,60 +14,6 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
     $scope.nowProvince = '北京';
     $scope.indexUrl = 'abc';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
-    $scope.src = '../img/trafficLimited/';
-    $scope.imgSrc = [
-        {
-            kind: 'number',
-            src: $scope.src + 'number.png',
-        },
-        {
-            kind: 'field',
-            src: $scope.src + 'field.png',
-        },
-        {
-            kind: 'carKind',
-            src: $scope.src + 'carKind.png',
-        },
-        {
-            kind: 'energy',
-            src: $scope.src + 'energy.png',
-        },
-        {
-            kind: 'card',
-            src: $scope.src + 'card.png',
-        },
-        {
-            kind: 'other',
-            src: $scope.src + 'other.png',
-        },
-
-    ];
-    $scope.limitImgSrc = [
-        {
-            kind: 'numberLimited',
-            src: $scope.src + 'numberLimited.png',
-        },
-        {
-            kind: 'fieldLimited',
-            src: $scope.src + 'fieldLimited.png',
-        },
-        {
-            kind: 'carKindLimited',
-            src: $scope.src + 'carKindLimited.png',
-        },
-        {
-            kind: 'energyLimited',
-            src: $scope.src + 'energyLimited.png',
-        },
-        {
-            kind: 'cardLimited',
-            src: $scope.src + 'cardLimited.png',
-        },
-        {
-            kind: 'otherLimited',
-            src: $scope.src + 'otherLimited.png',
-        },
-    ];
     $scope.searchParameter = {};
     $scope.lineLayer = {
         "id": 'line_Limited_Layer',
@@ -108,20 +54,17 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
 
     $scope.limitKind = [
         {
-            kind: 'number',
+            label: 'number',
+            kind: 'No.',
             isLimit: false,
-            imgSrc: $scope.imgSrc[0].src ,
-            limitImgSrc: $scope.limitImgSrc[0].src ,
         }, {
-            kind: 'field',
+            label: 'field',
+            kind: '外地车辆',
             isLimit: false,
-            imgSrc:$scope.imgSrc[1].src,
-            limitImgSrc: $scope.limitImgSrc[1].src,
         }, {
-            kind: 'carKind',
+            label: 'carKind',
+            kind: '车型',
             isLimit: false,
-            imgSrc: $scope.imgSrc[2].src,
-            limitImgSrc:  $scope.limitImgSrc[2].src,
             children:[
                 {
                     kind: '客车',
@@ -133,13 +76,13 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'truck',
                     flag: false,
                 },
-            ]
+            ],
+            childrenIsOpen:false,
 
         }, {
-            kind: 'energy',
+            label: 'energy',
+            kind: '能源',
             isLimit: false,
-            imgSrc: $scope.imgSrc[3].src,
-            limitImgSrc:  $scope.limitImgSrc[3].src,
             children:[
                 {
                     kind: '燃油',
@@ -156,12 +99,12 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'both',
                     flag: false,
                 },
-            ]
+            ],
+            childrenIsOpen:false,
         }, {
-            kind: 'card',
+            label: 'card',
+            kind: '车牌',
             isLimit: false,
-            imgSrc: $scope.imgSrc[4].src,
-            limitImgSrc: $scope.limitImgSrc[4].src,
             children:[
                 {
                     kind: '蓝牌',
@@ -188,14 +131,14 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'green',
                     flag: false,
                 },
-            ]
+            ],
+            childrenIsOpen:false,
         }, {
-            kind: 'other',
+            label: 'other',
+            kind: '其他',
             isLimit: true,
-            imgSrc: $scope.imgSrc[5].src,
-            limitImgSrc:  $scope.limitImgSrc[5].src,
         },
-    ]
+    ];
     $scope.showChoosedCity = function (arg){
         if(arg==='nowCity'){
             $scope.nowCity = {
@@ -220,22 +163,12 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         }
     };
     $scope.changeCondition = function (index) {
-        $scope.limitKind[index].isLimit = !$scope.limitKind[index].isLimit;
-        if($scope.limitKind[index].isLimit){
-            $scope.limitKind[index].imgSrc = $scope.imgSrc[index].src;
+        if( $scope.limitKind[index].children){ // 有子元素时 函数功能为展开折叠子元素
+            $scope.limitKind[index].childrenIsOpen = !$scope.limitKind[index].childrenIsOpen;
+        }else{ // 无子元素时 函数功能为选择筛选条件
+            $scope.limitKind[index].isLimit = !$scope.limitKind[index].isLimit;
+            $scope.contactParameter();
         }
-        if( $scope.limitKind[index].children){
-            if($scope.limitKind[index].isLimit){
-                for(var i = 0; i < $scope.limitKind[index].children.length; i++){
-                    $scope.limitKind[index].children[i].flag = true;
-                }
-            }else {
-                for(var i = 0; i < $scope.limitKind[index].children.length; i++){
-                    $scope.limitKind[index].children[i].flag = false;
-                }
-            }
-        }
-        $scope.contactParameter();
     };
     $scope.changeDetailKind = function (data) {
         for(var i = 0; i < $scope.limitKind.length; i++){
@@ -243,15 +176,6 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                 for(var j = 0; j < $scope.limitKind[i].children.length; j++){
                     if($scope.limitKind[i].children[j].kind === data){
                         $scope.limitKind[i].children[j].flag = !$scope.limitKind[i].children[j].flag;
-                        var childrenFlag = 0;
-                        for(var k = 0; k < $scope.limitKind[i].children.length; k++){
-                            childrenFlag += Number($scope.limitKind[i].children[k].flag);
-                        }
-                        if(childrenFlag === 0){
-                            $scope.limitKind[i].imgSrc = $scope.limitImgSrc[i].src;
-                        }else{
-                            $scope.limitKind[i].imgSrc = $scope.imgSrc[i].src;
-                        }
                     }
                 }
             }
