@@ -4,7 +4,7 @@
 var App = {};
 
 App.dev={
-    host:'172.21.3.172'
+    host:'123.207.83.126:8088'
 };
 App.checkServer = {
     dev:{
@@ -18,10 +18,11 @@ App.checkServer = {
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-    appRoot:'/SMAP',
+    appRoot:'http://fs.navinfo.com/smap',
+    // appRoot: 'http://localhost:8000/dist/',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
-
-    checkServiceUrl:App.checkServer.dev.checkServiceUrl
+    checkServiceUrl:App.checkServer.release.checkServiceUrl,
+    platelimit: 'type=6&parm=0', //限行限号初始化数据为其他限行方式
 };
 App.Temp = {
     accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ'
