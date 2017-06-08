@@ -18,7 +18,7 @@ App.checkServer = {
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-    appRoot:'/SMAP',
+    appRoot:'http://localhost:63342/SMAP',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
 
     checkServiceUrl:App.checkServer.dev.checkServiceUrl
