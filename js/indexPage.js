@@ -1,3 +1,3 @@
-angular.module('indexpageApp',['navApp']).controller('indexpageCtrl',function ($scope) {
+angular.module('indexpageApp',['navApp']).controller('indexpageCtrl',['$scope',function ($scope) {
     $scope.relativeHash = 'pages/';
-});
+}]);

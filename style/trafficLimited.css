@@ -40,7 +40,7 @@ body{
     right:10px;
     top: 10px;
     position: absolute;
-    z-index: 300;
+    z-index: 50;
 }
 .selectedDiv .nowCity{
     padding-right: 13px;
@@ -178,6 +178,9 @@ body{
     padding-left: 8px;
     cursor:pointer ;
 }
+.allCities .allCitiesList > li .citiesBox ul li:not([title='北京']){
+    cursor:not-allowed ;
+}
 .allCities .allCitiesList > li .citiesBox ul li> span:hover,
 .allCities .allCitiesList > li .citiesBox ul li> span:active{
     color: #1478FF;
@@ -185,4 +188,25 @@ body{
 .allCities .allCitiesList > li .citiesBox ul li > span{
     color: #333333;
     font-size: 12px;
+}
+/***********分割线****/
+.limitCondition ul,.limitCondition ul li{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+.limitCondition{
+    position: absolute;
+    z-index: 30;
+    right: 10px;
+    top: 60px;
+}
+.limitCondition ul li{
+    min-width: 50px;
+    cursor: pointer;
+}
+.limitCondition ul li img{
+    width:30px;
+    height:30px;
+    cursor: pointer;
 }
