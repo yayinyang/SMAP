@@ -31,7 +31,7 @@
 .page_one>div{
     width: 49.8rem;
     height: 21.3rem;
-    margin: 16.65rem auto auto 23.5rem;
+    margin: 16.65rem auto auto auto;
     position: relative;
 }
 .page_one>div>img{
@@ -92,7 +92,7 @@
     background-color: #f6f6f6;
 }
 .page_two>div{
-    margin: 5rem auto auto 23.8rem;
+    margin: 5rem auto auto auto;
     width: 50.5rem;
     height: 46.45rem;
 }
@@ -108,18 +108,18 @@
     background-color: #fafafa;
 }
 .page_three>div:nth-child(1){
-    margin: 6.4rem auto 12.25rem 23.9rem;
+    margin: 6.4rem auto 12.25rem auto;
     width: 50.05rem;
     height: 36.3rem;
 
 }
 .page_three>div:nth-child(2){
-    margin: auto auto 17.15rem 22.8rem;
+    margin: auto auto 17.15rem auto;
     width: 53.3em;
     height: 30.7rem;
 }
 .page_three>div:nth-child(3){
-    margin: auto auto auto 25.25rem;
+    margin: auto ;
     width: 43.95em;
     height: 19.9rem;
 }
@@ -137,12 +137,12 @@
 .page_four>div:nth-child(1){
     width: 51.5rem;
     height: 52.1rem;
-    margin: 6.55rem auto 13.2rem 23rem;
+    margin: 6.55rem auto 13.2rem auto;
 }
 .page_four>div:nth-child(2){
     width: 48.7rem;
     height: 25.9rem;
-    margin: auto auto auto 23rem;
+    margin: auto;
 }
 .page_four>div:nth-child(1)>img,.page_four>div:nth-child(2)>img{
     width: 100%;
