@@ -1709,7 +1709,7 @@ var constructionLayer ={
                 {
                     "type":"vector",
                     "tiles":
-                        ['http://fs.navinfo.com/smapapi/construction/tile/{z}/{x}/{y}'],
+                        ['http://fastmap.navinfo.com/smap_c/web/construction/tile/{z}/{x}/{y}'],
                 },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -5110,9 +5110,8 @@ var trafficLimitedLayer ={
             "maxzoom": 17.1,
             'layout': {},
             'paint': {
-                'fill-color': '#088',
-                'fill-opacity': 0.6,
-                'fill-outline-color': '#FF0000',
+                'fill-color': '#FF0000',
+                'fill-opacity': 0.2,
             }
 
         },]

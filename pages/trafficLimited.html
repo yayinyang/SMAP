@@ -57,7 +57,7 @@
         <div class="limitCondition">
             <ul>
                 <li ng-repeat="childrenItem in limitKind" class="firstCondation"
-                    ng-class="{true: 'listHeightLight',false: ''}[childrenItem.isLimit ]">
+                    ng-class="{true: 'listHeightLight',false: ''}[childrenItem.isLimit &&!childrenItem.children]">
                     <div ng-bind="childrenItem.kind"
                          ng-click="changeCondition($index)"
                          ng-class="{true: 'conditionHeightLight',false: ''}[childrenItem.isLimit && !childrenItem.children]"

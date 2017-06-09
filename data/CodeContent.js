@@ -1,47 +1,52 @@
 [
     {
-        "code": "200",
+        "code": "101",
         "value": "OK",
-        "describe": "接口调用正常"
+        "describe": "Request parameter error. 请求参数错误"
     },
     {
-        "code": "400",
+        "code": "102",
         "value": "Bad request",
-        "describe": "语义有误、参数有误"
+        "describe": "User key is invalid用户密钥已失效"
+    },
+    {
+        "code": "103",
+        "value": "Unauthorized",
+        "describe": "Open api request limit reached接口调用次数已达到设定的上限"
+    },
+    {
+        "code": "110",
+        "value": "OK",
+        "describe": "Network connection exception 网络调用连接异常"
+    },
+    {
+        "code": "200",
+        "value": "Not Found",
+        "describe": "OK: Successful processing of the request成功处理请求"
     },
     {
         "code": "401",
-        "value": "Unauthorized",
-        "describe": "当前请求需要用户验证"
+        "value": "Method not allowed",
+        "describe": "Unauthorized: The requested resource needs authentication未授权：所请求的资源需要验证"
     },
     {
         "code": "403",
         "value": "OK",
-        "describe": "接受请求，拒绝执行"
+        "describe": "Forbidden: The authenticated client does not have access to the requested resource禁止：已验证的客户端无法访问所请求的资源"
     },
     {
         "code": "404",
-        "value": "Not Found",
-        "describe": "请求失败，资源不存在"
+        "value": "Internal Server error",
+        "describe": "Not Found: The requested resource was not found未找到：找不到请求的资源"
     },
     {
         "code": "405",
         "value": "Method not allowed",
-        "describe": "请求行中指定的请求方法不能被用于请求相应的资源"
-    },
-    {
-        "code": "200",
-        "value": "OK",
-        "describe": "接口调用正常"
+        "describe": "Method not allowed: The requested method was not allowed The full list of response codes varies per method and resource. See the specification for details方法不允许：所请求的方法不允许，响应代码的完整列表每种方法和资源都不相同。详情见说明书"
     },
     {
         "code": "500",
-        "value": "Internal Server error",
-        "describe": "服务器异常"
-    },
-    {
-        "code": "503",
         "value": "Method not allowed",
-        "describe": "当前无法处理请求"
+        "describe": "Internal error： There is a server configuration issue内部错误：内部服务器错误"
     }
 ]
