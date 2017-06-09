@@ -1,9 +1,14 @@
+.guideContainer{
+    margin-top: -30px;
+}
 .guideContainer div{
     color: #74666c;
     font-family: "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
 }
 .guide{
     font-size: 18px;
+    border-bottom: 1px solid #bdc3d3;
+    width: 200px;
 }
 .titleContainer{
     width: 740px;border-bottom: 1px solid #bdc3d3;
