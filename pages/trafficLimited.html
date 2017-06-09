@@ -70,8 +70,11 @@
                             ng-repeat="item in childrenItem.children"
                             ng-click="changeDetailKind(item.kind)"
                         >
-                            <div for={{item.label}}  ng-model="item.flag"  ng-class="{true: 'checked', false: 'normal'}[item.flag]">
-                            </div>
+                            <!--<div ng-model="item.flag"  ng-class="{true: 'checked', false: 'normal'}[item.flag]">
+                            </div>-->
+                            <img ng-src="{{item.flag ? '../img/trafficLimited/checked.png': '../img/trafficLimited/check.png'}}"
+                                 ng-class="{true: 'checked', false: 'normal'}[item.flag]"
+                            />
                             <div ng-bind="item.kind"
                                  ng-class="{true: 'subConditionHeightLight',false: ''}[item.flag]"
                                  style="display: inline-block"></div>

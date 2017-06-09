@@ -48,7 +48,9 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         'layout': {},
         'paint': {
             'fill-color': '#FF0000',
-            'fill-opacity': 0.2
+            'fill-opacity': 0.2,
+            /*'fill-outline-color': '#ffff00',
+            'fill-antialias': true,*/
         }
 
     };
@@ -117,7 +119,7 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'yellow',
                     flag: false,
                 },
-                {
+              /*  {
                     kind: '黑牌',
                     label: 'black',
                     flag: false,
@@ -131,7 +133,7 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     kind: '绿牌',
                     label: 'green',
                     flag: false,
-                },
+                },*/
             ],
             childrenIsOpen:false,
         }, {
