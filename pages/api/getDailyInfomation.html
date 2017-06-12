@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<div class="apiContainer" id="dailyList">
+<div class="apiContainer"  style="height: 1950px" id="dailyList">
     <div class="titleContainer">
         <div class="titleContent">
             获取可下载文件列表信息
@@ -104,6 +104,8 @@
                 </tr>
                 </thead>
             </table>
+            <span style="font-size: 14px;color: #74666c;">  注：如果不输入spec的参数，默认返回所有产品类别的文件列表</span>
+
         </div>
     </div>
     <div class="apiParamContainer">
@@ -120,7 +122,9 @@
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
+                    <th data-field="paramName1">一级参数</th>
+                    <th data-field="paramName2">二级参数</th>
+                    <th data-field="paramName3">三级参数</th>
                     <th data-field="type" >类型</th>
                     <th data-field="description">规则说明</th>
                 </tr>
@@ -128,6 +132,57 @@
             </table>
         </div>
     </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 470px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both;padding-left: 10px">
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 240px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": {
+    "ProductList": [
+      {
+        "create_time": "2017-03-20 19:14:59",
+        "file_type": "mif/mid",
+        "product_id": "MIFG_17SUM_Q_BJ_MIF_0315_2",
+        "version": "17SUM"
+      }
+    ]
+  },
+  "errcode": 200,
+  "errmsg": "OK: Successful processing of the request"
+}
+                </textarea>
+
+            </div>
+
+                <!-- 错误结果 -->
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "code": "401",
+  "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
+  "msg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font> 这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
+
+            </div>
+
+
+        </div>
+    </div>
+
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
@@ -135,12 +190,13 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 66px;width: 690px;">
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/data/query
-                </div>
-            </div>
+        <div style="height: 16px;width: 690px;">
+<!--                <div style="height: 66px;width: 690px;">
+                <div class="apiServiceExampleIPContainer">
+                    <div class="apiServiceExampleIP">
+                        http://fs.navinfo.com/smapapi/data/query
+                    </div>
+                </div>-->
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
@@ -245,7 +301,9 @@
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
+                    <th data-field="paramName1">一级参数</th>
+                    <th data-field="paramName2">二级参数</th>
+                    <th data-field="paramName3">三级参数</th>
                     <th data-field="type" >类型</th>
                     <th data-field="description">规则说明</th>
                 </tr>
@@ -253,19 +311,82 @@
             </table>
         </div>
     </div>
-    <div class="apiParamContainer">
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 690px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both;padding-left: 10px">
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 450px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": {
+    "download": {
+      "file_md5": "3ed6d641f2c3f72a582b876549e4f340",
+      "file_name": "mifg_17sum_bj_d_9.csv",
+      "file_size": "170",
+      "file_type": "csv",
+      "url": "http://fs.navinfo.com/smapapi/data/download/file/idbg_17sum_bj_q_1.idbg.sq3.tar.gz?ak=E782445785fetch087mkde11&p1=idbg&p2=sqlite_17sum_bj_d_1&signature=CVskGmFCMBm0Pufg3H1G5g&expires=1492140507 "
+    },
+    "product": {
+      "format": "nimif-g",
+      "product_id": "MIFG_17SUM_D_BJ_CSV_0317_10",
+      "updateImportance": "General",
+      "updateType": "Increment",
+      "version": "17SUM"
+    },
+    "release": {
+      "provider": "CoreMap",
+      "create_time": "2017-03-20 21:05:06"
+    }
+  },
+  "errcode": 200,
+  "errmsg": "OK: Successful processing of the request"
+}
+                </textarea>
+
+            </div>
+
+            <!-- 错误结果 -->
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "code": "404",
+  "data": " %E6%9C%AA%E6%89%BE%E5%88%B0%E8%AF%B7%E6%B1%82%E7%9A%84%E8%B5%84%E6%BA%90%EF%BC%8C%E8%AF%B7%E7%A1%AE%E8%AE%A4%EF%BC%81",
+  "msg": "Not Found: The requested resource was not found"
+}
+                </textarea>
+                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font> 这里的描述是经过URL编码的，解码之后的意思是“未找到请求的资源，请确认！”</span>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="apiParamContainer" style="clear: both">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 66px;width: 690px;">
+        <div style="height: 16px;width: 690px;">
+            <!--
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smapapi/data/download
                 </div>
             </div>
+            -->
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
