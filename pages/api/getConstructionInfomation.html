@@ -66,7 +66,7 @@
     </div>
 
 </div>
-<div class="apiContainer" id="constructionNumber">
+<div class="apiContainer" id="constructionNumber" style="height: 2150px">
     <div class="titleContainer">
         <div class="titleContent">
             获取最新的施工道路信息
@@ -120,7 +120,8 @@
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
+                    <th data-field="paramName1">一级参数</th>
+                    <th data-field="paramName2">二级参数</th>
                     <th data-field="type" >类型</th>
                     <th data-field="description">规则说明</th>
                 </tr>
@@ -140,6 +141,62 @@
 
         </div>
     </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 600px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both;padding-left: 10px">
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 320px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": [
+    {
+      "no": 1,
+      "link_pid": 40014293,
+      "geometry_link": "LINESTRING (116.42809 39.53643, 116.42817 39.53611, 116.42829 39.53561)",
+      "construction_dir": 1,
+      "admin_id": 110115,
+      "desc": "道路施工",
+      "time_domain": "[(y2017M5d15)(y2022M5d15)]",
+      "version": 17Q2,
+      "sources": 1,
+      "link_change": 1
+    }
+  ],
+  "code": 200,
+  "msg": "OK: Successful processing of the request"
+}
+                </textarea>
+
+            </div>
+
+            <!-- 错误结果 -->
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 150px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "code": "401",
+  "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
+  "msg": "Unauthorized: The requested resource needs authentication"
+}
+
+                </textarea>
+                <span style="font-size: 12px;color: #74666c;">注：这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
+
+            </div>
+
+
+        </div>
+    </div>
+
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
@@ -147,12 +204,14 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 66px;width: 690px;">
+        <div style="height: 16px;width: 690px;">
+<!--
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smapapi/construction.csv
                 </div>
             </div>
+-->
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
@@ -179,6 +238,7 @@
         </div>
     </div>
 </div>
+
 <div class="apiContainer" id="feedbackContainer">
     <div class="titleContainer">
         <div class="titleContent">
@@ -280,6 +340,57 @@
             </table>
         </div>
     </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 570px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both;padding-left: 10px">
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 240px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": {
+    "ProductList": [
+      {
+        "create_time": "2017-03-20 19:14:59",
+        "file_type": "mif/mid",
+        "product_id": "MIFG_17SUM_Q_BJ_MIF_0315_2",
+        "version": "17SUM"
+      }
+    ]
+  },
+  "errcode": 200,
+  "errmsg": "OK: Successful processing of the request"
+}
+                </textarea>
+
+            </div>
+
+            <!-- 错误结果 -->
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "code": "401",
+  "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
+  "msg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                <span style="font-size: 12px;color: #74666c;">注：这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
+
+            </div>
+
+
+        </div>
+    </div>
+
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
@@ -287,12 +398,14 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 66px;width: 690px;">
+        <div style="height: 16px;width: 690px;">
+            <!--
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smapapi/construction/feedback
                 </div>
             </div>
+            -->
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">

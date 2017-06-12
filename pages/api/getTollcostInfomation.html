@@ -28,11 +28,10 @@
                 >
                     <thead>
                     <tr >
-                        <th data-field="paramName">参数名</th>
+                        <th data-field="paramName">参数</th>
                         <th data-field="type" >类型</th>
-                        <th data-field="required" >是否填充</th>
-                        <th data-field="default" >缺省值</th>
-                        <th data-field="description">规则说明</th>
+                        <th data-field="required" >是否必填</th>
+                        <th data-field="description">说明</th>
                     </tr>
                     </thead>
                 </table>
@@ -49,9 +48,10 @@
                        data-url="../data/TollcostRequireBody.js">
                     <thead>
                         <tr>
-                            <th data-field="paramName">参数名</th>
+                            <th data-field="paramName1">一级参数</th>
+                            <th data-field="paramName2">二级参数</th>
                             <th data-field="type" >类型</th>
-                            <th data-field="description">规则说明</th>
+                            <th data-field="description">说明</th>
                         </tr>
                     </thead>
                 </table>
@@ -60,14 +60,56 @@
 
 
         <p class="icon p13 margin2">返回结果示例</p>
-        <p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
-        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <!--<p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>-->
+
+        <div style="padding:0px 10px 0px 10px;width: 690px; height: 340px">
+
+
+            <div style="clear: both;padding-left: 10px">
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 144px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": {
+    "route": "L1",
+    "tollCost": 30
+  },
+  "errcode": 200,
+  "errmsg": "OK"
+}
+                </textarea>
+
+                </div>
+
+                <!-- 错误结果 -->
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 96px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "data": [],
+  "errcode": "401",
+  "errmsg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                    <span style="font-size: 12px;color: #74666c;">注：表示用户未授权。</span>
+
+                </div>
+
+
+            </div>
+        </div>
+
         <p class="icon p13 margin3">服务示例</p>
         <div style="width: 100%;overflow: hidden;">
-            <div style="width: 727px;float: right">
+          <!--  <div style="width: 727px;float: right">
                 <p class="p_service fontColor p11">
                     http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
-            </div>
+            </div>-->
         </div>
 
 
