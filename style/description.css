@@ -80,22 +80,22 @@
 
 /*修改样式开始*/
 .container{
-    min-width: 1002px;
-    width: 1002px;
+    min-width: 850px;
+    width: 50.1rem;
     margin: 0 auto;
     font-family: "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
     overflow: hidden;
 }
 .container>p:nth-child(1){
-    margin-top: 105px;
+    margin-top: 5.25rem;
     text-align: left;
-    font-size: 32px;
+    font-size: 1.6rem;
     font-family: 黑体;
 }
 .container>p:nth-child(2){
     text-align: left;
-    font-size: 16px;
-    margin-bottom: 49px;
+    font-size: 0.8rem;
+    margin-bottom: 2.45rem;
     color: #666;
     font-family: arial;
 }
@@ -106,10 +106,14 @@
     overflow: hidden;
     position: relative;
 }
+.main_div>ul>li.li_div>p>img{
+    width: 100%;
+}
 .main_div>ul>li.li_div>img,.main_div>ul>li.li_div>p{
     float: left;
     width: 50%;
-    height: 316px;
+    height: 15.8rem;
+    min-height: 264px;
 }
 .main_div>ul>li.li_div:nth-child(1)>p{
     box-sizing: border-box;
@@ -146,7 +150,7 @@
     background-color: #8c9bad;
 }
 .main_div>ul>li.li_div:not(:last-child){
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
 }
 
 
