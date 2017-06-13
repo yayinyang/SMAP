@@ -31,7 +31,7 @@ App.Config = {
     tollcost:{//收费信息服务URL
         ak:"HeHQ4X-sxhhsRyHiSaORnQ",
         tollcostUrl:"http://fs.navinfo.com/smapapi/tollgate/cost",
-        feedback:"http://fs.navinfo.com/smapapi/tollgate/feedback"
+        feedbackUrl:"http://fs.navinfo.com/smapapi/tollgate/feedback"
     },
     construction:{//施工道路服务URL
         constructionAk:"E505645785fetch087ycde71",
