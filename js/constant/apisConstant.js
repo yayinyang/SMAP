@@ -333,11 +333,11 @@ productServiceApp.constant('JumpConstant', {
         },
         {
             name: '获取下载列表',
-            id: 'constructionNumber'
+            id: 'dailyList'
         },
         {
             name: '下载信息接口',
-            id: 'feedbackContainer'
+            id: 'dailyDownloadContainer'
         }
     ],
     Limit: [
