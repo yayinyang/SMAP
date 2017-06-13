@@ -24,19 +24,21 @@ App.Config = {
     checkServiceUrl:App.checkServer.release.checkServiceUrl,
     platelimit: 'type=6&parm=0', //限行限号初始化数据为其他限行方式
     daily:{//日产品更新服务URL
-        ak:"E505645785fetch087ycde71",
+        ak:"E503475785fetch009ycde25",
         queryUrl:"http://fs.navinfo.com/smapapi/data/query",
         downloadUrl:"http://fs.navinfo.com/smapapi/data/download"
     },
     tollcost:{//收费信息服务URL
         ak:"HeHQ4X-sxhhsRyHiSaORnQ",
         tollcostUrl:"http://fs.navinfo.com/smapapi/tollgate/cost",
-        feedback:"http://fs.navinfo.com/smapapi/tollgate/feedback"
+        feedbackUrl:"http://fs.navinfo.com/smapapi/tollgate/feedback"
     },
     construction:{//施工道路服务URL
         constructionAk:"E505645785fetch087ycde71",
         constructionUrl:"http://fs.navinfo.com/smapapi/construction.json",
         timequantumAk:'E5054opi85fet472087yc56ew',
+        timequantumStartTime:"2017-05-25+08%3A04%3A50",
+        timequantumEndTime:"2017-05-26+20%3A04%3A50",
         timequantumUrl:"http://fs.navinfo.com/smapapi/construction/timequantum.json"
     },
     limit:{//限行限号服务URL
@@ -45,7 +47,7 @@ App.Config = {
     }
 };
 App.Temp = {
-    accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ'
+    //accessToken: 'HeHQ4X-sxhhsRyHiSaORnQ'
 };
 App.Util = {
     getFullUrl: function (url) {

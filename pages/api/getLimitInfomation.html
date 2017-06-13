@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<div class="apiContainer" id="limitNumber">
+<div class="apiContainer" id="limitNumber" style="height: 3140px">
     <div class="titleContainer">
         <div class="titleContent">
             获取最新的限行限号信息
@@ -100,7 +100,7 @@
                     <th data-field="paramName">参数名</th>
                     <th data-field="type" >类型</th>
                     <th data-field="required" >是否必填</th>
-                    <th data-field="description">规则说明</th>
+                    <th data-field="description">说明</th>
                 </tr>
                 </thead>
             </table>
@@ -120,26 +120,102 @@
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
+                    <th data-field="paramName1">一级参数</th>
+                    <th data-field="paramName2">二级参数</th>
                     <th data-field="type" >类型</th>
-                    <th data-field="description">规则说明</th>
+                    <th data-field="description">说明</th>
                 </tr>
                 </thead>
             </table>
         </div>
     </div>
     <div class="apiParamContainer">
+        <!--
         <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
             <span style="font-size: 14px;color: #74666c;"> 访问成功返回值</span>
             </div>
         </div>
+
         <div style="padding-left:20px;">
             <br/>
             <span style="font-size: 14px;color: #74666c;">不输入参数filename时：返回当前时间最新的限行限号的csv文件，否则返回指定的filename的csv文件。文件编码采用UTF-8 无BOM格式。</span>
         </div>
+        -->
     </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 870px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both;padding-left: 10px">
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 630px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": [
+    {
+      "no": 1,
+      "group_id": "S3301000002",
+      "geometry": "LINESTRING (116.38818 39.9073, 116.38805 39.9073, 116.38742 39.90727, 116.38696 39.90725)",
+      "link_pid": 49038539,
+      "geometry_link": "LINESTRING (120.10988 30.24231, 120.10983 30.24241)",
+      "link_dir": 1,
+      "admin_id": 110101,
+      "restrict": "2",
+      "temp_plate": 4,
+      "temp_plate_num": "5",
+      "char_switch": 4,
+      "char_to_num": "2",
+      "vehicle": 1,
+      "energy_type": "1",
+      "seatnum": 0,
+      "platecolor": 1,
+      "principle": "凡悬挂小型车号牌（蓝牌，含个性化牌照、临时号牌）的机动车辆，其号牌最后一位阿拉伯数字与公历日单双号不一致的，禁止在实施范围内通行，即小型车号牌最后一位阿拉伯数字为1、3、5、7、9的，在奇数日通行；2、4、6、8、0的，在偶数日通行。",
+      "tail_number": "0|2|4|6|8",
+      "out_vehicle": "1|2|3",
+      "start_date": "20170408""end_date": "20170918",
+      "res_datetype": "1",
+      "time": "[(h8m30)(h17)]",
+      "spec_flag": "",
+      "holiday": "",
+      "version": "16SUM",
+      "sources": 1,
+      "link_change": 1
+    }
+  "code": 200,
+  "msg": "OK: Successful processing of the request"
+}
+
+                </textarea>
+
+            </div>
+
+            <!-- 错误结果 -->
+            <div style="padding:16px 0 8px 20px;">
+                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+            </div>
+            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "code": "401",
+  "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
+  "msg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                <span style="font-size: 12px;color: #74666c;">注：这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
+
+            </div>
+
+
+        </div>
+    </div>
+
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
@@ -147,12 +223,14 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 66px;width: 690px;">
+        <div style="height: 16px;width: 690px;">
+            <!--
             <div class="apiServiceExampleIPContainer">
                 <div class="apiServiceExampleIP">
                     http://fs.navinfo.com/smapapi/platelimit/hour.csv
                 </div>
             </div>
+            -->
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">

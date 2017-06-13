@@ -17,10 +17,10 @@
         <p class="p8 titleIcon" >收费信息查询</p>
         <p class="p9">Charge information inquiries</p>
         <p class="p10 icon">API说明</p>
-        <p class="p11 fontColor">服务地址：http://fs.navinfo.com/smapapi/base/tollcost</p>
+        <p class="p11 fontColor">服务地址：http://fs.navinfo.com/smapapi/tollgate/cost</p>
         <p class="p12 p11 fontColor">接口类型：post</p>
         <p class="p13 icon">请求参数</p>
-        <div style="width: 100%;overflow: hidden;">
+        <div style="width: 100%;overflow: hidden;margin-top: 30px">
             <div style="width: 715px;float: right">
                 <table id="TollcostRequireParam"
                        data-toggle="table"
@@ -28,11 +28,10 @@
                 >
                     <thead>
                     <tr >
-                        <th data-field="paramName">参数名</th>
+                        <th data-field="paramName">参数</th>
                         <th data-field="type" >类型</th>
-                        <th data-field="required" >是否填充</th>
-                        <th data-field="default" >缺省值</th>
-                        <th data-field="description">规则说明</th>
+                        <th data-field="required" >是否必填</th>
+                        <th data-field="description">说明</th>
                     </tr>
                     </thead>
                 </table>
@@ -42,16 +41,17 @@
 
         <p class="margin1 p11 fontColor">注：收费站之间的路径坐标点不能太少，否则会影响计算结果的准确度。</p>
         <p class="p13 icon">返回参数</p>
-        <div style="width: 100%;overflow: hidden;">
+        <div style="width: 100%;overflow: hidden;margin-top: 30px">
             <div style="width:715px;float: right">
                 <table id="TollcostRequireBody"
                        data-toggle="table"
                        data-url="../data/TollcostRequireBody.js">
                     <thead>
                         <tr>
-                            <th data-field="paramName">参数名</th>
+                            <th data-field="paramName1">一级参数</th>
+                            <th data-field="paramName2">二级参数</th>
                             <th data-field="type" >类型</th>
-                            <th data-field="description">规则说明</th>
+                            <th data-field="description">说明</th>
                         </tr>
                     </thead>
                 </table>
@@ -60,43 +60,203 @@
 
 
         <p class="icon p13 margin2">返回结果示例</p>
-        <p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
-        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <!--<p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>-->
+
+        <div style="padding:0px 10px 0px 10px;width: 690px; height: 340px">
+
+
+            <div style="clear: both;padding-left: 10px">
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 144px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": {
+    "route": "L1",
+    "tollCost": 30
+  },
+  "errcode": 200,
+  "errmsg": "OK"
+}
+                </textarea>
+
+                </div>
+
+                <!-- 错误结果 -->
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 96px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "data": [],
+  "errcode": "401",
+  "errmsg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                    <span style="font-size: 12px;color: #74666c;">注：表示用户未授权。</span>
+
+                </div>
+
+
+            </div>
+        </div>
+
         <p class="icon p13 margin3">服务示例</p>
         <div style="width: 100%;overflow: hidden;">
-            <div style="width: 727px;float: right">
+          <!--  <div style="width: 727px;float: right">
                 <p class="p_service fontColor p11">
                     http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
-            </div>
+            </div>-->
         </div>
 
 
         <p class="request p11">请求参数</p>
         <div class="coor_div fontColor">
+            <span class="f_l p11">Ak</span>
+            <input class="coor_p f_r" id="tollCostAk"  ></input>
+        </div>
+        <div class="coor_div fontColor">
             <span class="f_l p11">coordinates</span>
-            <input class="coor_p f_r" id="tollCostCoordinates" value="119.6295898,31.6795595,119.636627,31.676809,119.637680,31.676788,119.63........" ></input>
+            <input class="coor_p f_r" id="tollCostCoordinates"  ></input>
         </div>
         <div class="button_father">
                 <a class="button a1" href="javascript:tollCostResult();">运行</a>
                 <a class="button m_l" href="javascript:resetResult(0);">重置</a>
         </div>
         <p class="cle request p11">返回结果</p>
-        <div style="overflow: hidden"><div style="float: right">
-            <p class="ret_val fontColor" id="tollCostContent">
-            {
-            "data": {
-            "route": "L1",
-            "tollCost": 30
-            },
-            "errcode": 200,
-            "errmsg": "OK"
-            }
-
-        </p></div></div>
+        <div style="overflow: hidden">
+            <div style="float: right">
+            <textarea class="ret_val fontColor" id="tollCostContent"></textarea>
+            </div>
+        </div>
 
 
     </div>
     <div class="main_div" id="feedbackContainer">
         <p class="user_feedback" >用户反馈</p>
         <p class="p4">Customer feedback</p>
+
+        <p class="p10 icon">API说明</p>
+        <p class="p11 fontColor">服务地址：http://fs.navinfo.com/smapapi/tollgate/feedback</p>
+        <p class="p12 p11 fontColor">接口类型：post</p>
+        <p class="p13 icon">请求参数</p>
+        <div style="width: 100%;overflow: hidden;margin: 30px auto">
+            <div style="width: 715px;float: right">
+                <table id="TollcostFeedbackRequireParam"
+                       data-toggle="table"
+                       data-url="../data/TollcostFeedbackRequireParam.js"
+                >
+                    <thead>
+                    <tr >
+                        <th data-field="paramName">参数</th>
+                        <th data-field="type" >类型</th>
+                        <th data-field="required" >是否必填</th>
+                        <th data-field="description">说明</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--<p class="margin1 p11 fontColor">注：收费站之间的路径坐标点不能太少，否则会影响计算结果的准确度。</p>-->
+        <p class="p13 icon">返回结果</p>
+        <div style="width: 100%;overflow: hidden;margin-top: 30px">
+            <div style="width:715px;float: right">
+                <table id="TollcostFeedbackReturnBody"
+                       data-toggle="table"
+                       data-url="../data/TollcostFeedbackReturnBody.js">
+                    <thead>
+                    <tr>
+                        <th data-field="paramName">参数</th>
+                        <th data-field="type" >类型</th>
+                        <th data-field="description">说明</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <p class="icon p13 margin2">返回结果示例</p>
+        <!--<p class="p11 fontColor">返回正确结果地址：http://fs.navinfo.com/smap/tollcost</p>
+        <p class="p11 fontColor">返回错误结果地址：http://fs.navinfo.com/smap/tollcost</p>-->
+
+        <div style="padding:0px 10px 0px 10px;width: 690px; height: 340px">
+
+
+            <div style="clear: both;padding-left: 10px">
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 144px;">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+{
+  "data": "feedback success!",
+  "errcode": 200,
+  "errmsg": "OK"
+}
+                </textarea>
+
+                </div>
+
+                <!-- 错误结果 -->
+                <div style="padding:16px 0 8px 20px;">
+                    <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+                </div>
+                <div class="apiResultOfContainer" style="height: 96px;padding-right: 0">
+                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+{
+  "data": [],
+  "errcode": "401",
+  "errmsg": "Unauthorized: The requested resource needs authentication"
+}
+                </textarea>
+                    <span style="font-size: 12px;color: #74666c;">注：表示用户未授权。</span>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <p class="icon p13 margin3">服务示例</p>
+        <div style="width: 100%;overflow: hidden;">
+            <!--  <div style="width: 727px;float: right">
+                  <p class="p_service fontColor p11">
+                      http://fs.navinfo.com/smap/ar/?ak=HeHQ4X-sxhhsRyHiSaORnQ&coordinates=“”</p>
+              </div>-->
+        </div>
+
+
+        <p class="request p11">请求参数</p>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">ak</span>
+            <input class="coor_p f_r" id="tollCostFeedbackAk"  ></input>
+        </div>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">coordinates</span>
+            <input class="coor_p f_r" id="tollCostFeedbackCoordinates"  ></input>
+        </div>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">fee</span>
+            <input class="coor_p f_r" id="tollCostFeedbackFee"  ></input>
+        </div>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">vehicle</span>
+            <input class="coor_p f_r" id="tollCostFeedbackVehicle"  ></input>
+        </div>
+        <div class="coor_div fontColor">
+            <span class="f_l p11">carid</span>
+            <input class="coor_p f_r" id="tollCostFeedbackCarid"  ></input>
+        </div>
+        <div class="button_father">
+            <a class="button a1" href="javascript:tollCostFeedbackRS();">运行</a>
+            <a class="button m_l" href="javascript:resetResult(1);">重置</a>
+        </div>
+        <p class="cle request p11">返回结果</p>
+        <div style="overflow: hidden">
+            <div style="float: right">
+                <textarea class="ret_val fontColor" id="FeedbackContent"></textarea>
+            </div>
+        </div>
     </div>
