@@ -59,6 +59,12 @@
         "type": "int",
         "description":"数据来源 （1：静态数据 2：动态数据）"
     },
+    {
+        "paramName1":"",
+        "paramName2":"link_change",
+        "type": "int",
+        "description":"LINK施工变更类型（1：新增 2：变更 3：删除，即代表解除）"
+    },
   {
   "paramName1": "code",
   "paramName2": "----",
