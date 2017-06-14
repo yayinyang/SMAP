@@ -360,11 +360,11 @@ productServiceApp.constant('JumpConstant', {
         {
             name: '获取最新信息',
             id: 'limitNumber'
-        },
+        }/*,
         {
             name: '查询指定信息',
             id: 'queryDateContainer'
-        }
+        }*/
     ]
 
 });

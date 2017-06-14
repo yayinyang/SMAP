@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<div style="height: 160px;" id="apiExplain">
+<div style="height: 260px;" id="apiExplain">
     <div class="titleContainer">
         <div class="titleContent" >
             API介绍
@@ -23,8 +23,16 @@
     </div>
     <div style="height: 120px;width: 690px;">
         <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
-            获取限行限号信息API是一类以HTTP形似提供的服务接口。
-            返回csv格式的查询数据,用于获取限行限号信息的开发功能。如需开发使用API,请先申请SMap平台账号。
+           <!-- 获取限行限号信息API是一类以HTTP形似提供的服务接口。
+            返回csv格式的查询数据,用于获取限行限号信息的开发功能。如需开发使用API,请先申请SMap平台账号。-->
+            <div>
+            限行限号服务API是一组支持道路限行规则的信息查询功能的服务接口，能够实时快速的提供当前最新的限行道路信息的数据。内容包括：获取最新限行道路信息API。
+            </div>
+            <div>
+            最新限行信息API：根据用户的上次登录时间，计算出截止目前为止的所有最新的增量限行道路信息。
+            </div>
+            如需开发使用API,请先申请SMap平台账号。
+
         </div>
     </div>
 </div>
@@ -73,13 +81,13 @@
     </div>
     <div class="apiDescriptionContainer">
         <div class="apiDescription">
-            获取施工道路信息 API服务地址
+            限行限号信息API服务地址
         </div>
     </div>
     <div class="apiIPContainer">
         <div class="apiIP">
             <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/platelimit/hour.csv
+                http://fs.navinfo.com/smapapi/platelimit.json
             </div>
         </div>
     </div>
@@ -110,7 +118,7 @@
         <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 访问失败返回参数</span>
+                <span style="font-size: 14px;color: #74666c;"> 返回结果</span>
             </div>
         </div>
         <div style="padding-left: 20px">
@@ -240,12 +248,12 @@
                     <input type="text" class="api_Input" id="ak">
                 </div>
             </div>
-            <div class="apiExampleRequireParamContainer">
+<!--            <div class="apiExampleRequireParamContainer">
                 <div class="apiExampleParamList">filename</div>
                 <div class="apiInputWidth">
                     <input type="text" class="api_Input" id="filename">
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
     <div class="apiResultContainer">
@@ -253,7 +261,7 @@
             <div class="apiResultButtonsContainer">
                 <div class="apiButtonOfUndo" onclick="limitResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult(1)">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
@@ -263,6 +271,7 @@
         </div>
     </div>
 </div>
+<!--
 <div class="apiContainer" id="queryDateContainer">
     <div class="titleContainer">
         <div class="titleContent">
@@ -388,3 +397,4 @@
         </div>
     </div>
 </div>
+-->
