@@ -29,7 +29,7 @@ var path = {
             'fonts*/*.*',
             'data*/*.*',
             'data*/**/*.*',
-            'js*/api*/*.js',
+            'js*/api*/*.*',
             'js*/constant*/*.js',
             'js*/directives*/**/*.*',
         ],
