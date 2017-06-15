@@ -5,12 +5,9 @@
     <!--让IE的文档模式永远都是最新的-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=”renderer” content=”webkit”>
-    <!-- build:css ../style/trafficControl.css -->
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../style/trafficControl.css">
-    <!-- endbuild -->
-
     <title>SMap</title>
 </head>
 <body ng-controller="trafficController">
@@ -26,7 +23,7 @@
     <!--<header class="header_div"></header>-->
     <div class="page_one wrap" id="pageOne">
         <div><img src="../img/trafficControl/page1.png">
-            <a href="trafficLimited.html">在线体验</a>
+            <a href="javascript:void(0);">在线体验</a>
         </div>
     </div>
     <div class="page_two wrap" id="pageTwo">
@@ -39,23 +36,22 @@
         <div><img src="../img/trafficControl/page3-2.png" alt=""></div>
         <div><img src="../img/trafficControl/page3-3.png" alt=""></div>
     </div>
-    <div class="page_four wrap" id="pageFour">
+    <div class="page_four wrap bor" id="pageFour">
         <div><img src="../img/trafficControl/page4.png" ></div>
         <div><img src="../img/trafficControl/page4-2.png" ></div>
     </div>
 </div>
 
 </body>
-
-<!-- build:js ../js/trafficControl.js -->
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../js/roadwork.js"></script>
-<!-- endbuild -->
+<script src="../js/directives/nav/nav.js"></script>
 <script type="text/javascript">
     var app = angular.module("traffic",['navApp']);
     app.controller("trafficController",['$scope',function($scope){
     }])
-</script><script src="../js/directives/nav/nav.js"></script>
+</script>
+<script src="../js/directives/nav/nav.js"></script>
 </html>

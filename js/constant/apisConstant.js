@@ -310,8 +310,8 @@ productServiceApp.constant('JumpConstant', {
             id: 'constructionNumber'
         },
         {
-            name: '用户反馈接口',
-            id: 'feedbackContainer'
+            name: '历史施工信息',
+            id: 'timequantum'
         }
     ],
     Daily: [
@@ -333,11 +333,11 @@ productServiceApp.constant('JumpConstant', {
         },
         {
             name: '获取下载列表',
-            id: 'constructionNumber'
+            id: 'dailyList'
         },
         {
             name: '下载信息接口',
-            id: 'feedbackContainer'
+            id: 'dailyDownloadContainer'
         }
     ],
     Limit: [
@@ -360,11 +360,11 @@ productServiceApp.constant('JumpConstant', {
         {
             name: '获取最新信息',
             id: 'limitNumber'
-        },
+        }/*,
         {
             name: '查询指定信息',
             id: 'queryDateContainer'
-        }
+        }*/
     ]
 
 });

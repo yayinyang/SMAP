@@ -22,14 +22,17 @@
     border-bottom: 1px solid #000;
     overflow: hidden;
 }
+.bor{
+    border-bottom: none;
+}
 /*第一页开始*/
 .page_one{
     height:53.8rem;
     overflow: hidden;
 }
 .page_one>div{
-    width: 49.95rem;
-    height: 26.35rem;
+    width: 59rem;
+    height: 38.05rem;
     margin: 11.35rem auto auto auto;
     position: relative;
 }
@@ -42,8 +45,8 @@
     width: 6.75rem;
     height: 2.05rem;
     position: absolute;
-    left: 42.9rem;
-    bottom: 3.75rem;
+    left: 47.9rem;
+    bottom: 11.4rem;
     border-radius: 5px;
     z-index: 999;
     cursor: pointer;
@@ -57,19 +60,19 @@
     position: fixed;
     right: 73px;
     bottom: 50px;
-    width: 26px;
-    height: 94px;
+    width: 20px;
+    height: 70px;
     border: 2px solid #1478ff;
     border-radius: 13px;
     list-style: none;
     box-sizing: border-box;
 }
 .tapJump>li{
-    width: 19px;
-    height: 19px;
+    width: 14px;
+    height: 14px;
     border-radius: 10px;
     border: 2px solid #1478ff;
-    margin: 3px auto;
+    margin: 2px auto;
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
@@ -92,8 +95,8 @@
 }
 .page_two>div{
     margin: 4.75rem auto auto auto;
-    width: 50.55rem;
-    height: 33.25rem;
+    width: 59rem;
+    height: 36.45rem;
 }
 .page_two>div>img{
     width: 100%;
@@ -107,19 +110,19 @@
 }
 .page_three>div:nth-child(1){
     margin: 4.5rem auto 8.3rem auto;
-    width: 45.4rem;
-    height: 31.25rem;
+    width: 59rem;
+    height: 25.45rem;
 
 }
 .page_three>div:nth-child(2){
     margin: auto;
-    width: 42.55em;
+    width: 59rem;
     height: 17.75rem;
 
 }
 .page_three>div:nth-child(1)>img,.page_three>div:nth-child(2)>img{
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
 }
 /*第三页结束*/
 /*第四页开始*/
@@ -129,8 +132,8 @@
     background-color: #f6f6f6;
 }
 .page_four>div:nth-child(1){
-    width: 51.1rem;
-    height: 43rem;
+    width: 59rem;
+    height: 77.1rem;
     margin: 5.7rem auto 3.9rem auto;
 }
 .page_four>div:nth-child(2){

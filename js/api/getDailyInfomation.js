@@ -1,46 +1,67 @@
 /**
  * Created by liwanchong on 2016/12/22.
  */
-$(function () {
-    var limitParam = {
-        ak: E782445785fetch087mkde11,
-        spec:nimif-g,
-    };
-    $.post(App.Util.getFullUrl('data/query'), limitParam, function (data) {
-        $('#dailyListContent').empty();
-        $('#dailyListContent').text(JSON.stringify(data, null, 4));
+var specData = "nimif-g";
+var dailyListContentData = '';
+var dailyparam2Data = "MIFG_17SUM_D_BJ_CSV_0317_10";
+var dailyContentData = '';
+
+function initList() {
+    $("#ak").val(App.Config.daily.ak);
+    $("#spec").val(specData);
+
+    $.post(App.Config.daily.queryUrl, {
+        ak:App.Config.daily.ak,
+        spec:specData
+    }, function (data) {
+        dailyListContentData = JSON.stringify(data, null, 4);
+        $('#dailyListContent').val(dailyListContentData);
     });
-});
+}
 function dailyListResult() {
-    var ak = $('#ak').val();
-    var spec = $('#spec').val();
-    var param = {
-        ak: ak,
-        spec: spec,
-    };
-    $.post(App.Util.getFullUrl('data/query'), param, function (data) {
-        $('#dailyListContent').empty();
-        $('#dailyListContent').text(JSON.stringify(data, null, 4));
+    $.post(App.Config.daily.queryUrl, {
+        ak: $('#ak').val(),
+        spec: $('#spec').val(),
+    }, function (data) {
+        $('#dailyListContent').val(JSON.stringify(data, null, 4));
     });
 }
-
-function dailyResult() {
-    var ak = $('#dailyparam1').val();
-    var product_id = $('#dailyparam2').val();
-    var param = {
-        ak: ak,
-        product_id: product_id,
-    };
-    $.post(App.Util.getFullUrl('data/download'), param, function (data) {
-        $('#dailyContent').empty();
-        $('#dailyContent').text(JSON.stringify(data, null, 4));
-    });
-}
-
 function resetResult(type) {
-    if(type === 1) {
-        $('#dailyListContent').empty();
+    if( 0 === type) {
+        $("#ak").val(App.Config.daily.ak);
+        $("#spec").val(specData);
+        $('#dailyListContent').val(dailyListContentData);
         return;
     }
-    $('#dailyContent').empty();
+    $("#dailyparam1").val(App.Config.daily.ak);
+    $("#dailyparam2").val(dailyparam2Data);
+    $('#dailyContent').val(dailyContentData);
 }
+
+function initDl() {
+    $("#dailyparam1").val(App.Config.daily.ak);
+    $("#dailyparam2").val(dailyparam2Data);
+    $.post(App.Config.daily.downloadUrl, {
+        ak:App.Config.daily.ak,
+        product_id:"MIFG_17SUM_D_BJ_CSV_0317_10"
+    }, function (data) {
+        dailyContentData = JSON.stringify(data, null, 4);
+        $('#dailyContent').val(dailyContentData);
+    });
+}
+$(function () {
+    initList();
+    initDl();
+});
+
+
+function dailyResult() {
+    /*$.post(App.Util.getFullUrl('data/download'), param, function (data) {*/
+    $.post(App.Config.daily.downloadUrl, {
+        ak: $('#dailyparam1').val(),
+        product_id: $('#dailyparam2').val(),
+    }, function (data) {
+        $('#dailyContent').val(JSON.stringify(data, null, 4));
+    });
+}
+
