@@ -8,7 +8,6 @@ var map = new mapboxgl.Map({
     repaint: true,
     pitch: 0
 });
-
 angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController",["$scope","$location","$timeout","$anchorScroll",function (
     $scope,$location,$timeout,$anchorScroll) {
     $scope.provinceArr = province;
@@ -45,11 +44,13 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         'source-layer': 'platelimit_polygon',
         "minzoom": 5,
         "maxzoom": 17.1,
-        'layout': {},
+        'layout': {
+            /*'background-color': '#00FF00'*/
+        },
         'paint': {
             'fill-color': '#FF0000',
             'fill-opacity': 0.2,
-            /*'fill-outline-color': '#ffff00',
+           /* 'fill-outline-color': '#ffff00',
             'fill-antialias': true,*/
         }
 
@@ -237,11 +238,11 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         }
         map.style.sourceCaches.platelimit._source.tiles[0] = 'http://fastmap.navinfo.com/smap_p/plateres/web/condition/' +
             '{z}/{x}/{y}?' + App.Config.platelimit;
-        map.removeLayer('line_Limited_Layer');
         map.removeLayer('polygon_Limited_Layer');
+        map.removeLayer('line_Limited_Layer');
         $timeout(function () {
-            map.addLayer($scope.lineLayer);
             map.addLayer($scope.polygonLayer);
+            map.addLayer($scope.lineLayer);
         },0);
 
     };
@@ -258,3 +259,4 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
     };
 
 }]);
+//

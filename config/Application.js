@@ -11,7 +11,7 @@ App.checkServer = {
         checkServiceUrl:'http://' + App.dev.host + '/smap/sync/user/'
     },
     release:{
-        checkServiceUrl:'http://123.207.83.126:8088/smap/sync/user/'
+        checkServiceUrl:'http://fs.navinfo.com/smapapi/sync/user/'
     }
 };
 

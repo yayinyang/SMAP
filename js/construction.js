@@ -124,9 +124,9 @@ angular.module("construction",["navApp"]).controller("constructionController",["
     $scope.locationProvince = function (data) {
 
         //此处注释掉是因为其他限制使用其他省份数据
-        $scope.provincePid = data.id;
+       /* $scope.provincePid = data.id;
         $scope.nowProvince = data.name;
-        map.flyTo({center:[ data.point.x, data.point.y]});
+        map.flyTo({center:[ data.point.x, data.point.y]});*/
     };
     $scope.goCapture = function (data){
         var local = 'capture'+data;

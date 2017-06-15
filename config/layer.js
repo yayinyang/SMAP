@@ -5082,6 +5082,19 @@ var trafficLimitedLayer ={
             "type": "symbol",
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
         },{
+            "id": 'polygon_Limited_Layer',
+            "type": 'fill',
+            "source" : "platelimit",
+            'source-layer': 'platelimit_polygon',
+            "minzoom": 5,
+            "maxzoom": 17.1,
+            'layout': {},
+            'paint': {
+                'fill-color': '#FF0000',
+                'fill-opacity': 0.2,
+            }
+
+        },{
             "id": 'line_Limited_Layer',
             "type": 'line',
             "source" : "platelimit",
@@ -5100,19 +5113,6 @@ var trafficLimitedLayer ={
                     "base": 1.2
                 },
             },
-
-        },{
-            "id": 'polygon_Limited_Layer',
-            "type": 'fill',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_polygon',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            'layout': {},
-            'paint': {
-                'fill-color': '#FF0000',
-                'fill-opacity': 0.2,
-            }
 
         },]
 };
