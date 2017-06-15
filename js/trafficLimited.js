@@ -14,7 +14,6 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
     $scope.nowProvince = '北京';
     $scope.indexUrl = 'abc';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
-    $scope.src = '../img/trafficLimited/';
     $scope.searchParameter = {};
     $scope.lineLayer = {
         "id": 'line_Limited_Layer',
@@ -45,29 +44,31 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         'source-layer': 'platelimit_polygon',
         "minzoom": 5,
         "maxzoom": 17.1,
-        'layout': {},
+        'layout': {
+            /*'background-color': '#00FF00'*/
+        },
         'paint': {
-            'fill-color': '#088',
-            'fill-opacity': 0.6
+            'fill-color': '#FF0000',
+            'fill-opacity': 0.2,
+           /* 'fill-outline-color': '#ffff00',
+            'fill-antialias': true,*/
         }
 
     };
+
     $scope.limitKind = [
         {
-            kind: '限号',
+            label: 'number',
+            kind: 'No.',
             isLimit: false,
-            imgSrc: $scope.src + 'number.png',
-            limitImgSrc: $scope.src + 'numberLimited.png',
         }, {
-            kind: '外阜车',
+            label: 'field',
+            kind: '外地车辆',
             isLimit: false,
-            imgSrc: $scope.src + 'field.png',
-            limitImgSrc: $scope.src + 'fieldLimited.png',
         }, {
+            label: 'carKind',
             kind: '车型',
             isLimit: false,
-            imgSrc: $scope.src + 'carKind.png',
-            limitImgSrc: $scope.src + 'carKindLimited.png',
             children:[
                 {
                     kind: '客车',
@@ -79,13 +80,13 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'truck',
                     flag: false,
                 },
-            ]
+            ],
+            childrenIsOpen:false,
 
         }, {
+            label: 'energy',
             kind: '能源',
             isLimit: false,
-            imgSrc: $scope.src + 'energy.png',
-            limitImgSrc: $scope.src + 'energyLimited.png',
             children:[
                 {
                     kind: '燃油',
@@ -102,12 +103,12 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'both',
                     flag: false,
                 },
-            ]
+            ],
+            childrenIsOpen:false,
         }, {
+            label: 'card',
             kind: '车牌',
             isLimit: false,
-            imgSrc: $scope.src + 'card.png',
-            limitImgSrc: $scope.src + 'cardLimited.png',
             children:[
                 {
                     kind: '蓝牌',
@@ -119,7 +120,7 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     label: 'yellow',
                     flag: false,
                 },
-                {
+              /*  {
                     kind: '黑牌',
                     label: 'black',
                     flag: false,
@@ -133,15 +134,15 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                     kind: '绿牌',
                     label: 'green',
                     flag: false,
-                },
-            ]
+                },*/
+            ],
+            childrenIsOpen:false,
         }, {
+            label: 'other',
             kind: '其他',
             isLimit: true,
-            imgSrc: $scope.src + 'other.png',
-            limitImgSrc: $scope.src + 'otherLimited.png',
         },
-    ]
+    ];
     $scope.showChoosedCity = function (arg){
         if(arg==='nowCity'){
             $scope.nowCity = {
@@ -166,19 +167,12 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         }
     };
     $scope.changeCondition = function (index) {
-        $scope.limitKind[index].isLimit = !$scope.limitKind[index].isLimit;
-        if( $scope.limitKind[index].children){
-            if($scope.limitKind[index].isLimit){
-                for(var i = 0; i < $scope.limitKind[index].children.length; i++){
-                    $scope.limitKind[index].children[i].flag = true;
-                }
-            }else {
-                for(var i = 0; i < $scope.limitKind[index].children.length; i++){
-                    $scope.limitKind[index].children[i].flag = false;
-                }
-            }
+        if( $scope.limitKind[index].children){ // 有子元素时 函数功能为展开折叠子元素
+            $scope.limitKind[index].childrenIsOpen = !$scope.limitKind[index].childrenIsOpen;
+        }else{ // 无子元素时 函数功能为选择筛选条件
+            $scope.limitKind[index].isLimit = !$scope.limitKind[index].isLimit;
+            $scope.contactParameter();
         }
-        $scope.contactParameter();
     };
     $scope.changeDetailKind = function (data) {
         for(var i = 0; i < $scope.limitKind.length; i++){
@@ -188,14 +182,18 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
                         $scope.limitKind[i].children[j].flag = !$scope.limitKind[i].children[j].flag;
                     }
                 }
-                var childrenFlag = 0;
+                //判断是否有子元素被选中
+                var childrenIsSelectFlag = 0;
                 for(var k = 0; k < $scope.limitKind[i].children.length; k++){
-                   childrenFlag += Number($scope.limitKind[i].children[k].flag);
+                    if($scope.limitKind[i].children[k].flag){
+                        childrenIsSelectFlag = Number($scope.limitKind[i].children[k].flag);
+                    }
                 }
-                if(childrenFlag === 0){
+                if(childrenIsSelectFlag === 0){
                     $scope.limitKind[i].isLimit = false;
                 }else{
                     $scope.limitKind[i].isLimit = true;
+
                 }
             }
         }
@@ -238,13 +236,13 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         }else{
             App.Config.platelimit = 'type=' +tmpParam.type + '&parm=' + tmpParam.parm;
         }
-        map.style.sourceCaches.platelimit._source.tiles[0] = 'http://fs.navinfo.com/smapapi/platelimit/tile/' +
+        map.style.sourceCaches.platelimit._source.tiles[0] = 'http://fastmap.navinfo.com/smap_p/plateres/web/condition/' +
             '{z}/{x}/{y}?' + App.Config.platelimit;
-        map.removeLayer('line_Limited_Layer');
         map.removeLayer('polygon_Limited_Layer');
+        map.removeLayer('line_Limited_Layer');
         $timeout(function () {
-            map.addLayer($scope.lineLayer);
             map.addLayer($scope.polygonLayer);
+            map.addLayer($scope.lineLayer);
         },0);
 
     };
@@ -259,4 +257,6 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         $location.hash(local);
         $anchorScroll();
     };
+
 }]);
+//

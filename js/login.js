@@ -96,9 +96,6 @@ login.controller("loginController", ['$scope', function ($scope) {
                     case 200:
                         var p_url =  sessionStorage.getItem('p_url');
 
-                        console.log('data.errcode: '+data.errcode);
-                        console.log('login-js =>p_url= '+p_url);
-
                         if (null == p_url||typeof ('p_url') == undefined||p_url.length==0)
                             p_url = App.Config.appRoot;
                         sessionStorage.setItem('token',data.token);

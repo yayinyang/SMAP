@@ -40,7 +40,7 @@ body{
     right:10px;
     top: 10px;
     position: absolute;
-    z-index: 300;
+    z-index: 20;
 }
 .selectedDiv .nowCity{
     padding-right: 13px;
@@ -67,7 +67,7 @@ body{
     line-height: 30px;
     position: absolute;
     right: 0;
-    z-index: 200;
+    z-index: 20;
     border: none;
     background: #ffffff;
     outline: none;

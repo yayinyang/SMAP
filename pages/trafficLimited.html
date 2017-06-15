@@ -56,13 +56,30 @@
         </div>
         <div class="limitCondition">
             <ul>
-                <li ng-repeat="kind in limitKind" style="margin-bottom: 10px">
-                    <img ng-if="!kind.isLimit" ng-src={{kind.limitImgSrc}} ng-click="changeCondition($index)"/>
-                    <img ng-if="kind.isLimit" ng-src={{kind.imgSrc}} ng-click="changeCondition($index)"/>
+                <li ng-repeat="childrenItem in limitKind" class="firstCondation"
+                    ng-class="{true: 'listHeightLight',false: ''}[childrenItem.isLimit &&!childrenItem.children]">
+                    <div ng-bind="childrenItem.kind"
+                         ng-click="changeCondition($index)"
+                         ng-class="{true: 'conditionHeightLight',false: ''}[childrenItem.isLimit && !childrenItem.children]"
+                    >
+                    </div>
+                    <div ng-class="{true: 'IconOpenStyle', false: 'IconCloseStyle'}[childrenItem.childrenIsOpen]">
+                    </div>
                     <ul>
-                        <li ng-repeat="item in kind.children" ng-click="changeDetailKind(item.kind)">
-                                <input id=item.label ng-model="item.flag"  type="checkbox"/>
-                                <span ng-bind="item.kind"  style="font-size: 12px"></span>
+                        <li ng-show="childrenItem.childrenIsOpen"
+                            ng-repeat="item in childrenItem.children"
+                            ng-click="changeDetailKind(item.kind)"
+                        >
+                            <!--<div ng-model="item.flag"  ng-class="{true: 'checked', false: 'normal'}[item.flag]">
+                            </div>-->
+                            <div style="display: inline-block;" ng-model="item.flag"  ng-class="{true: 'checked', false: 'normal'}[item.flag]">
+                                <!--<img ng-src="{{item.flag ? '../img/trafficLimited/checked.png': '../img/trafficLimited/check.png'}}"
+                                     ng-class="{true: 'checked', false: 'normal'}[item.flag]"
+                                />-->
+                            </div>
+                            <div ng-bind="item.kind"
+                                 ng-class="{true: 'subConditionHeightLight',false: ''}[item.flag]"
+                                 style="display: inline-block"></div>
                         </li>
                     </ul>
                 </li>
@@ -70,7 +87,6 @@
         </div>
     </div>
     <div id="map">
-
     </div>
 </div>
 </body>

@@ -108,7 +108,7 @@ angular.module("construction",["navApp"]).controller("constructionController",["
         var loc = [];
         var div = window.document.createElement('div');
         var description = decodeURI(data.features[0].properties.construction_desc);
-        console.log(data.features[0].properties.construction_time);
+      /*  console.log(data.features[0].properties.construction_time);*/
         var date = decodeURIComponent(data.features[0].properties.construction_time);
         var time = date.replace(/\+/g, '');
         loc.push(geo.coordinates[0][0]);
@@ -124,7 +124,7 @@ angular.module("construction",["navApp"]).controller("constructionController",["
     $scope.locationProvince = function (data) {
 
         //此处注释掉是因为其他限制使用其他省份数据
-    /*    $scope.provincePid = data.id;
+       /* $scope.provincePid = data.id;
         $scope.nowProvince = data.name;
         map.flyTo({center:[ data.point.x, data.point.y]});*/
     };
@@ -134,6 +134,7 @@ angular.module("construction",["navApp"]).controller("constructionController",["
         $anchorScroll();
     };
     map.on('click','construction_Layer',function (e) {
+      /*  console.log(e);*/
         var geo = JSON.parse(e.features[0].properties.geometroy);
         // console.log(e.features[0].properties.geometroy);
         $scope.heightLightRoad(geo);

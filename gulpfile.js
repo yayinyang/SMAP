@@ -29,7 +29,7 @@ var path = {
             'fonts*/*.*',
             'data*/*.*',
             'data*/**/*.*',
-            'js*/api*/*.js',
+            'js*/api*/*.*',
             'js*/constant*/*.js',
             'js*/directives*/**/*.*',
         ],
@@ -472,6 +472,47 @@ gulp.task('trafficControl', function() {
     }
 
 });
+gulp.task('chargeMessage', function() {
+    if(develop){
+        return gulp.src('pages/chargeMessage.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/style/')
+                ],
+                html: [ htmlmin({ collapseWhitespace: true }) ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }else{
+        return gulp.src('pages/chargeMessage.html')
+            .pipe(sourcemaps.init())
+            .pipe(usemin({
+                css: [ minifyCss(),rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }
+
+});
 gulp.task('login', function() {
     if(develop){
         return gulp.src('pages/login.html')
@@ -567,7 +608,7 @@ gulp.task('pages',function () {
     runSequence([
         'homepage','onlineUse','productDescription','productService',
         'productWarehouse','undevelopPage','trafficLimited','construction',
-        'trafficControl','roadwork','login',
+        'trafficControl','roadwork','login','chargeMessage',
     ]);
 });
 
@@ -581,6 +622,7 @@ gulp.task('watch',function (event) {
     gulp.watch(['pages/roadwork.html'],['roadwork']);
     gulp.watch(['pages/construction.html'],['construction']);
     gulp.watch(['pages/trafficLimited.html'],['trafficLimited']);
+    gulp.watch(['pages/chargeMessage.html'],['chargeMessage']);
     gulp.watch(['pages/undevelopPage.html'],['undevelopPage']);
     gulp.watch(['pages/login.html'],['login']);
     gulp.watch(['pages/**/*.*','!pages/*.*'],['tmpl']);

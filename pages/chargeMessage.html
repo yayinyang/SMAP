@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name=”renderer” content=”webkit”>
     <title>SMap</title>
-    <!-- build:css ../style/roadwork.css -->
-    <link rel="stylesheet" href="../../style/index.css">
-    <link rel="stylesheet" href="../../style/base.css">
-    <link rel="stylesheet" href="../../style/chargeMessage.css">
+    <!-- build:css ../style/changeMassage.css -->
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/base.css">
+    <link rel="stylesheet" href="../style/chargeMessage.css">
     <!-- endbuild -->
 
 
@@ -26,58 +26,62 @@
     <!-- <header class="header_div"></header>-->
     <div class="page_one wrap" id="pageOne">
         <div class="picsum">
-            <div class="pic1"><img src="../../img/chargeMessage/page1.1.png"></div>
+            <div class="pic1"><img src="../img/chargeMessage/page1.1.png"></div>
             <div class="pic2">
-                <img src="../../img/chargeMessage/page1.2.png">
-                <a href="javascript:void(0);">在线体验</a>
+                <img src="../img/chargeMessage/page1.2.png">
+                <a href="onlineUse.html">在线体验</a>
             </div>
         </div>
     </div>
     <div class="page_two wrap" id="pageTwo">
         <div class="picsum">
             <div class="leftpic">
-                <div class="pic1"><img src="../../img/chargeMessage/page2.1.1.png"></div>
-                <div class="pic2"><img src="../../img/chargeMessage/page2.1.2.png"></div>
+                <div class="pic1"><img src="../img/chargeMessage/page2.1.1.png"></div>
+                <div class="pic2"><img src="../img/chargeMessage/page2.1.2.png"></div>
             </div>
             <div class="rightpic">
-                <div class="pic3"><img src="../../img/chargeMessage/page2.2.png"></div>
+                <div class="pic3"><img src="../img/chargeMessage/page2.2.png"></div>
             </div>
         </div>
     </div>
     <div class="page_three wrap" id="pageThree">
         <div class="picsum">
             <div class="leftpic">
-                <div class="pic1"><img src="../../img/chargeMessage/page3.1.1.png"></div>
-                <div class="pic2"><img src="../../img/chargeMessage/page3.1.2.png"></div>
+                <div class="pic1"><img src="../img/chargeMessage/page3.1.1.png"></div>
+                <div class="pic2"><img src="../img/chargeMessage/page3.1.2.png"></div>
             </div>
             <div class="rightpic">
-                <div class="pic3"><img src="../../img/chargeMessage/page3.1.3.png"></div>
+                <div class="pic3"><img src="../img/chargeMessage/page3.1.3.png"></div>
             </div>
             <div class="bottompic">
-                <div class="pic4"><img src="../../img/chargeMessage/page3.2.1.png"></div>
-                <div class="pic5"><img src="../../img/chargeMessage/page3.2.2.png"></div>
+                <div class="pic4"><img src="../img/chargeMessage/page3.2.1.png"></div>
+                <div class="pic5"><img src="../img/chargeMessage/page3.2.2.png"></div>
             </div>
         </div>
     </div>
     <div class="page_four wrap" id="pageFour">
         <div class="picsum">
-            <div class="pic1"><img src="../../img/chargeMessage/page4.1.png"></div>
-            <div class="pic2"><img src="../../img/chargeMessage/page4.2.png"></div>
-            <div class="pic3"><img src="../../img/chargeMessage/page4.3.png"></div>
+            <div class="pic1"><img src="../img/chargeMessage/page4.1.png"></div>
+            <div class="pic2"><img src="../img/chargeMessage/page4.2.png"></div>
+            <div class="pic3"><img src="../img/chargeMessage/page4.3.png"></div>
         </div>
     </div>
 </div>
 
 </body>
-<script src="../../lib/jquery/jquery.js"></script>
-<script src="../../config/Application.js"></script>
-<script src="../../lib/angularjs/1.4.4/angular.js"></script>
-<script src="../../js/roadwork.js"></script>
-<script src="../../js/directives/nav/nav.js"></script>
+
+<!-- build:js  ../js/changeMassage.js -->
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../config/Application.js"></script>
+<script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../js/roadwork.js"></script>
+<!-- endbuild -->
+
 <script type="text/javascript">
     var app = angular.module("chargeController",['navApp']);
     app.controller("chargeController",['$scope',function($scope){
-        $scope.relativeHash="../"
     }])
 </script>
+<script src="../js/directives/nav/nav.js"></script>
+
 </html>
