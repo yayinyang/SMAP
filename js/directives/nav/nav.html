@@ -1,9 +1,9 @@
-<div style="width: 100%;min-width:1280px;position: fixed;z-index:100;background: #25396e; height: 44px;">
+<div style="width: 100%;min-width:1280px;position: fixed;z-index:100;background: #25396e; height: 44px;" ng-style="navbarbg">
     <div style="padding: 0 210px;">
         <div id="logo" style="margin-top: 4px">
         </div>
         <div style="display: flex;justify-content: flex-end;padding-top: 4px">
-            <div class="navTitle">
+            <div class="navTitle" ng-class="{true: 'active',false: ''}[loc.indexpageFlag]">
                 <div class="navFontStyle">
                     <a ng-click="turnToPage('../index.html')">
                         首页
@@ -12,7 +12,7 @@
                 <div class="navTitleBottom">
                 </div>
             </div>
-            <div  class="navTitle">
+            <div  class="navTitle" ng-class="{true: 'active',false: ''}[loc.productFlag]">
                 <div class="navFontStyle" style="width: 104px;padding: 0;text-align: center">
                     服务产品
                 </div>
@@ -34,7 +34,7 @@
                     </a>
                 </div>
             </div>
-            <div  class="navTitle">
+            <div  class="navTitle" ng-class="{true: 'active',false: ''}[loc.developFlag]">
                 <div class="navFontStyle">
                     开发中心
                 </div>
@@ -46,7 +46,7 @@
                     </a>
                 </div>
             </div>
-            <div  class="navTitle">
+            <div  class="navTitle" ng-class="{true: 'active',false: ''}[loc.warehouseFlag]">
                 <div class="navFontStyle">
                     产品仓库
                 </div>
@@ -96,7 +96,7 @@
                 </div>
 
             </div>
-            <div  class="navTitle">
+            <div  class="navTitle" ng-class="{true: 'active',false: ''}[loc.onlineUseFlag]">
                 <div class="navFontStyle" style="width: 104px;padding: 0;text-align: center">
                     在线体验
                 </div>
@@ -118,7 +118,7 @@
                     </a>
                 </div>
             </div>
-            <div  class="navTitle">
+            <div  class="navTitle" ng-class="{true: 'active',false: ''}[loc.loginFlag]">
                 <div class="navFontStyle">
                     <a ng-click="turnToPage('login.html')" ng-bind="loginTitle">
                     </a>
@@ -148,7 +148,6 @@
         line-height: 33px;
         font-size: 14px;
         padding: 0 10px;
-
     }
     .navTitleBottom{
         height: 4px;
@@ -167,6 +166,12 @@
         display: block;
     }
     .navTitle:hover .navSecTitle{
+        display: block;
+    }
+    .navTitle.active{
+        background-color: #1478ff;
+    }
+    .navTitle.active .navTitleBottom{
         display: block;
     }
     .navSecTitle{

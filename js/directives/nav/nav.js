@@ -7,10 +7,75 @@ navApp.directive('navBar',function () {
        templateUrl: currentScriptPath.replace('nav.js','nav.html'),
        scope:{
            relativeHash: '=',
+           loc: '=',
        },
        controller:function ($scope) {
            $scope.isLogin = App.Util.checkToken();
            $scope.loginTitle = $scope.isLogin ? '退出登录' : '登录';
+           $scope.loc = {
+               indexpageFlag: $scope.loc === 'indexpageFlag',
+               productFlag: $scope.loc === 'productFlag',
+               developFlag: $scope.loc === 'developFlag',
+               warehouseFlag: $scope.loc === 'warehouseFlag',
+               onlineUseFlag: $scope.loc === 'onlineUseFlag',
+               loginFlag: $scope.loc === 'loginFlag',
+           };
+           $scope.navMap = [
+               {
+                   title: '首页',
+               },
+               {
+                   title: '服务产品',
+                   children: [
+                       {
+                       title: '收费信息服务',
+                       },
+                       {
+                       title: '道路施工服务',
+                       },
+                       {
+                       title: '限行限号服务',
+                       }
+                   ]
+               },
+               {
+                   title: '开发中心',
+                   children: [
+                       {
+                           title: '服务接口',
+                       },
+                   ]
+               },
+               {
+                   title: '产品仓库',
+                   children: [
+                       {
+                           title: '产品介绍',
+                       },
+                       {
+                           title: '产品下载',
+                       },
+                   ]
+               },
+               {
+                   title: '在线体验',
+                   children: [
+                       {
+                           title: '收费信息查询',
+                       },
+                       {
+                           title: '施工数据展示',
+                       },
+                       {
+                           title: '限行数据展示',
+                       }
+                   ]
+               },
+               {
+                   title: $scope.loginTitle,
+
+               }
+           ];
            $scope.turnToPage = function (param) {
                 var toDownloadPage = param.search(/productWarehouse/);
                 if( toDownloadPage > -1){ // 跳转下载页面
@@ -41,6 +106,9 @@ navApp.directive('navBar',function () {
                 }
                window.location.href = param;
            };
+           $scope.navbarbg = {
+               background: $scope.relativeHash === 'pages/' ? 'none' : '#25396e',
+           }
        }
    }
 });

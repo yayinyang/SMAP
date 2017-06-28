@@ -15,7 +15,7 @@
 
 </head>
 <body ng-controller="roadController">
-    <nav-bar></nav-bar>
+    <nav-bar loc="locFlag"></nav-bar>
     <div class="container">
         <ul class="tapJump" >
             <li onclick="changePage('pageOne')" class="active"><a href="#pageOne">1</a></li>
@@ -43,13 +43,17 @@
         </div>
     </div>
 </body>
+<!-- build:js  ../js/roadwork.js -->
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../js/roadwork.js"></script>
+<!-- endbuild -->
+
 <script type="text/javascript">
     var app = angular.module("roadwork",['navApp']);
     app.controller("roadController",['$scope',function($scope){
+        $scope.locFlag = 'productFlag';
     }]);
 </script>
 <script src="../js/directives/nav/nav.js"></script>

@@ -10,6 +10,7 @@ var map = new mapboxgl.Map({
 
 angular.module("construction",["navApp"]).controller("constructionController",["$scope","$location",'$timeout',"$anchorScroll",function (
     $scope,$location,$timeout,$anchorScroll) {
+    $scope.locFlag = 'onlineUseFlag';
     $scope.provinceArr = province;
     $scope.nowProvince = '天津';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];

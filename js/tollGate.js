@@ -6,6 +6,7 @@
 var tollGate = angular.module("tollGate", ['dataService', 'nvd3', 'angular-popups','navApp']);
 tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$anchorScroll', function (
   $scope, dsEdit, $location, $anchorScroll) {
+    $scope.locFlag = 'onlineUseFlag';
     $scope.param = {
         name: '福建'
     };
