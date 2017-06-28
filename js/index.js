@@ -4,9 +4,9 @@
 $(function () {
     $(window).resize(resizeCanvas);
     function resizeCanvas() {//浏览器窗口大小变化时，回调函数
-        var screenHeight = window.screen.height;
+        var width = window.innerWidth;
         $('#banner').empty();
-        if(screenHeight < 770 ) {
+        if(width < 1440 ) {
 
             $('#banner').load('pages/carousel/smallCarousel.html');
         }else {
@@ -27,10 +27,16 @@ function redirecting(type) {
 function redirectingAPi() {
     window.location = 'pages/productService.html';
 }
-function setSize() {
 
-    var height = window.innerHeight;
-    var banner = document.getElementById('banner');
-    banner.style.height = height + 'px';
+function setNavbarBackground() {
+    var navbar = $('nav-bar');
+    var body = $('body');
+    var banner = $('#banner');
+    if(body[0].scrollTop > (banner[0].clientHeight -44)){ // 44px为导航栏高度
+        navbar[0].children[0].style.background = '#25396e';
+    }else {
+        navbar[0].children[0].style.background = 'none';
+    }
+
 
 }

@@ -10,9 +10,9 @@ var map = new mapboxgl.Map({
 });
 angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController",["$scope","$location","$timeout","$anchorScroll",function (
     $scope,$location,$timeout,$anchorScroll) {
+    $scope.locFlag = 'onlineUseFlag';
     $scope.provinceArr = province;
     $scope.nowProvince = '北京';
-    $scope.indexUrl = 'abc';
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
     $scope.searchParameter = {};
     $scope.lineLayer = {
@@ -257,6 +257,51 @@ angular.module("trafficLimited",["navApp"]).controller("trafficLimitedController
         $location.hash(local);
         $anchorScroll();
     };
+/*    map.on('click','polygon_Limited_Layer',function (e) {
+        for(var i = 0; i < e.features.length; i++){
+            var group_id = decodeURIComponent(e.features[i].properties.group_id);
+            var description = decodeURIComponent(e.features[i].properties.platelimit_desc);
+             // console.log(group_id);
+            console.log('%c No.'+i ,"color:orange;font-weight:bold",description);
+        }
+    });
+    map.on('click','line_Limited_Layer',function (e) {
+        for(var i = 0; i < e.features.length; i++){
+            var group_id = decodeURIComponent(e.features[i].properties.group_id);
+            var description = decodeURIComponent(e.features[i].properties.platelimit_desc);
+             // console.log(group_id);
+            console.log('%c No.'+i ,"color:green;font-weight:bold",description);
+        }
+    });
+
+    map.on('click','polygon_Limited_Layer',function (e) {
+        var description = '';
+        for(var i = 0; i < e.features.length; i++){
+            var group_id = decodeURIComponent(e.features[i].properties.group_id);
+           description += decodeURIComponent(e.features[i].properties.platelimit_desc);
+            // console.log(group_id);
+            console.log('%c No.'+i ,"color:orange;font-weight:bold",description);
+        }
+        var loc = [];
+        var div = window.document.createElement('div');
+        /!*  console.log(data.features[0].properties.construction_time);*!/
+        div.innerHTML = '<div style="text-align: center">'+ description+'</div>';
+        new mapboxgl.Popup()
+            .setLngLat([e.lngLat.lng,e.lngLat.lat])
+            .setDOMContent(div)
+            .addTo(map);
+    });
+    map.on('click','line_Limited_Layer',function (e) {
+           var description = decodeURIComponent(e.features[0].properties.platelimit_desc);
+            // console.log(group_id);
+        var div = window.document.createElement('div');
+        /!*  console.log(data.features[0].properties.construction_time);*!/
+        div.innerHTML = '<div style="text-align: center">'+ description+'</div>';
+        new mapboxgl.Popup()
+            .setLngLat([e.lngLat.lng,e.lngLat.lat])
+            .setDOMContent(div)
+            .addTo(map);
+    });*/
 
 }]);
 //

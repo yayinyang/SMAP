@@ -379,8 +379,18 @@ span{
     color: #ffffff;
 }
 /*****************************地图***********************************/
+@media (min-width: 1401px) {
+    #solutionContainer{
+        background: url('../img/solution/solutionL.png') no-repeat;
+
+    }
+}
+@media (max-width: 1400px) {
+    #solutionContainer{
+        background: url('../img/solution/solution.png') no-repeat;
+    }
+}
 #solutionContainer{
-    background: url('../img/solution/solution.png') no-repeat;
     height: 600px;
     background-size: 100% 100%;
 }

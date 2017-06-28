@@ -5,13 +5,16 @@
     <!--让IE的文档模式永远都是最新的-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name=”renderer” content=”webkit”>
+    <!-- build:css ../style/trafficControl.css -->
     <link rel="stylesheet" href="../style/index.css">
     <link rel="stylesheet" href="../style/base.css">
     <link rel="stylesheet" href="../style/trafficControl.css">
+    <!-- endbuild -->
+
     <title>SMap</title>
 </head>
 <body ng-controller="trafficController">
-<nav-bar></nav-bar>
+<nav-bar loc="locFlag"></nav-bar>
 <div class="container">
     <ul class="tapJump" >
         <li onclick="changePage('pageOne')" class="active"><a href="#pageOne">1</a></li>
@@ -43,14 +46,18 @@
 </div>
 
 </body>
+<!-- build:js  ../js/roadwork.js -->
 <script src="../lib/jquery/jquery.js"></script>
 <script src="../config/Application.js"></script>
 <script src="../lib/angularjs/1.4.4/angular.js"></script>
 <script src="../js/roadwork.js"></script>
 <script src="../js/directives/nav/nav.js"></script>
+<!-- endbuild -->
+
 <script type="text/javascript">
     var app = angular.module("traffic",['navApp']);
     app.controller("trafficController",['$scope',function($scope){
+        $scope.locFlag = 'productFlag';
     }])
 </script>
 <script src="../js/directives/nav/nav.js"></script>

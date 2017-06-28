@@ -82,13 +82,13 @@ login.controller("loginController", ['$scope', function ($scope) {
             }
             ,function (data, status) {
                 data = JSON.parse(data);
-                switch (data.errcode) {
+                switch (data.code) {
                     case 301:
                         $("#name_err").text("用户名不存在，请重新输入！");
                         $("#name_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();
                         return false;
-                    case 302:
+                    case 307:
                         $("#pwd_err").text("密码错误，请重新输入！");
                         $("#pwd_err").removeClass("hide");
                         $scope.code_v = $scope.code_g();

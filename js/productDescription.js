@@ -9,6 +9,7 @@ productDescriptionApp.run(function($rootScope, $templateCache) {
 });
 productDescriptionApp.controller('productDescriptionController',function ($timeout,$scope) {
     $scope.arrowFlag = true;
+    $scope.locFlag = 'warehouseFlag';
     $scope.descriptions = [
         {
             name:'产品策略',

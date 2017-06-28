@@ -12,13 +12,11 @@
     <![endif]-->
     <title>SMap</title>
     <style>
-        body nav-bar > div{
-            background:none!important; /*此处覆盖组件中的内联样式样式*/
-        }
+
     </style>
 </head>
-<body ng-controller="indexpageCtrl" style="min-width: 1200px;"  onload = setSize() onresize = setSize() >
-<nav-bar relative-hash="relativeHash"></nav-bar>
+<body ng-controller="indexpageCtrl"   onscroll = setNavbarBackground() >
+<nav-bar relative-hash="relativeHash" loc="locFlag"></nav-bar>
 <div id="banner">
     <!--<div class="sections" style="height: 800px">-->
     <!--</div>-->

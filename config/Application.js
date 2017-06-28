@@ -71,7 +71,7 @@ App.Util = {
                 token: sessionStorage.getItem('token')
             },
             success:function (data, status) {
-                if (200 == JSON.parse(data).errcode) {
+                if (200 == JSON.parse(data).code) {
                     isCorrect = true;
                 }
             }

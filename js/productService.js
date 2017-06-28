@@ -6,6 +6,7 @@ $(function () {
 });
 var productServiceApp = angular.module('productServiceApp', ['navApp']);
 productServiceApp.controller('selectedController',function ($scope,JumpConstant) {
+    $scope.locFlag = 'developFlag';
     $scope.services = [
         {
             name: '入门指南',

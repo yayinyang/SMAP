@@ -18,6 +18,7 @@ product.filter('showName', function() {
     };
 });
 product.controller("productController", ['$scope', 'dsEdit','$location', function ($scope, dsEdit,$location) {
+    $scope.locFlag = 'warehouseFlag';
     $scope.getQueryString = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
         var r = window.location.search.substr(1).match(reg);

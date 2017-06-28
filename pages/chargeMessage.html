@@ -15,7 +15,7 @@
 
 </head>
 <body ng-controller="chargeController">
-<nav-bar relative-hash="relativeHash"></nav-bar>
+<nav-bar relative-hash="relativeHash" loc="locFlag"></nav-bar>
 <div class="container">
     <ul class="tapJump" >
         <li onclick="changePage('pageOne')" class="active"><a href="#pageOne">1</a></li>
@@ -80,6 +80,7 @@
 <script type="text/javascript">
     var app = angular.module("chargeController",['navApp']);
     app.controller("chargeController",['$scope',function($scope){
+        $scope.locFlag = 'productFlag';
     }])
 </script>
 <script src="../js/directives/nav/nav.js"></script>
