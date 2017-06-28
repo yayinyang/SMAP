@@ -29,14 +29,20 @@ function redirectingAPi() {
 }
 
 function setNavbarBackground() {
-    var navbar = $('nav-bar');
     var body = $('body');
-    var banner = $('#banner');
-    if(body && navbar[0].children[0]){
-        if(body[0].scrollTop > (banner[0].clientHeight -44)){ // 44px为导航栏高度
-            navbar[0].children[0].style.background = '#25396e';
+    var btn = $('#backToTop');
+    if(body && btn ){
+        if(body[0].scrollTop > 0){
+            btn.show(200);
         }else {
-            navbar[0].children[0].style.background = 'none';
+            btn.hide(200);
         }
     }
 }
+$(function () {
+   var btn = $('#backToTop');
+   btn.on('click',function () {
+       var body = $('body');
+       body.animate({scrollTop: 0}, 200);
+   })
+});
