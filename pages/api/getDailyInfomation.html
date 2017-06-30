@@ -3,85 +3,59 @@
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getDailyInfomation.js"></script>
 
-<div style="height: 130px;" id="dailyInfo">
-    <div class="titleContainer">
-        <div class="titleContent">
-            日出品信息
-        </div>
+
+
+<div style="height: 40px;margin-top: 20px;margin-bottom: 20px" id="constructionInfo">
+
+    <div class="titleContentbig">
+        日产品更新
     </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
-            最后更新时间:2017年04月11日
-        </div>
-    </div>
+
 </div>
-<div style="height: 160px;" id="apiExplain">
+<div style="height: 310px;" id="apiExplain">
     <div class="titleContainer">
         <div class="titleContent" >
             API介绍
         </div>
     </div>
     <div style="height: 120px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
-            获取日出品下载文件API是一类以HTTP形似提供的服务接口。
-            返回JSON格式的查询数据,用于获取日出品下载文件的开发功能。如需开发使用API,请先申请SMap平台账号。
+        <div style="padding: 20px 0px 0px 11px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
+            <div style="text-indent: 2em;margin-bottom: 26px;">
+                日更新文件下载服务API是一组支持查询可下载文件列表、获取下载信息等功能的服务接口，能够一目了然，准确的获取自己想要的信息并且便捷下载文件。内容包括：查询可下载文件列表API、获取下载信息API等。
+            </div>
+            <div style="margin-bottom: 26px;">
+                <div class="dotGrayDivtop"></div>
+                查询下载列表API：根据用户的权限，查询出用户权限下可以下载的日更新的文件列表。
+            </div>
+            <div>
+                <div class="dotGrayDivtop"></div>
+                获取下载信息API：输入需要下载的产品ID，获取下载文件的链接信息，必须在有效期内完成下载，否则失效。
+            </div>
+
         </div>
     </div>
 </div>
-<div style="height: 130px;" id="useCase">
+
+
+
+
+
+
+<div class="apiContainer" id="useCase" style="height: 1850px">
     <div class="titleContainer">
         <div class="titleContent">
-            适用场景
+            查询下载列表
         </div>
     </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
-            待补充
-        </div>
-    </div>
-</div>
-<div style="height: 180px;" id="instructions">
-    <div style="background: #cec9c9;width: 690px;">
-        <div class="titleContainer">
-            <div class="titleContent">
-                使用说明
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> API说明</span>
             </div>
         </div>
-        <div style="height: 140px;width: 690px;">
-            <div style="padding-left: 20px; padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-                <div style=" color:rgba(0,0,0,0.7)">
-                    第一步: 申请SMAP平台账号;
-                </div>
-                <div style=" color:rgba(0,0,0,0.7)">
-                    第二步: 拼接HTTP请求URL,请求方式为POST;
-                </div>
-                <div style="color:rgba(0,0,0,0.7)">
-                    第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
-                </div>
-                <div style="color:rgba(0,0,0,0.7)">
-                    如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="apiContainer"  style="height: 1950px" id="dailyList">
-    <div class="titleContainer">
-        <div class="titleContent">
-            获取可下载文件列表信息
-        </div>
-    </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            获取可下载文件列表信息 API服务地址
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/data/query
-            </div>
-        </div>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">服务地址：http://fs.navinfo.com/smapapi/data/query</p>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">请求方式：post</p>
     </div>
     <div class="apiParamContainer">
         <div class="apiRequireParamContainer">
@@ -97,22 +71,21 @@
             >
                 <thead>
                 <tr >
-                    <th data-field="paramName">参数名</th>
+                    <th data-field="paramName">参数</th>
                     <th data-field="type" >类型</th>
                     <th data-field="required" >是否必填</th>
                     <th data-field="description">说明</th>
                 </tr>
                 </thead>
             </table>
-            <span style="font-size: 14px;color: #74666c;">  注：如果不输入spec的参数，默认返回所有产品类别的文件列表</span>
-
         </div>
     </div>
+    <div style="width:678px;font-size: 12px;color: #e66a98;margin-top: 10px;padding-left: 20px;">注：如果不输入spec的参数，默认返回所有产品类别的文件列表。</div>
     <div class="apiParamContainer">
         <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;">返回结果</span>
+                <span style="font-size: 14px;color: #74666c;"> 返回结果</span>
             </div>
         </div>
         <div style="padding-left: 20px">
@@ -132,19 +105,20 @@
             </table>
         </div>
     </div>
+    <div class="apiParamContainer">
 
-    <div style="padding:40px 10px 20px 10px;width: 690px; height: 470px">
+    </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 308px">
         <div class="dotGrayDiv"></div>
         <div class="textDiv" style="padding-left: 0px ;">
             <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
         </div>
 
-        <div style="clear: both;padding-left: 10px">
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 240px;">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+        <div style="clear: both" ></div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;margin-right: 30px;margin-left: 10px;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #eafaf5;color: #33c993;line-height: 30px;font-size: 14px;">返回正确结果</div>
+            <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "data": {
     "ProductList": [
@@ -159,29 +133,28 @@
   "errcode": 200,
   "errmsg": "OK: Successful processing of the request"
 }
-                </textarea>
 
-            </div>
 
-                <!-- 错误结果 -->
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+            </textarea>
+        </div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #fcf0f4;color: #ff6699;line-height: 30px;font-size: 14px;">返回错误结果</div>
+             <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "code": "401",
   "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
   "msg": "Unauthorized: The requested resource needs authentication"
 }
-                </textarea>
-                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font> 这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
-
-            </div>
 
 
+            </textarea>
         </div>
     </div>
+    <div style="width:678px;font-size: 12px;color: #e66a98;margin-top: 10px;padding-left: 20px;">注: 这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</div>
+
+
+
+
 
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
@@ -191,12 +164,7 @@
             </div>
         </div>
         <div style="height: 16px;width: 690px;">
-<!--                <div style="height: 66px;width: 690px;">
-                <div class="apiServiceExampleIPContainer">
-                    <div class="apiServiceExampleIP">
-                        http://fs.navinfo.com/smapapi/data/query
-                    </div>
-                </div>-->
+
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
@@ -217,113 +185,14 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="dailyListResult()">运行</div>
+                <div class="apiButtonOfUndo" onclick="limitResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult(0)">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="dailyListContent"></textarea>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="apiContainer" id="dailyDownloadContainer">
-    <div class="titleContainer">
-        <div class="titleContent">
-            获取下载信息接口
-        </div>
-    </div>
-
-    <div style="height: 140px;width: 690px;">
-        <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-            <div style=" color:#000000">
-                说明: 获取日产品的下载信息.
-            </div>
-            <div style=" color:#000000">
-                请求方式: POST;
-            </div>
-            <div style="color:#000000">
-                返回格式: JSON格式数据;
-            </div>
-            <div style="color:#000000">
-                字符编码：接口的输入参数和输出数据编码全部统一为UTF-8;
-            </div>
-        </div>
-    </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            接口API服务地址：
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/data/download
-            </div>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="downloadRequireParam"
-                   data-toggle="table"
-                   data-url="../data/dailyDownloadRequireParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数名</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="required" >是否必填</th>
-                    <th data-field="description">说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-    <div class="apiParamContainer">
-        <div class="apiReturnParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 返回结果</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="ConstructionFeedbackReturnParam"
-                   data-toggle="table"
-                   data-url="../data/dailyDownloadReturnParam.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName1">一级参数</th>
-                    <th data-field="paramName2">二级参数</th>
-                    <th data-field="paramName3">三级参数</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="description">说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>
-
-    <div style="padding:40px 10px 20px 10px;width: 690px; height: 690px">
-        <div class="dotGrayDiv"></div>
-        <div class="textDiv" style="padding-left: 0px ;">
-            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
-        </div>
-
-        <div style="clear: both;padding-left: 10px">
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 450px;">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+                <textarea  readonly class="textContent" id="limitContent">
 {
   "data": {
     "download": {
@@ -348,31 +217,144 @@
   "errcode": 200,
   "errmsg": "OK: Successful processing of the request"
 }
+
+
                 </textarea>
-
             </div>
+        </div>
+    </div>
+</div>
 
-            <!-- 错误结果 -->
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
+
+
+
+
+
+
+
+
+<div class="apiContainer" id="instructions" style="height: 1850px">
+    <div class="titleContainer">
+        <div class="titleContent">
+            获取下载信息
+        </div>
+    </div>
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> API说明</span>
             </div>
-            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+        </div>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">服务地址：http://fs.navinfo.com/smapapi/data/download</p>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">请求方式：post</p>
+    </div>
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> 请求参数</span>
+            </div>
+        </div>
+        <div style="padding-left: 20px">
+            <table id="tableDailyRequire"
+                   data-toggle="table"
+                   data-url="../data/dailyCheckParam.js"
+            >
+                <thead>
+                <tr >
+                    <th data-field="paramName">参数</th>
+                    <th data-field="type" >类型</th>
+                    <th data-field="required" >是否必填</th>
+                    <th data-field="description">说明</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="apiParamContainer">
+        <div class="apiReturnParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> 返回结果</span>
+            </div>
+        </div>
+        <div style="padding-left: 20px">
+            <table id="dailyReturnTable"
+                   data-toggle="table"
+                   data-url="../data/dailyReturnCheckParam.js"
+            >
+                <thead>
+                <tr >
+                    <th data-field="paramName1">一级参数</th>
+                    <th data-field="paramName2">二级参数</th>
+                    <th data-field="paramName3">三级参数</th>
+                    <th data-field="type" >类型</th>
+                    <th data-field="description">说明</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="apiParamContainer">
+
+    </div>
+
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 308px">
+        <div class="dotGrayDiv"></div>
+        <div class="textDiv" style="padding-left: 0px ;">
+            <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
+        </div>
+
+        <div style="clear: both" ></div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;margin-right: 30px;margin-left: 10px;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #eafaf5;color: #33c993;line-height: 30px;font-size: 14px;">返回正确结果</div>
+            <textarea readonly style="width: 315px;height: 245px;resize: none">
+{
+  "data": {
+    "download": {
+      "file_md5": "3ed6d641f2c3f72a582b876549e4f340",
+      "file_name": "mifg_17sum_bj_d_9.csv",
+      "file_size": "170",
+      "file_type": "csv",
+      "url": "http://fs.navinfo.com/smapapi/data/download/file/idbg_17sum_bj_q_1.idbg.sq3.tar.gz?ak=E782445785fetch087mkde11&p1=idbg&p2=sqlite_17sum_bj_d_1&signature=CVskGmFCMBm0Pufg3H1G5g&expires=1492140507 "
+    },
+    "product": {
+      "format": "nimif-g",
+      "product_id": "MIFG_17SUM_D_BJ_CSV_0317_10",
+      "updateImportance": "General",
+      "updateType": "Increment",
+      "version": "17SUM"
+    },
+    "release": {
+      "provider": "CoreMap",
+      "create_time": "2017-03-20 21:05:06"
+    }
+  },
+  "errcode": 200,
+  "errmsg": "OK: Successful processing of the request"
+}
+
+            </textarea>
+        </div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #fcf0f4;color: #ff6699;line-height: 30px;font-size: 14px;">返回错误结果</div>
+             <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "code": "404",
   "data": " %E6%9C%AA%E6%89%BE%E5%88%B0%E8%AF%B7%E6%B1%82%E7%9A%84%E8%B5%84%E6%BA%90%EF%BC%8C%E8%AF%B7%E7%A1%AE%E8%AE%A4%EF%BC%81",
   "msg": "Not Found: The requested resource was not found"
 }
-                </textarea>
-                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font> 这里的描述是经过URL编码的，解码之后的意思是“未找到请求的资源，请确认！”</span>
-
-            </div>
-
-
+            </textarea>
         </div>
     </div>
+    <div style="width:678px;font-size: 12px;color: #e66a98;margin-top: 10px;padding-left: 20px;">注：这里的描述是经过URL编码的，解码之后的意思是“未找到请求的资源，请确认！</div>
 
-    <div class="apiParamContainer" style="clear: both">
+
+
+
+
+    <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
             <div class="dotGrayDiv"></div>
             <div class="textDiv" style="padding-left: 0px">
@@ -380,26 +362,20 @@
             </div>
         </div>
         <div style="height: 16px;width: 690px;">
-            <!--
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/data/download
-                </div>
-            </div>
-            -->
+
         </div>
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">ak</div>
-                <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="dailyparam1">
+                <div class="apiExampleParamList">ak</div>
+                <div class="apiInputWidth">
+                    <input readonly type="text" class="api_Input" value="E782445785fetch087mkde11">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
-                <div  class="apiExampleParamList">product_id</div>
-                <div style="width: 420px;float: right">
-                    <input type="text"  class="api_Input" id="dailyparam2">
+                <div class="apiExampleParamList">spec</div>
+                <div class="apiInputWidth">
+                    <input readonly type="text" class="api_Input" value="MIFG_17SUM_D_BJ_CSV_0317_10">
                 </div>
             </div>
         </div>
@@ -407,14 +383,40 @@
     <div class="apiResultContainer">
         <div style="padding: 10px 20px 20px 20px">
             <div class="apiResultButtonsContainer">
-                <div class="apiButtonOfUndo" onclick="dailyResult()">运行</div>
+                <div class="apiButtonOfUndo" onclick="limitResult()">运行</div>
                 <div style="float: left;padding: 0px 0px 0px 20px;width: 60px">
-                    <div class="apiButtonOfReset" onclick="resetResult(1)">重置</div>
+                    <div class="apiButtonOfReset" onclick="resetResult()">重置</div>
                 </div>
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="dailyContent"></textarea>
+                <textarea  readonly class="textContent">
+{
+  "data": {
+    "download": {
+      "file_md5": "3ed6d641f2c3f72a582b876549e4f340",
+      "file_name": "mifg_17sum_bj_d_9.csv",
+      "file_size": "170",
+      "file_type": "csv",
+      "url": "http://fs.navinfo.com/smapapi/data/download/file/idbg_17sum_bj_q_1.idbg.sq3.tar.gz?ak=E782445785fetch087mkde11&p1=idbg&p2=sqlite_17sum_bj_d_1&signature=CVskGmFCMBm0Pufg3H1G5g&expires=1492140507 "
+    },
+    "product": {
+      "format": "nimif-g",
+      "product_id": "MIFG_17SUM_D_BJ_CSV_0317_10",
+      "updateImportance": "General",
+      "updateType": "Increment",
+      "version": "17SUM"
+    },
+    "release": {
+      "provider": "CoreMap",
+      "create_time": "2017-03-20 21:05:06"
+    }
+  },
+  "errcode": 200,
+  "errmsg": "OK: Successful processing of the request"
+}
+
+                </textarea>
             </div>
         </div>
     </div>

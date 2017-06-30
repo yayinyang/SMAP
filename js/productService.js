@@ -14,40 +14,31 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             type: 'summary'
         },
         {
-            name: 'API参考手册',
-            flag: true,
-            type: 'referenceManual',
+            name: '数据服务型',
+            type: 'dataService',
             children: [
                 {
-                    name: '数据服务型',
-                    type: 'dataService',
-                    children: [
-                        {
-                            name: '日产品更新',
-                            type: 'Daily'
-                        }
-                    ]
+                    name: '日产品更新',
+                    type: 'Daily'
+                }
+            ]
+        },
+        {
+            name: '算法服务型',
+            type: 'algorithmService',
+            children: [
+                {
+                    name: '收费信息服务',
+                    type: 'Tollcost'
                 },
                 {
-                    name: '算法服务型',
-                    type: 'algorithmService',
-                    children: [
-                        {
-                            name: '收费信息服务',
-                            type: 'Tollcost'
-                        },
-                        {
-                            name: '道路施工服务',
-                            type: 'Construction'
-                        },
-                        {
-                            name: '限行限号服务',
-                            type: 'Limit'
-                        }
-                    ]
+                    name: '道路施工服务',
+                    type: 'Construction'
+                },
+                {
+                    name: '限行限号服务',
+                    type: 'Limit'
                 }
-
-
             ]
         },
         {
@@ -112,6 +103,18 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             }
             if (service.type === 'code') {
                 $('#apiPage').load('../pages/api/codeDescription.html');
+            }
+            if (service.type === 'Daily') {
+                $('#apiPage').load('../pages/api/getDailyInfomation.html');
+            }
+            if (service.type === 'Tollcost') {
+                $('#apiPage').load('../pages/api/getTollcostInfomation.html');
+            }
+            if (service.type === 'Construction') {
+                $('#apiPage').load('../pages/api/getConstructionInfomation.html');
+            }
+            if (service.type === 'Limit') {
+                $('#apiPage').load('../pages/api/getLimitInfomation.html');
             }
         } else {
             $scope.jumpHeight = 0;

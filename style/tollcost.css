@@ -14,14 +14,27 @@
     font-family: sans-serif;
 }
 .main_div .p1{
-    font-size: 22px;
+    font-size: 24px;
+    color: #74666c;
+    height: 40px;
+    line-height: 40px;
 }
+
 .main_div .fontColor{
     color: rgba(0,0,0,0.7);
 }
+/*.main_div .p2{*/
+    /*margin-bottom: 90px;*/
+    /*color: #666;*/
+/*}*/
 .main_div .p2{
-    margin-bottom: 90px;
-    color: #666;
+    font-size: 18px;
+    color: #74666c;
+    height: 40px;
+    line-height: 40px;
+    width: 370px;
+    border-bottom: 1px solid #74666C;
+    margin-bottom: 10px;
 }
 /*.main_div .p3>img{
     width: 40px;
@@ -71,9 +84,9 @@
     content: "";
     display: block;
     background-color: gray;
-    width: 6px;
-    height: 6px;
-    border-radius: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     position: relative;
     left: 0;
     top: -32px;
@@ -84,9 +97,9 @@
     content: "";
     display: block;
     background-color: gray;
-    width: 6px;
-    height: 6px;
-    border-radius: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     position: relative;
     left: 0;
     top: -14px;
@@ -108,6 +121,8 @@
 .main_div .p10{
     margin-bottom: 30px;
     position: relative;
+    font-size: 14px;
+    color: #74666c;
 }
 .main_div .p11{
     padding-left: 20px;
@@ -125,15 +140,17 @@
 }
 .icon::after{
     content: "";
-    background-image: url("../img/produceService/icon-259863.png");
+    /*background-image: url("../img/produceService/icon-259863.png");*/
+    background-color: gray;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     position: absolute;
     left: 0;
-    top: 0;
+    top: 5px;
     background-size:100% 80%;
-    background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
     transform: rotate(90deg);
 }
 .titleIcon::after{

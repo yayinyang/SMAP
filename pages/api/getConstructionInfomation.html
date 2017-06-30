@@ -2,17 +2,12 @@
 <script src="../lib/bootstrapTable/bootstrap-table.js"></script>
 <script src="../js/api/getConstructionInfomation.js"></script>
 
-<div style="height: 130px;" id="constructionInfo">
-    <div class="titleContainer">
-        <div class="titleContent">
-            施工道路信息
+<div style="height: 40px;margin-top: 20px;margin-bottom: 20px" id="constructionInfo">
+
+        <div class="titleContentbig">
+            道路施工服务
         </div>
-    </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
-            最后更新时间:2017年04月09日
-        </div>
-    </div>
+
 </div>
 <div style="height: 310px;" id="apiExplain">
     <div class="titleContainer">
@@ -21,77 +16,42 @@
         </div>
     </div>
     <div style="height: 120px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
-            <div style="text-indent: 2em">
+        <div style="padding: 20px 0px 0px 11px; font-size: 14px; color: rgba(0,0,0,0.8);line-height: 30px">
+            <div style="text-indent: 2em;margin-bottom: 26px;">
                 施工道路服务API是一组支持最新施工道路信息查询、历史记录查询等功能的服务接口，能够实时快速的提供当前最新的施工道路信息的数据。内容包括：获取最新施工道路信息API、获取历史时间段的施工道路信息API等。
             </div>
-            <div>
+            <div style="margin-bottom: 26px;">
+                <div class="dotGrayDivtop"></div>
                 最新施工信息API：根据用户的上次登录时间，计算出截止目前为止的所有最新的增量施工道路信息。
             </div>
             <div>
+                <div class="dotGrayDivtop"></div>
                 历史施工信息API：输入起始时间和中止时间，时间段不超过7天的数据，服务接口返回此时间段的所有的施工道路信息。
             </div>
 
-            <!--获取施工道路信息API是一类以HTTP形似提供的服务接口。
-            返回JSON格式的查询数据,用于获取施工道路信息的开发功能。-->如需开发使用API,请先申请SMap平台账号。
         </div>
     </div>
 </div>
-<div style="height: 130px;" id="useCase">
-    <div class="titleContainer">
-        <div class="titleContent">
-            适用场景
-        </div>
-    </div>
-    <div style="height: 90px;width: 690px;">
-        <div style="padding: 20px 0px 0px 20px; font-size: 14px; color: rgba(0,0,0,0.8);">
-            待补充
-        </div>
-    </div>
-</div>
-<div style="height: 180px;" id="instructions">
-    <div style="background: #cec9c9;width: 690px;">
-        <div class="titleContainer">
-            <div class="titleContent">
-                使用说明
-            </div>
-        </div>
-        <div style="height: 140px;width: 690px;">
-            <div style="padding-left: 20px; padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-                <div style=" color:rgba(0,0,0,0.7)">
-                    第一步: 申请SMAP平台账号;
-                </div>
-                <div style=" color:rgba(0,0,0,0.7)">
-                    第二步: 拼接HTTP请求URL,请求方式为POST;
-                </div>
-                <div style="color:rgba(0,0,0,0.7)">
-                    第三步: 接收HTTP请求返回的JSON格式数据,解析数据;
-                </div>
-                <div style="color:rgba(0,0,0,0.7)">
-                    如无特殊声明,接口的输入参数和输出数据编码全部统一为UTF-8;
-                </div>
-            </div>
-        </div>
-    </div>
 
-</div>
-<div class="apiContainer" id="constructionNumber" style="height: 2150px">
+
+
+
+
+<div class="apiContainer" id="useCase" style="height: 1850px">
     <div class="titleContainer">
         <div class="titleContent">
-            获取最新的施工道路信息
+            最新施工信息
         </div>
     </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            获取施工道路信息API服务地址
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/construction.json
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> API说明</span>
             </div>
         </div>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">服务地址: http://fs.navinfo.com/smapapi/construction.json</p>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">请求方式：post</p>
     </div>
     <div class="apiParamContainer">
         <div class="apiRequireParamContainer">
@@ -141,33 +101,19 @@
         </div>
     </div>
     <div class="apiParamContainer">
-        <!--
-        <div class="apiReturnParamContainer">
 
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 访问成功返回值</span>
-            </div>
-        </div>
-         <div style="padding-left: 20px">
-            <span style="font-size: 14px;color: #74666c;">当前时间最新的施工道路的csv文件。文件编码采用UTF-8 无BOM格式。</span>
-
-        </div>
-        -->
     </div>
 
-    <div style="padding:40px 10px 20px 10px;width: 690px; height: 600px">
+    <div style="padding:40px 10px 20px 10px;width: 690px; height: 308px">
         <div class="dotGrayDiv"></div>
         <div class="textDiv" style="padding-left: 0px ;">
             <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
         </div>
 
-        <div style="clear: both;padding-left: 10px">
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 320px;">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+        <div style="clear: both" ></div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;margin-right: 30px;margin-left: 10px;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #eafaf5;color: #33c993;line-height: 30px;font-size: 14px;">返回正确结果</div>
+            <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "data": [
     {
@@ -186,30 +132,23 @@
   "code": 200,
   "msg": "OK: Successful processing of the request"
 }
+
+
                 </textarea>
-
-            </div>
-
-            <!-- 错误结果 -->
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 150px;padding-right: 0">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+        </div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #fcf0f4;color: #ff6699;line-height: 30px;font-size: 14px;">返回错误结果</div>
+            <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "code": "401",
   "data": "%E7%94%A8%E6%88%B7%E5%AF%86%E9%92%A5%E4%B8%8D%E5%AD%98%E5%9C%A8%EF%BC%8C%E8%AF%B7%E6%A3%80%E6%9F%A5",
   "msg": "Unauthorized: The requested resource needs authentication"
 }
 
-                </textarea>
-                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font>这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</span>
-
-            </div>
-
-
+            </textarea>
         </div>
     </div>
+    <div style="width:678px;font-size: 12px;color: #e66a98;margin-top: 10px;padding-left: 20px;">注: 这里的描述是经过URL编码的，解码之后的意思是“用户密钥不存在，请检查”。</div>
 
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
@@ -218,21 +157,15 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 16px;width: 690px;">
-<!--
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/construction.csv
-                </div>
-            </div>
--->
-        </div>
+
+        <div style="height: 16px;width: 690px;"></div>
+
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
-                <div class="apiExampleParamList">ak</div>
-                <div class="apiInputWidth">
-                    <input type="text" class="api_Input" id="ak">
+                <div  class="apiExampleParamList">ak</div>
+                <div style="width: 445px;float: right">
+                    <input type="text"  class="api_Input" id="ak">
                 </div>
             </div>
         </div>
@@ -247,46 +180,63 @@
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="constructionContent"></textarea>
+                <textarea readonly class="textContent" id="limitContent">
+{
+  "data": [
+    {
+      "no": 1,
+      "link_pid": 40014293,
+      "geometry_link": "LINESTRING (116.42809 39.53643, 116.42817 39.53611, 116.42829 39.53561)",
+      "construction_dir": 1,
+      "admin_id": 110115,
+      "desc": "道路施工",
+      "time_domain": "[(y2017M5d15)(y2022M5d15)]",
+      "version": 17Q2,
+      "sources": 1,
+      "link_change": 1
+    },
+    {
+      "no": 2,
+      "link_pid": 71372981,
+      "geometry_link": "LINESTRING (116.47101 39.6138, 116.47083 39.61372, 116.47074 39.61369, 116.47052 39.61362, 116.47045 39.61361, 116.47042 39.6136, 116.47019 39.61356)",
+      "construction_dir": 2,
+      "admin_id": 110115,
+      "desc": "道路施工",
+      "time_domain": "[(y2017M5d15)(y2022M5d15)]",
+      "version": 17Q2,
+      "sources": 1,
+      "link_change": 1
+    }
+  ],
+  "code": 200,
+  "msg": "OK: Successful processing of the request"
+}
+
+                </textarea>
             </div>
         </div>
     </div>
 </div>
-<div class="apiContainer" id="timequantum">
+
+<div style="clear: both"></div>
+
+<div class="apiContainer" id="instructions">
     <div class="titleContainer">
         <div class="titleContent">
             历史施工信息
         </div>
     </div>
+    <div class="apiParamContainer">
+        <div class="apiRequireParamContainer">
+            <div class="dotGrayDiv"></div>
+            <div class="textDiv" style="padding-left: 0px">
+                <span style="font-size: 14px;color: #74666c;"> API说明</span>
+            </div>
+        </div>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">API地址 http://fs.navinfo.com/smapapi/construction/timequantum.json</p>
+        <p style="font-size: 14px;color:#74666C;padding-left: 40px;box-sizing: border-box;">请求方式：post</p>
+    </div>
 
-    <div style="height: 140px;width: 690px;">
-        <div style="padding-left: 20px;padding-top: 20px; font-size: 14px; color: #74666c;line-height: 30px">
-            <div style=" color:#000000">
-                说明: 输入起始时间和中止时间，时间段不超过7天的数据，服务接口返回此时间段的所有的施工道路信息。
-            </div>
-            <div style=" color:#000000">
-                请求方式: POST;
-            </div>
-            <div style="color:#000000">
-                返回格式: JSON格式数据;
-            </div>
-            <div style="color:#000000">
-                字符编码：接口的输入参数和输出数据编码全部统一为UTF-8;
-            </div>
-        </div>
-    </div>
-    <div class="apiDescriptionContainer">
-        <div class="apiDescription">
-            历史施工信息API服务地址：
-        </div>
-    </div>
-    <div class="apiIPContainer">
-        <div class="apiIP">
-            <div class="apiIPName">
-                http://fs.navinfo.com/smapapi/construction/timequantum.json
-            </div>
-        </div>
-    </div>
     <div class="apiParamContainer">
         <div class="apiRequireParamContainer">
             <div class="dotGrayDiv"></div>
@@ -311,30 +261,7 @@
             </table>
         </div>
     </div>
-<!--    <div class="apiParamContainer">
-        <div class="apiRequireParamContainer">
-            <div class="dotGrayDiv"></div>
-            <div class="textDiv" style="padding-left: 0px">
-                <span style="font-size: 14px;color: #74666c;"> 请求http body</span>
-            </div>
-        </div>
-        <div style="padding-left: 20px">
-            <table id="ConstructionFeedbackRequireBody"
-                   data-toggle="table"
-                   data-url="../data/ConstructionFeedbackRequireBody.js"
-            >
-                <thead>
-                <tr >
-                    <th data-field="paramName">参数</th>
-                    <th data-field="type" >类型</th>
-                    <th data-field="required" >是否必须</th>
-                    <th data-field="default" >缺省值</th>
-                    <th data-field="description">说明</th>
-                </tr>
-                </thead>
-            </table>
-        </div>
-    </div>-->
+
     <div class="apiParamContainer">
         <div class="apiReturnParamContainer">
             <div class="dotGrayDiv"></div>
@@ -365,12 +292,10 @@
             <span style="font-size: 14px;color: #74666c;">返回结果示例</span>
         </div>
 
-        <div style="clear: both;padding-left: 10px">
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回正确结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 320px;">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;" >
+        <div style="clear: both" ></div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;margin-right: 30px;margin-left: 10px">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #eafaf5;color: #33c993;line-height: 30px;font-size: 14px;">返回正确结果</div>
+                <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "data": [
     {
@@ -389,29 +314,23 @@
   "code": 200,
   "msg": "OK: Successful processing of the request"
 }
-                </textarea>
-
-            </div>
-
-            <!-- 错误结果 -->
-            <div style="padding:16px 0 8px 20px;">
-                <span style="font-size: 12px;color: #74666c;">返回错误结果：</span>
-            </div>
-            <div class="apiResultOfContainer" style="height: 140px;padding-right: 0">
-                <textarea readonly class="textContent" style="outline:none;resize:none;border-radius: 5px;padding-left: 8px;padding-right: 0">
+            </textarea>
+        </div>
+        <div style="float: left;width: 320px;height: 280px;border: 1px solid #d5d1d3;">
+            <div style="height: 30px;text-align: center;font-weight: normal;background: #fcf0f4;color: #ff6699;line-height: 30px;font-size: 14px;">返回错误结果</div>
+            <textarea readonly style="width: 315px;height: 245px;resize: none">
 {
   "code": "401",
   "data": "%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94%E5%B7%B2%E7%BB%8F%E8%B6%85%E8%BF%877%E5%A4%A9%EF%BC%8C%E8%AF%B7%E9%87%8D%E6%96%B0%E8%BE%93%E5%85%A5%EF%BC%81",
   "msg": "Unauthorized: The requested resource needs authentication"
 }
-                </textarea>
-                <span style="font-size: 12px;color: #74666c;"><font color="red">注：</font>这里的描述是经过URL编码的，解码之后的意思是“时间间隔已经超过7天，请重新输入！”。规定，访问历史记录的时间间隔不能超过7天</span>
 
-            </div>
-
-
+            </textarea>
         </div>
     </div>
+</div>
+<div style="clear: both"></div>
+<div style="width:677px;font-size: 12px;color: #e66a98;margin-top: 10px;padding-left: 20px;">注：这里的描述是经过URL编码的，解码之后的意思是“时间间隔已经超过7天，请重新输入！”。规定，访问历史记录的时间间隔不能超过7天。</div>
 
     <div class="apiParamContainer">
         <div class="apiServiceExampleContainer">
@@ -420,32 +339,26 @@
                 <span style="font-size: 14px;color: #74666c;"> 服务示例</span>
             </div>
         </div>
-        <div style="height: 16px;width: 690px;">
-            <!--
-            <div class="apiServiceExampleIPContainer">
-                <div class="apiServiceExampleIP">
-                    http://fs.navinfo.com/smapapi/construction/feedback
-                </div>
-            </div>
-            -->
-        </div>
+
+        <div style="height: 16px;width: 690px;"></div>
+
         <div class="apiExampleRequireParam">请求参数</div>
         <div style="width: 690px;padding: 0px 100px 0px 64px">
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">ak</div>
-                <div style="width: 420px;float: right">
+                <div style="width: 445px;float: right">
                     <input type="text"  class="api_Input" id="timequantumAk">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">startTime</div>
-                <div style="width: 420px;float: right">
+                <div style="width: 445px;float: right">
                     <input type="text"  class="api_Input" id="startTime">
                 </div>
             </div>
             <div class="apiExampleRequireParamContainer">
                 <div  class="apiExampleParamList">endTime</div>
-                <div style="width: 420px;float: right">
+                <div style="width: 445px;float: right">
                     <input type="text"  class="api_Input" id="endTime">
                 </div>
             </div>
@@ -461,7 +374,39 @@
             </div>
             <div class="apiShowResultName">返回结果</div>
             <div class="apiResultOfContainer" >
-                <textarea class="textContent" id="timequantumContent"></textarea>
+                <textarea readonly class="textContent" id="limitContent">
+{
+  "data": [
+    {
+      "no": 1,
+      "link_pid": 40014293,
+      "geometry_link": "LINESTRING (116.42809 39.53643, 116.42817 39.53611, 116.42829 39.53561)",
+      "construction_dir": 1,
+      "admin_id": 110115,
+      "desc": "道路施工",
+      "time_domain": "[(y2017M5d15)(y2022M5d15)]",
+      "version": 17Q2,
+      "sources": 1,
+      "link_change": 1
+    },
+    {
+      "no": 2,
+      "link_pid": 71372981,
+      "geometry_link": "LINESTRING (116.47101 39.6138, 116.47083 39.61372, 116.47074 39.61369, 116.47052 39.61362, 116.47045 39.61361, 116.47042 39.6136, 116.47019 39.61356)",
+      "construction_dir": 2,
+      "admin_id": 110115,
+      "desc": "道路施工",
+      "time_domain": "[(y2017M5d15)(y2022M5d15)]",
+      "version": 17Q2,
+      "sources": 1,
+      "link_change": 1
+    }
+  ],
+  "code": 200,
+  "msg": "OK: Successful processing of the request"
+}
+
+                </textarea>
             </div>
         </div>
     </div>

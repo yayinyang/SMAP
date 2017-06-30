@@ -24,14 +24,14 @@ App.Config = {
     checkServiceUrl:App.checkServer.release.checkServiceUrl,
     platelimit: 'type=6&parm=0', //限行限号初始化数据为其他限行方式
     daily:{//日产品更新服务URL
-        ak:"E503475785fetch009ycde25",
+        ak:"E782445785fetch087mkde11",
         queryUrl:"http://fs.navinfo.com/smapapi/data/query",
         downloadUrl:"http://fs.navinfo.com/smapapi/data/download"
     },
     tollcost:{//收费信息服务URL
         ak:"HeHQ4X-sxhhsRyHiSaORnQ",
         tollcostUrl:"http://fs.navinfo.com/smapapi/tollgate/cost",
-        feedbackUrl:"http://fs.navinfo.com/smapapi/tollgate/feedback"
+        feedbackUrl:"http://fs.navinfo.com/smapapi/tollgate/feedback",
     },
     construction:{//施工道路服务URL
         constructionAk:"E505645785fetch087ycde71",
