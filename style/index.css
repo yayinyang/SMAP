@@ -677,3 +677,23 @@ tr>td {
         background-size:cover;
     }
 }
+/**************************返回顶部*******************************/
+#backToTop{
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 50;
+    width: 40px;
+    height:40px;
+    display: none;
+    cursor: pointer;
+    background-size: cover;
+    background-image: url("../img/button_totop_normal.png");
+}
+#backToTop:hover{
+    background-image: url("../img/button_totop_active.png");
+}
+#backToTop:active{
+    background-image: url("../img/button_totop_active.png");
+
+}

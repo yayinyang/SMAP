@@ -3382,21 +3382,21 @@ var constructionLayer ={
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
         },
         {
-            id: 'construction_Layer',
-            type: 'symbol',
-            interactive: true,
+            "id": "construction_Layer",
+            "type": "symbol",
+            "interactive": true,
             "source" : "construction",
-            'source-layer': 'construction',
-            minzoom: 0,
-            maxzoom: 17.1,
-            layout:
+            "source-layer": "construction",
+            "minzoom": 0,
+            "maxzoom": 17.1,
+            "layout":
                 {
-                    'icon-image': 'constructionIcon',
-                    'icon-size': 0.4,
+                    "icon-image": "constructionIcon",
+                    "icon-size": 0.4,
                 },
-            paint:
+            "paint":
                 {
-                    'icon-color': '#ff2d2d',
+                    "icon-color": "#ff2d2d",
                 },
 
         }]
