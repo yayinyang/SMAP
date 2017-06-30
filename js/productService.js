@@ -57,15 +57,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             id: 'apiExplain'
         },
         {
-            name: '适用场景',
-            id: 'useCase'
-        },
-        {
-            name: '使用说明',
-            id: 'instructions'
-        },
-        {
-            name: '获取施工信息',
+            name: '最新施工信息',
             id: 'constructionNumber'
         },
         {
@@ -77,7 +69,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
     $scope.jumpFlag = '';
     $scope.arrowFlag = true;
     $scope.jumpHeight = {
-        height: '180px'
+        height: '120px'
     };
     $scope.changeDataApiPage = function (parentName,type, name) {
         $scope.arrowFlag = true;
@@ -173,8 +165,10 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
         for (var i = 0; i < apiPage.children.length; i++) {
             if(apiPage.children[i].nodeName==='DIV'){
                 tegArr[j] = apiPage.children[i].getAttribute('id');
-                indexPosition[j] = $('#' + tegArr[j]).position().top - 40;
-                j++
+                if(tegArr[j]){
+                    indexPosition[j] = $('#' + tegArr[j]).position().top - 40;
+                    j++
+                }
             }
         }
         if(bodyHeight <= 1000){ //不满足滚动条件
