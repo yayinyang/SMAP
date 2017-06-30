@@ -264,7 +264,7 @@ productServiceApp.constant('JumpConstant', {
             id: 'useCase'
         },
         {
-            name: '用户反馈',
+            name: '用户反馈接口',
             id: 'feedbackContainer'
         }
     ],
@@ -298,25 +298,18 @@ productServiceApp.constant('JumpConstant', {
             id: 'apiExplain'
         },
         {
-            name: '适用场景',
+            name: '最新施工信息',
             id: 'useCase'
         },
         {
-            name: '使用说明',
+            name: '历史施工信息',
             id: 'instructions'
         },
-        {
-            name: '获取施工信息',
-            id: 'constructionNumber'
-        },
-        {
-            name: '历史施工信息',
-            id: 'timequantum'
-        }
+
     ],
     Daily: [
         {
-            name: '日出品信息',
+            name: '日产品信息',
             id: 'apiName'
         },
         {
@@ -324,20 +317,12 @@ productServiceApp.constant('JumpConstant', {
             id: 'apiExplain'
         },
         {
-            name: '适用场景',
+            name: '查询下载列表',
             id: 'useCase'
         },
         {
-            name: '使用说明',
+            name: '获取下载信息',
             id: 'instructions'
-        },
-        {
-            name: '获取下载列表',
-            id: 'dailyList'
-        },
-        {
-            name: '下载信息接口',
-            id: 'dailyDownloadContainer'
         }
     ],
     Limit: [
@@ -349,16 +334,16 @@ productServiceApp.constant('JumpConstant', {
             name: 'API介绍',
             id: 'apiExplain'
         },
+        //{
+        //    name: '适用场景',
+        //    id: 'useCase'
+        //},
+        //{
+        //    name: '使用说明',
+        //    id: 'instructions'
+        //},
         {
-            name: '适用场景',
-            id: 'useCase'
-        },
-        {
-            name: '使用说明',
-            id: 'instructions'
-        },
-        {
-            name: '获取最新信息',
+            name: '最新限行信息',
             id: 'limitNumber'
         }/*,
         {

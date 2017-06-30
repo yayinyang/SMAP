@@ -1,5 +1,5 @@
 .apiContainer {
-    height: 1350px;
+    height: 0px;
     padding-top: 20px;
 }
 .apiNameContainer {
@@ -41,6 +41,9 @@
 }
 .apiParamContainer{
     width: 690px;
+}
+.apiinofContainer {
+    padding: 40px 10px 20px 10px
 }
 .apiRequireParamContainer {
     padding: 20px 10px;
@@ -89,11 +92,11 @@
 .apiResultButtonsContainer {
     height: 24px;
     width: 140px;
-    padding-left: 19px;
+    padding-left: 528px;
 }
 .apiButtonOfUndo{
     float: left;
-    background-color: #74666c;
+    background-color: #5de1b5;
     height: 24px;
     width: 60px;
     text-align: center;
@@ -128,25 +131,38 @@
     cursor: pointer;
 }
 .apiShowResultName {
-    height: 16px;
-    padding: 16px 0px 10px 19px;
+    height: 30px;
+    padding: 0px 0px 0px 20px;
     color: rgba(109, 118, 150, 0.8);
+    line-height: 30px;
+    margin-top: 10px;
 }
 .apiResultOfContainer {
-    height: 210px;
-    width: 650px;
+    height: 280px;
+    width: 664px;
     /*border: 1px solid #bdc3d3;*/
 }
 .titleContainer{
+    height: 40px;
     height: 18px;
     width: 240px;
     border-bottom: 1px solid #74666c;
-    padding: 16px 0px 6px 20px;
+    padding: 0px 0px 0px 20px;
+
+}
+.titleContentbig {
+    height: 40px;
+    line-height: 40px;
+    color: #74666c;
+    font-size: 24px;
+    padding-left: 20px;
 }
 .titleContent{
+    height: 40px;
     font-size: 18px;
     color: #74666c;
-    line-height: 18px;
+    line-height: 40px;
+    font-weight: bold;
 }
 .textContent {
     height: 100%;
@@ -154,15 +170,15 @@
     font-size: 14px;
 }
 .apiInputWidth {
-    padding-left: 40px;
-    width: 400px;
-    float: left;
+    /*padding-left: 40px;*/
+    width: 445px;
+    float: right;
 }
 .api_Input {
     border-radius: 4px;
     color: #000000;
     font-size: 14px;
-    width: 440px;
+    width: 540px;
     height: 30px;
     display: inline-block;
     box-shadow: none;

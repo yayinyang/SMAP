@@ -276,6 +276,15 @@ span{
     width: 12px;
     height: 12px;
 }
+.dotGrayDivtop{
+    padding-top:7px;
+    float: left;
+    background: url('../img/productWarehouse/grayIcon.png') no-repeat  50% 50%;
+    width: 10px;
+    height: 25px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
 .dotGrayDiv{
     float: left;
     background: url('../img/productWarehouse/grayIcon.png') no-repeat  50% 50%;
@@ -603,6 +612,7 @@ tr>td {
     width: 100px;
     background-color: rgba(233, 235, 240, 0.81);
     z-index: 50;
+    top: 119px;
 }
 .jumpStyle {
     float: left;
