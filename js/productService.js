@@ -13,7 +13,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             type: 'summary'
         },
         {
-            name: '数据服务型',
+            name: 'API参考手册-数据服务型',
             type: 'dataService',
             children: [
                 {
@@ -23,7 +23,7 @@ productServiceApp.controller('selectedController',function ($scope,JumpConstant)
             ]
         },
         {
-            name: '算法服务型',
+            name: 'API参考手册-算法服务型',
             type: 'algorithmService',
             children: [
                 {

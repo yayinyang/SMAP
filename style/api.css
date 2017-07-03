@@ -96,7 +96,7 @@
 }
 .apiButtonOfUndo{
     float: left;
-    background-color: #5de1b5;
+    background-color: #e66a98;
     height: 24px;
     width: 60px;
     text-align: center;
@@ -120,7 +120,8 @@
     cursor: pointer;
 }
 .apiButtonOfReset {
-    background-color: #e66a98;
+    background-color: #5de1b5;
+
     height: 24px;
     text-align: center;
     font-size: 14px;
