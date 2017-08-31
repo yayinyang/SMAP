@@ -5,7 +5,7 @@ var App = {};
 
 App.dev={
     host:'123.207.83.126:8088'
-  //  host:'192.168.15.41:9999'
+   // host:'192.168.15.41:9999'
 };
 App.checkServer = {
     dev:{
@@ -19,7 +19,7 @@ App.checkServer = {
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-   // appRoot:'http://localhost:63342/SMAP',
+    //appRoot:'http://localhost:63342/SMAP',
     appRoot: 'http://fs.navinfo.com/smap',
     mapboxToken:'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',
     checkServiceUrl:App.checkServer.release.checkServiceUrl,
