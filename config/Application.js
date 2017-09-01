@@ -5,6 +5,7 @@ var App = {};
 
 App.dev={
     host:'123.207.83.126:8088'
+   // host:'192.168.15.41:9999'
 };
 App.checkServer = {
     dev:{
@@ -35,10 +36,15 @@ App.Config = {
     },
     construction:{//施工道路服务URL
         constructionAk:"E505645785fetch087ycde71",
+        constructionUsername:"DIDI_CON_INC_TEST",
+        constructionPassword:"E505645785fetch087ycde71",
+        constructionPageNum:1,
         constructionUrl:"http://fs.navinfo.com/smapapi/construction.json",
-        timequantumAk:'E5054opi85fet472087yc56ew',
-        timequantumStartTime:"2017-05-25+08%3A04%3A50",
-        timequantumEndTime:"2017-05-26+20%3A04%3A50",
+        timequantumUsername:'DIDI_CON_INC_TEST',
+        timequantumPassword:'E505645785fetch087ycde71',
+        timequantumStartTime:"2017-05-21+20%3A04%3A50",
+        timequantumEndTime:"2017-05-23+20%3A04%3A50",
+        timequantumPageNum:1,
         timequantumUrl:"http://fs.navinfo.com/smapapi/construction/timequantum.json"
     },
     limit:{//限行限号服务URL
