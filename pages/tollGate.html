@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tollGate">
+<head>
+    <meta charset="UTF-8">
+    <!-- build:css ../style/onlineUse.css -->
+
+    <link href='../lib/mapbox/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../lib/switch/pageSwitch.min.css">
+    <link rel="stylesheet" href="../style/index.css">
+    <link rel="stylesheet" href="../style/onlineMap.css">
+    <!-- endbuild -->
+
+    <!--[if lt IE 10]>
+    <link rel="stylesheet" href="../style/ie9.css">
+    <![endif]-->
+
+        <title>SMap</title>
+</head>
+<body  ng-controller="tollGateController" style="overflow-y: scroll;" ng-keypress="GoSearch($event)">
+<nav-bar loc="locFlag"></nav-bar>
+<div class ="content">
+    <div style="height: 56px;text-align: left;font-weight: 400;">
+        <div style="width: 740px;">
+            <div style="height: 56px;">
+                <div style="float: left; padding: 20px 0 0 0">
+                    <span style="font-size: 14px; color:rgba(0,0,0,0.7)">您现在的位置:</span>
+                </div>
+                <div style="float: left;  padding: 13px 0 0 0 " id="navigation">
+                    <ul style="list-style-type: none;">
+                        <li><a href="#">在线体验</a></li>
+                        <li style="font-size: 20px">></li>
+                        <li><a href="#" id="apiType">收费信息查询</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="onlineMap" style="clear: both">
+        <div class=" leftSearchDiv">
+            <div style="width: 280px;background-color: #ffffff; box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);">
+                <div class="input-group btn-group">
+                    <button
+                        class="btn searchbar-exchange"
+                        type="button"
+                     >
+                        <img  ng-click="exChangeInput()" src="../img/onlineMap/searchbar_change.png">
+                    </button>
+                    <input type="text"
+                           placeholder="请输入起点收费站"
+                           class="searchbar placeholderStyle "
+                           ng-model="startTollGate"
+                           ng-change="PreSearchStartTollGate('change')"
+                           ng-focus="PreSearchStartTollGate('focus')"
+                           style="background-image:url('../img/onlineMap/startingpoint.png'); border-bottom:1px solid #d0e4ff;"
+                    >
+                    <img
+                            class="empty-input"
+                            id="emptyStartStation"
+                            ng-click="emptyInput('startStation')"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                    <input type="text"
+                           placeholder="请输入终点收费站"
+                           class="searchbar placeholderStyle"
+                           ng-style="endStationStyle"
+                           ng-model="endTollGate"
+                           ng-change="PreSearchEndTollGate('change')"
+                           ng-focus="PreSearchEndTollGate('focus')"
+                           style="background-image:url('../img/onlineMap/finishingpoint.png');"
+                    >
+                    <img    class="deleteBtn"
+                            ng-class="{true: 'showDeleteBtn', false: 'hideDeleteBtn'}[endTollGate.length !== 0]"
+                            id="emptyEndStation"
+                            ng-click="emptyInput('endStation')"
+                            src="../img/onlineMap/searchbar_close.png"
+                    >
+                </div>
+
+                <button
+                        class="btn searchbtn"
+                        ng-click="getLinksFromStartToEnd()"
+                >搜索
+                </button>
+            </div>
+            <div class="searchResultList" ng-if="!isReadySearchFlag">
+                <ul>
+                    <li
+                            class="searchResult"
+                            ng-style="searchResult"
+                            ng-repeat="tollGate  in tollGateArr"
+                            ng-click="getKeywordFromPreSearch(tollGate)"
+                    >
+                        <span class="logo"></span>
+                        <div class="resultStation" ng-bind="tollGate.name"></div>
+                        <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
+                    </li>
+                </ul>
+                <div class="noSearchResult" ng-style="noSearchResult">
+                    <span class="logo"></span>
+                    <span class="noResult" ng-bind="printNotice"></span>
+                </div>
+            </div>
+            <div class="searchResultList" ng-if="isReadySearchFlag">
+                <div class="noSearchResult" style="height: 32px;padding: 0 10px;"
+                     ng-style="chooseTollGate">
+                    <div style="border-bottom: 1px solid #d0e4ff;">
+                        <span class="logo" style="width:18px;background-position:left;"></span>
+                        <span class="noResult" ng-bind="printNotice"></span>
+                    </div>
+                </div>
+                <ul>
+                    <li
+                            class="searchResult"
+                            ng-style="searchResult"
+                            ng-repeat="tollGate  in tollGateArr"
+                            ng-click="getPidFromSearch(tollGate,$index)"
+                    >
+                        <span class="logo" style="background:none;font-size: 12px;text-align: center;line-height: 30px">{{$index+1}}.</span>
+                        <div class="resultStation" ng-bind="tollGate.name"></div>
+                        <div class="stationLocation" ng-bind="tollGate.admin_name"></div>
+                    </li>
+                </ul>
+                <div class="noSearchResult" ng-style="noSearchResult">
+                    <span class="logo"></span>
+                    <span class="noResult" ng-bind="printNotice"></span>
+                </div>
+                <div class="paging" ng-style="paging">
+                    <div>
+                        <div class="pageNum">
+                            <span ng-bind="resultPageNum+1"></span>
+                            <span>/</span>
+                            <span ng-bind="resultPageTotal + '页'"></span>
+                        </div>
+
+                        <div class="toPage">
+                            <button
+                                    ng-class="{ true: 'toFirstPageDisabled',  false: 'toFirstPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(0)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'tolastPageDisabled',  false: 'tolastPage'}
+                                    [resultPageNum === 0]"
+                                    ng-click="turnToPage(-1)"
+                                    ng-disabled="resultPageNum === 0"
+                            >
+                            </button>
+                            <button
+                                    ng-class="{ true: 'toNextPageDisabled',  false: 'toNextPage'}
+                                    [(resultPageNum + 1) === resultPageTotal]"
+                                    ng-click="turnToPage(1)"
+                                    ng-disabled="(resultPageNum + 1) === resultPageTotal"
+                            >
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="selectedDiv">
+            <div class="nowCity" ng-style="nowCity" ng-click="showChoosedCity('nowCity')">
+                <span ng-bind="nowProvince"></span>
+            </div>
+            <div class="choosedCity" ng-style="choosedCity">
+                <span ng-bind="nowProvince"></span>
+                <img class="hideCityList" ng-click="showChoosedCity('choosedCity')" src="../img/onlineMap/arrow_active.png">
+            </div>
+            <div class="cityList" ng-style="cityList">
+                <div class="cityFirstLetterList" >
+                    <ul class="allFirstLetters ">
+                        <li class="firstLetter" ng-repeat="item in captureArr" ng-click="goCapture(item)">{{item}}</li>
+                    </ul>
+                </div>
+                <div class="allCities">
+                    <ul class="allCitiesList">
+                        <li ng-repeat=" firstObj in provinceArr">
+                            <a class="indexLetter" id=capture{{firstObj.capture}} ng-bind="firstObj.capture" ></a>
+                            <span class="citiesBox">
+                                <ul>
+                                    <li ng-repeat="secondObj in firstObj.children" ng-click="locationProvince(secondObj)">
+                                        <span ng-bind="secondObj.name"></span>
+                                    </li>
+                                </ul>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="map" ng-click="emptyTollGate()">
+            <div class="changeMapSizeDiv">
+                <button class="addBtn" ng-click="changeZoom('add')"></button>
+                <button class="subBtn" ng-click="changeZoom('sub')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- build:js ../js/onlineUse.js -->
+<script src='../lib/mapbox/mapbox-gl.js'></script>
+<script src="../config/Application.js"></script>
+<script src='../lib/turf/turf.min.js'></script>
+<script src="../config/layer.js"></script>
+<script src="../config/peovince.js"></script>
+<script src="../lib/jquery/jquery.js"></script>
+<script src="../lib/bootstrap/js/bootstrap.js"></script>
+<script src="../lib/switch/pageSwitch.min.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/menu.js"></script>
+<script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../lib/angular-popups/angular-popups.js"></script>
+<script src="../lib/angular-nvd3/d3.js"></script>
+<script src="../lib/angular-nvd3/nv.d3.js"></script>
+<script src="../lib/angular-nvd3/angular-nvd3.js"></script>
+<script src="../config/Application.js"></script>
+<script src="../js/service/dataService.js"></script>
+<script src="../js/service/dataService-sMap.js"></script>
+<script src="../js/tollGate.js"></script>
+<script src="../js/directives/nav/nav.js"></script>
+<!-- endbuild -->
+
+<script src="../js/directives/nav/nav.js"></script>
+
+<script>
+    var map = new mapboxgl.Map({
+        container : 'map',
+        style : simple,
+        zoom : 10,
+        center : [ 116.38402, 39.96261 ],
+        maxZoom : 17,
+        minZoom : 5,
+        pitch: 0
+    });
+</script>
+</body>
+
+</html>
