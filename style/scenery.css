@@ -1,0 +1,730 @@
+html,body{
+    margin:0;
+    padding:0;
+    width: 100%;
+    height:100%;
+}
+body{
+    overflow-y: scroll;
+}
+#logo{
+    float: left;
+    background: url('../img/banner/logo.png') no-repeat;
+    height: 44px;
+    width: 100px;
+}
+#container{
+    width: 100%;
+    height: 100%;
+    padding: 44px 210px;
+    top:0;
+    left: 0;
+    position: relative;
+    box-sizing: border-box;
+}
+/*-------------------------------scenery--------------------------------------*/
+.fl {
+    float: left; }
+
+.fr {
+    float: right; }
+
+.wrapper {
+    margin: 0 auto; }
+
+.clear:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden; }
+li{
+    list-style:none;
+}
+#container .introduce{
+    width:340px;
+    background-color: #fff;
+    left: 0px;
+    top:33px;
+    position: absolute;
+    z-index: 50;
+}
+#container .introduce .introTitle{
+    color:#333;
+    font-size:14px;
+    height: 30px;
+    line-height:30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position:relative;
+}
+#container .introduce .introTitle:after{
+    content:"";
+    position:absolute;
+    height:1px;
+    width:97%;
+    background-color: #d0e4ff;
+    left:0px;
+    bottom: 0px;
+
+}
+
+#container .introduce .introContent{
+    color:#999;
+    font-size:12px;
+    line-height:30px;
+}
+
+#container .introduce .introContent img{
+    vertical-align: middle;
+}
+#container .introduce .bestTime:after{
+    content:"";
+    position:absolute;
+    height:1px;
+    width:97%;
+    background-color: #d0e4ff;
+    left:0px;
+    bottom: 0px;
+}
+
+#container .introduce .scrollContent{
+    min-height:60px;
+    max-height:90px;
+    color:#999;
+    font-size:12px;
+    line-height:20px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+#container .introduce .imgDisplay{
+    padding:10px;
+    position: relative;
+    height: 140px;
+    font-size:12px;
+
+}
+#container .introduce .imgDisplay img{
+    width:320px;
+    height: 150px;
+}
+#container .introduce .imgDisplay .backBtn{
+    position: absolute;
+    left:16px;
+    top:16px;
+    color:#fff;
+    background-image:url(../img/scenery/icon_back.png);
+    width:50px;
+    height: 24px;
+    cursor: pointer;
+    text-indent:18px;
+    line-height: 24px;
+}
+#container .introduce .imgDisplay .morePic{
+    position: absolute;
+    right:16px;
+    bottom:6px;
+    color:#fff;
+    cursor: pointer;
+    background-image:url(../img/scenery/icon_photos.png);
+    width:42px;
+    height: 24px;
+    line-height: 24px;
+    text-indent:23px;
+}
+
+.ng-cloak{
+    display: none;
+}
+#container #content .searchList{
+    position:absolute;
+    left: 10px;
+    top:10px;
+    width:340px;
+    z-index: 100;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+
+}
+#container #content .searchList .searchInput{
+    box-shadow: 0 3px 2px rgba(84, 98, 137, 0.3);
+    height:30px;
+    margin-bottom:3px;
+}
+
+#container #content .searchList .cancelButton{
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 16px;
+    margin-top: 11px;
+}
+#container #content .searchList .searchButton{
+    width:60px;
+    height:30px;
+    cursor: pointer;
+    background:#3385ff;
+    color:#fff;
+    line-height: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+#container #content .searchList input{
+    margin:0px;
+    height: 30px;
+    line-height:30px;
+    padding: 0;
+    letter-spacing: .5px;
+    font-size: 14px;
+    border:none;
+    outline: none;
+
+}
+#container #content .searchList .searchBar{
+    display:inline-block;
+    width:20px;
+    margin:0px 10px;
+    padding-top: 5px;
+}
+#container #content .searchList .searchResult{
+    padding:0px;
+    font-size:14px;
+    color:#333;
+    background: #fff;
+    transition: all linear 0.5s;
+    margin:0px;
+    overflow-y: auto;
+    max-height: 480px;
+}
+::-webkit-scrollbar {
+    width:6px;
+    height:20px;
+    background-color: #80bdc4d2;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    border-radius:3px;
+    background-color: #F4F5F7;
+}
+#container #content .searchList .searchResult img{
+    width:140px;
+    height:100px;
+}
+#container #content .searchList .searchResult li{
+    position: relative;
+    padding:0px 10px 10px;
+}
+#container #content .searchList .searchResult li .borderLine{
+    position:absolute;
+    bottom: 0px;
+    left:10px;
+    height: 1px;
+    width:95%;
+    background-color:#D0E4FF;
+}
+
+#container #content .searchList .searchResult li:hover{
+     background-color:#4393ff;
+ }
+#container #content .searchList .searchResult li:hover div{
+    color:#fff;
+}
+#container #content .searchList .searchResult li:hover span{
+    color:#fff;
+}
+#container #content .searchList .searchResult li .postName{
+    color:#333;
+    line-height: 30px;
+    height: 30px;
+    font-size:14px;
+}
+#container #content .searchList .searchResult li div span{
+    line-height: 20px;
+    height: 20px;
+    color:#999;
+    font-size:12px;
+}
+#container #content .searchList .searchResult li .imgDes{
+    margin-top:10px;
+    height: 100px;
+}
+#container #content .searchList .searchResult .dotDis{
+    width:170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:#999;
+}
+#container #content .searchList .searchResult .moreResult{
+    font-size:12px;
+    color:#999;
+    text-align: center;
+    height:30px;
+    line-height:30px;
+    cursor: pointer;
+}
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
+    padding:0;
+    background: transparent;
+    box-shadow: none;
+}
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip{
+    display:none;
+}
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content .popStartIcon{
+    background:url("../img/onlineMap/tollstation_finish.png");
+    width:17px;
+    height:30px;
+    font-size: 12px;
+    color: #ffffff;
+    padding-top:3px;
+    padding-left:8px;
+    cursor: pointer;
+}
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .feePopDeep{
+    margin: 0;
+    height: 24px;
+    padding:2px 8px;
+    min-width: 52px;
+    line-height: 25px;
+    color:#000;
+    font-size: 12px;
+    text-align: center;
+    background-color:#fff;
+    border-radius:2px;
+}
+
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPopDeep{
+    width: 0;
+    height: 0;
+    margin: 0px auto;
+    border-width:6px 5px 0;
+    border-style:solid;
+    border-color:rgba(255,255,255,0.9) transparent transparent;
+}
+#container .swiperPic{
+    background: rgba(37,57,110,0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+    vertical-align: middle;
+}
+#container .swiperPic .centerBlock{
+    width:840px;
+    display:inline-block;
+    vertical-align: middle;
+    position: relative;
+}
+#container .swiperPic span{
+    height:100%;
+    width:0;
+    vertical-align: middle;
+    display:inline-block;
+}
+#container .swiperPic .disPic{
+    height: 420px;
+}
+#container .swiperPic .disPic img{
+    width:680px;
+    height:420px;
+}
+#container .swiperPic .centerBlock ul{
+    display: flex;
+    justify-content:space-between;
+    overflow: hidden;
+    padding: 0;
+    width:100%;
+    margin:10px auto;
+    flex-wrap: wrap;
+    height:80px;
+}
+#container .swiperPic .centerBlock ul li{
+    width:16%;
+    padding: 0;
+    margin: 0;
+}
+#container .swiperPic .centerBlock ul img{
+    width:112px;
+    height:80px;
+}
+
+#container .swiperPic .centerBlock .btn_all{
+    display: block;
+    width:40px;
+    height:100px;
+    position:absolute;
+    top:158px;
+}
+#container .swiperPic .centerBlock .btn_all:hover{
+    background-color:rgba(37,57,110,0.7);
+}
+#container .swiperPic .centerBlock .btn_left{
+    background:url(../img/scenery/icon_arrow_left.png) no-repeat center;
+    background-color:rgba(37,57,110,0.3);
+    left:0px;
+}
+
+#container .swiperPic .centerBlock .btn_right{
+    background:url(../img/scenery/icon_arrow_right.png) no-repeat center;
+    background-color:rgba(37,57,110,0.3);
+    right:0px;
+}
+#container .swiperPic .centerBlock .closePic{
+    position: absolute;
+    right: 10px;
+    top:10px;
+    cursor: pointer;
+
+}
+
+#container #content .searchList .relativeResult .logo{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    color: #333333;
+    background-image: url("../img/onlineMap/search_normal.png");
+    background-repeat: no-repeat;
+    background-position: center ;
+}
+#container #content .searchList .relativeResult:hover{
+    background-color:#3385ff;
+}
+#container #content .searchList .relativeResult:hover span{
+    color:#fff;
+}
+#container #content .searchList .relativeResult .choiceWord{
+    display: inline-block;
+    font-size: 12px;
+    line-height: 30px;
+    max-width: 190px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color:#333;
+}
+
+#container #content .searchList .noSearchResult .logo{
+    display: inline-block;
+    vertical-align:middle;
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/onlineMap/search_normal.png");
+    background-repeat: no-repeat;
+    background-position: center ;
+
+}
+#container #content .searchList .noSearchResult .noResult{
+    color:#333;
+    font-size: 12px;
+    line-height:30px;
+}
+/***************************右下角按钮****************************/
+.changeMapSizeDiv {
+    position: absolute;
+    z-index: 15;
+    width: 20px;
+    height: 50px;
+    right: 10px;
+    bottom: 10px ;
+}
+.addBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_max_normal.png");
+    background-position: center;
+    background-size: cover;
+    outline: none;
+    margin-bottom: 10px;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(84, 98, 137, 0.3);
+}
+.addBtn:hover,.addBtn:active{
+    background-image: url("../img/onlineMap/button_max_active.png");
+}
+.subBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_min_normal.png");
+    background-position: center;
+    outline: none;
+    border: 0;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+}
+.subBtn:hover,.subBtn:active{
+    background-image: url("../img/onlineMap/button_min_active.png");
+}
+
+/*-------------------------------scenery--------------------------------------*/
+#content{
+    width: calc(100% - 420px);
+    height: calc(100% - 144px);
+    position: absolute;
+    box-sizing: border-box;
+}
+#map{
+    width: 100%;
+    height: calc(100% - 58px);
+    border:1px solid #c5cee6;
+    box-sizing: border-box;
+
+}
+
+.selectedDiv{
+    right:10px;
+    top: 10px;
+    position: absolute;
+    z-index: 50;
+}
+.selectedDiv .nowCity{
+    padding-right: 13px;
+    text-align: center;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background: #ffffff;
+    cursor: pointer;
+    background-image:url("../img/onlineMap/arrow_normal.png");
+    background-repeat: no-repeat;
+    background-position: 60px 13px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);
+}
+.selectedDiv .nowCity >span{
+    color: rgb(51,51,51);
+    font-size: 12px;
+}
+.selectedDiv .choosedCity {
+    padding-left: 10px;
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    right: 0;
+    z-index: 200;
+    border: none;
+    background: #ffffff;
+    outline: none;
+    cursor: pointer;
+    display: none;
+    box-sizing: border-box;
+    box-shadow: 0 3px 2px rgba(84, 98, 137, 0.3);
+}
+.selectedDiv .choosedCity span{
+    color: #1478FF;
+    font-size: 12px;
+}
+.selectedDiv .choosedCity .hideCityList{
+    position: absolute;
+    top: 13px;
+    right: 10px;
+}
+.cityList{
+    height: 175px;
+    width: 280px;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    display: none;
+    position: absolute;
+    z-index: 15;
+    top:30px;
+    right: 0;
+    box-sizing: border-box;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+
+}
+.cityFirstLetterList{
+    width: 100%;
+    height: 50px;
+    padding-top: 3px;
+    color: #1478FF;
+}
+.firstLetter{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    line-height: 20px;
+}
+.firstLetter >a{
+    font-size: 12px;
+    color: #1478FF;
+}
+.indexLetter a{
+    text-decoration: none;
+    color: #999999;
+}
+.allFirstLetters{
+    margin: 0;
+    padding: 0;
+}
+.allCities{
+    width: 100%;
+    height: 110px;
+    overflow: auto;
+    border-top: 1px solid #d0e4ff;
+    border-bottom:1px solid #d0e4ff;
+}
+.allCities::-webkit-scrollbar{
+    width: 6px;
+}
+.allCities::-webkit-scrollbar-track{
+    background-color: #f5f5f5;
+}
+.allCities::-webkit-scrollbar-thumb{
+    height: 5px;
+    width: 4px;
+    border-radius: 10px;
+    background-color: #cccccc;
+}
+.allCities .allCitiesList{
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+}
+.allCities .allCitiesList > li{
+    list-style-type: none;
+    width: 100%;
+}
+.allCities .allCitiesList > li .indexLetter{
+    display: inline-block;
+    font-size: 12px;
+    color: #cccccc;
+    width: 15px;
+    padding: 0;
+    text-decoration: none;
+}
+.allCities .allCitiesList > li .citiesBox{
+    height: auto;
+}
+.allCities .allCitiesList > li .citiesBox ul{
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+.allCities .allCitiesList > li .citiesBox ul li{
+    display: inline-block;
+    font-size: 12px;
+    list-style-type: none;
+    color: #333333;
+    padding-left: 8px;
+    cursor:pointer ;
+}
+.allCities .allCitiesList > li .citiesBox ul li:not([title='北京']){
+    cursor:not-allowed ;
+}
+.allCities .allCitiesList > li .citiesBox ul li> span:hover,
+.allCities .allCitiesList > li .citiesBox ul li> span:active{
+    color: #1478FF;
+}
+.allCities .allCitiesList > li .citiesBox ul li > span{
+    color: #333333;
+    font-size: 12px;
+}
+/***********分割线****/
+.limitCondition ul{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    /*  border: 1px solid rgba(15, 51, 26, 0.2);*/
+}
+
+.limitCondition{
+    position: absolute;
+    z-index: 30;
+    right: 10px;
+    top: 60px;
+}
+.limitCondition ul li.firstCondation{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    width: 80px;
+    color: #666666;
+    font-size: 12px;
+    line-height: 30px;
+    background: #ffffff;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(15, 51, 26, 0.2);
+    border-left: 1px solid rgba(15, 51, 26, 0.2);
+    border-right: 1px solid rgba(15, 51, 26, 0.2);
+}
+.limitCondition ul li.firstCondation:last-child{
+    border-bottom: 1px solid rgba(15, 51, 26, 0.2);
+}
+.limitCondition ul li div.conditionHeightLight{
+    background-color: #0164de;
+    color: #ffffff;
+}
+.limitCondition ul li.listHeightLight{
+    border-top: 1px solid #0164de;
+}
+.limitCondition ul li ul li div.subConditionHeightLight{
+    color: #0164de;
+}
+.limitCondition ul li .IconOpenStyle{
+    width: 9px;
+    height: 5px;
+    position: absolute;
+    right: 5px;
+    top: 13px;
+    background-image: url("../img/trafficLimited/blue_arror.png");
+    background-size: contain;
+}
+.limitCondition ul li .IconCloseStyle{
+    width: 9px;
+    height: 5px;
+    right: 5px;
+    top: 15px;
+    position: absolute;
+    background-image: url("../img/trafficLimited/gray_arrow.png");
+    background-size: contain;
+    transform: rotate(90deg);
+}
+.limitCondition ul li.firstCondation ul li{
+    text-align: center;
+    width: 78px;
+    font-size: 12px;
+    line-height: 30px;
+    background: #f5f5f5;
+    cursor: pointer;
+    border-top: 1px solid rgba(15, 51, 26, 0.2);
+    box-sizing: border-box;
+    box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);
+}
+.limitCondition ul li.firstCondation ul li div.checked{
+    display: inline-block;
+    width: 13px;
+    height: 12px;
+    background-image: url("../img/trafficLimited/checked.png");
+    -ms-background-position-x:0;
+    background-position-x:0;
+    background-position-y: 1px;
+    background-size: contain;
+    background-repeat: no-repeat ;
+}
+.limitCondition ul li.firstCondation ul li div.normal{
+    display: inline-block;
+    width: 13px;
+    height: 12px;
+    background-image: url("../img/trafficLimited/check.png");
+    -ms-background-position-x:0;
+    background-position-x:0;
+    background-position-y: 1px;
+    background-size: contain;
+    background-repeat: no-repeat ;
+}
+
+
