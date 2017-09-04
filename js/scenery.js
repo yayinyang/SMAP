@@ -39,6 +39,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     $scope.sightLevel = '';
     $scope.season = '';
     $scope.sightTel = '';
+    $scope.deAddress = '';
     $scope.noSearchResult = {
         display: 'none'
     };
@@ -209,6 +210,9 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         $scope.moreResultlist = {
                             display: 'none'
                         }
+                        $scope.resultList = {
+                            display: 'none'
+                        }
                     } else if (data.length <= 3 && data.length > 0) {
                         $scope.moreResultlist = {
                             display: 'none'
@@ -354,6 +358,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
              $scope.sightLevel = data[0].sight_level;
              $scope.season = data[0].seasons;
              $scope.sightTel = data[0].telephone;
+             $scope.deAddress = data[0].address;
              moreContent(data[0].overview);
          })
          $('.introduce').show();
@@ -511,7 +516,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
 
     //see moreContent
     var moreContent = function(str){
-        var len = 72 ;
+        var len = 70 ;
         var content = document.getElementById('detailIntro');
         var aTag = document.getElementById('allCnt');
         var contentLen = str.length;
