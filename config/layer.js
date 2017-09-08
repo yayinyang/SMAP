@@ -5124,12 +5124,6 @@ var scenery ={
     "name" : "Bright",
     "sources" :
         {
-            "platelimit" :
-                {
-                    "type":"vector",
-                    "tiles":
-                        ['http://fastmap.navinfo.com/smap_p/plateres/web/condition/{z}/{x}/{y}?'+ App.Config.platelimit],
-                },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
                 "type": "vector"
@@ -5218,10 +5212,19 @@ var scenery ={
                 "tiles": ["http://minedata.cn/data/Worldcountries/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
                 "type": "vector"
             },
-            // "toll":{
-            //     "tiles": ["http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}"],
-            //     "type": "vector"
-            // }
+            "poiNew" :{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/poi/{z}/{x}/{y}"]
+            },
+            "carportline":{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/carportline/{z}/{x}/{y}"]
+            },
+            "outarea" :{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/outarea/{z}/{x}/{y}"]
+            }
+
         },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
     "sprite" : App.Config.appRoot + "/data/map/sprite/sprite",
@@ -6803,39 +6806,61 @@ var scenery ={
             "minzoom": 3,
             "type": "symbol",
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
-        },{
-            "id": 'polygon_Limited_Layer',
-            "type": 'fill',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_polygon',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            'layout': {},
-            'paint': {
-                'fill-color': '#FF0000',
-                'fill-opacity': 0.2,
-            }
-
-        },{
-            "id": 'line_Limited_Layer',
-            "type": 'line',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_line',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            "layout": {
+        },   {
+            id: 'poiNew_layer',
+            type: 'symbol',
+            interactive: true,
+            "source" : "poiNew",
+            'source-layer': 'poi',
+            minzoom: 0,
+            maxzoom: 17.1,
+            layout:
+                {
+                    'icon-image': 'museum-15',
+                    "text-field": "{name}",
+                    'text-size':12,
+                    "text-offset":[0,1.5],
+                    "text-justify": "center"
+                },
+            paint:
+                {
+                    'icon-color': '#ff2d2d',
+                    "text-halo-width": 0.5,
+                    "text-color": "#704f17",
+                },
+        },
+        {
+            id: "carportline_layer",
+            maxzoom: 17.5,
+            interactive: true,
+            'source': "carportline",
+            'source-layer': "carportline",
+            layout: {
                 "line-join": "round",
                 "visibility": "visible",
                 "line-cap": "round"
             },
-            "paint": {
-                "line-color": "#FF0000",
-                "line-width": {
-                    "stops": [[6, 1.5], [20, 10]],
-                    "base": 1.2
-                },
+            paint: {
+                "line-color": "#DE5246",
+                "line-width": 1.0
             },
-
+            minzoom: 3,
+            type: "line"
+        },
+        {
+            id: "outarea_layer",
+            maxzoom: 17,
+            interactive: true,
+            'source': "outarea",
+            'source-layer': "outarea",
+            layout: {
+                "visibility": "visible"
+            },
+            paint: {
+                "fill-color": "#000"
+            },
+            minzoom: 3,
+            type: "fill"
         }
     ]
 };

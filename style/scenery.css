@@ -6,6 +6,8 @@ html,body{
 }
 body{
     overflow-y: scroll;
+    /*font-family: 'Microsoft YaHei', 'Helvetica Neue', 'Hiragino Sans GB', '微软雅黑', '黑体', Arial, sans-serif !important;*/
+    font-family: 'Microsoft YaHei','微软雅黑',Arial,sans-serif;
 }
 #logo{
     float: left;
@@ -45,10 +47,12 @@ li{
 #container .introduce{
     width:340px;
     background-color: #fff;
-    left: 0px;
-    top:33px;
+    left: 10px;
+    top:38px;
     position: absolute;
-    z-index: 50;
+    z-index: 5;
+    max-height: calc(100% - 41px);
+    overflow-y: auto;
 }
 #container .introduce .introTitle{
     color:#333;
@@ -64,7 +68,7 @@ li{
     content:"";
     position:absolute;
     height:1px;
-    width:97%;
+    width:100%;
     background-color: #d0e4ff;
     left:0px;
     bottom: 0px;
@@ -84,7 +88,7 @@ li{
     content:"";
     position:absolute;
     height:1px;
-    width:97%;
+    width:100%;
     background-color: #d0e4ff;
     left:0px;
     bottom: 0px;
@@ -133,7 +137,7 @@ li{
     width:42px;
     height: 24px;
     line-height: 24px;
-    text-indent:23px;
+    text-indent:24px;
 }
 
 .ng-cloak{
@@ -144,7 +148,7 @@ li{
     left: 10px;
     top:10px;
     width:340px;
-    z-index: 100;
+    z-index: 7;
     background-color: #ffffff;
     box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
 
@@ -152,14 +156,6 @@ li{
 #container #content .searchList .searchInput{
     box-shadow: 0 3px 2px rgba(84, 98, 137, 0.3);
     height:30px;
-    margin-bottom:3px;
-}
-
-#container #content .searchList .cancelButton{
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 16px;
-    margin-top: 11px;
 }
 #container #content .searchList .searchButton{
     width:60px;
@@ -188,15 +184,19 @@ li{
     margin:0px 10px;
     padding-top: 5px;
 }
-#container #content .searchList .searchResult{
+#container #content  .searchResult{
     padding:0px;
     font-size:14px;
     color:#333;
-    background: #fff;
-    transition: all linear 0.5s;
     margin:0px;
     overflow-y: auto;
-    max-height: 480px;
+    width:340px;
+    z-index: 5;
+    position:absolute;
+    left:10px;
+    top:38px;
+    background-color: #fff;
+    max-height: calc(100% - 41px);
 }
 ::-webkit-scrollbar {
     width:6px;
@@ -209,15 +209,15 @@ li{
     border-radius:3px;
     background-color: #F4F5F7;
 }
-#container #content .searchList .searchResult img{
+#container #content  .searchResult img{
     width:140px;
     height:100px;
 }
-#container #content .searchList .searchResult li{
+#container #content .searchResult li{
     position: relative;
     padding:0px 10px 10px;
 }
-#container #content .searchList .searchResult li .borderLine{
+#container #content  .searchResult li .borderLine{
     position:absolute;
     bottom: 0px;
     left:10px;
@@ -226,45 +226,44 @@ li{
     background-color:#D0E4FF;
 }
 
-#container #content .searchList .searchResult li:hover{
+#container #content .searchResult li:hover{
      background-color:#4393ff;
  }
-#container #content .searchList .searchResult li:hover div{
+#container #content .searchResult li:hover div{
     color:#fff;
 }
-#container #content .searchList .searchResult li:hover span{
+#container #content .searchResult li:hover span{
     color:#fff;
 }
-#container #content .searchList .searchResult li .postName{
+#container #content  .searchResult li .postName{
     color:#333;
     line-height: 30px;
     height: 30px;
     font-size:14px;
 }
-#container #content .searchList .searchResult li div span{
+#container #content .searchResult li div span{
     line-height: 20px;
     height: 20px;
     color:#999;
     font-size:12px;
 }
-#container #content .searchList .searchResult li .imgDes{
+#container #content .searchResult li .imgDes{
     margin-top:10px;
     height: 100px;
 }
-#container #content .searchList .searchResult .dotDis{
+#container #content .searchResult .dotDis{
     width:170px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color:#999;
 }
-#container #content .searchList .searchResult .moreResult{
+#container #content  .searchResult .moreResult{
     font-size:12px;
     color:#999;
     text-align: center;
     height:30px;
     line-height:30px;
-    cursor: pointer;
 }
 .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
     padding:0;
@@ -331,29 +330,29 @@ li{
 }
 #container .swiperPic .disPic{
     height: 420px;
-}
-#container .swiperPic .disPic img{
-    width:680px;
-    height:420px;
+    background: rgba(37,57,110,0.2);
 }
 #container .swiperPic .centerBlock ul{
     display: flex;
-    justify-content:space-between;
+    justify-content:flex-start;
     overflow: hidden;
     padding: 0;
+    margin-top: 10px;
     width:100%;
-    margin:10px auto;
     flex-wrap: wrap;
-    height:80px;
+    height:90px;
 }
 #container .swiperPic .centerBlock ul li{
-    width:16%;
     padding: 0;
-    margin: 0;
+    margin:0px 45px 0px 0px;
+    width:112px;
+    height:80px;
 }
 #container .swiperPic .centerBlock ul img{
     width:112px;
     height:80px;
+    border: 4px solid rgba(37,57,110,0);
+    padding: 0px ;
 }
 
 #container .swiperPic .centerBlock .btn_all{
@@ -384,18 +383,26 @@ li{
     cursor: pointer;
 
 }
-
+#container #content .searchList .relativeResult{
+    height: 30px;
+}
 #container #content .searchList .relativeResult .logo{
     display: inline-block;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     color: #333333;
-    background-image: url("../img/onlineMap/search_normal.png");
+    background-image: url("../img/scenery/search_normal.png");
     background-repeat: no-repeat;
     background-position: center ;
 }
 #container #content .searchList .relativeResult:hover{
     background-color:#3385ff;
+}
+#container #content .searchList .relativeResult:hover .logo{
+    background-image: url("../img/scenery/search_active.png");
+    background-repeat: no-repeat;
+    background-position: center ;
 }
 #container #content .searchList .relativeResult:hover span{
     color:#fff;
@@ -404,6 +411,7 @@ li{
     display: inline-block;
     font-size: 12px;
     line-height: 30px;
+    height: 30px;
     max-width: 190px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -476,7 +484,6 @@ li{
     box-sizing: border-box;
 
 }
-
 .selectedDiv{
     right:10px;
     top: 10px;
@@ -574,18 +581,23 @@ li{
     border-top: 1px solid #d0e4ff;
     border-bottom:1px solid #d0e4ff;
 }
-.allCities::-webkit-scrollbar{
+/*滚动条*/
+
+*::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
+    background:#F4F5F7;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
-.allCities::-webkit-scrollbar-track{
-    background-color: #f5f5f5;
+
+*::-webkit-scrollbar-thumb {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background:rgba(189,196,210,0.5);
 }
-.allCities::-webkit-scrollbar-thumb{
-    height: 5px;
-    width: 4px;
-    border-radius: 10px;
-    background-color: #cccccc;
-}
+
 .allCities .allCitiesList{
     margin: 0;
     padding: 0;
@@ -725,6 +737,34 @@ li{
     background-position-y: 1px;
     background-size: contain;
     background-repeat: no-repeat ;
+}
+
+/***************************判断是否显示删除按钮****************************************************/
+.deleteBtn{
+    display: none;
+}
+.showDeleteBtn {
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 16px;
+    margin-top: 11px;
+    cursor: pointer;
+    float: right;
+}
+.hideDeleteBtn {
+    display: none;
+}
+input::-webkit-input-placeholder { /* WebKit browsers */
+    　　color:#999;
+}
+input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    　　color:#999;
+}
+input::-moz-placeholder { /* Mozilla Firefox 19+ */
+    　　color:#999;
+}
+input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    　　color:#999;
 }
 
 
