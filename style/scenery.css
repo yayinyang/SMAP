@@ -6,6 +6,8 @@ html,body{
 }
 body{
     overflow-y: scroll;
+    /*font-family: 'Microsoft YaHei', 'Helvetica Neue', 'Hiragino Sans GB', '微软雅黑', '黑体', Arial, sans-serif !important;*/
+    font-family: 'Microsoft YaHei','微软雅黑',Arial,sans-serif;
 }
 #logo{
     float: left;
@@ -45,10 +47,12 @@ li{
 #container .introduce{
     width:340px;
     background-color: #fff;
-    left: 0px;
-    top:33px;
+    left: 10px;
+    top:38px;
     position: absolute;
-    z-index: 50;
+    z-index: 5;
+    max-height: calc(100% - 41px);
+    overflow-y: auto;
 }
 #container .introduce .introTitle{
     color:#333;
@@ -64,7 +68,7 @@ li{
     content:"";
     position:absolute;
     height:1px;
-    width:97%;
+    width:100%;
     background-color: #d0e4ff;
     left:0px;
     bottom: 0px;
@@ -84,7 +88,7 @@ li{
     content:"";
     position:absolute;
     height:1px;
-    width:97%;
+    width:100%;
     background-color: #d0e4ff;
     left:0px;
     bottom: 0px;
@@ -125,7 +129,7 @@ li{
 }
 #container .introduce .imgDisplay .morePic{
     position: absolute;
-    right:16px;
+    right:6px;
     bottom:6px;
     color:#fff;
     cursor: pointer;
@@ -133,7 +137,7 @@ li{
     width:42px;
     height: 24px;
     line-height: 24px;
-    text-indent:23px;
+    text-indent:24px;
 }
 
 .ng-cloak{
@@ -144,7 +148,7 @@ li{
     left: 10px;
     top:10px;
     width:340px;
-    z-index: 100;
+    z-index: 7;
     background-color: #ffffff;
     box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
 
@@ -152,14 +156,6 @@ li{
 #container #content .searchList .searchInput{
     box-shadow: 0 3px 2px rgba(84, 98, 137, 0.3);
     height:30px;
-    margin-bottom:3px;
-}
-
-#container #content .searchList .cancelButton{
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 16px;
-    margin-top: 11px;
 }
 #container #content .searchList .searchButton{
     width:60px;
@@ -174,7 +170,7 @@ li{
 #container #content .searchList input{
     margin:0px;
     height: 30px;
-    line-height:30px;
+    line-height:14px;
     padding: 0;
     letter-spacing: .5px;
     font-size: 14px;
@@ -188,15 +184,20 @@ li{
     margin:0px 10px;
     padding-top: 5px;
 }
-#container #content .searchList .searchResult{
+#container #content  .searchResult{
     padding:0px;
     font-size:14px;
     color:#333;
-    background: #fff;
-    transition: all linear 0.5s;
     margin:0px;
     overflow-y: auto;
-    max-height: 480px;
+    width:340px;
+    z-index: 5;
+    position:absolute;
+    left:10px;
+    top:38px;
+    background-color: #fff;
+    max-height: calc(100% - 41px);
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
 }
 ::-webkit-scrollbar {
     width:6px;
@@ -209,15 +210,29 @@ li{
     border-radius:3px;
     background-color: #F4F5F7;
 }
-#container #content .searchList .searchResult img{
+#container #content  .reltiveWords{
+    padding:0px;
+    margin:2px 0px 0px 0px;
+    font-size:14px;
+    color:#333;
+    width:340px;
+    z-index: 5;
+    position:absolute;
+    left:10px;
+    top:38px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+}
+#container #content  .searchResult img{
     width:140px;
     height:100px;
 }
-#container #content .searchList .searchResult li{
+#container #content .searchResult li{
     position: relative;
     padding:0px 10px 10px;
+    cursor: pointer;
 }
-#container #content .searchList .searchResult li .borderLine{
+#container #content  .searchResult li .borderLine{
     position:absolute;
     bottom: 0px;
     left:10px;
@@ -226,45 +241,47 @@ li{
     background-color:#D0E4FF;
 }
 
-#container #content .searchList .searchResult li:hover{
+#container #content .searchResult li:hover{
      background-color:#4393ff;
  }
-#container #content .searchList .searchResult li:hover div{
+#container #content .searchResult li:hover div{
     color:#fff;
 }
-#container #content .searchList .searchResult li:hover span{
+#container #content .searchResult li:hover .numTitle{
     color:#fff;
 }
-#container #content .searchList .searchResult li .postName{
+#container #content .searchResult li:hover span{
+    color:#fff;
+}
+#container #content  .searchResult li .postName{
     color:#333;
     line-height: 30px;
     height: 30px;
     font-size:14px;
 }
-#container #content .searchList .searchResult li div span{
+#container #content .searchResult li div span{
     line-height: 20px;
     height: 20px;
     color:#999;
     font-size:12px;
 }
-#container #content .searchList .searchResult li .imgDes{
+#container #content .searchResult li .imgDes{
     margin-top:10px;
     height: 100px;
 }
-#container #content .searchList .searchResult .dotDis{
+#container #content .searchResult .dotDis{
     width:170px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color:#999;
 }
-#container #content .searchList .searchResult .moreResult{
+#container #content  .searchResult .moreResult{
     font-size:12px;
     color:#999;
     text-align: center;
     height:30px;
     line-height:30px;
-    cursor: pointer;
 }
 .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
     padding:0;
@@ -310,7 +327,7 @@ li{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 100;
     width: 100%;
     height: 100%;
     display: none;
@@ -331,29 +348,33 @@ li{
 }
 #container .swiperPic .disPic{
     height: 420px;
-}
-#container .swiperPic .disPic img{
-    width:680px;
-    height:420px;
+    background: rgba(37,57,110,0.2);
 }
 #container .swiperPic .centerBlock ul{
     display: flex;
-    justify-content:space-between;
-    overflow: hidden;
+    justify-content:flex-start;
     padding: 0;
+    margin-top: 10px;
     width:100%;
-    margin:10px auto;
-    flex-wrap: wrap;
-    height:80px;
+    height:90px;
+    position: absolute;
+    left:0;
+    top: 0px;
 }
 #container .swiperPic .centerBlock ul li{
-    width:16%;
     padding: 0;
-    margin: 0;
+    margin:0px 32px 30px 0px;
+    width:112px;
+    height:80px;
 }
 #container .swiperPic .centerBlock ul img{
     width:112px;
     height:80px;
+    border: 4px solid rgba(37,57,110,0);
+    padding: 0px ;
+}
+#container .swiperPic .centerBlock ul li:nth-of-type(1) img{
+    border: 4px solid #1478ff;
 }
 
 #container .swiperPic .centerBlock .btn_all{
@@ -370,6 +391,7 @@ li{
     background:url(../img/scenery/icon_arrow_left.png) no-repeat center;
     background-color:rgba(37,57,110,0.3);
     left:0px;
+    display: none;
 }
 
 #container .swiperPic .centerBlock .btn_right{
@@ -384,31 +406,42 @@ li{
     cursor: pointer;
 
 }
-
-#container #content .searchList .relativeResult .logo{
+#container #content .reltiveWords .relativeResult{
+    height: 30px;
+}
+#container #content .reltiveWords .relativeResult .logo{
     display: inline-block;
     width: 30px;
     height: 30px;
+    line-height: 30px;
     color: #333333;
-    background-image: url("../img/onlineMap/search_normal.png");
+    background-image: url("../img/scenery/search_normal.png");
+    background-repeat: no-repeat;
+    background-position: center ;
+    vertical-align:middle;
+}
+#container #content .reltiveWords .relativeResult:hover{
+    background-color:#3385ff;
+}
+#container #content .reltiveWords .relativeResult:hover .logo{
+    background-image: url("../img/scenery/search_active.png");
     background-repeat: no-repeat;
     background-position: center ;
 }
-#container #content .searchList .relativeResult:hover{
-    background-color:#3385ff;
-}
-#container #content .searchList .relativeResult:hover span{
+#container #content .reltiveWords .relativeResult:hover span{
     color:#fff;
 }
-#container #content .searchList .relativeResult .choiceWord{
+#container #content .reltiveWords .relativeResult .choiceWord{
     display: inline-block;
     font-size: 12px;
     line-height: 30px;
+    height: 30px;
     max-width: 190px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     color:#333;
+    vertical-align:middle;
 }
 
 #container #content .searchList .noSearchResult .logo{
@@ -476,7 +509,6 @@ li{
     box-sizing: border-box;
 
 }
-
 .selectedDiv{
     right:10px;
     top: 10px;
@@ -574,18 +606,23 @@ li{
     border-top: 1px solid #d0e4ff;
     border-bottom:1px solid #d0e4ff;
 }
-.allCities::-webkit-scrollbar{
+/*滚动条*/
+
+*::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
+    background:#F4F5F7;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
-.allCities::-webkit-scrollbar-track{
-    background-color: #f5f5f5;
+
+*::-webkit-scrollbar-thumb {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background:rgba(189,196,210,0.5);
 }
-.allCities::-webkit-scrollbar-thumb{
-    height: 5px;
-    width: 4px;
-    border-radius: 10px;
-    background-color: #cccccc;
-}
+
 .allCities .allCitiesList{
     margin: 0;
     padding: 0;
@@ -630,101 +667,53 @@ li{
     color: #333333;
     font-size: 12px;
 }
-/***********分割线****/
-.limitCondition ul{
-    margin:0;
-    padding: 0;
-    list-style: none;
-    /*  border: 1px solid rgba(15, 51, 26, 0.2);*/
-}
 
-.limitCondition{
-    position: absolute;
-    z-index: 30;
-    right: 10px;
-    top: 60px;
-}
-.limitCondition ul li.firstCondation{
-    margin:0;
-    padding: 0;
-    list-style: none;
-    text-align: center;
-    width: 80px;
-    color: #666666;
-    font-size: 12px;
-    line-height: 30px;
-    background: #ffffff;
-    cursor: pointer;
+.mapboxgl-popup .mapboxgl-popup-content .popTollGateIconHeightLight{
+
     position: relative;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(15, 51, 26, 0.2);
-    border-left: 1px solid rgba(15, 51, 26, 0.2);
-    border-right: 1px solid rgba(15, 51, 26, 0.2);
-}
-.limitCondition ul li.firstCondation:last-child{
-    border-bottom: 1px solid rgba(15, 51, 26, 0.2);
-}
-.limitCondition ul li div.conditionHeightLight{
-    background-color: #0164de;
-    color: #ffffff;
-}
-.limitCondition ul li.listHeightLight{
-    border-top: 1px solid #0164de;
-}
-.limitCondition ul li ul li div.subConditionHeightLight{
-    color: #0164de;
-}
-.limitCondition ul li .IconOpenStyle{
-    width: 9px;
-    height: 5px;
-    position: absolute;
-    right: 5px;
-    top: 13px;
-    background-image: url("../img/trafficLimited/blue_arror.png");
-    background-size: contain;
-}
-.limitCondition ul li .IconCloseStyle{
-    width: 9px;
-    height: 5px;
-    right: 5px;
-    top: 15px;
-    position: absolute;
-    background-image: url("../img/trafficLimited/gray_arrow.png");
-    background-size: contain;
-    transform: rotate(90deg);
-}
-.limitCondition ul li.firstCondation ul li{
-    text-align: center;
-    width: 78px;
+    z-index: 500;
+    background:url("../img/onlineMap/POI_blue.png");
+    width: 25px;
+    height: 34px;
+    font-family: Arial, sans-serif;
     font-size: 12px;
-    line-height: 30px;
-    background: #f5f5f5;
+    line-height: 25px;
+    color: #ffffff;
+    position: relative;
+    z-index: 500;
+    text-align:center;
     cursor: pointer;
-    border-top: 1px solid rgba(15, 51, 26, 0.2);
-    box-sizing: border-box;
-    box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);
+
 }
-.limitCondition ul li.firstCondation ul li div.checked{
-    display: inline-block;
-    width: 13px;
-    height: 12px;
-    background-image: url("../img/trafficLimited/checked.png");
-    -ms-background-position-x:0;
-    background-position-x:0;
-    background-position-y: 1px;
-    background-size: contain;
-    background-repeat: no-repeat ;
+/***************************判断是否显示删除按钮****************************************************/
+.deleteBtn{
+    display: none;
 }
-.limitCondition ul li.firstCondation ul li div.normal{
+.showDeleteBtn {
+    cursor: pointer;
     display: inline-block;
-    width: 13px;
-    height: 12px;
-    background-image: url("../img/trafficLimited/check.png");
-    -ms-background-position-x:0;
-    background-position-x:0;
-    background-position-y: 1px;
-    background-size: contain;
-    background-repeat: no-repeat ;
+    margin-right: 16px;
+    margin-top: 11px;
+    cursor: pointer;
+    float: right;
+}
+.hideDeleteBtn {
+    display: none;
+}
+input{
+    color:#333;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    　　color:#999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    　　color:#999;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    　　color:#999;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    　　color:#999;
 }
 
 

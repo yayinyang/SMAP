@@ -4,7 +4,7 @@ var map = new mapboxgl.Map({
     zoom: 10,
     center: [108.94704, 34.25943],
     maxZoom: 17,
-    minZoom: 5,
+    minZoom: 0,
     repaint: true,
     pitch: 0
 });
@@ -19,10 +19,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     $scope.popuArr = [];
     $scope.startFlag = false;
     $scope.endFlag = false;
-    $scope.isReadySearchFlag = false;
-    $scope.isSearchStartTollGate = true;
-    $scope.chooseStartTollGate = false;
-    $scope.chooseEndTollGate = false;
     $scope.visible = 'true';
     $scope.searchParameter = {};
     $scope.linksArr = [];
@@ -40,6 +36,8 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     $scope.season = '';
     $scope.sightTel = '';
     $scope.deAddress = '';
+    $scope.deImg = '';
+    $scope.morePic = '';
     $scope.noSearchResult = {
         display: 'none'
     };
@@ -49,11 +47,23 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     $scope.resultList = {
         display: 'none'
     }
+    $scope.introDis = {
+        display: 'none'
+    }
     $scope.clearInput = function () {
         $('#keywordSearch').val('');
+        $('#keywordSearch').focus();
         $scope.noSearchResult = {
             display: 'none'
         }
+        $scope.resultList = {
+            display: 'none'
+        }
+        $scope.relativeList = {
+            display: 'none'
+        }
+        $('.introduce').hide();
+        $('.searchResult').hide();
     };
 
     //添加定位点图层
@@ -64,21 +74,38 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             'icon-image': '{icon}',
             'icon-size': 1,
             'text-justify': 'center',
-            'text-field': '{numMark}'
+            'text-field': '{numMark}',
+            'text-size': 12
+            // 'text-font' : ['Arial Unicode MS Regular']
         },
         'paint': {
             'text-color': "#fff"
         }
     };
+
+    //添加高亮图层
+   var lightHeightLayer = {
+       "id": "lightHeightId",
+       "type": "symbol",
+       'layout': {
+           'icon-image': 'POI_blue',
+           'icon-size': 1,
+           'text-justify': 'center',
+           'text-field': '{numMark}',
+           'text-size': 12
+           // 'text-font' : ['Arial Unicode MS Regular']
+       },
+       'paint': {
+           'text-color': "#fff"
+       }
+   };
+
     //联想关键词input
     $scope.relativeWords = function () {
-        //var reUrl = App.Config.sceneryUrl + "/scenic/search/realtime";
-       // $http.post(reUrl,{parm: JSON.stringify({str: $scope.searchWord})}).then(function (data) {var res = data.data.data;})
         if ($scope.searchWord != '') {
             $scope.resultList = {
                 display : "none"
             }
-
             dsEdit.getProduct("scenic/search/realtime", {
                 parm: JSON.stringify({
                     str: $scope.searchWord
@@ -119,14 +146,28 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             display: "none"
         }
     }
+
+     var markerHeight = 10, markerRadius = 10, linearOffset = 5;
+     var popupOffsets = {
+         'top': [0, 0],
+         'top-left': [0,0],
+         'top-right': [0,0],
+         'bottom': [0, -markerHeight],
+         'bottom-left': [linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+         'bottom-right': [-linearOffset, (markerHeight - markerRadius + linearOffset) * -1],
+         'left': [markerRadius, (markerHeight - markerRadius) * -1],
+         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
+     };
     //hover显示名称
     var popupName = new mapboxgl.Popup({
         closeButton: false,
-        closeOnClick: false
+        closeOnClick: false,
+        offset:popupOffsets
     });
 
     //click显示名称
     var popupClick = new mapboxgl.Popup({
+        offset:popupOffsets,
         closeButton: false,
         closeOnClick: false
     });
@@ -149,47 +190,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     var resetMySourceData = function (sourceData) {
         map.getSource('mysouce').setData(sourceData);
     };
-
-    var addMyLayer = function () {
-        map.addSource('mysouce', {
-                   type: 'geojson',
-                   data: mySourceData
-               });
-        $scope.testLayer.source = 'mysouce';
-        map.addLayer($scope.testLayer);
-        map.on('mouseenter', 'pointSelected', function (e) {
-            //var index=e.features[0].properties.mark;
-            //$('.searchResult li').eq(index).css({'background':'#4393ff','color':'#fff'}).siblings().css('background','#fff');
-            var pid = e.features[0].properties.id;
-            var prop;
-            for (var i = 0; i < mySourceData.features.length; i++) {
-                  prop = mySourceData.features[i].properties;
-                  if (prop.id === pid) {
-                      prop.icon = prop['icon-active'];
-                  } else {
-                           prop.icon = prop['icon-normal'];
-                       }
-            }
-            resetMySourceData(mySourceData);
-            var titleDes = window.document.createElement('div');
-            titleDes.innerHTML = '<div class="feePopDeep">' + e.features[0].properties.sceneryName + '</div>' +
-                       '<div class="tipPopDeep"></div>';
-            map.getCanvas().style.cursor = 'pointer';
-            $scope.siteLocation = [];
-            $scope.siteLocation.push(e.lngLat.lng);
-            $scope.siteLocation.push(e.lngLat.lat);
-            popupName.setLngLat($scope.siteLocation)
-                     .setDOMContent(titleDes)
-                     .addTo(map);
-
-        });
-
-        map.on('mouseleave', 'pointSelected', function () {
-            map.getCanvas().style.cursor = '';
-            popupName.remove();
-        });
-    };
-    addMyLayer();
 
     $scope.getLocationPopup = function () {
         if ($scope.searchWord) {
@@ -218,6 +218,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                             display: 'none'
                         }
                         $scope.sceneryList = data;
+                        $('.searchResult').show();
                         locationMap(data);
                     } else {
                         var dataPart = data.slice(0, 3);
@@ -225,7 +226,11 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         $scope.moreResultlist = {
                             display: 'block'
                         }
+                        $('.searchResult').show();
                         locationMap(dataPart);
+                        $('.allResult').html('查看全部搜索结果');
+                        $('.moreResult').css({'color': '#999','cursor':'pointer'});
+                        $('.searchResult').css('height','auto');
                     }
                 }
 
@@ -283,9 +288,55 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
         }
         var mbox = turf.bbox(mush);
         var b1 = new mapboxgl.LngLatBounds([mbox[0], mbox[1]], [mbox[2], mbox[3]]);
-        map.fitBounds(b1, {padding: 280});
+        map.fitBounds(b1,{maxZoom:15,padding:100});
 
     }
+
+    var addMyLayer = function () {
+        map.addSource('mysouce', {
+            type: 'geojson',
+            data: mySourceData
+        });
+        $scope.testLayer.source = 'mysouce';
+        map.addLayer($scope.testLayer);
+        map.on('mouseenter', 'pointSelected', function (e) {
+            //var index=e.features[0].properties.mark;
+            //$('.searchResult li').eq(index).css({'background':'#4393ff','color':'#fff'}).siblings().css('background','#fff');
+            var pid = e.features[0].properties.id;
+            var prop;
+            for (var i = 0; i < mySourceData.features.length; i++) {
+                prop = mySourceData.features[i].properties;
+                if (prop.id === pid) {
+                    prop.icon = prop['icon-active'];
+                } else {
+                    prop.icon = prop['icon-normal'];
+                }
+            }
+            resetMySourceData(mySourceData);
+
+            popupClick.remove();
+            var titleDes = window.document.createElement('div');
+            titleDes.innerHTML = '<div class="feePopDeep">' + e.features[0].properties.sceneryName + '</div>' +
+                                 '<div class="tipPopDeep"></div>';
+            map.getCanvas().style.cursor = 'pointer';
+            $scope.siteLocation = [];
+            $scope.siteLocation.push(e.lngLat.lng);
+            $scope.siteLocation.push(e.lngLat.lat);
+            popupName.setLngLat($scope.siteLocation)
+                     .setDOMContent(titleDes)
+                     .addTo(map);
+
+
+        });
+
+        map.on('mouseleave', 'pointSelected', function () {
+            map.getCanvas().style.cursor = '';
+            popupName.remove();
+        });
+    };
+
+    addMyLayer();
+
     //click popUp
     map.on('click', 'pointSelected', function (e) {
         var pid = e.features[0].properties.id;
@@ -299,21 +350,31 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             }
         }
         resetMySourceData(mySourceData);
+        popupName.remove();
         var titleDes = window.document.createElement('div');
         titleDes.innerHTML = '<div class="feePopDeep">' + e.features[0].properties.sceneryName + '</div>' +
-            '<div class="tipPopDeep"></div>';
-        $scope.siteLocation = [];
-        $scope.siteLocation.push(e.lngLat.lng);
-        $scope.siteLocation.push(e.lngLat.lat);
+                             '<div class="tipPopDeep"></div>';
 
         map.getCanvas().style.cursor = 'pointer';
-        popupClick.setLngLat($scope.siteLocation)
-            .setDOMContent(titleDes)
-            .addTo(map);
+        map.flyTo({
+            center: e.features[0].geometry.coordinates,
+            zoom: 16,
+            speed: 1.5
+        },map.on('zoomend',function (data) {
+            for(var i=0,len = data.queryRenderedFeatures.length; i < 5 ;i++) {   //循环次数待改
+                if (data.queryRenderedFeatures()[i].properties.id == pid) {
+                    popupClick.setLngLat(data.queryRenderedFeatures()[i].geometry.coordinates)
+                        .setDOMContent(titleDes)
+                        .addTo(map);
+                    break;
+                }
+           }
+
+        }));
+
 
         var poiId = e.features[0].properties.poiId;
         detailsDis( poiId );
-
 
     })
 
@@ -338,10 +399,16 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             .setDOMContent(titleDes)
             .addTo(map);
 
+        map.flyTo({
+            center: everPoint.geometry.coordinates,
+            zoom: 16,
+            speed: 1.5
+        });
         var poiId = item.poi_pid ;
         detailsDis( poiId );
     }
 
+    var arrImg = [] ;
     //to details
      var detailsDis = function( poiId ) {
          dsEdit.getProduct("scenic/search/poidetail", {
@@ -349,17 +416,30 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                  poi_pid: poiId
              })
          }).then(function (data) {
-             $scope.deName = data[0].name;
-             $scope.deTime = data[0].open_hours;
-             $scope.overview = data[0].overview;
-             $scope.sightClass = data[0].sight_class;
-             $scope.ticket = data[0].ticket_price;
-             $scope.visitTime = data[0].time_for_visits;
-             $scope.sightLevel = data[0].sight_level;
-             $scope.season = data[0].seasons;
-             $scope.sightTel = data[0].telephone;
-             $scope.deAddress = data[0].address;
-             moreContent(data[0].overview);
+                 $scope.deName = data[0].name;
+                 $scope.deTime = data[0].open_hours;
+                 $scope.sightClass = data[0].sight_class;
+                 $scope.ticket = data[0].ticket_price;
+                 $scope.visitTime = data[0].time_for_visits;
+                 $scope.sightLevel = data[0].sight_level;
+                 $scope.season = data[0].seasons;
+                 $scope.sightTel = data[0].telephone;
+                 $scope.deAddress = data[0].address;
+                 $scope.arrImg = data[0].url;
+                 $scope.morePic = data[0].url.length;
+                 arrImg = data[0].url ;
+                 if(data[0].overview){
+                     moreContent(data[0].overview);
+                 }else{
+                     $('#detailIntro').html('') ;
+                     $('#allCnt').html('');
+                 }
+                 if(data[0].url[0] == undefined){
+                     $("#bigPic").attr('src','../img/scenery/tim.jpg');
+                 }else {
+                      $("#bigPic").attr('src', data[0].url[0]);
+                 }
+
          })
          $('.introduce').show();
          $('.searchResult').hide();
@@ -369,17 +449,37 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
 
     //to search
     $scope.searchScenery = function () {
-        $scope.resultList = {
-            display: 'block'
+        popupClick.remove();
+        $('.introduce').hide();
+        $scope.relativeList = {
+            display: 'none'
         }
-        $scope.getLocationPopup();
+
+        if($('#keywordSearch').val() == ''){
+            $scope.noSearchResult = {
+                display: 'block'
+            }
+            $scope.resultList = {
+                display :'none'
+            }
+            $('.searchResult').hide();
+        }else{
+            $scope.getLocationPopup();
+        }
+
+
     }
 
     $scope.GoSearch = function (event) {
         var e = window.event || event ;
         if(e.keyCode == 13){
+            $('.introduce').hide();
+            popupClick.remove();
             $scope.resultList = {
                 display: 'block'
+            }
+            $scope.relativeList = {
+                display: 'none'
             }
             $scope.getLocationPopup();
         }
@@ -397,7 +497,42 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
         for (var i = 0; i < mySourceData.features.length; i++) {
             prop = mySourceData.features[i].properties;
             if (prop.id === listId) {
-                prop.icon = prop['icon-active'];
+               // prop.icon = prop['icon-active'];
+                $scope.geojson = {
+                    "type": "FeatureCollection",
+                    "features": []
+                };
+                var source = {
+                        "type": "geojson",
+                        "data": {
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": mySourceData.features[i].geometry.coordinates
+                            },
+                            "properties": {
+                                "numMark": index+1
+                            }
+                        }
+                    };
+                var sourceJ = {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": mySourceData.features[i].geometry.coordinates
+                    },
+                    "properties": {
+                        "numMark": index + 1
+                    }
+                };
+                if (!map.getSource('lightHeightId')){
+                    lightHeightLayer.source = source;
+                    map.addLayer(lightHeightLayer);
+                } else {
+                    $scope.geojson.features.push(sourceJ)
+                    map.getSource('lightHeightId').setData($scope.geojson);
+                }
+
             } else {
                 prop.icon = prop['icon-normal'];
             }
@@ -405,6 +540,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
         resetMySourceData(mySourceData);
 
         var titleDes = window.document.createElement('div');
+      //  titleDes.setAttribute('class', 'popTollGateIconHeightLight');
         var everPoint = mySourceData.features[index];
         titleDes.innerHTML = '<div class="feePopDeep">' + everPoint.properties.sceneryName + '</div>' +
             '<div class="tipPopDeep"></div>';
@@ -413,11 +549,29 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             .setDOMContent(titleDes)
             .addTo(map);
 
+        //让当前li的上下分割线消失
+        if(index == 0){
+            $('.borderLine').show();
+            $('.borderLine').eq(index).hide();
+        }else{
+            $('.borderLine').show();
+            $('.borderLine').eq(index).hide();
+            $('.borderLine').eq(index-1).hide();
+        }
     }
 
     //mouseleave list
     $scope.removeMark = function (index) {
         popupName.remove(index);
+        $('.borderLine').show();
+        var geojson = {
+            "type": "FeatureCollection",
+            "features": []
+        };
+        if (map.getSource('lightHeightId')) {
+            map.getSource('lightHeightId').setData(geojson);
+        }
+        // map.removeLayer('lightHeightId');
     }
 
 
@@ -435,74 +589,106 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 locationMap(data);
             })
             $('.allResult').html('已展开全部搜索结果');
-            $('.moreResult').css('color', '#1478ff');
-        } else {
-            $scope.getLocationPopup();
-            $('.allResult').html('查看全部搜索结果');
-            $('.moreResult').css('color', '#999');
+            $('.moreResult').css({'color':'#1478ff','cursor':'default'});
         }
 
     }
 
     //scan big(more) picture
-    $scope.arrImg = ["../img/scenery/slide1.jpg", "../img/scenery/slide2.jpg",
-        "../img/scenery/slide3.jpg", "../img/scenery/slide4.jpg", "../img/scenery/slide5.jpg", '../img/scenery/slide6.jpg',
-        "../img/scenery/slide7.jpg", "../img/scenery/slide8.jpg", "../img/scenery/slide9.jpg", '../img/scenery/slide10.jpg'];
-    var arrImg = ["../img/scenery/slide1.jpg", "../img/scenery/slide2.jpg",
-        "../img/scenery/slide3.jpg", "../img/scenery/slide4.jpg", "../img/scenery/slide5.jpg", '../img/scenery/slide6.jpg',
-        "../img/scenery/slide7.jpg", "../img/scenery/slide8.jpg", "../img/scenery/slide9.jpg", '../img/scenery/slide10.jpg'];
+    var index=0;
     $scope.scanPic = function (event) {
-        var e = window.event || event;
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        } else {
-            e.cancelBubble = true;
+        if($scope.morePic > 0) {
+            var e = window.event || event;
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                e.cancelBubble = true;
+            }
+            $('.swiperPic').show();
+            var oImg = $('.centerBlock ul img');
+           $('.disPic>img')[0].src = arrImg[0];
+           $('.centerBlock ul img').eq(0).css('border', '4px solid #1478ff');
+           $('.btn_left').hide();
+           $('.btn_right').show();
+           index = 0;
         }
-        $('.swiperPic').show();
-        var oImg = $('.centerBlock>ul img');
-        $('.disPic>img')[0].src = arrImg[0];
 
     }
-    $scope.goImg = function (index) {
-        var oImg = $('.centerBlock>ul img');
-        $('.disPic>img')[0].src = oImg[index].src;
-        oImg.css({'border': 'none', 'padding': '0px'});
-        oImg.eq(index).css({'border': '4px solid #1478ff', 'box-sizing': 'border-box'});
+
+    $scope.goImg = function (parm) {
+        index = parm;
+        console.log(parm);
+        var oImg = $('.centerBlock ul img');
+        $('.disPic>img')[0].src = oImg[parm].src;
+        oImg.css('border', '4px solid rgba(37,57,110,0)');
+        oImg.eq(parm).css('border', '4px solid #1478ff');
+        if(parm == 0){
+            $('.btn_left').hide();
+            $('.btn_right').show();
+        }else if(parm == arrImg.length-1){
+            $('.btn_right').hide();
+            $('.btn_left').show();
+        }else {
+            $('.btn_right').show();
+            $('.btn_left').show();
+        }
     }
 
     $scope.goLeft = function () {
-        var oImg = $('.centerBlock>ul img');
-        for (var i = 1; i < arrImg.length; i++) {
-            var temp = arrImg[arrImg.length - 1];
-            arrImg[arrImg.length - 1] = arrImg[arrImg.length - 1 - i];
-            arrImg[arrImg.length - 1 - i] = temp;
-        }
-        for (var i = 0; i < arrImg.length; i++) {
-            oImg[i].src = arrImg[i];
-        }
-        $('.disPic>img')[0].src = arrImg[0];
+        var oImg = $('.centerBlock ul img');
+        index--;
+        $('.disPic>img')[0].src = arrImg[index];
 
+        oImg.css('border', '4px solid rgba(37,57,110,0)');
+        oImg.eq(index).css('border', '4px solid #1478ff');
+        if(index == 0){
+            $('.btn_left').hide();
+
+        }else{
+            $('.btn_left').show();
+            $('.btn_right').show();
+        }
+        var num = 5 - index;
+        if(index < num){
+            $('.centerBlock ul').animate({
+                left: '0px'
+            }, 300 );
+        }
     }
     $scope.goRight = function () {
-        var oImg = $('.centerBlock>ul img');
-        for (var i = 0; i < arrImg.length - 1; i++) {
-            var temp = arrImg[0];
-            arrImg[0] = arrImg[i + 1];
-            arrImg[i + 1] = temp;
+        var oImg = $('.centerBlock ul img');
+        index++;
+        oImg.css('border', '4px solid rgba(37,57,110,0)');
+        oImg.eq(index).css('border', '4px solid #1478ff');
+        if(index == arrImg.length-1){
+            $('.btn_right').hide();
+        }else {
+            $('.btn_right').show();
+            $('.btn_left').show();
         }
-        for (var i = 0; i < arrImg.length; i++) {
-            oImg[i].src = arrImg[i];
+        $('.disPic>img')[0].src = arrImg[index];
+
+        if(index>5){
+            var num = (index-5);
+            $('.centerBlock ul').animate({
+                left: -145 * num +'px'
+            }, 300 );
         }
-        $('.disPic>img')[0].src = arrImg[0];
+
     }
 
     $scope.closePic = function () {
         $('.swiperPic').hide();
+        var oImg = $('.centerBlock ul img');
+        oImg.css('border', '4px solid rgba(37,57,110,0)');
+
     }
     $(document).click(function (event) {
         var _con = $('.centerBlock');
         if (!_con.is(event.target) && _con.has(event.target).length === 0) {
             $('.swiperPic').hide();
+            var oImg = $('.centerBlock ul img');
+            oImg.css('border', '4px solid rgba(37,57,110,0)');
         }
     });
 
@@ -516,7 +702,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
 
     //see moreContent
     var moreContent = function(str){
-        var len = 70 ;
+        var len = 66 ;
         var content = document.getElementById('detailIntro');
         var aTag = document.getElementById('allCnt');
         var contentLen = str.length;
@@ -528,19 +714,41 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             aTag.onclick = function(){
                 if(aTag.innerHTML.indexOf("全文")>0){
                     content.innerHTML = str;
-                    aTag.innerHTML = "收起";
+                    aTag.innerHTML = "[收起]";
                 }else{
                     aTag.innerHTML = '[全文]';
                     content.innerHTML = str.substring(0,len)+'...';
                 }
             }
         }
-
-
-
     }
+       }]);
 
-
-
-}]);
+//调节预览图片尺寸
+function AutoResizeImage(maxWidth,maxHeight,objImg){
+    var img = new Image();
+    img.src = objImg.src;
+    var hRatio;
+    var wRatio;
+    var Ratio = 1;
+    var w = img.width;
+    var h = img.height;
+    wRatio = maxWidth / w;
+    hRatio = maxHeight / h;
+    if (maxWidth == 0 && maxHeight == 0) {
+        Ratio = 1;
+    } else if (maxWidth == 0) {//
+        if (hRatio < 1) Ratio = hRatio;
+    } else if (maxHeight == 0) {
+        if (wRatio < 1) Ratio = wRatio;
+    } else if (wRatio < 1 || hRatio < 1) {
+        Ratio = (wRatio <= hRatio ? wRatio : hRatio);
+    }
+    if (Ratio < 1) {
+        w = w * Ratio;
+        h = h * Ratio;
+    }
+    objImg.height = h;
+    objImg.width = w;
+}
 
