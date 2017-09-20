@@ -4,7 +4,7 @@ var map = new mapboxgl.Map({
     zoom: 10,
     center: [108.94704, 34.25943],
     maxZoom: 17,
-    minZoom: 5,
+    minZoom: 0,
     repaint: true,
     pitch: 0
 });
@@ -283,7 +283,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
         }
         var mbox = turf.bbox(mush);
         var b1 = new mapboxgl.LngLatBounds([mbox[0], mbox[1]], [mbox[2], mbox[3]]);
-        map.fitBounds(b1, {padding: 280});
+        map.fitBounds(b1, {maxZoom: 12});
 
     }
     //click popUp
