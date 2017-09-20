@@ -3407,11 +3407,11 @@ var trafficLimitedLayer ={
     "sources" :
         {
             "platelimit" :
-                {
-                    "type":"vector",
-                    "tiles":
-                        ['http://fastmap.navinfo.com/smap_p/plateres/web/condition/{z}/{x}/{y}?'+ App.Config.platelimit],
-                },
+            {
+                "type":"vector",
+                "tiles":
+                    ['http://fastmap.navinfo.com/smap_p/plateres/web/condition/{z}/{x}/{y}?'+ App.Config.platelimit],
+            },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
                 "type": "vector"
@@ -5081,40 +5081,7 @@ var trafficLimitedLayer ={
             "minzoom": 3,
             "type": "symbol",
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
-        },{
-            "id": 'polygon_Limited_Layer',
-            "type": 'fill',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_polygon',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            'layout': {},
-            'paint': {
-                'fill-color': '#FF0000',
-                'fill-opacity': 0.2,
-            }
-
-        },{
-            "id": 'line_Limited_Layer',
-            "type": 'line',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_line',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            "layout": {
-                "line-join": "round",
-                "visibility": "visible",
-                "line-cap": "round"
-            },
-            "paint": {
-                "line-color": "#FF0000",
-                "line-width": {
-                    "stops": [[6, 1.5], [20, 10]],
-                    "base": 1.2
-                },
-            },
-
-        },
+        }
 
     ]
 };
@@ -5128,7 +5095,7 @@ var scenery ={
                 {
                     "type":"vector",
                     "tiles":
-                        ['http://fastmap.navinfo.com/smap_p/plateres/web/condition/{z}/{x}/{y}?'+ App.Config.platelimit],
+                        ["http://192.168.15.41:9999/smapapi/scenic/pbf/singleRoute/{z}/{x}/{y}?routeId='' "]
                 },
             "Worldannotation": {
                 "tiles": ["http://minedata.cn/data/Worldannotation/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
@@ -5218,10 +5185,25 @@ var scenery ={
                 "tiles": ["http://minedata.cn/data/Worldcountries/{z}/{x}/{y}?token=25cc55a69ea7422182d00d6b7c0ffa93&solu=716"],
                 "type": "vector"
             },
-            // "toll":{
-            //     "tiles": ["http://fs.navinfo.com/smapapi/tollgate/{z}/{x}/{y}"],
-            //     "type": "vector"
-            // }
+            "poiNew" :{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/poi/{z}/{x}/{y}"],
+                'minzoom':15,
+                'maxzoom':15
+            },
+            "carportline":{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/carportline/{z}/{x}/{y}"]
+            },
+            "outarea" :{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/outarea/{z}/{x}/{y}"]
+            },
+            "route":{
+                "type" : "vector",
+                "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/route/{z}/{x}/{y}"]
+            },
+
         },
     "glyphs": "../data/map/{fontstack}/{range}.pbf",
     "sprite" : App.Config.appRoot + "/data/map/sprite/sprite",
@@ -6803,24 +6785,85 @@ var scenery ={
             "minzoom": 3,
             "type": "symbol",
             "filter": ["all", ["in", "capital", 0], ["==", "type", 0]]
-        },{
-            "id": 'polygon_Limited_Layer',
-            "type": 'fill',
-            "source" : "platelimit",
-            'source-layer': 'platelimit_polygon',
-            "minzoom": 5,
-            "maxzoom": 17.1,
-            'layout': {},
-            'paint': {
-                'fill-color': '#FF0000',
-                'fill-opacity': 0.2,
-            }
-
-        },{
+        },   {
+            id: 'poiNew_layer',
+            type: 'symbol',
+            interactive: true,
+            "source" : "poiNew",
+            'source-layer': 'poi',
+            zoom: 15,
+            layout:
+                {
+                    'icon-image': 'museum-15',
+                    "text-field": "{name}",
+                    'text-size':12,
+                    "text-offset":[0,1.5],
+                    "text-justify": "center",
+                    "visibility": "visible"
+                },
+            paint:
+                {
+                    'icon-color': '#ff2d2d',
+                    "text-halo-width": 0.5,
+                    "text-color": "#704f17",
+                },
+        },
+        {
+            id: "outarea_layer",
+            maxzoom: 17,
+            interactive: true,
+            'source': "outarea",
+            'source-layer': "outarea",
+            layout: {
+                "visibility": "none"
+            },
+            paint: {
+                "fill-color": "#f5eaaf"
+            },
+            minzoom: 3,
+            type: "fill"
+        },
+        {
+            id: "carportline_layer",
+            maxzoom: 17,
+            interactive: true,
+            'source': "carportline",
+            'source-layer': "carportline",
+            layout: {
+                "line-join": "round",
+                "visibility": "visible",
+                "line-cap": "round"
+            },
+            paint: {
+                "line-color": "yellow",
+                "line-width": 1.0
+            },
+            minzoom: 3,
+            type: "line"
+        },
+        // {
+        //     id: "route_layer",
+        //     maxzoom: 17,
+        //     interactive: true,
+        //     'source': "route",
+        //     'source-layer': "route",
+        //     layout: {
+        //         "line-join": "round",
+        //         "visibility": "visible",
+        //         "line-cap": "round"
+        //     },
+        //     paint: {
+        //         "line-color": "blue",
+        //         "line-width": 1.0
+        //     },
+        //     minzoom: 3,
+        //     type: "line"
+        // },
+        {
             "id": 'line_Limited_Layer',
             "type": 'line',
             "source" : "platelimit",
-            'source-layer': 'platelimit_line',
+            'source-layer': 'route',
             "minzoom": 5,
             "maxzoom": 17.1,
             "layout": {
@@ -6836,6 +6879,6 @@ var scenery ={
                 },
             },
 
-        }
+        },
     ]
 };
