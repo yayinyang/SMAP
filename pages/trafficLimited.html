@@ -10,7 +10,7 @@
 
     <title>SMap</title>
 </head>
-<body ng-app="trafficLimited" ng-controller="trafficLimitedController">
+<body ng-app="trafficLimited" ng-controller="trafficLimitedController" ng-keypress="GoSearch($event)">
 <nav-bar loc="locFlag"></nav-bar>
 
 <div id="container">
@@ -27,8 +27,8 @@
         <div class="testLimited">
             <ul class="clear">
                 <li style="padding-right:23px"><a href="javascript:void(0);" ng-click="searchByClass('1')" class="selected">全部</a></li>
-                <li style="padding-right:23px"><a href="javascript:void(0);" ng-click="searchByClass('2')">卡车</a></li>
-                <li><a href="javascript:void(0);" ng-click="searchByClass('3')">小客车</a></li>
+                <li style="padding-right:23px"><a href="javascript:void(0);" ng-click="searchByClass('3')">卡车</a></li>
+                <li><a href="javascript:void(0);" ng-click="searchByClass('2')">小客车</a></li>
                 <li><a href="javascript:void(0);" ng-click="searchByClass('4')">外地车</a></li>
                 <li><a href="javascript:void(0);" ng-click="searchByClass('5')">工作日</a></li>
                 <li style="padding:0px"><a href="javascript:void(0);" ng-click="searchByClass('6')">节假日</a></li>
@@ -50,10 +50,22 @@
                 </div>
                 <div class="fr searchButton"  ng-click="searchInfo()">搜索</div>
             </div>
-            <div class="resultList">
+
+        </div>
+        <div class="resultList ng-cloak" ng-style="resultStyle">
+            <ul ng-click="mapLocation(item)" ng-repeat="item in searchList">
+                <li>[限行<span style="font-family: Arial">{{$index+1}}</span>]</li>
+                <li>限行区域： {{item.platelimit_area}}</li>
+                <li>限行车辆： {{item.pl_condition}}</li>
+                <li>限行政策： {{item.principle}}</li>
+            </ul>
+            <div class="MoreChange" ng-click="loadData()">
 
             </div>
-
+        </div>
+        <div class="noSearchResult ng-cloak" ng-style="noSearchResult">
+            <span class="logo"></span>
+            <span class="noResult">无搜索结果，请重新输入</span>
         </div>
         <div class="selectedDiv">
             <div class="clear" style="box-shadow: 0 3px 2px  rgba(84, 98, 137, 0.3);">
@@ -119,12 +131,15 @@
     <div class="closeIcon" ng-click="closeList()">
         <img src="../img/trafficLimited/icon_close_gray.png" alt="">
     </div>
-    <ul class="limitList">
-        <li>[限行1]</li>
-        <li>限行区域：永丰路</li>
-        <li>限行车辆： 外地，卡车，蓝牌，燃油</li>
-        <li>限行政策： 重要会议限行</li>
+    <ul class="limitList" ng-repeat="each in limitList" ng-click="mapLocation(each)">
+        <li>[限行<span style="font-family: Arial">{{$index+1}}</span>]</li>
+        <li>限行区域： {{each.platelimit_area}}</li>
+        <li>限行车辆： {{each.pl_condition}}</li>
+        <li>限行政策： {{each.principle}}</li>
     </ul>
+    <div class="noMore">
+        已显示全部结果
+    </div>
 
 </div>
 </body>

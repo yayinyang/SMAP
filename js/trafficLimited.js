@@ -22,6 +22,12 @@ angular.module("trafficLimited",["dataService","navApp"])
     $scope.initArea = '';
     $scope.initPrinciple = '';
     $scope.initCar = '';
+    $scope.noSearchResult = {
+        display:'none'
+    }
+    $scope.resultStyle = {
+        display:'none'
+    }
     $scope.lineLayer = {
         "id": 'line_Limited_Layer',
         "type": 'line',
@@ -324,28 +330,6 @@ angular.module("trafficLimited",["dataService","navApp"])
         }
     };
 
-    $scope.lineLayerNew = {
-        "id": 'line_Limited_newLayer',
-        "type": 'line',
-        "source": "platelimitNew",
-        'source-layer': 'platelimit_line',
-        "minzoom": 5,
-        "maxzoom": 17.1,
-        "layout": {
-            "line-join": "round",
-            "visibility": "visible",
-            "line-cap": "round"
-        },
-        "paint": {
-            "line-width": {
-                "stops": [[6, 1.5], [20, 10]],
-                "base": 1.2
-            },
-            "line-color": "#EE6363",
-
-        }
-    }
-
         //定义线图层
         $scope.originLayer = {
             "id": "route",
@@ -362,85 +346,260 @@ angular.module("trafficLimited",["dataService","navApp"])
             },
             "layout": {
                 "line-join": "round",
-                "line-cap": "round"
-
+                "line-cap": "round",
+                "visibility": "visible"
             },
             "paint": {
                 "line-color": "rgba(255,114,86)",
                 "line-width": 3,
+
             }
         };
 
-    //地图划线函数
-        $scope.addLines = function (data, id, index) {
-            $scope.geojson = {
-                "type": "FeatureCollection",
-                "features": []
-            };
-            var source = {
-                "type": "Feature",
-                "geometry": {
-                    "type": "LineString",
-                    "coordinates": data
-                },
-                propertires: {
-                    id: 'test'
+        //定义面图层
+        $scope.polygonNewLayer = {
+            "id": "plate",
+            "type": "fill",
+            "source": {
+                "type": "geojson",
+                "data": {
+                    "type": "Feature",
+                    "properties": {},
+                    "geometry": {
+                        "type": "Polygon",
+                        "coordinates": []
+                    }
                 }
-            };
-
-            $scope.geojson.features.push(source);
-            map.getSource(id).setData($scope.geojson);
+            },
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "fill-color": "rgba(255, 116, 116, .3)",
+                'fill-outline-color': '#ff7474'
+            }
         };
 
-        $scope.getLimitedLine = function (arg) {
+
+    //数据默认第一条定位
+    $scope.firstLocation = function(firstNo){
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/geo?no='+firstNo).then(function (data) {
+            var geoArr = [];
+            var val = data.data.data ;
+            for(var i=0 ,len = val.platelimit.length; i<len ;i++){
+                geoArr.push(val.platelimit[i].coordinates);
+            }
+
             var bounds = {
                 type: 'FeatureCollection',
                 features: [],
             };
 
-            for (var i = 0, len = arg.length; i < len; i++) {
+           if(val.platelimit[0].type === "LineString" ) {
+               for (var i = 0, len = geoArr.length; i < len; i++) {
+                   var source = {
+                       "type": "Feature",
+                       "geometry": {
+                           "type": "LineString",
+                           "coordinates": geoArr[i]
+                       },
+                   };
+                   var pointFeature = turf.lineString(geoArr[i]);
+                   bounds.features.push(source);
+               }
+               var obj = $scope.originLayer;
+               obj.paint['line-color'] = '#ff7474';
+               $scope.originLayer.source.data = bounds;
+               if (!map.getSource('route')) {
+                   map.addLayer($scope.originLayer);
+               } else {
+                   $scope.clearLines();
+                   map.getSource('route').setData(bounds);
+               }
+               var bbox = turf.bbox(bounds);
+               var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+               map.fitBounds(v2, {padding: 200});
+           }else{
 
-                var obj = $scope.originLayer;
-                obj.id = 'route' + i;
-                obj.paint['line-color'] = '#ff7474';
-                var source = {
-                    "type": "geojson",
-                    "data": {
-                        "type": "Feature",
-                        "properties": {},
-                        "geometry": arg[i]
-                    }
-                };
-                $scope.originLayer.source = source;
-                map.addLayer($scope.originLayer);
-                var pointFeature = turf.lineString(arg[i]);
-                bounds.features.push(pointFeature);
+               for (var i = 0, len = geoArr.length; i < len; i++) {
+                   var source = {
+                       "type": "Feature",
+                       "geometry": {
+                           "type": "Polygon",
+                           "coordinates": geoArr[i]
+                       },
+                   };
+                  var pointFeature = turf.lineString(geoArr[i]);
+                   bounds.features.push(source);
+               }
+               var obj = $scope.polygonNewLayer;
+               obj.paint['fill-color'] = "rgba(255, 116, 116, .5)";
+               $scope.polygonNewLayer.source.data = bounds;
+               if (!map.getSource('plate') && !map.getSource('route')) {
+                   map.addLayer($scope.polygonNewLayer);
+               } else if(map.getSource('route')){
+                   $scope.clearLines();
+               }else{
+                   $scope.clearPolygon();
+                   map.getSource('plate').setData(bounds);
+               }
+               var bbox = turf.bbox(bounds);
+               var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+               map.fitBounds(v2, {padding: 200});
+           }
+        })
+
+    }
+    var pageParm = 1;
+    //分类搜索
+     $scope.searchList = [];
+     $scope.typeParam = '';
+     $scope.sumCount = '';
+     $scope.searchByClass = function(str){
+         pageParm = 1;
+         $scope.typeParam = str ;
+         $scope.resultStyle = {
+             display:'block'
+         }
+        $('.testLimited li a').removeClass('selected');
+        $(event.target).addClass('selected');
+         $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/geo/count?type='+str+'&cond='+$scope.searchWord).then(function(data){
+             $scope.sumCount = data.data.data.count ;
+             if($scope.sumCount == 0){
+                 $scope.resultStyle = {
+                     display:'none'
+                 }
+                 $scope.noSearchResult = {
+                     display:'block'
+                 }
+             }else if($scope.sumCount > 10){
+                 $scope.noSearchResult = {
+                     display:'none'
+                 }
+                 $scope.resultStyle = {
+                     display:'block'
+                 }
+                 $('#content .resultList .MoreChange').css('cursor','pointer');
+                 $('.MoreChange').html('查看全部搜索结果[共'+ $scope.sumCount +'条]');
+             }else if($scope.sumCount >0 && $scope.sumCount <=10){
+                 $scope.noSearchResult = {
+                     display:'none'
+                 }
+                 $scope.resultStyle = {
+                     display:'block'
+                 }
+                 $('#content .resultList .MoreChange').css('cursor','default');
+                 $('.MoreChange').html('已显示全部结果');
+
+             }
+         })
+         $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/geo?pageNum=1&pageSize=10&type='+str+'&cond='+$scope.searchWord).then(function (data) {
+             $scope.searchList = [];
+             var val = data.data.data;
+             for (var i = 0; i < val.platelimit.length; i++) {
+                 $scope.searchList.push(val.platelimit[i]);
+             }
+             if($scope.searchList[0]){
+                 var firstNo = $scope.searchList[0].no;
+                 $scope.firstLocation(firstNo);
+             }
+
+         })
+    }
+
+      //  分页查看更多
+        $scope.loadData = function(){
+            pageParm = pageParm +1 ;
+            console.log(pageParm);
+            var mostPage = Math.ceil($scope.sumCount/10);
+            console.log(mostPage);
+            if(pageParm > mostPage){
+                return ;
+            }
+            if($scope.sumCount/10 > 2){
+                if(pageParm == mostPage){
+                    $('.MoreChange').html('已显示全部结果');
+                    $('#content .resultList .MoreChange').css('cursor','default');
+                }else{
+                    $('.MoreChange').html('查看更多');
+                }
+            }else{
+                $('.MoreChange').html('已显示全部结果');
+                $('#content .resultList .MoreChange').css('cursor','default');
             }
 
-            // var bbox = turf.bbox(bounds);
-            // var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
-            // map.fitBounds(v2, {padding: 70});
+            $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/geo?pageNum='+pageParm+'&pageSize=10&type='+$scope.typeParam+'&cond='+$scope.searchWord).then(function (data) {
+                var val = data.data.data ;
+                for(var j=0;j<val.platelimit.length;j++){
+                    $scope.searchList.push(val.platelimit[j]);
+                }
+            })
 
         }
 
-
-
-    //分类搜索
-     $scope.searchByClass = function(str){
-        $('.testLimited li a').removeClass('selected');
-        $(event.target).addClass('selected');
-
-        return str ;
-
-    }
+    $scope.clearInput = function () {
+        $scope.searchWord = '';
+        $('#keywordSearch').focus();
+        $scope.noSearchResult = {
+            display: 'none'
+        }
+        $scope.resultStyle = {
+            display: 'none'
+        }
+    };
 
     //点击搜索事件
     $scope.searchInfo = function(){
-        $scope.searchByClass();
-       console.log('ds');
-      console.log($scope.searchByClass());
+        $scope.resultStyle = {
+            display:'block'
+        }
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/geo/count?type='+$scope.typeParam+'&cond='+$scope.searchWord).then(function(data){
+            var sumCount = data.data.data ;
+            if(sumCount.count == 0){
+                $scope.resultStyle = {
+                    display:'none'
+                }
+                $scope.noSearchResult = {
+                    display:'block'
+                }
+            }else if(sumCount.count > 20){
+                $scope.noSearchResult = {
+                    display:'none'
+                }
+                $scope.resultStyle = {
+                    display:'block'
+                }
+                $('.MoreChange').html('查看全部搜索结果[共'+sumCount.count+'条]');
+                $('#content .resultList .MoreChange').css('cursor','pointer');
+            }else if(sumCount.count>0 && sumCount.count<=20){
+                $scope.noSearchResult = {
+                    display:'none'
+                }
+                $scope.resultStyle = {
+                    display:'block'
+                }
+                $('#content .resultList .MoreChange').css('cursor','default');
+                $('.MoreChange').html('已显示全部结果');
+            }
+
+        })
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/geo?pageNum=1&pageSize=20&type='+$scope.typeParam+'&cond='+$scope.searchWord).then(function (data) {
+            $scope.searchList = [];
+            var val = data.data.data ;
+            for(var i=0;i<val.platelimit.length;i++){
+                $scope.searchList.push(val.platelimit[i]);
+            }
+
+        })
 
     }
+
+    $scope.GoSearch = function (event) {
+        var e = window.event || event ;
+        if(e.keyCode === 13){
+            $scope.searchInfo();
+        }
+    };
 
     //点击今日限行，默认显示一条
     $scope.toTodayLimit = function(){
@@ -450,53 +609,23 @@ angular.module("trafficLimited",["dataService","navApp"])
                 display:'none'
             }
             $scope.changColor = {
-                color:'#ff7474'
+                color:'#6d788a'
             }
         }else{
             $scope.limitDayList = {
                 display:'block'
             }
-
+            $scope.changColor = {
+                color:'#ff7474'
+            }
         }
-        var lineArr = [];
-        $http.post('http://fs.navinfo.com/smapapi/plateres/web/cond/td').then(function (data) {
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/desc').then(function (data) {
             var val = data.data.data ;
             $scope.initArea = val.platelimit[0].platelimit_area ;
             $scope.initPrinciple = val.platelimit[0].principle ;
             $scope.initCar = val.platelimit[0].pl_condition ;
-           // console.log(val.platelimit[0].geometroy.coordinates)
-            console.log(val);
-
-            for(var i=0 ,len = val.platelimit.length; i<len ;i++){
-                if (val.platelimit[i].group_id == val.platelimit[0].group_id && val.platelimit[i].principle == val.platelimit[0].principle){
-                    lineArr.push(val.platelimit[i].geometroy.coordinates);
-
-                }
-            }
-            console.log(lineArr);
-            var bounds = {
-                type: 'FeatureCollection',
-                features: [],
-            };
-
-            for (var i = 0, len = lineArr.length; i < len; i++) {
-                var source = {
-                    "type": "Feature",
-                    "geometry":{
-                        "type": "LineString",
-                        "coordinates":lineArr[i]
-                    },
-                };
-                var pointFeature = turf.lineString(lineArr[i]);
-                bounds.features.push(source);
-            }
-            var obj = $scope.originLayer;
-            obj.paint['line-color'] = 'red';
-            $scope.originLayer.source.data = bounds;
-            map.addLayer($scope.originLayer);
+            $scope.firstLocation(val.platelimit[0].no);
         })
-
-
 
     }
 
@@ -508,46 +637,167 @@ angular.module("trafficLimited",["dataService","navApp"])
     }
 
 
-    //今日限行，查看更多
+    //查看更多，加载今日限行列表
+    $scope.limitList = [];
     $scope.moreInfo = function(){
         $('.limitTodayLists').show();
         $('#container').css("width", "87.8%");
         $('.testLimited').hide();
-         $http.post('http://fs.navinfo.com/smapapi/plateres/web/cond/td').then(function (data) {
+        $scope.resultStyle = {
+            display:'none'
+        }
+        $scope.noSearchResult = {
+            display:'none'
+        }
+        $scope.limitDayList = {
+            display:'none'
+        }
+        $scope.changColor = {
+            color:'#6d788a'
+        }
+         $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/desc').then(function (data) {
              var val = data.data.data ;
-             // $scope.initArea = val.platelimit[0].platelimit_area ;
-             // $scope.initPrinciple = val.platelimit[0].principle ;
-             // $scope.initCar = val.platelimit[0].pl_condition ;
-             var summaryArr = [];
-             var areaToday = [];
-             var conditionToday = [];
-             var principleToday = [];
-             var arrNew=[];
-             for(var i = 0,len = val.platelimit.length; i<len ;i++){
-                 areaToday.push( platelimit_area = val.platelimit[i].platelimit_area);
-                 conditionToday.push(val.platelimit[0].pl_condition);
-                 principleToday.push(val.platelimit[0].principle);
-                 summaryArr = [areaToday,conditionToday,principleToday];
-
-
+             for(var i=0;i<val.platelimit.length;i++){
+                 $scope.limitList.push(val.platelimit[i]);
              }
-             for(var i=0;i<areaToday.length;i++){
-                 if(arrNew.indexOf(areaToday[i])<0){
-                     arrNew.push(areaToday[i]);
-                 }
-
-             }
-             console.log(arrNew);
-
          })
+    }
+    $scope.mapLocation = function(arg){
+        var param = arg.no;
+        var lineCol = [];
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/geo?no='+param).then(function (data) {
+            var val = data.data.data ;
+            for(var i=0 ,len = val.platelimit.length; i<len ;i++){
+                lineCol.push(val.platelimit[i].coordinates);
+            }
+            if(val.platelimit[0].type== "LineString") {
+                if (!map.getSource('plate') && !map.getSource('route')) {
+                    $scope.addlines(lineCol);
+                } else if (map.getSource('route') && map.getSource('route')._data.features.length!==0) {
+                    $scope.clearLines();
+                    $scope.addlines(lineCol);
+                } else if(map.getSource('plate') && map.getSource('plate')._data.features.length!==0){
+                    $scope.clearPolygon();
+                    $scope.addlines(lineCol);
+                }else{
+                    $scope.clearLines();
+                    $scope.clearPolygon();
+                    $scope.addlines(lineCol);
+                }
+            }else{
+                if (!map.getSource('plate') && !map.getSource('route')) {
+                    $scope.addPolygon(lineCol);
+                } else if (map.getSource('route') && map.getSource('route')._data.features.length!==0) {
+                    $scope.clearLines();
+                    $scope.addPolygon(lineCol);
+                }  else if(map.getSource('plate') && map.getSource('plate')._data.features.length!==0){
+                    $scope.clearPolygon();
+                    $scope.addPolygon(lineCol);
+                }else{
+                    $scope.clearLines();
+                    $scope.clearPolygon();
+                    $scope.addPolygon(lineCol);
+                }
 
-
+            }
+        })
 
     }
 
+        $scope.clearLines = function () {
+            var bounds = {
+                type: 'FeatureCollection',
+                features: [],
+            };
+            var source = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": ''
+                },
+            };
+            var obj = $scope.originLayer;
+            obj.layout['visibility'] = 'none';
+            // bounds.features.push(source);
+            map.getSource('route').setData(bounds);
+        };
 
+        $scope.clearPolygon = function () {
+            var bounds = {
+                type: 'FeatureCollection',
+                features: [],
+            };
+            var source = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": ''
+                },
+            };
+            var obj = $scope.polygonNewLayer;
+            obj.layout['visibility'] = 'none';
+            // bounds.features.push(source);
+            map.getSource('plate').setData(bounds);
+        };
 
+    //划线函数
+      $scope.addlines = function(lineArr) {
+          var bounds = {
+              type: 'FeatureCollection',
+              features: [],
+          };
 
+          for (var i = 0, len = lineArr.length; i < len; i++) {
+              var source = {
+                  "type": "Feature",
+                  "geometry": {
+                      "type": "LineString",
+                      "coordinates": lineArr[i]
+                  },
+              };
+              var pointFeature = turf.lineString(lineArr[i]);
+              bounds.features.push(source);
+          }
+          var bbox = turf.bbox(bounds);
+          var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+          map.fitBounds(v2, {padding: 200});
+          var obj = $scope.originLayer;
+          obj.paint['line-color'] = '#ff7474';
+          if(!map.getSource('route')){
+              $scope.originLayer.source.data = bounds;
+              map.addLayer($scope.originLayer);
+          }else{
+              map.getSource('route').setData(bounds);
+          }
+      }
+
+      //划面函数
+        $scope.addPolygon = function(lineArr) {
+            var bounds = {
+                type: 'FeatureCollection',
+                features: [],
+            };
+            var source = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": lineArr[0]
+                },
+            };
+            bounds.features.push(source);
+            var bbox = turf.bbox(bounds);
+            var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+            map.fitBounds(v2, {padding: 200});
+            var obj = $scope.polygonNewLayer;
+            obj.paint['fill-color'] = "rgba(255, 116, 116, .5)";
+            if(!map.getSource('plate')){
+                $scope.polygonNewLayer.source.data = bounds;
+                map.addLayer($scope.polygonNewLayer);
+            }else{
+                map.getSource('plate').setData(bounds);
+            }
+
+        }
 
 
 }]);
