@@ -354,7 +354,6 @@ angular.module("trafficLimited",["dataService","navApp"])
                 "type": "geojson",
                 "data": {
                     "type": "Feature",
-                    "properties": {},
                     "geometry": {
                         "type": "LineString",
                         "coordinates": []
@@ -481,25 +480,20 @@ angular.module("trafficLimited",["dataService","navApp"])
             };
 
             for (var i = 0, len = lineArr.length; i < len; i++) {
-                var obj = $scope.originLayer;
-                obj.id = 'route' + i;
-                obj.paint['line-color'] = 'red';
                 var source = {
-                    "type": "geojson",
-                    "data": {
-                        "type": "Feature",
-                        "properties": {},
-                        "geometry":{
-                            "type": "LineString",
-                            "coordinates":lineArr[i]
-                         },
-                    }
+                    "type": "Feature",
+                    "geometry":{
+                        "type": "LineString",
+                        "coordinates":lineArr[i]
+                    },
                 };
-                $scope.originLayer.source = source;
-                map.addLayer($scope.originLayer);
                 var pointFeature = turf.lineString(lineArr[i]);
-                bounds.features.push(pointFeature);
+                bounds.features.push(source);
             }
+            var obj = $scope.originLayer;
+            obj.paint['line-color'] = 'red';
+            $scope.originLayer.source.data = bounds;
+            map.addLayer($scope.originLayer);
         })
 
 
