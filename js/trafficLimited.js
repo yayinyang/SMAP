@@ -695,69 +695,66 @@ angular.module("trafficLimited", ["dataService", "navApp"])
             $('.testLimited').show();
         }
 
-
-        //查看更多，加载今日限行列表
-        $scope.limitList = [];
-        $scope.moreInfo = function () {
-            $('.limitTodayLists').show();
-            $('#container').css("width", "88.1%");
-            $('.testLimited').hide();
-            $scope.resultStyle = {
-                display: 'none'
-            }
-            $scope.noSearchResult = {
-                display: 'none'
-            }
-            $scope.limitDayList = {
-                display: 'none'
-            }
-            $scope.changColor = {
-                color: '#6d788a'
-            }
-            $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/desc').then(function (data) {
-                var val = data.data.data;
-                for (var i = 0; i < val.platelimit.length; i++) {
-                    $scope.limitList.push(val.platelimit[i]);
-                }
-            })
+    //查看更多，加载今日限行列表
+    $scope.limitList = [];
+    $scope.moreInfo = function(){
+        $('.limitTodayLists').show();
+        $('#container').css("width", "87.8%");
+        $('.testLimited').hide();
+        $scope.resultStyle = {
+            display:'none'
         }
-        $scope.mapLocation = function (arg,index) {
-            var param = arg.no;
-            var lineCol = [];
-            $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/geo?no=' + param).then(function (data) {
-                var val = data.data.data;
-                for (var i = 0, len = val.platelimit.length; i < len; i++) {
-                    lineCol.push(val.platelimit[i].coordinates);
+        $scope.noSearchResult = {
+            display:'none'
+        }
+        $scope.limitDayList = {
+            display:'none'
+        }
+        $scope.changColor = {
+            color:'#6d788a'
+        }
+         $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/desc').then(function (data) {
+             var val = data.data.data ;
+             for(var i=0;i<val.platelimit.length;i++){
+                 $scope.limitList.push(val.platelimit[i]);
+             }
+         })
+    }
+    $scope.mapLocation = function(arg){
+        var param = arg.no;
+        var lineCol = [];
+        $http.post('http://fastmap.navinfo.com/smap_p/plateres/web/cond/td/geo?no='+param).then(function (data) {
+            var val = data.data.data ;
+            for(var i=0 ,len = val.platelimit.length; i<len ;i++){
+                lineCol.push(val.platelimit[i].coordinates);
+            }
+            if(val.platelimit[0].type== "LineString") {
+                if (!map.getSource('plate') && !map.getSource('route')) {
+                    $scope.addlines(lineCol);
+                } else if (map.getSource('route') && map.getSource('route')._data.features.length!==0) {
+                    $scope.clearLines();
+                    $scope.addlines(lineCol);
+                } else if(map.getSource('plate') && map.getSource('plate')._data.features.length!==0){
+                    $scope.clearPolygon();
+                    $scope.addlines(lineCol);
+                }else{
+                    $scope.clearLines();
+                    $scope.clearPolygon();
+                    $scope.addlines(lineCol);
                 }
-                if (val.platelimit[0].type == "LineString") {
-                    if (!map.getSource('plate') && !map.getSource('route')) {
-                        $scope.addlines(lineCol);
-                    } else if (map.getSource('route') && map.getSource('route')._data.features.length !== 0) {
-                        $scope.clearLines();
-                        $scope.addlines(lineCol);
-                    } else if (map.getSource('plate') && map.getSource('plate')._data.features.length !== 0) {
-                        $scope.clearPolygon();
-                        $scope.addlines(lineCol);
-                    } else {
-                        $scope.clearLines();
-                        $scope.clearPolygon();
-                        $scope.addlines(lineCol);
-                    }
-                } else {
-                    if (!map.getSource('plate') && !map.getSource('route')) {
-                        $scope.addPolygon(lineCol);
-                    } else if (map.getSource('route') && map.getSource('route')._data.features.length !== 0) {
-                        $scope.clearLines();
-                        $scope.addPolygon(lineCol);
-                    } else if (map.getSource('plate') && map.getSource('plate')._data.features.length !== 0) {
-                        $scope.clearPolygon();
-                        $scope.addPolygon(lineCol);
-                    } else {
-                        $scope.clearLines();
-                        $scope.clearPolygon();
-                        $scope.addPolygon(lineCol);
-                    }
-
+            }else{
+                if (!map.getSource('plate') && !map.getSource('route')) {
+                    $scope.addPolygon(lineCol);
+                } else if (map.getSource('route') && map.getSource('route')._data.features.length!==0) {
+                    $scope.clearLines();
+                    $scope.addPolygon(lineCol);
+                }  else if(map.getSource('plate') && map.getSource('plate')._data.features.length!==0){
+                    $scope.clearPolygon();
+                    $scope.addPolygon(lineCol);
+                }else{
+                    $scope.clearLines();
+                    $scope.clearPolygon();
+                    $scope.addPolygon(lineCol);
                 }
             })
 
@@ -772,6 +769,7 @@ angular.module("trafficLimited", ["dataService", "navApp"])
                 type: 'FeatureCollection',
                 features: [],
             };
+
             map.getSource('route').setData(bounds);
         };
 
@@ -781,6 +779,7 @@ angular.module("trafficLimited", ["dataService", "navApp"])
                 type: 'FeatureCollection',
                 features: [],
             };
+
             map.getSource('plate').setData(bounds);
         };
 
