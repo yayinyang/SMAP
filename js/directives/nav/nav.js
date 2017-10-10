@@ -68,7 +68,7 @@ navApp.directive('navBar',function () {
                            title: '施工数据展示',
                        },
                        {
-                           title: '限行数据展示',
+                           title: '限行数据查询',
                        },
                        {
                            title: '景区专题地图',
