@@ -19,6 +19,7 @@ navApp.directive('navBar',function () {
                warehouseFlag: $scope.loc === 'warehouseFlag',
                onlineUseFlag: $scope.loc === 'onlineUseFlag',
                loginFlag: $scope.loc === 'loginFlag',
+               sceneryFlag:$scope.loc=='sceneryFlag'
            };
            $scope.navMap = [
                {
@@ -67,7 +68,10 @@ navApp.directive('navBar',function () {
                            title: '施工数据展示',
                        },
                        {
-                           title: '限行数据展示',
+                           title: '限行数据查询',
+                       },
+                       {
+                           title: '景区专题地图',
                        }
                    ]
                },

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- build:css ../style/scenery.css -->
+    <link href='../lib/mapbox/mapbox-gl.css' rel='stylesheet' />
+    <link href="../style/scenery.css" rel="stylesheet" />
+    <style>
+        input{
+            color: black;
+        }
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: pink;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: pink;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            color: pink;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: pink;
+        }
+    </style>
+    <!-- endbuild -->
+    <title>SMap</title>
+    <style>
+
+
+    </style>
+</head>
+<body ng-app="scenery" ng-controller="sceneryController" ng-keypress="GoSearch($event)">
+<nav-bar loc="locFlag"></nav-bar>
+
+<div id="container">
+    <div style="height: 56px;text-align: left;font-weight: 400;margin-bottom: 2px">
+        <ul style="list-style: none;margin: 0;vertical-align: middle;padding: 22px 0 0 0;display: flex;display: -ms-flexbox;">
+            <li style="font-size: 14px;color:rgba(0,0,0,0.7)">您现在的位置:</li>
+            <li style="font-size: 14px;padding-left: 5px;color:rgba(0,0,0,0.7)">在线体验</li>
+
+            <li style="font-size: 20px;padding:0 4px 0 9px;margin-top: -4px;color:rgba(0,0,0,1)">></li>
+            <li style="font-size: 14px;padding-left: 5px; color:rgba(0,0,0,0.7)">景区专题地图</li>
+        </ul>
+    </div>
+
+    <div id="content">
+        <div class="searchList">
+            <div class="searchInput clear">
+                <div class="fl clear" style="width:280px">
+                    <i class="searchBar fl">
+                        <img src="../img/scenery/icon_scenicspot_searchbar.png" alt="">
+                    </i>
+                    <input type="text"
+                           placeholder="请输入景区关键字搜索"
+                           ng-model="searchWord"
+                           ng-change="relativeWords('change')"
+                           class="fl"
+                           id="keywordSearch"
+                           style="font-size: 12px;width: 205px;"
+                    >
+                    <img src="../img/scenery/searchbar_close.png" alt=""
+                         ng-class="{true: 'showDeleteBtn', false: 'hideDeleteBtn'}[searchWord.length !== 0]"
+                         ng-click="clearInput()"
+                         class="closeList"
+                    >
+                </div>
+
+                <div class="fr searchButton"  ng-click="searchScenery()">搜索</div>
+            </div>
+            <div class="noSearchResult ng-cloak" ng-style="noSearchResult">
+                <span class="logo"></span>
+                <span class="noResult">无搜索结果，请重新输入</span>
+            </div>
+        </div>
+        <ul class="searchResult ng-cloak" ng-style='resultList' >
+            <li class="clear" ng-repeat="item in sceneryList" ng-click="lightLocation($index,item)" ng-mousemove="lightMark($index)" ng-mouseleave="removeMark($index)" >
+                <div class="infoDes fl ng-cloak">
+                    <div class="postName dotDis">
+                        <i class='numTitle' style="font-family: Arial;font-style:normal">{{$index + 1}}.</i>
+                        {{item.name}}
+                    </div>
+                    <div class="dotDis">
+                        <span>{{item.sight_level+'景区'}}</span>
+                        <span>{{item.sight_class}}</span>
+                    </div>
+                    <div class="dotDis">
+                        <span>门票&nbsp;:&nbsp;</span>
+                        <span> {{item.ticket_price}}</span>
+                    </div>
+                    <div class="dotDis">
+                        <span>开放时间&nbsp;:&nbsp;</span>
+                        <span> {{item.open_hours}}</span>
+                    </div>
+                    <div class="dotDis">
+                        <span>{{item.address}}</span>
+                    </div>
+
+                </div>
+                <div class="imgDes fr">
+                    <img ng-src="{{item.url}}" src="../img/scenery/tim.jpg" alt="">
+                </div>
+                <div class="borderLine">
+
+                </div>
+
+            </li>
+
+            <div class="moreResult ng-cloak" ng-style="moreResultlist">
+                <span class="allResult" ng-click="moreInfo()">查看全部搜索结果</span><span>[共{{resultNum}}条]</span>
+            </div>
+
+        </ul>
+        <ul class="ng-cloak reltiveWords" ng-style="relativeList">
+            <li
+                    class="relativeResult"
+                    ng-repeat="each in keywordsArr"
+                    ng-click="toSearch(each)"
+            >
+                <span class="logo"></span>
+                <span class="choiceWord" ng-bind="each.name"></span>
+            </li>
+        </ul>
+        <div class="introduce ng-cloak" ng-style="introDis">
+            <div style="width:330px">
+            <div class="imgDisplay" style="padding-right: 0px">
+                <img ng-src="{{deImg}}"  id="bigPic" alt="" >
+                <div class="backBtn" ng-click="toResultlist()">
+                    返回
+                </div>
+                <div class="morePic" ng-click="scanPic()" ng-bind="morePic">
+                </div>
+            </div>
+            <div style="padding:0px 0px 0px 10px;">
+                <div class="introTitle" ng-bind="deName">
+                </div>
+                <div class="introContent">
+                    <span style="margin-right:30px">{{sightLevel}}景区&nbsp;{{sightClass}}</span>
+                    <span>{{ticket}}</span>
+                </div>
+                <div class="introContent">
+                    <img src="../img/scenery/icon_address.png" alt="">
+                    <span ng-bind="deAddress"></span>
+                </div>
+                <div class="introContent">
+                    <img src="../img/scenery/icon_phonenumber.png" alt="">
+                    <span>{{sightTel}}</span>
+                </div>
+                <div class="introContent">
+                    <span>开放时间&nbsp;:&nbsp;{{deTime}}</span>
+                </div>
+                <div class="introContent">
+                    <span>建议游玩时间&nbsp;:&nbsp;{{visitTime}}</span>
+                </div>
+                <div class="introContent bestTime" style="position: relative">
+                    <span>最佳旅游时间&nbsp;:&nbsp;&nbsp;{{season}}</span>
+                </div>
+
+                <div class="scrollContent">
+                    <span style="text-align: justify">景区概况&nbsp;:&nbsp;</span>
+                    <span id="detailIntro">{{overview}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="javascript:void(0)" id="allCnt"></a>
+                </div>
+
+            </div>
+            </div>
+    </div>
+    <div class="swiperPic">
+        <div class="centerBlock">
+            <div class="disPic">
+                <img  alt=""   onload="AutoResizeImage(840,420,this)">
+            </div>
+            <div style="overflow: hidden;position: relative;height: 120px">
+                <ul>
+                    <li ng-repeat="each in arrImg" ng-click="goImg($index)"><img  ng-src={{each}}  alt=""></li>
+                </ul>
+            </div>
+            <a href="javascript:void(0);" class="btn_all btn_left" ng-click="goLeft()" ></a>
+            <a href="javascript:void(0);" class="btn_all btn_right" ng-click="goRight()"></a>
+            <div class="closePic" ng-click="closePic()">
+                <img src="../img/scenery/icon_close_view.png" alt="">
+            </div>
+        </div>
+        <span></span>
+    </div>
+        <!--<div class="routeSpecial">-->
+            <!--<ul class="clear" ng-init='searchHolder ="搜索全部限行信息" '>-->
+                <!--<li  ng-click="changeSearch($index)"-->
+                     <!--ng-repeat="each in searchClass"-->
+                     <!--ng-bind="each"-->
+                     <!--ng-class="{active : $index == focus}"-->
+                <!--&gt;-->
+                <!--</li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+    <div id="map">
+        <div class="changeMapSizeDiv">
+            <button class="addBtn" ng-click="changeZoom('add')"></button>
+            <button class="subBtn" ng-click="changeZoom('sub')"></button>
+        </div>
+    </div>
+
+</div>
+</body>
+
+<!-- build:js ../js/scenery.js -->
+<script src='../lib/mapbox/mapbox-gl.js'></script>
+<script src="../config/Application.js"></script>
+<script src="../config/layer.js"></script>
+<script src="../lib/jquery/jquery.js"></script>
+<script src='../lib/turf/turf.min.js'></script>
+<script src="../lib/angularjs/1.4.4/angular.js"></script>
+<script src="../lib/angular-popups/angular-popups.js"></script>
+<script src="../lib/angular-nvd3/d3.js"></script>
+<script src="../lib/angular-nvd3/nv.d3.js"></script>
+<script src="../lib/angular-nvd3/angular-nvd3.js"></script>
+<script src="../js/service/dataService.js"></script>
+<script src="../js/service/dataService-sMap.js"></script>
+<script src="../js/scenery.js"></script>
+<script src="../js/directives/nav/nav.js"></script>
+<!-- endbuild -->
+<script src="../js/directives/nav/nav.js"></script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0339719757668e2b38cac302d94d5fe152d09fff
+
+
+</html>

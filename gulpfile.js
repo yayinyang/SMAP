@@ -148,9 +148,9 @@ gulp.task('homepage', function() {
     }
 
 });
-gulp.task('onlineUse', function() {
+gulp.task('tollGate', function() {
     if(develop){
-        return gulp.src('pages/onlineUse.html')
+        return gulp.src('pages/tollGate.html')
             .pipe(usemin({
                 css: [
                     sourcemaps.init({
@@ -176,7 +176,47 @@ gulp.task('onlineUse', function() {
             }))
             .pipe(gulp.dest('dist/pages'));
     }else{
-        return gulp.src('pages/onlineUse.html')
+        return gulp.src('pages/tollGate.html')
+            .pipe(usemin({
+                css: [minifyCss(), rev() ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });}],
+                js: [ uglify({
+                    mangle: false, //不修改变量名
+                }), rev() ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }
+
+});
+gulp.task('scenery', function() {
+    if(develop){
+        return gulp.src('pages/scenery.html')
+            .pipe(usemin({
+                css: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    minifyCss(),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/style/')
+                ],
+                html: [ function () {return htmlmin({ collapseWhitespace: true });} ],
+                js: [
+                    sourcemaps.init({
+                        loadMaps: true
+                    }) ,
+                    uglify({
+                        mangle: false, //不修改变量名
+                    }),
+                    'concat',
+                    rev(),
+                    sourcemaps.write('../maps/js/')
+                ],
+            }))
+            .pipe(gulp.dest('dist/pages'));
+    }else{
+        return gulp.src('pages/scenery.html')
             .pipe(usemin({
                 css: [minifyCss(), rev() ],
                 html: [ function () {return htmlmin({ collapseWhitespace: true });}],
@@ -606,15 +646,16 @@ gulp.task('clean',function(){
 
 gulp.task('pages',function () {
     runSequence([
-        'homepage','onlineUse','productDescription','productService',
+        'homepage','tollGate','scenery','productDescription','productService',
         'productWarehouse','undevelopPage','trafficLimited','construction',
-        'trafficControl','roadwork','login','chargeMessage',
+        'trafficControl','roadwork','login','chargeMessage'
     ]);
 });
 
 gulp.task('watch',function (event) {
     gulp.watch(['index.html'],['homepage']);
-    gulp.watch(['pages/onlineUse.html'],['onlineUse']);
+    gulp.watch(['pages/tollGate.html'],['tollGate']);
+    gulp.watch(['pages/scenery.html'],['scenery']);
     gulp.watch(['pages/productDescription.html'],['productDescription']);
     gulp.watch(['pages/productService.html'],['productService']);
     gulp.watch(['pages/productWarehouse.html'],['productWarehouse']);
