@@ -525,9 +525,6 @@ angular.module("trafficLimited", ["dataService", "navApp"])
 
                 })
             }else{
-                $scope.noSearchResult = {
-                    display: 'block'
-                }
                 $scope.resultStyle = {
                     display: 'none'
                 }

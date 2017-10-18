@@ -13,15 +13,8 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
     .controller("sceneryController", ["$scope", "$location", "dsEdit", "$anchorScroll", "$http", "$timeout",
         function ($scope, $location, dsEdit, $anchorScroll, $http, $timeout) {
             $scope.locFlag = 'sceneryFlag';
-            $scope.startTollGate = '';
-            $scope.endTollGate = '';
             $scope.keywordsArr = [];
             $scope.popuArr = [];
-            $scope.startFlag = false;
-            $scope.endFlag = false;
-            $scope.visible = 'true';
-            $scope.searchParameter = {};
-            $scope.linksArr = [];
             $scope.colorArr = ['rgba(255,114,86,0.8)', 'rgba(255,11486,0.3)', 'rgba(20,120,255,0.3)'];
             $scope.sceneryList = [];
             $scope.resultNum = '';
@@ -784,6 +777,32 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     map.addLayer($scope.lineLayer);
                 }, 0);
             }
+
+            //点击所有poi景点图层
+            var allPoipop = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false,
+                offset: popupOffsets
+            });
+            map.on('click','poiNew_layer',function (e) {
+                e.features[0].layer.paint={"icon-color": "#ff2d2d", "text-halo-width": 0.5, "text-color": "#ff2d2d"};
+                 console.log(e.features[0].layer.paint);
+              // map.setPaintProperty('poiNew_layer', 'text-color', '#c5a56d');
+
+                $scope.poiLocation = [];
+                $scope.TollGateName = e.features[0].properties.name;
+                var div = window.document.createElement('div');
+                div.innerHTML =
+                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
+                    '<div class="tipPopDeep"></div>';
+                $scope.poiLocation.push(e.lngLat.lng);
+                $scope.poiLocation.push(e.lngLat.lat);
+
+                allPoipop.setLngLat($scope.poiLocation)
+                         .setDOMContent(div)
+                         .addTo(map);
+            });
+
         }]);
 
 //调节预览图片尺寸

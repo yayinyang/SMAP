@@ -19,7 +19,7 @@ navApp.directive('navBar',function () {
                warehouseFlag: $scope.loc === 'warehouseFlag',
                onlineUseFlag: $scope.loc === 'onlineUseFlag',
                loginFlag: $scope.loc === 'loginFlag',
-               sceneryFlag:$scope.loc=='sceneryFlag'
+               sceneryFlag:$scope.loc === 'sceneryFlag'
            };
            $scope.navMap = [
                {

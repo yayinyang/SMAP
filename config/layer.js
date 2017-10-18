@@ -5188,8 +5188,8 @@ var scenery ={
             "poiNew" :{
                 "type" : "vector",
                 "tiles": ["http://192.168.15.41:9999/smapapi/scenic/pbf/poi/{z}/{x}/{y}"],
-                'minzoom':15,
-                'maxzoom':15
+                'minzoom':7,
+                'maxzoom':12
             },
             "carportline":{
                 "type" : "vector",
@@ -6835,7 +6835,7 @@ var scenery ={
                 "line-cap": "round"
             },
             paint: {
-                "line-color": "yellow",
+                "line-color": "#ff7474",
                 "line-width": 1.0
             },
             minzoom: 3,
