@@ -281,16 +281,11 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         }
                     }]
                 }
-
                 var mbox = turf.bbox(mush);
                 var b1 = new mapboxgl.LngLatBounds([mbox[0], mbox[1]], [mbox[2], mbox[3]]);
                 map.fitBounds(b1, {maxZoom: 15, padding: 100});
-            
-        }
-    
 
-
-           
+            }
 
             var addMyLayer = function () {
                 map.addSource('mysouce', {
@@ -808,21 +803,10 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 offset: popupOffsets
             });
             map.on('mouseover','poiNew_layer',function (e) {
-              // map.setPaintProperty('poiNew_layer', 'text-color', '#c5a56d');
                 $scope.poiLocation = [];
+                $scope.poiLocation.push(e.features[0].properties.x_guide);
+                $scope.poiLocation.push(e.features[0].properties.y_guide);
                 $scope.TollGateName = e.features[0].properties.name;
-                console.log(e);
-                var div = window.document.createElement('div');
-                div.innerHTML =
-                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
-                    '<div class="tipPopDeep"></div>';
-                $scope.poiLocation.push(e.lngLat.lng);
-                $scope.poiLocation.push(e.lngLat.lat);
-
-                allPoipop.setLngLat($scope.poiLocation)
-                         .setDOMContent(div)
-                         .addTo(map);
-
                 var source = {
                     "type": "geojson",
                     "data":{
@@ -836,7 +820,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         }
                     }
                 };
-
                 if (!map.getSource('lightTextId')) {
                     lightTextLayer.source = source;
                     map.addLayer(lightTextLayer);
@@ -854,9 +837,22 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     })
                 }
 
+            });
+            map.on('click','poiNew_layer',function (e) {
+                $scope.poiclickLoc = [];
+                $scope.TollGateName = e.features[0].properties.name;
+                var div = window.document.createElement('div');
+                div.innerHTML =
+                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
+                    '<div class="tipPopDeep"></div>';
+                $scope.poiclickLoc.push(e.lngLat.lng);
+                $scope.poiclickLoc.push(e.lngLat.lat);
+
+                allPoipop.setLngLat($scope.poiclickLoc)
+                         .setDOMContent(div)
+                         .addTo(map);
 
             });
-
         }]);
 
 //调节预览图片尺寸
