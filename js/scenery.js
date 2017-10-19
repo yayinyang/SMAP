@@ -778,19 +778,35 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 }, 0);
             }
 
+            //添加高亮poi名称图层
+            var lightTextLayer = {
+                "id": "lightTextId",
+                "type": "symbol",
+                "layout": {
+                    'icon-image': 'museum-15',
+                    "text-field": "{name}",
+                    'text-size':12,
+                    "text-offset":[0,1.5],
+                    "text-justify": "center",
+                    "visibility": "visible"
+                },
+                'paint': {
+                    'text-color': "#c5a56d"
+                }
+
+            };
+
             //点击所有poi景点图层
             var allPoipop = new mapboxgl.Popup({
                 closeButton: false,
                 closeOnClick: false,
                 offset: popupOffsets
             });
-            map.on('click','poiNew_layer',function (e) {
-                e.features[0].layer.paint={"icon-color": "#ff2d2d", "text-halo-width": 0.5, "text-color": "#ff2d2d"};
-                 console.log(e.features[0].layer.paint);
+            map.on('mouseover','poiNew_layer',function (e) {
               // map.setPaintProperty('poiNew_layer', 'text-color', '#c5a56d');
-
                 $scope.poiLocation = [];
                 $scope.TollGateName = e.features[0].properties.name;
+                console.log(e);
                 var div = window.document.createElement('div');
                 div.innerHTML =
                     '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
@@ -801,6 +817,39 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 allPoipop.setLngLat($scope.poiLocation)
                          .setDOMContent(div)
                          .addTo(map);
+
+                var source = {
+                    "type": "geojson",
+                    "data":{
+                        "type":"Feature",
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates":$scope.poiLocation
+                        },
+                        "properties": {
+                            "name": $scope.TollGateName
+                        }
+                    }
+                };
+
+                if (!map.getSource('lightTextId')) {
+                    lightTextLayer.source = source;
+                    map.addLayer(lightTextLayer);
+                }else {
+                    map.getSource('lightTextId').setData({
+                        "type": "FeatureCollection",
+                        "features": [{
+                            "type": "Feature",
+                            "properties": {"name": $scope.TollGateName},
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": $scope.poiLocation
+                            }
+                        }]
+                    })
+                }
+
+
             });
 
         }]);
