@@ -281,11 +281,16 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         }
                     }]
                 }
+
                 var mbox = turf.bbox(mush);
                 var b1 = new mapboxgl.LngLatBounds([mbox[0], mbox[1]], [mbox[2], mbox[3]]);
                 map.fitBounds(b1, {maxZoom: 15, padding: 100});
+            
+        }
+    
 
-            }
+
+           
 
             var addMyLayer = function () {
                 map.addSource('mysouce', {
