@@ -19,7 +19,8 @@ navApp.directive('navBar',function () {
                warehouseFlag: $scope.loc === 'warehouseFlag',
                onlineUseFlag: $scope.loc === 'onlineUseFlag',
                loginFlag: $scope.loc === 'loginFlag',
-               sceneryFlag:$scope.loc === 'sceneryFlag'
+               sceneryFlag:$scope.loc === 'sceneryFlag',
+               productDayFlag:$scope.loc === 'productDayFlag'
            };
            $scope.navMap = [
                {
@@ -72,6 +73,9 @@ navApp.directive('navBar',function () {
                        },
                        {
                            title: '景区专题地图',
+                       },
+                       {
+                           title: '日出品',
                        }
                    ]
                },

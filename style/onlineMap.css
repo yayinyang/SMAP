@@ -556,5 +556,8 @@ span.noResult{
 ::-ms-clear,::-ms-reveal{
     display: none;
 }
+.lightTime{
+    background-color: #1478FF;
+}
 
 
