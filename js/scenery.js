@@ -1,29 +1,23 @@
 var map = new mapboxgl.Map({
     container: 'map',
     style: scenery,
-    zoom: 10,
+    zoom: 8,
     center: [108.94704, 34.25943],
     maxZoom: 17,
-    minZoom: 0,
+    minZoom: 3,
     repaint: true,
     pitch: 0
 });
 
 angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
-    .controller("sceneryController", ["$scope", "$location", "dsEdit", "$anchorScroll", "$http", "$timeout",
-        function ($scope, $location, dsEdit, $anchorScroll, $http, $timeout) {
+    .controller("sceneryController", ["$scope", "$location", "dsEdit", "$anchorScroll", "$http", "$timeout", "$sce",
+        function ($scope, $location, dsEdit, $anchorScroll, $http, $timeout, $sce) {
             $scope.locFlag = 'sceneryFlag';
-            $scope.startTollGate = '';
-            $scope.endTollGate = '';
             $scope.keywordsArr = [];
             $scope.popuArr = [];
-            $scope.startFlag = false;
-            $scope.endFlag = false;
-            $scope.visible = 'true';
-            $scope.searchParameter = {};
-            $scope.linksArr = [];
             $scope.colorArr = ['rgba(255,114,86,0.8)', 'rgba(255,11486,0.3)', 'rgba(20,120,255,0.3)'];
             $scope.sceneryList = [];
+            $scope.tipsList = [];
             $scope.resultNum = '';
             $scope.searchWord = '';
             $scope.deName = '';
@@ -36,8 +30,8 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
             $scope.season = '';
             $scope.sightTel = '';
             $scope.deAddress = '';
-            $scope.deImg = '';
             $scope.morePic = '';
+            $scope.isRoute = [];
             $scope.noSearchResult = {
                 display: 'none'
             };
@@ -64,6 +58,13 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 }
                 $('.introduce').hide();
                 $('.searchResult').hide();
+                $('.travelTips').hide();
+                //清楚地图上的路线及点
+                $scope.clearLines();
+                $scope.clearMarksight();
+
+                //清除地图上的景区poi名称
+                allPoipop.remove();
             };
 
             //添加定位点图层
@@ -75,7 +76,8 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     'icon-size': 1,
                     'text-justify': 'center',
                     'text-field': '{numMark}',
-                    'text-size': 12
+                    'text-size': 12,
+                    "text-offset":[0,-0.3],
                     // 'text-font' : ['Arial Unicode MS Regular']
                 },
                 'paint': {
@@ -92,11 +94,21 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     'icon-size': 1,
                     'text-justify': 'center',
                     'text-field': '{numMark}',
-                    'text-size': 12
+                    'text-size': 12,
+                    "text-offset":[0,-0.3],
                     // 'text-font' : ['Arial Unicode MS Regular']
                 },
                 'paint': {
                     'text-color': "#fff"
+                }
+            };
+            //添加沿途景点图层
+            var marksightLayer = {
+                "id": "marksightId",
+                "type": "symbol",
+                'layout': {
+                    'icon-image': 'POI_red',
+                    'icon-size': 0.6
                 }
             };
 
@@ -107,6 +119,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         display: "none"
                     }
                     $('.searchResult').hide();
+                    $('.introduce').hide();
                     dsEdit.getProduct("scenic/search/realtime", {
                         parm: JSON.stringify({
                             str: $scope.searchWord
@@ -146,6 +159,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 $scope.relativeList = {
                     display: "none"
                 }
+                $scope.searchScenery();
             }
 
             var markerHeight = 10, markerRadius = 10, linearOffset = 5;
@@ -181,7 +195,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     map.setZoom(nowZoom - 1);
                 }
             };
-
 
             var mySourceData = {
                 type: 'FeatureCollection',
@@ -220,11 +233,17 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                                     display: 'none'
                                 }
                                 $scope.sceneryList = data;
+                                for (var i = 0;i<$scope.sceneryList.length;i++) {
+                                    $scope.sceneryList[i].audio_id = $sce.trustAsResourceUrl($scope.sceneryList[i].audio_id);
+                                }
                                 $('.searchResult').show();
                                 locationMap(data);
                             } else {
                                 var dataPart = data.slice(0, 3);
                                 $scope.sceneryList = dataPart;
+                                for (var i = 0;i<$scope.sceneryList.length;i++) {
+                                    $scope.sceneryList[i].audio_id = $sce.trustAsResourceUrl($scope.sceneryList[i].audio_id);
+                                }
                                 $scope.moreResultlist = {
                                     display: 'block'
                                 }
@@ -288,16 +307,11 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         }
                     }]
                 }
-
                 var mbox = turf.bbox(mush);
                 var b1 = new mapboxgl.LngLatBounds([mbox[0], mbox[1]], [mbox[2], mbox[3]]);
                 map.fitBounds(b1, {maxZoom: 15, padding: 100});
-            
-        }
-    
 
-
-           
+            }
 
             var addMyLayer = function () {
                 map.addSource('mysouce', {
@@ -307,6 +321,8 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 $scope.testLayer.source = 'mysouce';
                 map.addLayer($scope.testLayer);
                 map.on('mouseenter', 'pointSelected', function (e) {
+                    popupClick.remove();
+                    allPoipop.remove();
                     //var index=e.features[0].properties.mark;
                     //$('.searchResult li').eq(index).css({'background':'#4393ff','color':'#fff'}).siblings().css('background','#fff');
                     var pid = e.features[0].properties.id;
@@ -320,8 +336,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         }
                     }
                     resetMySourceData(mySourceData);
-
-                    popupClick.remove();
                     var titleDes = window.document.createElement('div');
                     titleDes.innerHTML = '<div class="feePopDeep">' + e.features[0].properties.sceneryName + '</div>' +
                         '<div class="tipPopDeep"></div>';
@@ -332,7 +346,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     popupName.setLngLat($scope.siteLocation)
                         .setDOMContent(titleDes)
                         .addTo(map);
-
 
                 });
 
@@ -358,28 +371,13 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 }
                 resetMySourceData(mySourceData);
                 popupName.remove();
-                var titleDes = window.document.createElement('div');
-                titleDes.innerHTML = '<div class="feePopDeep">' + e.features[0].properties.sceneryName + '</div>' +
-                    '<div class="tipPopDeep"></div>';
 
                 map.getCanvas().style.cursor = 'pointer';
                 map.flyTo({
                     center: e.features[0].geometry.coordinates,
                     zoom: 16,
                     speed: 1.5
-                }, map.on('zoomend', function (data) {
-                    for (var i = 0, len = data.queryRenderedFeatures.length; i < 5; i++) {   //循环次数待改
-                        if (data.queryRenderedFeatures()[i].properties.id == pid) {
-                            popupClick.setLngLat(data.queryRenderedFeatures()[i].geometry.coordinates)
-                                .setDOMContent(titleDes)
-                                .addTo(map);
-                            break;
-                        }
-                    }
-
-                }));
-
-
+                });
                 var poiId = e.features[0].properties.poiId;
                 detailsDis(poiId);
 
@@ -413,6 +411,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 });
                 var poiId = item.poi_pid;
                 detailsDis(poiId);
+                $('.backBtn').show();
             }
 
             var arrImg = [];
@@ -434,7 +433,15 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     $scope.deAddress = data[0].address;
                     $scope.arrImg = data[0].url;
                     $scope.morePic = data[0].url.length;
+                    $scope.pidSight = data[0].poi_pid;
                     arrImg = data[0].url;
+                    if($sce.trustAsResourceUrl(data[0].audio_id[0]) == undefined ){
+                        $scope.deAudio = '';
+                        $('.speakUp').css('display','none');
+                    }else{
+                        $scope.deAudio = $sce.trustAsResourceUrl(data[0].audio_id[0]);
+                        $('.speakUp').css('display','inline-block');
+                    }
                     if (data[0].overview) {
                         moreContent(data[0].overview);
                     } else {
@@ -451,6 +458,11 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 $('.introduce').show();
                 $('.searchResult').hide();
 
+                //判断是否显示攻略按钮
+                dsEdit.getProduct("scenic/search/getroute?pid="+poiId).then(function (data) {
+                    $scope.isRoute = data;
+                })
+
             }
 
 
@@ -461,7 +473,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 $scope.relativeList = {
                     display: 'none'
                 }
-
                 if ($('#keywordSearch').val() == '') {
                     $scope.noSearchResult = {
                         display: 'block'
@@ -473,8 +484,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 } else {
                     $scope.getLocationPopup();
                 }
-
-
             }
 
             $scope.GoSearch = function (event) {
@@ -558,14 +567,24 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     .addTo(map);
 
                 //让当前li的上下分割线消失
-                if (index == 0) {
-                    $('.borderLine').show();
-                    $('.borderLine').eq(index).hide();
-                } else {
-                    $('.borderLine').show();
-                    $('.borderLine').eq(index).hide();
-                    $('.borderLine').eq(index - 1).hide();
+                if($scope.resultNum != 1){
+                    if (index == 0) {
+                        $('.borderLine').show();
+                        $('.borderLine').eq(index).hide();
+                    } else {
+                        $('.borderLine').show();
+                        $('.borderLine').eq(index).hide();
+                        $('.borderLine').eq(index - 1).hide();
+                    }
                 }
+
+                var backImage = $('#speak-' + index).css('backgroundImage');
+                if (backImage.indexOf('blue_active') > -1) {
+                    $('#speak-' + index).css('backgroundImage', 'url(../img/scenery/icon_white_active.gif)')
+                } else {
+                    $('#speak-' + index).css('backgroundImage', 'url(../img/scenery/icon_white_normal.png)');
+                }
+
             }
 
             //mouseleave list
@@ -580,8 +599,17 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     map.getSource('lightHeightId').setData(geojson);
                 }
                 // map.removeLayer('lightHeightId');
-            }
+                var backImage = $('#speak-'+index).css('backgroundImage') ;
+                if(backImage.indexOf('white_active')>-1){
+                    $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_blue_active.gif)')
+                }else{
+                    $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                }
 
+                if($scope.resultNum == 1){
+                    $('.borderLine').hide();
+                }
+            }
 
             //see more
             $scope.moreInfo = function () {
@@ -594,6 +622,9 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                         })
                     }).then(function (data) {
                         $scope.sceneryList = data;
+                        for (var i = 0;i<$scope.sceneryList.length;i++) {
+                            $scope.sceneryList[i].audio_id = $sce.trustAsResourceUrl($scope.sceneryList[i].audio_id);
+                        }
                         locationMap(data);
                     })
                     $('.allResult').html('已展开全部搜索结果');
@@ -616,8 +647,14 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                     var oImg = $('.centerBlock ul img');
                     $('.disPic>img')[0].src = arrImg[0];
                     $('.centerBlock ul img').eq(0).css('border', '4px solid #1478ff');
-                    $('.btn_left').hide();
-                    $('.btn_right').show();
+                    if($scope.morePic == 1){
+                        $('.btn_left').hide();
+                        $('.btn_right').hide();
+                    }
+                    if($scope.morePic > 1){
+                        $('.btn_left').hide();
+                        $('.btn_right').show();
+                    }
                     index = 0;
                 }
 
@@ -625,7 +662,6 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
 
             $scope.goImg = function (parm) {
                 index = parm;
-                console.log(parm);
                 var oImg = $('.centerBlock ul img');
                 $('.disPic>img')[0].src = oImg[parm].src;
                 oImg.css('border', '4px solid rgba(37,57,110,0)');
@@ -651,7 +687,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 oImg.eq(index).css('border', '4px solid #1478ff');
                 if (index == 0) {
                     $('.btn_left').hide();
-
+                    $('.btn_right').show();
                 } else {
                     $('.btn_left').show();
                     $('.btn_right').show();
@@ -670,6 +706,7 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 oImg.eq(index).css('border', '4px solid #1478ff');
                 if (index == arrImg.length - 1) {
                     $('.btn_right').hide();
+                    $('.btn_left').show();
                 } else {
                     $('.btn_right').show();
                     $('.btn_left').show();
@@ -731,64 +768,438 @@ angular.module("scenery", ['dataService', 'nvd3', 'angular-popups', 'navApp'])
                 }
             }
 
-
-            //测试景区特色路线
-            $scope.lineLayer = {
-                "id": 'line_Limited_Layer',
-                "type": 'line',
-                "source": "platelimit",
-                'source-layer': 'route',
-                "minzoom": 5,
-                "maxzoom": 17.1,
-                "layout": {
-                    "line-join": "round",
-                    "visibility": "visible",
-                    "line-cap": "round"
-                },
-                "paint": {
-                    "line-color": "#FF0000",
-                    "line-width": {
-                        "stops": [[6, 1.5], [20, 10]],
-                        "base": 1.2
-                    },
-                },
-            };
-            $scope.searchClass = [
-                '佛教文化游',
-                '浪漫夜晚游',
-                '人文景观游',
-                '浪漫之旅路线',
-                '文化之旅路线',
-                '休闲之旅路线',
-                '游览车路线',
-            ]
-
-            $scope.changeSearch = function (index) {
-                $scope.focus = index;
-                var param;
-                if (index == 0) {
-                    param = '2017061901'
-                } else if (index == 1) {
-                    param = '2017061902'
-                } else if (index == 2) {
-                    param = '2017061903'
-                } else if (index == 3) {
-                    param = '2017071301'
-                } else if (index == 4) {
-                    param = '2017071302'
-                } else if (index == 5) {
-                    param = '2017071303'
+            //语音播放或暂停
+            $scope.playOrPaused = function(event, index){
+                var e = window.event || event;
+                if (e.stopPropagation) {
+                    e.stopPropagation();
                 } else {
-                    param = '2017071304'
+                    e.cancelBubble = true;
+                }
+                var audio = document.getElementById('audio-' + index);
+                if(audio.paused){
+                    audio.play();
+                    $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_white_active.gif)');
+                }else{
+                    audio.pause();
+                    $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
                 }
 
-                map.style.sourceCaches.platelimit._source.tiles[0] = 'http://192.168.15.41:9999/smapapi/scenic/pbf/singleRoute/{z}/{x}/{y}?routeId=' + param;
-
-                map.removeLayer('line_Limited_Layer');
-                $timeout(function () {
-                    map.addLayer($scope.lineLayer);
-                }, 0);
+                audio.addEventListener('ended', function () {
+                    console.log('--over--');
+                    var stopIcon =$('#speak-'+index).css('backgroundImage');
+                    if(stopIcon.indexOf('blue') > -1 ){
+                        $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                    }else{
+                        $('#speak-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                    }
+                });
             }
+            $scope.playOrPauseDetail = function() {
+                var audioDe = document.getElementById('audioDe');
+                if(audioDe.paused){
+                    audioDe.play();
+                    $('#speakDe').css('backgroundImage','url(../img/scenery/icon_blue_active.gif)');
+                }else{
+                    audioDe.pause();
+                    $('#speakDe').css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                }
+
+
+                audioDe.addEventListener('ended', function () {
+                    console.log('--over--');
+                    var stopIcon =$('#speakDe').css('backgroundImage');
+                    if(stopIcon.indexOf('blue') > -1 ){
+                        $('#speakDe').css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                    }else{
+                        $('#speakDe').css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                    }
+                }, false);
+
+            };
+
+            //点击所有poi景点图层
+            var allPoipop = new mapboxgl.Popup({
+                closeButton: false,
+                closeOnClick: false,
+                offset: popupOffsets
+            });
+
+            //click事件
+            map.on('click','poiNew_layer',function (e) {
+                $scope.poiclickLoc = [];
+                $scope.TollGateName = e.features[0].properties.name;
+                var div = window.document.createElement('div');
+                div.innerHTML =
+                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
+                    '<div class="tipPopDeep"></div>';
+                $scope.poiclickLoc.push(e.lngLat.lng);
+                $scope.poiclickLoc.push(e.lngLat.lat);
+                allPoipop.setLngLat($scope.poiclickLoc)
+                         .setDOMContent(div)
+                         .addTo(map);
+                if($('.travelTips').css('display') == 'none') {
+                    var pid = e.features[0].properties.pid;
+                    detailsDis(pid);
+                    $('.backBtn').hide();
+                    $scope.searchWord = $scope.TollGateName;
+                }
+            });
+            map.on('click','poiNew_layer4A',function (e) {
+                $scope.poiclickLoc = [];
+                $scope.TollGateName = e.features[0].properties.name;
+                var div = window.document.createElement('div');
+                div.innerHTML =
+                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
+                    '<div class="tipPopDeep"></div>';
+                $scope.poiclickLoc.push(e.lngLat.lng);
+                $scope.poiclickLoc.push(e.lngLat.lat);
+                allPoipop.setLngLat($scope.poiclickLoc)
+                    .setDOMContent(div)
+                    .addTo(map);
+                if($('.travelTips').css('display') == 'none') {
+                    var pid = e.features[0].properties.pid;
+                    detailsDis(pid);
+                    $('.backBtn').hide();
+                    $scope.searchWord = $scope.TollGateName;
+                }
+            });
+            map.on('click','poiNew_layerAll',function (e) {
+                $scope.poiclickLoc = [];
+                $scope.TollGateName = e.features[0].properties.name;
+                var div = window.document.createElement('div');
+                div.innerHTML =
+                    '<div class="feePopDeep">'+$scope.TollGateName+'</div>' +
+                    '<div class="tipPopDeep"></div>';
+                $scope.poiclickLoc.push(e.lngLat.lng);
+                $scope.poiclickLoc.push(e.lngLat.lat);
+                allPoipop.setLngLat($scope.poiclickLoc)
+                    .setDOMContent(div)
+                    .addTo(map);
+
+                if($('.travelTips').css('display') == 'none'){
+                    var pid = e.features[0].properties.pid ;
+                    detailsDis(pid);
+                    $('.backBtn').hide();
+                    $scope.searchWord = $scope.TollGateName ;
+                }
+
+            });
+
+            //定义旅游路线图层
+            $scope.tipLineLayer = {
+                "id": "tipsLayerId",
+                "type": "line",
+                "source": {
+                    "type": "geojson",
+                    "data": {
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "LineString",
+                            "coordinates": []
+                        }
+                    }
+                },
+                "layout": {
+                    "line-join": "round",
+                    "line-cap": "round",
+                    "visibility": "visible"
+                },
+                "paint": {
+                    "line-color": "#ff7474",
+                    "line-width": 3
+                }
+            };
+
+            $scope.colsightArr = [];
+
+            //从详情跳转到对应旅游路线
+            $scope.enterTips = function(pid){
+                $('.introduce').hide();
+                $('.travelTips').show();
+                dsEdit.getProduct("scenic/search/getroute?pid="+pid).then(function (data){
+                    $scope.tipsList = data;
+                    for (var i = 0;i<$scope.tipsList.length;i++) {
+                        $scope.tipsList[i].audio_id = $sce.trustAsResourceUrl($scope.tipsList[i].audio_id);
+                    }
+                    var poisArr = [];
+                    for(var i=0;i<data.length;i++) {
+                        var obj = data[i].pois;                                       //键值对,根据oPid的顺序处理pois的值
+                        poisArr.push(data[i].oPid.split('|').map(function (val) {    //oPid正确的顺序遍历数组
+                            if (obj[val]) {
+                                return {val: obj[val],pid: val};
+                            } else {
+                                return null;
+                            }
+                        }).filter(function (val) {                               //过滤掉数组中val不存在的数据
+                            return !!val;
+                        }))
+                    }
+                    $scope.colsightArr = poisArr;                                //途径景点ng-repeat数组
+
+                    //默认地图定位第一条数据
+                    var lineAry = [];
+                    lineAry = data[0].geometry.coordinates;
+                    var lineType = data[0].geometry.type;
+                    drawTipLine(lineAry,lineType);
+
+                    //点击攻略暂时清除地图上的搜索出来的点
+                    $scope.clearSearchsight();
+                    popupClick.remove();
+
+                }).then(function(){
+                    //选中样式
+                    $('#container .travelTips .tipList li').eq(0).addClass('liActive').siblings().removeClass('liActive');
+                    $('#container .travelTips .tipList .tipSight .everySight').removeClass('sightBorder');
+                    $('#container .travelTips .tipList li').eq(0).find('.everySight').addClass('sightBorder');
+                    $('#container .travelTips .tipTitle').removeClass('tipTitleActive');
+                    $('#container .travelTips .tipTitle').eq(0).addClass('tipTitleActive');
+                })
+
+            }
+
+            //勾勒路线函数
+            var drawTipLine = function(lineCol,type){
+                var bounds = {
+                    type: 'FeatureCollection',
+                    features: [],
+                };
+               if(type === 'MultiLineString') {                                //多线，分为多个feature,循环多个数组，填充多条线
+                   for (var i = 0, len = lineCol.length; i < len; i++) {
+                       var source = {
+                           "type": "Feature",
+                           "geometry": {
+                               "type": "LineString",
+                               "coordinates": lineCol[i]
+                           },
+                       };
+                       var pointFeature = turf.lineString(lineCol[i]);
+                       bounds.features.push(source);
+                   }
+               }else{                                                           //单线
+                   var source = {
+                       "type": "Feature",
+                       "geometry": {
+                           "type": "LineString",
+                           "coordinates": lineCol
+                       }
+                   };
+                   var pointFeature = turf.lineString(lineCol);
+                   bounds.features.push(source);
+               }
+                var bbox = turf.bbox(bounds);
+                var v2 = new mapboxgl.LngLatBounds([bbox[0], bbox[1]], [bbox[2], bbox[3]]);
+                map.fitBounds(v2, {padding: 100});
+                if (!map.getSource('tipsLayerId')) {
+                    $scope.tipLineLayer.source.data = bounds;
+                    map.addLayer($scope.tipLineLayer);
+                } else {
+                    map.getSource('tipsLayerId').setData(bounds);
+                }
+            }
+            //清除地图上的线（id为route）
+            $scope.clearLines = function () {
+                if (map.getSource('tipsLayerId')) {
+                    var bounds = {
+                        type: 'FeatureCollection',
+                        features: [],
+                    };
+                    map.getSource('tipsLayerId').setData(bounds);
+                }
+            };
+            //清除地图上的沿途景区点
+            $scope.clearMarksight = function(){
+                if(map.getSource('marksightId')) {
+                    var bounds = {
+                        type: 'FeatureCollection',
+                        features: [],
+                    };
+                    map.getSource('marksightId').setData(bounds);
+                }
+            }
+
+            //点击攻略暂时清除地图上的搜索出来的点
+            $scope.clearSearchsight = function(){
+                    var bounds = {
+                        type: 'FeatureCollection',
+                        features: [],
+                    };
+                    map.getSource('mysouce').setData(bounds);
+            }
+
+            //标记旅游路线
+            $scope.markRoute = function(geo,index){
+                var geoArr = geo.coordinates;
+                var geotype = geo.type;
+                drawTipLine(geoArr,geotype);
+                //选中样式
+                $('#container .travelTips .tipList li').eq(index).addClass('liActive').siblings().removeClass('liActive');
+                $('#container .travelTips .tipList .tipSight .everySight').removeClass('sightBorder');
+                $('#container .travelTips .tipList li').eq(index).find('.everySight').addClass('sightBorder');
+                $('#container .travelTips .tipTitle').removeClass('tipTitleActive');
+                $('#container .travelTips .tipTitle').eq(index).addClass('tipTitleActive');
+
+                //语音图标改变
+                $('.tipList .tipTitle .speakUp').css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                var backImage = $('#speakTip-' + index).css('backgroundImage');
+                if(backImage.indexOf('active')>-1){
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_active.gif)')
+                } else{
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                }
+            }
+
+            //定义切换变量
+            var open = 1;
+            var preVal = '';
+            //标记途径景点
+            $scope.markSight = function(pidTip,event) {
+                var e = window.event || event;
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                } else {
+                    e.cancelBubble = true;
+                }
+
+                dsEdit.getProduct("scenic/search/poidetail", {
+                    parm: JSON.stringify({
+                        poi_pid: pidTip
+                    })
+                }).then(function (data) {
+                        var sightLocation = data[0].geometry.coordinates;
+                        var source = {
+                            "type": "geojson",
+                            "data":{
+                                "type":"Feature",
+                                "geometry": {
+                                    "type": "Point",
+                                    "coordinates":sightLocation
+                                }
+                            }
+                        };
+                    if(preVal === ''){                                     //点击第一次preVal为空
+                        preVal = pidTip;
+                        marksightLayer.source = source;
+                        map.addLayer(marksightLayer);
+                    }else{
+                        if(preVal === pidTip){
+                            if(open === 1){                                //当前的pid与上一次的pid相同且显示
+                                if (!map.getSource('marksightId')) {
+                                    marksightLayer.source = source;
+                                    map.addLayer(marksightLayer);
+                                } else {
+                                    map.getSource('marksightId').setData({
+                                        "type": "FeatureCollection",
+                                        "features": [{
+                                            "type": "Feature",
+                                            "geometry": {
+                                                "type": "Point",
+                                                "coordinates": sightLocation
+                                            }
+                                        }]
+                                    })
+                                }
+                                open = 0 ;
+                            }else{                                       //当前的pid与上一次的pid相同且隐藏
+                                $scope.clearMarksight();
+                                open = 1;
+                            }
+                        }else{
+                            preVal = pidTip;                             //当前的pid与上一次的pid不同，将当前的赋予preVal
+                            if (!map.getSource('marksightId')) {
+                                marksightLayer.source = source;
+                                map.addLayer(marksightLayer);
+                            } else {
+                                map.getSource('marksightId').setData({
+                                    "type": "FeatureCollection",
+                                    "features": [{
+                                        "type": "Feature",
+                                        "geometry": {
+                                            "type": "Point",
+                                            "coordinates": sightLocation
+                                        }
+                                    }]
+                                })
+                            }
+                            open=0;
+                        }
+                    }
+                })
+            }
+
+            //播放或暂停路线语音
+            $scope.playOrPauseTip = function(event,index){
+                var e = window.event || event;
+                if (e.stopPropagation) {
+                    e.stopPropagation();
+                } else {
+                    e.cancelBubble = true;
+                }
+                var audioTip = document.getElementById('audioTip-'+index);
+                if(audioTip.paused){
+                    audioTip.play();
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_active.gif)');
+                }else{
+                    audioTip.pause();
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                }
+
+                audioTip.addEventListener('ended', function () {
+                    console.log('--over--');
+                    var stopIcon =$('#speakTip-'+index).css('backgroundImage');
+                    if(stopIcon.indexOf('blue') > -1 ){
+                        $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                    }else{
+                        $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                    }
+                }, false);
+
+            }
+
+            //攻略返回到详情
+            $scope.backtoDetail = function () {
+                $('.introduce').show();
+                $('.travelTips').hide();
+                $scope.clearLines();
+                $scope.clearMarksight();
+
+            }
+            //mouseenter,mouseleave控制语音图标
+            $scope.changeVideo = function (index) {
+                //让当前li分割线消失
+                $('.borderBotLine').eq(index).hide();
+                //改变语音图标
+                var backImage = $('#speakTip-' + index).css('backgroundImage');
+                if (backImage.indexOf('active') > -1) {
+                    $('#speakTip-' + index).css('backgroundImage', 'url(../img/scenery/icon_white_active.gif)')
+                } else {
+                    $('#speakTip-' + index).css('backgroundImage', 'url(../img/scenery/icon_white_normal.png)');
+                }
+            }
+
+            //mouseleave list
+            $scope.recoverVideo = function (index) {
+                if(index != ($scope.tipsList.length-1) ){
+                    $('.borderBotLine').eq(index).show();
+                }
+                var backImage = $('#speakTip-'+index).css('backgroundImage') ;
+                if(backImage.indexOf('white_active')>-1){
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_blue_active.gif)')
+                } else{
+                    $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_blue_normal.png)');
+                }
+                var backColor = $('#container .travelTips .tipList li').eq(index).css('backgroundColor');
+
+                if(backColor =='rgba(20, 120, 255, 0.8)'){
+                    if(backImage.indexOf('active')>-1){
+                        $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_active.gif)')
+                    } else{
+                        $('#speakTip-'+index).css('backgroundImage','url(../img/scenery/icon_white_normal.png)');
+                    }
+                }
+            }
+
+
         }]);
 
 //调节预览图片尺寸
@@ -804,7 +1215,7 @@ function AutoResizeImage(maxWidth, maxHeight, objImg) {
     hRatio = maxHeight / h;
     if (maxWidth == 0 && maxHeight == 0) {
         Ratio = 1;
-    } else if (maxWidth == 0) {//
+    } else if (maxWidth == 0) {
         if (hRatio < 1) Ratio = hRatio;
     } else if (maxHeight == 0) {
         if (wRatio < 1) Ratio = wRatio;
