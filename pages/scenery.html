@@ -18,7 +18,6 @@
         <ul style="list-style: none;margin: 0;vertical-align: middle;padding: 22px 0 0 0;display: flex;display: -ms-flexbox;">
             <li style="font-size: 14px;color:rgba(0,0,0,0.7)">您现在的位置:</li>
             <li style="font-size: 14px;padding-left: 5px;color:rgba(0,0,0,0.7)">在线体验</li>
-
             <li style="font-size: 20px;padding:0 4px 0 9px;margin-top: -4px;color:rgba(0,0,0,1)">></li>
             <li style="font-size: 14px;padding-left: 5px; color:rgba(0,0,0,0.7)">景区专题地图</li>
         </ul>
@@ -54,13 +53,25 @@
             </div>
         </div>
         <ul class="searchResult ng-cloak" ng-style='resultList' >
-            <li class="clear" ng-repeat="item in sceneryList" ng-click="lightLocation($index,item)" ng-mousemove="lightMark($index)" ng-mouseleave="removeMark($index)" >
+            <li class="clear" ng-repeat="item in sceneryList" ng-click="lightLocation($index,item)" ng-mouseenter="lightMark($index)" ng-mouseleave="removeMark($index)" >
                 <div class="infoDes fl ng-cloak">
                     <div class="postName dotDis">
                         <i class='numTitle' style="font-family: Arial;font-style:normal">{{$index + 1}}.</i>
                         {{item.name}}
                     </div>
                     <div class="dotDis">
+                        <a class="speak" id="speak-{{$index}}"
+                           href="javascript:;"
+                           title="点击发声"
+                           ng-click="playOrPaused($event, $index)"
+                           ng-class="{true: 'hideVoiceIco', false: 'showVoiceIco'}['{{item.audio_id}}' == '']"
+                        >
+                        </a>
+                        <div style="position:absolute; left:-9999px;">
+                            <audio id="audio-{{$index}}" preload="preload"
+                                   ng-src="{{item.audio_id}}">
+                            </audio>
+                        </div>
                         <span>{{item.sight_level+'景区'}}</span>
                         <span>{{item.sight_class}}</span>
                     </div>
@@ -80,7 +91,7 @@
                 <div class="imgDes fr">
                     <img ng-src="{{item.url}}" src="../img/scenery/tim.jpg" alt="">
                 </div>
-                <div class="borderLine">
+                <div class="borderLine" ng-class="{true: 'hideSearchline', false: 'showSearchline'}['{{resultNum}}' == '1']">
 
                 </div>
 
@@ -104,27 +115,42 @@
         <div class="introduce ng-cloak" ng-style="introDis">
             <div style="width:330px">
             <div class="imgDisplay" style="padding-right: 0px">
-                <img ng-src="{{deImg}}"  id="bigPic" alt="" >
+                <img id="bigPic" alt="" >
                 <div class="backBtn" ng-click="toResultlist()">
                     返回
                 </div>
                 <div class="morePic" ng-click="scanPic()" ng-bind="morePic">
+                </div>
+                <div class="routeEnter" ng-click="enterTips(pidSight)"
+                     ng-class="{true: 'hideEntrance', false: 'showEntrance'}[isRoute == null]"
+                >
                 </div>
             </div>
             <div style="padding:0px 0px 0px 10px;">
                 <div class="introTitle" ng-bind="deName">
                 </div>
                 <div class="introContent">
-                    <span style="margin-right:30px">{{sightLevel}}景区&nbsp;{{sightClass}}</span>
+                    <a class="speakUp" id="speakDe"
+                       href="javascript:;"
+                       title="点击发声"
+                       ng-click="playOrPauseDetail()"
+                    >
+                    </a>
+                    <div style="position:absolute; left:-9999px;">
+                        <audio id="audioDe" preload="preload"
+                               ng-src="{{deAudio}}">
+                        </audio>
+                    </div>
+                    <span style="margin-right:20px">{{sightLevel}}景区&nbsp;{{sightClass}}</span>
                     <span>{{ticket}}</span>
                 </div>
                 <div class="introContent">
                     <img src="../img/scenery/icon_address.png" alt="">
-                    <span ng-bind="deAddress"></span>
+                    <span ng-bind="deAddress" style="margin-left:3px"></span>
                 </div>
                 <div class="introContent">
                     <img src="../img/scenery/icon_phonenumber.png" alt="">
-                    <span>{{sightTel}}</span>
+                    <span ng-bind="sightTel"></span>
                 </div>
                 <div class="introContent">
                     <span>开放时间&nbsp;:&nbsp;{{deTime}}</span>
@@ -163,16 +189,49 @@
         </div>
         <span></span>
     </div>
-        <!--<div class="routeSpecial">-->
-            <!--<ul class="clear" ng-init='searchHolder ="搜索全部限行信息" '>-->
-                <!--<li  ng-click="changeSearch($index)"-->
-                     <!--ng-repeat="each in searchClass"-->
-                     <!--ng-bind="each"-->
-                     <!--ng-class="{active : $index == focus}"-->
-                <!--&gt;-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
+        <div class="travelTips ng-cloak"  style="display:none">
+            <div class="tipBack" ng-click="backtoDetail()">返回</div>
+            <ul class="tipList ng-cloak" >
+                <li ng-repeat="everyRoute in tipsList"
+                    ng-click="markRoute(everyRoute.geometry,$index)"
+                    ng-mouseenter="changeVideo($index)"
+                    ng-mouseleave="recoverVideo($index)"
+                    ng-init="outerIndex = $index"
+                >
+                    <div class="tipTitle">
+                        <a class="speakUp"
+                           id="speakTip-{{$index}}"
+                           href="javascript:;"
+                           title="点击发声"
+                           ng-click="playOrPauseTip($event,$index)"
+                        >
+                        </a>
+                        <div style="position:absolute; left:-9999px;">
+                            <audio  preload="preload"
+                                    id="audioTip-{{$index}}"
+                                    ng-src="{{everyRoute.audio_id}}">
+                            </audio>
+                        </div>
+                        攻略<i class='numTitle' style="font-family: Arial;font-style:normal">{{$index + 1}}：</i>
+                        <span ng-bind="everyRoute.name"></span>
+                    </div>
+                    <div class="tipSight clear">
+                        <div class="fl">途径景点：</div>
+                        <div class="fl" style="width:250px">
+                                <span ng-repeat="one in colsightArr[$index]" >
+                                    <span class="everySight" ng-click="markSight(one.pid,$event)">{{one.val}}</span>
+                                    <span ng-class="{true: 'hideSpan', false: 'showSpan'}['{{$index}}' == '{{colsightArr[outerIndex].length-1}}' ]"> > </span>
+                                </span>
+                        </div>
+                    </div>
+                    <div class="tipIntro clear">
+                        <div class="fl">攻略介绍：</div>
+                        <div class="fl" style="width:250px;text-align: justify" ng-bind="everyRoute.introduction"></div>
+                    </div>
+                    <div class="borderBotLine" ng-class="{true: 'hideBotline', false: 'showBotline'}['{{$index}}'== tipsList.length-1]"></div>
+                </li>
+            </ul>
+        </div>
     </div>
     <div id="map">
         <div class="changeMapSizeDiv">
