@@ -129,7 +129,7 @@ li{
 }
 #container .introduce .imgDisplay .morePic{
     position: absolute;
-    right:6px;
+    left:16px;
     bottom:6px;
     color:#fff;
     cursor: pointer;
@@ -139,7 +139,18 @@ li{
     line-height: 24px;
     text-indent:24px;
 }
-
+#container .introduce .imgDisplay .routeEnter{
+    position: absolute;
+    right:0px;
+    bottom:-30px;
+    cursor: pointer;
+    background:url(../img/scenery/button_lvyougonglve_normal.png) no-repeat 6px 6px;
+    width:60px;
+    height: 60px;
+}
+#container .introduce .imgDisplay .routeEnter:hover{
+    background:url(../img/scenery/button_lvyougonglve_active.png) no-repeat 0px 0px;
+}
 .ng-cloak{
     display: none;
 }
@@ -190,6 +201,7 @@ li{
     color:#333;
     margin:0px;
     overflow-y: auto;
+    -ms-overflow-y: auto;
     width:340px;
     z-index: 5;
     position:absolute;
@@ -198,6 +210,136 @@ li{
     background-color: #fff;
     max-height: calc(100% - 41px);
     box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+}
+#container .travelTips{
+    width:340px;
+    background-color: #fff;
+    left: 10px;
+    top:39px;
+    position: absolute;
+    z-index: 5;
+    max-height: calc(100% - 42px);
+    overflow-y: auto;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+}
+#container .travelTips .tipBack{
+    margin:0px 10px;
+    height: 30px;
+    line-height: 30px;
+    color:#73afff;
+    font-size:12px;
+    background: url(../img/scenery/icon_back2.png) no-repeat 0px 10.5px;
+    text-indent: 20px;
+    border-bottom:1px solid #D0E4FF;
+    cursor: pointer;
+}
+#container .travelTips .tipList{
+    padding:0px;
+    font-size:14px;
+    color:#999999;
+    margin:0px;
+}
+#container .travelTips .tipList li{
+    padding: 0px 10px 5px;
+    position: relative;
+}
+#container .travelTips .tipList li:hover{
+    background-color: rgba(20, 120, 255, 0.8);
+    cursor: pointer;
+    color:#FFFFFF;
+}
+.liActive{
+    background-color: rgba(20, 120, 255, 0.8);
+    cursor: pointer;
+    color:#FFFFFF;
+}
+#container .travelTips .tipList li:hover .tipTitle{
+    color:#FFFFFF;
+}
+.tipTitleActive{
+    color:#FFFFFF;
+}
+#container .travelTips .tipList li:hover .tipSight{
+    color:#FFFFFF;
+}
+.tipTitleActive{
+    color:#FFFFFF !important;
+}
+#container .travelTips .tipList li:hover .tipIntro{
+    color:#FFFFFF;
+}
+
+#container .travelTips .tipList li:hover .everySight{
+    border-bottom: 1px solid #FFFFFF;
+}
+.sightBorder{
+    border-bottom: 1px solid #FFFFFF !important;
+}
+
+#container #content  .travelTips li .borderBotLine{
+    height: 1px;
+    width:95%;
+    background-color:#D0E4FF;
+    position:absolute;
+    bottom: -1px;
+    left:10px;
+}
+.showBotline{
+    display: block;
+}
+.hideBotline{
+    display: none;
+}
+.hideSearchline{
+    display: none;
+}
+.showSearchline{
+    display: block;
+}
+.hideEntrance{
+    display: none;
+}
+.showEntrance{
+    display: block;
+}
+.showSpan{
+    display: inline;
+}
+.hideSpan{
+    display: none;
+}
+#container .travelTips .tipList .tipTitle{
+    color:#333;
+    font-size:14px;
+    line-height: 30px;
+    height: 30px;
+}
+#container .travelTips .tipList .tipSight{
+    line-height: 20px;
+    font-size:12px;
+}
+#container .travelTips .tipList .tipIntro{
+    line-height: 20px;
+    font-size:12px;
+}
+#container .travelTips .tipList .tipSight .everySight{
+    border-bottom: 1px solid #999999;
+}
+.speak{
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    background: url('../img/scenery/icon_blue_normal.png') no-repeat center;
+    line-height: 20px;
+    vertical-align: middle;
+}
+.speakUp{
+    display: inline-block;
+    width: 16px;
+    height: 20px;
+    background: url('../img/scenery/icon_blue_normal.png') no-repeat center;
+    line-height: 20px;
+    vertical-align: middle;
 }
 ::-webkit-scrollbar {
     width:6px;
@@ -700,6 +842,14 @@ li{
 .hideDeleteBtn {
     display: none;
 }
+/***************************判断是否显示语音图标****************************************************/
+.showVoiceIco {
+    display: inline-block;
+}
+.hideVoiceIco {
+    display: none;
+}
+
 input{
     color:#333;
 }
@@ -714,6 +864,10 @@ input{
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     　　color:#999;
+}
+/*输入框IE出现清除按钮*/
+::-ms-clear,::-ms-reveal{
+    display: none;
 }
 
 /****test****/

@@ -6,6 +6,7 @@ html,body{
 }
 body{
     overflow-y: scroll;
+    font-family: 'Microsoft YaHei','微软雅黑',Arial,sans-serif;
 }
 #logo{
     float: left;
@@ -188,4 +189,168 @@ body{
 .allCities .allCitiesList > li .citiesBox ul li > span{
     color: #333333;
     font-size: 12px;
+}
+/***************************右下角按钮****************************/
+.changeMapSizeDiv {
+    position: absolute;
+    z-index: 15;
+    width: 20px;
+    height: 50px;
+    right: 10px;
+    bottom: 10px ;
+}
+.addBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_max_normal.png");
+    background-position: center;
+    background-size: cover;
+    outline: none;
+    margin-bottom: 10px;
+    border: 0;
+    box-shadow: 0 1px 3px rgba(84, 98, 137, 0.3);
+}
+.addBtn:hover,.addBtn:active{
+    background-image: url("../img/onlineMap/button_max_active.png");
+}
+.subBtn{
+    width: 20px;
+    height: 20px;
+    background-image: url("../img/onlineMap/button_min_normal.png");
+    background-position: center;
+    outline: none;
+    border: 0;
+    box-shadow: 0 1px 2px rgba(84, 98, 137, 0.3);
+}
+.subBtn:hover,.subBtn:active{
+    background-image: url("../img/onlineMap/button_min_active.png");
+}
+/*********************施工道路重构*******************/
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, input, p{
+    margin: 0;
+    padding: 0;
+}
+.clear:after {
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden; }
+li{
+    list-style:none;
+}
+#container #content .sumTitle{
+    width: 100%;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: 3;
+    color:#fa4e5d;
+    font-size:12px;
+}
+#container #content .sumTitle li {
+    line-height: 40px;
+    margin-right: 60px;
+}
+#container #content .sumTitle .cityDis{
+    color:#FFFFFF;
+    width:80px;
+    line-height: 16px;
+    margin-top: 12px;
+    margin-right: 0px;
+    background: url(../img/onlineMap/icon_arrow_normal.png) no-repeat 60px 7px;
+    cursor: pointer;
+}
+#container #content .sumTitle .cityDis span{
+    border-left:1px solid #FFFFFF;
+    padding-left: 10px;
+    display: inline-block;
+    width: 100%;
+}
+#container #content .sumTitle .cityDis .selectedCity{
+    background-color: rgba(20, 120, 255, 0.2);
+    border:1px solid #1478ff;
+    margin-top: 12px;
+    display: none;
+}
+#container #content .sumTitle .cityDis .selectedCity div{
+    line-height: 30px;
+    padding-left:10px;
+}
+#container #content .sumTitle .cityDis .selectedCity div:hover{
+    background-color: rgba(20, 120, 255, 1);
+    cursor: pointer;
+}
+#container #content .graphExp{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 3;
+    font-size:12px;
+    color:#FFFFFF;
+    padding: 0px 10px;
+}
+#container #content .graphExp ul{
+    line-height: 30px;
+
+}
+#container #content .graphExp ul li{
+    margin-right: 30px;
+
+}
+#container #content .graphExp ul .square{
+    display: inline-block;
+    width:12px;
+    height: 12px;
+    border-radius: 3px;
+    -webkie-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -moz-border-radius: 3px;
+    background-color: #fa4e5d;
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+/*******************************路费弹框********************************/
+ .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-tip {
+    display: none;
+}
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content{
+    padding:0;
+    background: transparent;
+    box-shadow: none;
+}
+ .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content > button{
+    display: none;
+}
+ .mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .tipPopDeep{
+    width: 0;
+    height: 0;
+    margin: 0 auto;
+    border-width:8px 6px 0;
+    border-style:solid ;
+     border-color:rgba(0,0,0,0.3) transparent transparent;
+}
+
+.mapboxgl-map .mapboxgl-popup .mapboxgl-popup-content div .feePopDeep{
+    margin: 0;
+    padding:0px 10px;
+    width: 210px;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.3);
+    line-height: 30px;
 }
