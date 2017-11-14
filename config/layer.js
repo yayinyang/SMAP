@@ -22120,7 +22120,7 @@ var productDay = {
                     stops: [[5, 1.8], [9, 1.8], [20, 9]],
                     base: 1.1,
                 },
-                'line-color': 'red',
+                'line-color': 'blue',
                 'line-width': 1,
             },
             'source-layer': 'link_incre',

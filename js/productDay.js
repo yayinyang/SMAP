@@ -18,13 +18,13 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.paging = {
         display: 'block',
     };
-    $scope.endTime = '';
+    $scope.endTime = '20171012';
     // 初始化地图
     var map = new mapboxgl.Map({
         container : 'map',
         style : productDay,
-        zoom : 10,
-        center : [ 102.44104, 35.86300 ],
+        zoom : 12,
+        center : [ 102.436663, 35.854505],
         maxZoom : 17,
         minZoom : 5,
         pitch: 0,
@@ -41,12 +41,16 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
             }
         }
     });
-    map.on('load', function (data) {
-        map.loadImage('../img/iconPOI.png', function(error, image) {
-            if (error) throw error;
-            map.addImage('cat', image);
-        });
+    map.loadImage('../img/iconPOI.png', function(error, image) {
+        if (error) throw error;
+        map.addImage('cat', image);
     });
+    // map.on('load', function (data) {
+    //     map.loadImage('../img/iconPOI.png', function(error, image) {
+    //         if (error) throw error;
+    //         map.addImage('cat', image);
+    //     });
+    // });
     $scope.goCapture = function (data){
         var local = 'capture'+data;
         $location.hash(local);
