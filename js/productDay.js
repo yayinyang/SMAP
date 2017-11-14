@@ -10,8 +10,8 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
     $scope.lightTime = '';
     $scope.provinceArr = province;
     $scope.captureArr = ['A','B','C','F','G','H','J','L','N','Q','S','T','X','Y','Z'];
-    $scope.provincePid = 1;
-    $scope.nowProvince = '北京';
+    $scope.provincePid = 25;
+    $scope.nowProvince = '青海';
     $scope.resultPageNum = 0;
     $scope.resultPageTotal = 1;
     $scope.perCount = 10;
@@ -24,7 +24,7 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         container : 'map',
         style : productDay,
         zoom : 10,
-        center : [ 116.38402, 39.96261 ],
+        center : [ 102.44104, 35.86300 ],
         maxZoom : 17,
         minZoom : 5,
         pitch: 0,
