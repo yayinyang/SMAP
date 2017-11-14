@@ -42,7 +42,10 @@ tollGate.controller("tollGateController", ['$scope', 'dsEdit', '$location', '$an
         }
     });
     map.on('load', function (data) {
-        console.log(map);
+        map.loadImage('../img/iconPOI.png', function(error, image) {
+            if (error) throw error;
+            map.addImage('cat', image);
+        });
     });
     $scope.goCapture = function (data){
         var local = 'capture'+data;

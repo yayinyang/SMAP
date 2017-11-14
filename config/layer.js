@@ -21131,7 +21131,8 @@ var productDay = {
                     "stops": [[15, 2], [20, 5]],
                     "base": 1.2
                 },
-                "line-color": "#f9d195",
+                "line-color": "#ffcc33",
+                "line-opacity": 0.5,
                 "line-width": 0.6
             },
             "source-layer": "Road",
@@ -21149,7 +21150,8 @@ var productDay = {
             },
             "source-layer": "Road",
             "paint": {
-                "line-color": "#ffffff",
+                "line-color": "#ffcc33",
+                "line-opacity": 0.5,
                 "line-width": {
                     "stops": [[15, 2], [20, 5]],
                     "base": 1.2
@@ -21168,7 +21170,8 @@ var productDay = {
                 "line-cap": "round"
             },
             "paint": {
-                "line-color": "#f9ecc1",
+                "line-color": "#ffcc33",
+                "line-opacity": 0.5,
                 "line-width": {
                     "stops": [[5, 0.7], [6, 1], [20, 10]],
                     "base": 1.2
@@ -21210,7 +21213,8 @@ var productDay = {
             },
             "source-layer": "Road",
             "paint": {
-                "line-color": "#f9ecc1",
+                "line-color": "#ffcc33",
+                "line-opacity": 0.5,
                 "line-width": {
                     "stops": [[9, 1.2], [20, 6]],
                     "base": 1
@@ -21251,7 +21255,8 @@ var productDay = {
             },
             "source-layer": "Road",
             "paint": {
-                "line-color": "#ffd467",
+                "line-color": "#ffcc33",
+                "line-opacity": 0.5,
                 "line-width": {
                     "stops": [[7, 1.5], [9, 1.6], [20, 8]],
                     "base": 1
@@ -21292,10 +21297,7 @@ var productDay = {
             },
             "source-layer": "Road",
             "paint": {
-                "line-color": {
-                    "stops": [[5, "#ffb35b"], [8, "#ffb35b"], [20, "#ffb35b"]],
-                    "base": 1
-                },
+                "line-color":"#ffcc33",
                 "line-width": {
                     "stops": [[5, 0.7], [6, 0.8], [7, 1.6], [9, 1.6], [20, 10]],
                     "base": 1
@@ -22134,7 +22136,7 @@ var productDay = {
             minzoom: 3,
             maxzoom: 17,
             layout: {
-                'icon-image': 'point-11',
+                'icon-image': 'cat',
             },
             paint: {
                 'icon-color': '#ef0909',
