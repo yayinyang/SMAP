@@ -20,7 +20,8 @@ navApp.directive('navBar',function () {
                onlineUseFlag: $scope.loc === 'onlineUseFlag',
                loginFlag: $scope.loc === 'loginFlag',
                sceneryFlag:$scope.loc === 'sceneryFlag',
-               productDayFlag:$scope.loc === 'productDayFlag'
+               productDayFlag:$scope.loc === 'productDayFlag',
+               statisticFlag:$scope.loc === 'statisticFlag'
            };
            $scope.navMap = [
                {
@@ -37,7 +38,11 @@ navApp.directive('navBar',function () {
                        },
                        {
                        title: '限行限号服务',
+                       },
+                       {
+                           title: '日出品服务',
                        }
+
                    ]
                },
                {
@@ -71,12 +76,9 @@ navApp.directive('navBar',function () {
                        {
                            title: '限行数据查询',
                        },
-                       {
-                           title: '景区专题地图',
-                       },
-                       {
-                           title: '日出品',
-                       }
+                       // {
+                       //     title: '景区专题地图',
+                       // }
                    ]
                },
                {
