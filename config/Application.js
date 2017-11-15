@@ -10,8 +10,8 @@ App.dev = {
 // web app全局配置信息
 App.Config = {
     serviceUrl: 'http://fs.navinfo.com/smapapi',
-    sceneryUrl: 'http://fastmap.navinfo.com/smapapi',
-    appRoot: 'http://localhost:63342/SMAP',
+    sceneryUrl: 'http://' + App.dev.host + '/smapapi',
+    appRoot: 'http://localhost:63342/SMAP-byfork',
     //appRoot: 'http://fs.navinfo.com/smap',
     // appRoot:'http://' + App.dev.host ,
     mapboxToken: 'pk.eyJ1IjoiZmFuZ2xhbmsiLCJhIjoiY2lpcjc1YzQxMDA5NHZra3NpaDAyODB4eSJ9.z6uZHccXvtyVqA5zmalfGg',

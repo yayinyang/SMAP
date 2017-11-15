@@ -6,15 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <!-- build:css ../style/statisticInfo.css -->
+    <link href='../lib/mapbox/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="../style/statisticInfo.css">
     <link rel="stylesheet" href="../lib/angular-nvd3/nv.d3.css">
     <!-- endbuild -->
 </head>
 <body ng-controller="statisticController">
+<nav-bar loc="locFlag"></nav-bar>
+
     <div class="content">
-        <div class="topSquare"></div>
+
         <div class="wrapper">
-            <div class="title">日出品情况统计</div>
+            <div class="title">SMap日出品统计</div>
             <div class="sumStatis">
                 <div class="sumIcon">累计出品</div>
                 <div class="clear">
@@ -60,11 +63,17 @@
                 <div class="dailyIcon">日出品列表</div>
                 <div class="totalList clear">
                     <div class="fl">
-                        <div class="firstCol">
+                        <div class="firstCol" style="position: relative">
                             <div>NO</div>
                             <div>日期</div>
                             <div>开始时间</div>
                             <div>结束时间</div>
+                            <a  style="position: absolute;right: 16px;
+                                bottom: 51px;color:#36aeea;font-size:16px;border-bottom: 2px solid #36aeea;
+                                text-indent: 0px;line-height: 24px "
+                                href="productDay.html">
+                                地图展示
+                            </a>
                         </div>
                         <ul  class="dataList hoverStyle" id="topList">
                             <li  ng-repeat="item in dayProduceData" ng-mousemove="showStaticInfo(item,$index)">
@@ -74,8 +83,8 @@
                                 <div ng-bind="item.end_time"></div>
                             </li>
                         </ul>
-                        <div id="borderTop"></div>
                     </div>
+                    <div id="borderTop"></div>
                     <div class="fr circleRe">
                         <div>
                             <div id="arrowTop">
@@ -117,8 +126,10 @@
             </div>
 
         </div>
-            <div class="dailyStatis"  style="margin-bottom:20px;" >
-                <div class="dailyIcon">省份列表</div>
+            <div class="dailyStatis"  style="margin-bottom:40px;" >
+                <div class="dailyIcon">
+                    <span>省份列表</span>
+                </div>
                 <div class="totalList clear">
                     <div class="fl">
                         <div class="secondCol">
@@ -148,7 +159,7 @@
                             </div>
                             <div style="width: 100%;" class="clear">
                                 <div style="width:40%;height: 220px;float:left;margin-right: 10%;position: relative" >
-                                    <nvd3 options='options' data='chartPoibot'></nvd3>
+                                    <nvd3 options='options' data='chartPoibot' style="color:#FFFFFF"></nvd3>
                                     <div class='poiPos'>POI</div>
                                 </div>
                                 <div style="width:40%;height: 220px;float:left;position: relative" >
